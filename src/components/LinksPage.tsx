@@ -9,9 +9,9 @@ export function LinksPage({ onNavigate }: LinksPageProps) {
     {
       title: "Bookmark Portal",
       subtitle: "Secure decryption game to unlock premium bookmark link",
-      url: "/sub1.html",
+      url: "sub1.html",
       icon: <Bookmark className="w-6 h-6" />,
-      username: "/sub1.html",
+      username: "sub1.html",
       color: "hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white hover:border-indigo-600",
       isExternalPage: true
     },

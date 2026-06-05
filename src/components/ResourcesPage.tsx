@@ -1,5 +1,6 @@
-import { ArrowLeft, Copy, Check, ExternalLink, Type, Sparkles } from "lucide-react";
+import { ArrowLeft, Copy, Check, ExternalLink, Type, Sparkles, Download } from "lucide-react";
 import { useState, useEffect } from "react";
+import { getDiscoveredFonts } from "../hooks/useFonts";
 
 interface ResourcesPageProps {
   onNavigate: (path: string) => void;
@@ -25,6 +26,17 @@ interface FontPairing {
 export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
   const [copiedId, setCopiedId] = useState<number | null>(null);
   const [customText, setCustomText] = useState("");
+  const localFonts = getDiscoveredFonts();
+
+  const downloadFont = (url: string, family: string) => {
+    const ext = url.split(".").pop()?.split("?")[0] ?? "otf";
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${family}.${ext}`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
 
   const fontPairings: FontPairing[] = [
     {
@@ -231,7 +243,7 @@ theme: {
                   style={{ fontFamily: pairing.bodyFamily }}
                   className={`text-sm leading-relaxed ${pairing.bodyClass}`}
                 >
-                  {pairing.sampleBody}
+                  {customText || pairing.sampleBody}
                 </p>
               </div>
             </div>
@@ -267,9 +279,60 @@ theme: {
         ))}
       </div>
 
+      {/* ── Local Font Vault ─────────────────────────────── */}
+      {localFonts.length > 0 && (
+        <div className="mt-24">
+          <div className="flex items-center gap-3 mb-2">
+            <h2 className="text-lg font-bold text-[#FF4200] flex items-center gap-2 uppercase tracking-wider text-xs">
+              <Download className="w-4 h-4" /> Local Font Vault
+            </h2>
+            <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-white/8 text-neutral-500 dark:text-neutral-400">
+              {localFonts.length} fonts
+            </span>
+          </div>
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm font-medium mb-10">
+            All fonts discovered in <code className="font-mono bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded text-xs">assets/Fonts/</code> — drop a new file there and it appears here automatically.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {localFonts.map(({ family, url, format }) => (
+              <div
+                key={family}
+                className="group p-8 rounded-[28px] border border-black/10 dark:border-white/10 bg-neutral-50/50 dark:bg-neutral-950/20 backdrop-blur-md flex flex-col gap-6 shadow-sm hover:border-black/20 dark:hover:border-white/20 transition-all"
+              >
+                {/* Live preview */}
+                <p
+                  style={{ fontFamily: `'${family}', sans-serif` }}
+                  className="text-[40px] leading-tight text-neutral-900 dark:text-white truncate py-2"
+                  title={customText || "The quick brown fox"}
+                >
+                  {customText || "The quick brown fox"}
+                </p>
+
+                {/* Meta */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-bold tracking-tight text-neutral-800 dark:text-neutral-200 truncate">{family}</p>
+                    <p className="text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider font-semibold">{format}</p>
+                  </div>
+                  <button
+                    onClick={() => downloadFont(url, family)}
+                    title={`Download ${family}`}
+                    className="shrink-0 flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl bg-neutral-100 dark:bg-white/8 text-neutral-600 dark:text-neutral-400 hover:bg-[#FF4200] hover:text-white dark:hover:bg-[#FF4200] dark:hover:text-black transition-all"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Download
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Subtle Footer Citation */}
       <footer className="mt-20 text-center text-xs font-mono font-medium text-neutral-400 dark:text-neutral-500 tracking-wider flex items-center justify-center gap-1.5">
-        LOADED VIA GOOGLE FONTS API <ExternalLink className="w-3 h-3" />
+        LOADED VIA GOOGLE FONTS API + LOCAL FONT VAULT <ExternalLink className="w-3 h-3" />
       </footer>
     </div>
   );

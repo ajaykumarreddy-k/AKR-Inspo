@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>veeps. - Tour Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+SC:wght@100..900&display=swap');
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #dbe0e7; /* Page background matching image */
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Utilities */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+        
+        .kanji-bg {
+            font-family: 'Noto Sans JP', 'Noto Sans SC', sans-serif;
+            color: rgba(156, 163, 175, 0.2); /* Very faint text */
+            user-select: none;
+        }
+
+        /* Card container styles */
+        .card-bg {
+            background-color: #e6e9ee; /* Slightly darker than pure white, matching UI */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        
+        .inner-content-bg {
+            background-color: #f1f3f6; /* Lighter background for inner content blocks */
+        }
+        
+        .border-subtle {
+            border-color: #d1d5db;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'accent-red': '#ff4c4c',
+                        'accent-blue': '#4c3aed',
+                        'ui-bg': '#e6e9ee',
+                        'ui-inner': '#f1f3f6',
+                        'ui-border': '#d1d5db',
+                        'text-muted': '#6b7280',
+                        'text-main': '#1f2937'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen py-12 px-4 sm:px-8 lg:px-16 flex flex-col gap-16 items-center">
+
+    <div class="card-bg w-full max-w-5xl relative min-h-[600px] border border-white/50 overflow-hidden flex flex-col">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center p-6 sm:p-8 w-full z-10">
+            <div class="flex gap-4 items-center">
+                <button class="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text-main transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+                </button>
+            </div>
+            
+            <div class="text-xl sm:text-2xl font-bold tracking-tight text-text-muted">
+                veeps.
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <button class="w-10 h-10 border border-ui-border rounded-none flex items-center justify-center text-text-muted hover:bg-white transition-colors relative">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                </button>
+                <div class="hidden sm:block h-8 w-px bg-ui-border"></div>
+                <button class="hidden sm:block text-sm font-semibold tracking-wide text-text-muted hover:text-text-main transition-colors">
+                    sign in
+                </button>
+            </div>
+        </header>
+
+        <!-- Background Kanji & Left/Right Text -->
+        <div class="absolute left-8 top-32 kanji-bg text-8xl md:text-9xl font-black leading-none z-0">
+            日<br>本
+        </div>
+        
+        <div class="absolute left-8 bottom-32 vertical-text text-xs tracking-widest text-text-muted uppercase font-semibold z-10">
+            panic!<br>at the disco
+        </div>
+        
+        <div class="absolute right-8 bottom-32 vertical-text text-xs tracking-widest text-text-muted uppercase font-semibold z-10">
+            death of<br>a bachelor
+        </div>
+        
+        <div class="absolute left-8 bottom-8 z-10">
+            <button class="w-8 h-8 rounded-full border border-ui-border flex items-center justify-center text-text-muted hover:bg-white transition-colors">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        
+        <div class="absolute right-8 bottom-8 z-10">
+            <div class="w-2 h-2 rounded-full border border-ui-border"></div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex items-center justify-center p-8 z-10 w-full relative">
+            <div class="w-full max-w-3xl flex flex-col md:flex-row shadow-xl">
+                
+                <!-- Left Panel (Visual) -->
+                <div class="ui-inner flex-1 p-8 md:p-12 border-b md:border-b-0 md:border-r border-ui-border relative min-h-[300px] flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter">japan</h1>
+                        <div class="text-right">
+                            <div class="font-bold text-sm tracking-wider">live</div>
+                            <div class="text-text-muted font-medium">13:05</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Abstract Sunrise Graphic -->
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-24 overflow-hidden">
+                        <div class="w-48 h-48 bg-accent-red rounded-full shadow-lg"></div>
+                    </div>
+                </div>
+
+                <!-- Right Panel (Schedule) -->
+                <div class="bg-white/80 backdrop-blur flex-1 flex flex-col">
+                    <div class="py-4 text-center font-bold text-sm tracking-widest border-b border-ui-border">
+                        02—10 sep
+                    </div>
+                    
+                    <!-- Active List Item -->
+                    <div class="flex border-b border-ui-border bg-white relative">
+                        <div class="w-12 border-r border-ui-border flex items-center justify-center relative">
+                            <span class="text-accent-red font-bold text-xs -rotate-90 absolute">now</span>
+                        </div>
+                        <div class="p-6 flex-1">
+                            <h3 class="font-bold text-lg leading-tight">tokyo</h3>
+                            <p class="text-text-muted text-sm mt-1">kawasima<br>stadium</p>
+                        </div>
+                        <div class="w-16 border-l border-ui-border flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="text-accent-blue"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    
+                    <!-- List Item -->
+                    <div class="flex border-b border-ui-border hover:bg-white/50 transition-colors">
+                        <div class="w-16 flex flex-col justify-center items-center py-4 text-center">
+                            <span class="font-bold text-lg leading-none">08</span>
+                            <span class="text-xs text-text-muted">sep</span>
+                        </div>
+                        <div class="p-4 flex-1">
+                            <h3 class="font-bold leading-tight">osaka</h3>
+                            <p class="text-text-muted text-sm">art gallery</p>
+                        </div>
+                    </div>
+                    
+                    <!-- List Item -->
+                    <div class="flex hover:bg-white/50 transition-colors">
+                        <div class="w-16 flex flex-col justify-center items-center py-4 text-center">
+                            <span class="font-bold text-lg leading-none">10</span>
+                            <span class="text-xs text-text-muted">sep</span>
+                        </div>
+                        <div class="p-4 flex-1">
+                            <h3 class="font-bold leading-tight">kioto</h3>
+                            <p class="text-text-muted text-sm">hyatt<br>regency</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Context Text below box on desktop, integrated on mobile -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-3xl px-4 hidden md:block">
+                 <p class="text-xs text-text-muted w-1/3 leading-relaxed">
+                    Japan is an island country in East Asia. It is situated in the northwest Pacific Ocean, and is bordered on the west by the Sea of Japan, extending from the Sea of Okhotsk in the north toward the East China Sea, Philippine Sea, and Taiwan in the south.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-bg w-full max-w-5xl relative min-h-[600px] border border-white/50 overflow-hidden flex flex-col">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center p-6 sm:p-8 w-full z-10">
+            <div class="flex gap-4 items-center">
+                <button class="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text-main transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+                </button>
+            </div>
+            
+            <div class="text-xl sm:text-2xl font-bold tracking-tight text-text-muted">
+                veeps.
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <button class="w-10 h-10 border border-ui-border rounded-none flex items-center justify-center text-text-muted hover:bg-white transition-colors relative">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                </button>
+                <div class="hidden sm:block h-8 w-px bg-ui-border"></div>
+                <button class="hidden sm:block text-sm font-semibold tracking-wide text-text-muted hover:text-text-main transition-colors">
+                    sign in
+                </button>
+            </div>
+        </header>
+
+        <!-- Background Kanji & Left/Right Text -->
+        <div class="absolute left-8 top-32 kanji-bg text-8xl md:text-9xl font-black leading-none z-0">
+            中<br>国
+        </div>
+        
+        <div class="absolute left-8 bottom-32 vertical-text text-xs tracking-widest text-text-muted uppercase font-semibold z-10">
+            panic!<br>at the disco
+        </div>
+        
+        <div class="absolute right-8 bottom-32 vertical-text text-xs tracking-widest text-text-muted uppercase font-semibold z-10">
+            death of<br>a bachelor
+        </div>
+        
+        <div class="absolute left-8 bottom-8 z-10">
+            <button class="w-8 h-8 rounded-full border border-ui-border flex items-center justify-center text-text-muted hover:bg-white transition-colors">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        
+        <div class="absolute right-8 bottom-8 z-10">
+            <div class="w-2 h-2 rounded-full border border-ui-border"></div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex items-center justify-center p-8 z-10 w-full relative mt-8 md:mt-0">
+            <div class="w-full max-w-3xl flex flex-col md:flex-row shadow-xl">
+                
+                <!-- Left Panel (Visual) -->
+                <div class="ui-inner flex-1 p-8 md:p-12 border-b md:border-b-0 md:border-r border-ui-border relative min-h-[350px] flex flex-col justify-between overflow-hidden">
+                    <div class="flex justify-between items-start">
+                        <h1 class="text-4xl md:text-5xl font-bold tracking-tighter relative z-10">china</h1>
+                    </div>
+                    
+                    <!-- Image Area (Mocked with gradient/shapes for aesthetic) -->
+                    <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-gray-400/30 to-transparent">
+                        <!-- Stylized Architecture shape -->
+                        <svg class="absolute bottom-0 w-full h-full text-red-800/40 opacity-80" viewBox="0 0 100 50" preserveAspectRatio="none">
+                             <path d="M10 50 L10 40 L20 35 L80 35 L90 40 L90 50 Z" fill="currentColor"/>
+                             <path d="M25 35 L25 25 L35 20 L65 20 L75 25 L75 35 Z" fill="currentColor"/>
+                             <path d="M40 20 L40 10 L50 5 L60 10 L60 20 Z" fill="currentColor"/>
+                             <rect x="0" y="45" width="100" height="5" fill="#4a5568" opacity="0.5"/>
+                        </svg>
+                         <!-- using an image to better match request since generic shapes are hard to make look exactly like the palace -->
+                         <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=1000&auto=format&fit=crop" alt="Forbidden City Style" class="absolute bottom-0 w-full h-48 object-cover object-bottom mix-blend-multiply opacity-80 grayscale sepia-[.3] hue-rotate-[-30deg]">
+                    </div>
+                </div>
+
+                <!-- Right Panel (Schedule) -->
+                <div class="bg-white/80 backdrop-blur flex-1 flex flex-col">
+                    <div class="py-4 text-center font-bold text-sm tracking-widest border-b border-ui-border">
+                        02—10 oct
+                    </div>
+                    
+                    <!-- List Item -->
+                    <div class="flex border-b border-ui-border hover:bg-white/50 transition-colors">
+                        <div class="w-16 flex flex-col justify-center items-center py-5 text-center">
+                            <span class="font-bold text-lg leading-none">02</span>
+                            <span class="text-xs text-text-muted mt-1">oct</span>
+                        </div>
+                        <div class="p-5 flex-1">
+                            <h3 class="font-bold leading-tight">beijing</h3>
+                            <p class="text-text-muted text-sm mt-1">bird nest stadium</p>
+                        </div>
+                    </div>
+                    
+                    <!-- List Item -->
+                    <div class="flex border-b border-ui-border hover:bg-white/50 transition-colors">
+                        <div class="w-16 flex flex-col justify-center items-center py-5 text-center">
+                            <span class="font-bold text-lg leading-none">05</span>
+                            <span class="text-xs text-text-muted mt-1">oct</span>
+                        </div>
+                        <div class="p-5 flex-1">
+                            <h3 class="font-bold leading-tight">shanghai</h3>
+                            <p class="text-text-muted text-sm mt-1">crowne plaza</p>
+                        </div>
+                    </div>
+
+                     <!-- List Item -->
+                     <div class="flex border-b border-ui-border hover:bg-white/50 transition-colors">
+                        <div class="w-16 flex flex-col justify-center items-center py-5 text-center">
+                            <span class="font-bold text-lg leading-none">08</span>
+                            <span class="text-xs text-text-muted mt-1">oct</span>
+                        </div>
+                        <div class="p-5 flex-1">
+                            <h3 class="font-bold leading-tight">nanking</h3>
+                            <p class="text-text-muted text-sm mt-1">olympic sports<br>centre</p>
+                        </div>
+                    </div>
+                    
+                    <!-- List Item -->
+                    <div class="flex hover:bg-white/50 transition-colors">
+                        <div class="w-16 flex flex-col justify-center items-center py-5 text-center">
+                            <span class="font-bold text-lg leading-none">10</span>
+                            <span class="text-xs text-text-muted mt-1">oct</span>
+                        </div>
+                        <div class="p-5 flex-1">
+                            <h3 class="font-bold leading-tight">guanzhou</h3>
+                            <p class="text-text-muted text-sm mt-1">deman hotel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Context Text -->
+            <div class="absolute bottom-[-10px] left-1/2 -translate-x-1/2 w-full max-w-3xl px-4 hidden md:block">
+                 <p class="text-xs text-text-muted w-1/3 leading-relaxed">
+                    China is a unitary sovereign state in East Asia and the world's most populous country, with a population of around 1.404 billion. Covering approximately 9,600,000 square kilometers, it is the third or fourth-largest country by total area.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-bg w-full max-w-5xl relative min-h-[400px] border border-white/50 overflow-hidden flex flex-col mb-12">
+        
+        <!-- Header -->
+        <header class="flex justify-between items-center p-6 sm:p-8 w-full z-10">
+            <div class="flex gap-4 items-center">
+                <button class="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text-main transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line></svg>
+                </button>
+            </div>
+            
+            <div class="text-xl sm:text-2xl font-bold tracking-tight text-text-muted">
+                veeps.
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <!-- Dropdown indicator icon instead of cart here to match 3rd image -->
+                <button class="w-10 h-10 border border-ui-border rounded-none flex items-center justify-center text-text-main hover:bg-white transition-colors relative bg-white">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"></path></svg>
+                </button>
+                <div class="hidden sm:block h-8 w-px bg-ui-border"></div>
+                <button class="hidden sm:block text-sm font-semibold tracking-wide text-text-muted hover:text-text-main transition-colors">
+                    sign in
+                </button>
+            </div>
+        </header>
+
+        <!-- Background Kanji (Cut off in image, but placing it for consistency) -->
+        <div class="absolute left-8 top-32 kanji-bg text-8xl md:text-9xl font-black leading-none z-0">
+            日<br>本
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 flex items-start justify-center p-8 z-10 w-full relative">
+            <div class="w-full max-w-3xl flex flex-col md:flex-row shadow-lg border border-ui-border">
+                
+                <!-- Left Panel (Selected Item Info) -->
+                <div class="ui-inner flex-1 p-6 md:p-10 border-b md:border-b-0 md:border-r border-ui-border flex flex-col">
+                    <div class="flex items-start gap-4">
+                        <div class="flex flex-col text-center w-12">
+                            <span class="font-bold text-2xl leading-none">08</span>
+                            <span class="text-xs text-text-muted mt-1">sep</span>
+                        </div>
+                        <div class="mt-1">
+                            <h2 class="font-bold text-xl leading-tight">osaka</h2>
+                            <p class="text-text-muted text-sm mt-1">art gallery</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel (Package Selection) -->
+                <div class="bg-white flex-1 flex flex-col">
+                    
+                    <!-- Package Header & Quantity -->
+                    <div class="flex border-b border-ui-border items-stretch">
+                        <div class="flex-1 p-6">
+                            <h3 class="font-bold text-lg leading-tight">bronze pack</h3>
+                            <p class="text-text-muted font-medium mt-1">$550</p>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="flex border-l border-ui-border">
+                            <button class="w-12 flex items-center justify-center hover:bg-gray-50 border-r border-ui-border text-text-muted transition-colors">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <div class="w-12 flex items-center justify-center font-bold">
+                                2
+                            </div>
+                            <button class="w-12 flex items-center justify-center hover:bg-gray-50 border-l border-ui-border text-text-muted transition-colors">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Package Details List -->
+                    <div class="p-6">
+                        <ul class="text-xs text-text-muted space-y-2">
+                            <li class="flex items-start before:content-['+'] before:mr-2 before:text-text-main">hotel room service</li>
+                            <li class="flex items-start before:content-['+'] before:mr-2 before:text-text-main">sign from the artists</li>
+                            <li class="flex items-start before:content-['+'] before:mr-2 before:text-text-main">signed audio-cd</li>
+                            <li class="flex items-start before:content-['+'] before:mr-2 before:text-text-main opacity-50">photo session with the artists</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

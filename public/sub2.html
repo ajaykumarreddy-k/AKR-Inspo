@@ -7,7 +7,7 @@
   <script>
     // Security check: Must pass Stage 1 first
     if (sessionStorage.getItem('sub1_passed') !== 'true' || !sessionStorage.getItem('sub1_num')) {
-      window.location.href = '/sub1.html';
+      window.location.href = './sub1.html';
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -286,7 +286,7 @@
       </button>
     </div>
 
-    <a href="/sub1.html" class="back-link" id="abort-btn">
+    <a href="./sub1.html" class="back-link" id="abort-btn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
       Restart Decryption
     </a>

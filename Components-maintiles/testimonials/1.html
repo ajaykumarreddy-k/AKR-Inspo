@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences - Testimonials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111; /* Dark background to frame the white container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        /* The main white rounded container */
+        .app-container {
+            background-color: #f8f8f8; /* Slightly off-white matching the image */
+            border-radius: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            padding: 4rem 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Specific typography styles to match the image closely */
+        .title-large {
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            color: #111;
+        }
+
+        .subtitle-year {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #111;
+        }
+
+        /* Card styles */
+        .glass-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .star-rating {
+            color: #111;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .plus-icon {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Utilities */
+        .pill-badge {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Custom masonry-like grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        /* Specific card heights based on the image layout */
+        .card-tall { grid-row: span 2; }
+        .card-short { grid-row: span 1; }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .title-large {
+                font-size: 3.5rem;
+            }
+            .app-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header Section -->
+        <div class="flex justify-between items-start mb-16 relative">
+            
+            <!-- Left aligned badge -->
+            <div class="pill-badge absolute top-0 left-0">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 8v8"></path>
+                    <path d="M8 12h8"></path>
+                </svg>
+                Testimonials
+            </div>
+
+            <!-- Centered large title -->
+            <div class="w-full text-center mt-8">
+                <h1 class="title-large mb-2">Experiences.</h1>
+                <p class="subtitle-year">&copy;2025</p>
+            </div>
+        </div>
+
+        <!-- Main Grid Area -->
+        <div class="testimonials-grid">
+            
+            <!-- Column 1: Summary Card (Tall) -->
+            <div class="glass-card card-tall flex flex-col justify-between">
+                <div>
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-6xl font-semibold leading-none tracking-tight">4.9</span>
+                        <span class="text-sm text-gray-500 font-medium mb-1">/5</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed max-w-[180px]">
+                        We've delivered <strong>56+ projects</strong> that help companies generate real results.
+                    </p>
+                </div>
+                
+                <div class="mt-12">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="font-bold text-sm tracking-tight">fabrica&reg;</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <!-- Avatar group -->
+                        <div class="flex -space-x-2 overflow-hidden">
+                            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://ui-avatars.com/api/?name=User+1&background=random" alt=""/>
+                            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://ui-avatars.com/api/?name=User+2&background=random" alt=""/>
+                            <img class="inline-block h-6 w-6 rounded-full ring-2 ring-white" src="https://ui-avatars.com/api/?name=User+3&background=random" alt=""/>
+                            <div class="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-black text-white flex items-center justify-center text-[8px] font-bold">56+</div>
+                        </div>
+                        <div>
+                            <div class="star-rating leading-none">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <div class="text-[9px] text-gray-500 mt-0.5">Trusted by clients worldwide</div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-black text-white rounded-full py-3 text-sm font-medium hover:bg-gray-800 transition-colors">
+                        Leave a review
+                    </button>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="flex flex-col gap-4">
+                <!-- User Info Card (Short) -->
+                <div class="glass-card flex flex-row items-center gap-3 py-3 px-4 h-[80px]">
+                    <img class="h-10 w-10 rounded-full object-cover" src="https://ui-avatars.com/api/?name=James+Carter&background=E5E7EB&color=374151" alt="James Carter">
+                    <div>
+                        <h4 class="text-sm font-semibold leading-tight">James Carter</h4>
+                        <p class="text-[10px] text-gray-500">Wilson & Co</p>
+                    </div>
+                </div>
+                
+                <!-- Review Content Card (Tall) -->
+                <div class="glass-card flex-grow relative pt-10 pb-6 px-6">
+                    <div class="absolute top-4 left-4 star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="absolute top-3 right-4 plus-icon">+</div>
+                    <div class="h-full flex items-end">
+                        <p class="text-sm font-medium leading-relaxed">
+                            Incredible team! They delivered exactly what we needed, on time and beyond expectations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="flex flex-col gap-4">
+                <!-- Review Content Card (Tall) -->
+                <div class="glass-card flex-grow relative pt-8 pb-4 px-6 flex flex-col justify-between">
+                    <p class="text-sm font-medium leading-relaxed text-center mt-4">
+                        A smooth process from start to finish. Highly professional team!
+                    </p>
+                    
+                    <div class="mt-8 flex justify-between items-end w-full">
+                        <div class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="plus-icon">+</div>
+                    </div>
+                </div>
+                
+                <!-- User Info Card (Short) -->
+                 <div class="glass-card flex flex-row items-center gap-3 py-3 px-4 h-[80px]">
+                    <img class="h-10 w-10 rounded-full object-cover grayscale" src="https://ui-avatars.com/api/?name=Emily+Davis&background=E5E7EB&color=374151" alt="Emily Davis">
+                    <div>
+                        <h4 class="text-sm font-semibold leading-tight">Emily Davis</h4>
+                        <p class="text-[10px] text-gray-500">StartUp Hub</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="flex flex-col gap-4">
+                 <!-- User Info Card (Short) -->
+                 <div class="glass-card flex flex-row items-center gap-3 py-3 px-4 h-[80px]">
+                    <img class="h-10 w-10 rounded-full object-cover" src="https://ui-avatars.com/api/?name=Anna+Martinez&background=FBCFE8&color=9D174D" alt="Anna Martinez">
+                    <div>
+                        <h4 class="text-sm font-semibold leading-tight">Anna Martinez</h4>
+                        <p class="text-[10px] text-gray-500">Marketing Director</p>
+                    </div>
+                </div>
+                
+                <!-- Review Content Card (Tall) -->
+                <div class="glass-card flex-grow relative pt-10 pb-6 px-6">
+                    <div class="absolute top-4 left-4 star-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="absolute top-3 right-4 plus-icon">+</div>
+                    <div class="h-full flex items-end">
+                        <p class="text-sm font-medium leading-relaxed">
+                            Our new branding is exactly what we envisioned—clean, modern, and unique. #1 in our industry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

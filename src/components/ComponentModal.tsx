@@ -1,84 +1,158 @@
 // src/components/ComponentModal.tsx
-import { X, Copy, Check } from "lucide-react";
+import { X, Copy, Check, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
+import { type ComponentEntry } from "../hooks/useComponents";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  card: { title: string; image: string } | null;
+  card: ComponentEntry | null;
 }
 
 export function ComponentModal({ isOpen, onClose, card }: ModalProps) {
   const [copied, setCopied] = useState(false);
+  const [tab, setTab] = useState<"code" | "preview">("code");
+
+  // Reset to code tab whenever a new card opens
+  useEffect(() => {
+    if (isOpen) setTab("code");
+  }, [isOpen, card?.id]);
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
   if (!isOpen || !card) return null;
 
-  const mockCode = `// ${card.title} Component
-export default function ${card.title.replace(/\s+/g, '')}() {
-  return (
-    <div className="p-6 bg-white/30 dark:bg-neutral-900/30 backdrop-blur-xl border border-white/20 dark:border-neutral-800 rounded-3xl shadow-2xl">
-      <h3 className="text-xl font-semibold mb-2">${card.title}</h3>
-      <p className="opacity-80">Glass element block for AKR-Inspo.</p>
-    </div>
-  );
-}`;
-
   const handleCopy = () => {
-    navigator.clipboard.writeText(mockCode);
+    navigator.clipboard.writeText(card.html);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
+  /** Open the raw HTML as a blob URL in a new browser tab */
+  const handleOpenPreview = () => {
+    const blob = new Blob([card.html], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    window.open(url, "_blank", "noopener,noreferrer");
+    // Revoke after a short delay so the tab has time to load
+    setTimeout(() => URL.revokeObjectURL(url), 10_000);
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div 
+      {/* Backdrop */}
+      <div
         className="absolute inset-0 bg-black/20 dark:bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      
-      <div className="relative w-full max-w-4xl bg-white/70 dark:bg-[#111]/80 backdrop-blur-2xl border border-white/50 dark:border-white/5 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row shadow-black/10 dark:shadow-black/40">
-        <button 
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 rounded-full transition-colors backdrop-blur-md"
-        >
-          <X className="w-5 h-5 text-gray-800 dark:text-gray-200" />
-        </button>
 
-        <div className="w-full md:w-1/2 bg-white/40 dark:bg-black/40 p-8 flex flex-col items-center justify-center relative">
-          <img 
-            src={card.image} 
-            alt={card.title}
-            className="w-full h-auto object-cover rounded-xl shadow-lg border border-black/5 dark:border-white/5" 
-            referrerPolicy="no-referrer"
-          />
+      {/* Panel */}
+      <div className="relative w-full max-w-5xl max-h-[92vh] bg-white/70 dark:bg-[#111]/90 backdrop-blur-2xl border border-white/50 dark:border-white/5 rounded-3xl shadow-2xl shadow-black/10 dark:shadow-black/50 overflow-hidden flex flex-col">
+
+        {/* ── Header ── */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-black/5 dark:border-white/5 shrink-0">
+          <div>
+            <h2 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {card.title}
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 font-mono">
+              {card.id}.html
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Open in new tab */}
+            <button
+              id={`modal-open-preview-${card.id}`}
+              onClick={handleOpenPreview}
+              title="Open live preview in new tab"
+              className="flex items-center gap-1.5 text-xs font-semibold bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-neutral-800 dark:text-white px-3 py-1.5 rounded-lg transition-all"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              Preview
+            </button>
+
+            <button
+              id={`modal-close-${card.id}`}
+              onClick={onClose}
+              className="p-2 bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 rounded-full transition-colors"
+            >
+              <X className="w-4 h-4 text-gray-800 dark:text-gray-200" />
+            </button>
+          </div>
         </div>
 
-        <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">{card.title}</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 font-medium">Interactive glassmorphism component.</p>
-          
-          <div className="flex-grow flex flex-col relative group rounded-2xl overflow-hidden shadow-inner border border-neutral-200/50 dark:border-neutral-800/50 bg-white/30 dark:bg-black/50">
-            <div className="flex items-center justify-between bg-neutral-100/50 dark:bg-neutral-900/50 backdrop-blur-md text-neutral-700 dark:text-neutral-300 px-4 py-3 border-b border-neutral-200/50 dark:border-neutral-800/50">
-              <span className="text-[13px] font-mono font-semibold tracking-tight">React / Tailwind</span>
-              <button 
-                onClick={handleCopy}
-                className="flex items-center gap-1.5 text-xs font-semibold bg-white/60 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-neutral-800 dark:text-white px-3 py-1.5 rounded-lg transition-all shadow-sm"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
-                {copied ? "Copied" : "Copy Code"}
-              </button>
+        {/* ── Body ── */}
+        <div className="flex flex-col md:flex-row flex-1 overflow-hidden min-h-0">
+
+          {/* Left: thumbnail */}
+          <div className="w-full md:w-[42%] bg-white/40 dark:bg-black/40 p-6 flex items-start justify-center shrink-0 overflow-auto border-b md:border-b-0 md:border-r border-black/5 dark:border-white/5">
+            <img
+              src={card.image}
+              alt={card.title}
+              className="w-full h-auto object-cover rounded-2xl shadow-lg border border-black/5 dark:border-white/5"
+            />
+          </div>
+
+          {/* Right: code / preview tabs */}
+          <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
+            {/* Tab bar */}
+            <div className="flex items-center justify-between bg-neutral-100/60 dark:bg-neutral-900/60 backdrop-blur-md px-4 py-2.5 border-b border-neutral-200/50 dark:border-neutral-800/50 shrink-0">
+              <div className="flex gap-1">
+                {(["code", "preview"] as const).map((t) => (
+                  <button
+                    key={t}
+                    id={`modal-tab-${t}-${card.id}`}
+                    onClick={() => setTab(t)}
+                    className={`text-[13px] font-semibold px-3 py-1 rounded-lg transition-all ${
+                      tab === t
+                        ? "bg-white dark:bg-white/15 text-neutral-900 dark:text-white shadow-sm"
+                        : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200"
+                    }`}
+                  >
+                    {t === "code" ? "Source" : "Preview"}
+                  </button>
+                ))}
+              </div>
+
+              {tab === "code" && (
+                <button
+                  id={`modal-copy-${card.id}`}
+                  onClick={handleCopy}
+                  className="flex items-center gap-1.5 text-xs font-semibold bg-white/60 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-neutral-800 dark:text-white px-3 py-1.5 rounded-lg transition-all shadow-sm"
+                >
+                  {copied ? (
+                    <Check className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
+                  ) : (
+                    <Copy className="w-3.5 h-3.5" />
+                  )}
+                  {copied ? "Copied!" : "Copy HTML"}
+                </button>
+              )}
             </div>
-            <pre className="flex-grow p-5 overflow-auto text-sm font-mono text-neutral-800 dark:text-neutral-200 leading-relaxed">
-              <code>{mockCode}</code>
-            </pre>
+
+            {/* Tab content */}
+            <div className="flex-1 overflow-auto min-h-0">
+              {tab === "code" ? (
+                <pre className="p-5 text-[12.5px] font-mono text-neutral-800 dark:text-neutral-200 leading-relaxed whitespace-pre-wrap break-words">
+                  <code>{card.html}</code>
+                </pre>
+              ) : (
+                <iframe
+                  key={card.id}
+                  srcDoc={card.html}
+                  title={`${card.title} live preview`}
+                  sandbox="allow-scripts allow-same-origin"
+                  className="w-full h-full border-none bg-white"
+                  style={{ minHeight: "400px" }}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

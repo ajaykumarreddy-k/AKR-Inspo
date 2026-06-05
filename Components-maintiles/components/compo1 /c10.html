@@ -1,0 +1,193 @@
+import React from 'react';
+
+export default function App() {
+    return (
+        <div style={{
+            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+            backgroundColor: "#000000",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "100vh",
+            margin: 0,
+            overflow: "hidden",
+            width: "100vw"
+        }}>
+            {/* Injecting CSS classes directly for perfect layout control */}
+            <style>
+                {`
+                .card-container {
+                    background-color: #0d0d0d;
+                    border-radius: 2.5rem;
+                    width: 92vw;
+                    max-width: 1400px;
+                    height: 85vh;
+                    max-height: 900px;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    overflow: hidden;
+                    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+                }
+
+                .main-row {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    color: white;
+                }
+
+                .text-base {
+                    /* Using min(vw, vh) ensures the tall stack of words doesn't overflow vertically */
+                    font-size: clamp(1rem, min(4.5vw, 5.5vh), 6rem);
+                    font-weight: 800; /* Extra bold */
+                    line-height: 0.92;
+                    letter-spacing: -0.05em;
+                    white-space: nowrap;
+                }
+
+                .left-text {
+                    padding-left: 6vw;
+                    flex: 0 0 auto;
+                }
+
+                .center-column-wrapper {
+                    position: relative;
+                    margin-left: 1.5vw;
+                    flex: 0 0 auto;
+                }
+
+                .right-text {
+                    margin-left: auto;
+                    padding-right: 6vw;
+                    flex: 0 0 auto;
+                }
+
+                .stack-above, .stack-below {
+                    position: absolute;
+                    left: 0;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                /* Absolute positioning attached directly to the 'MADE' word baseline */
+                .stack-above {
+                    bottom: 100%;
+                }
+
+                .stack-below {
+                    top: 100%;
+                }
+
+                .word {
+                    display: block;
+                }
+
+                /* Precisely matched colors from the reference image */
+                .c-dreamed { color: #4237FF; }
+                .c-invented { color: #FF4D15; }
+                .c-painted { color: #FFDD22; }
+                .c-designed { color: #00BFFF; }
+                .c-built { color: #FF7B7B; }
+                .c-produced { color: #10B940; }
+                .c-played { color: #A885FF; }
+                .c-made { color: #FFFFFF; }
+                .c-written { color: #FF4D15; }
+                .c-imagined { color: #00BFFF; }
+                .c-developed { color: #FF99AA; }
+                .c-created { color: #D4A017; }
+                .c-recorded { color: #FFDD22; }
+                .c-discovered { color: #10B940; }
+                .c-published { color: #8A2BE2; }
+
+                /* Bottom Right Search UI */
+                .search-pill {
+                    position: absolute;
+                    bottom: 1.5rem;
+                    right: 1.5rem;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                    border-radius: 9999px;
+                    padding: 0.6rem 1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: #999;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                    letter-spacing: normal;
+                    transition: background-color 0.2s ease;
+                }
+
+                .search-pill:hover {
+                    background-color: rgba(255, 255, 255, 0.15);
+                }
+
+                .search-icon-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #aaa;
+                }
+                `}
+            </style>
+
+            <div className="card-container">
+                <div className="main-row text-base">
+                    {/* Left block */}
+                    <div className="left-text">
+                        NOTHING GREAT IS
+                    </div>
+
+                    {/* Center block with stacked text */}
+                    <div className="center-column-wrapper">
+                        <div className="stack-above">
+                            <span className="word c-dreamed">DREAMED</span>
+                            <span className="word c-invented">INVENTED</span>
+                            <span className="word c-painted">PAINTED</span>
+                            <span className="word c-designed">DESIGNED</span>
+                            <span className="word c-built">BUILT</span>
+                            <span className="word c-produced">PRODUCED</span>
+                            <span className="word c-played">PLAYED</span>
+                        </div>
+
+                        {/* This word anchors the vertical baseline for the whole row */}
+                        <span className="word c-made">MADE</span>
+
+                        <div className="stack-below">
+                            <span className="word c-written">WRITTEN</span>
+                            <span className="word c-imagined">IMAGINED</span>
+                            <span className="word c-developed">DEVELOPED</span>
+                            <span className="word c-created">CREATED</span>
+                            <span className="word c-recorded">RECORDED</span>
+                            <span className="word c-discovered">DISCOVERED</span>
+                            <span className="word c-published">PUBLISHED</span>
+                        </div>
+                    </div>
+
+                    {/* Right block pushed to edge */}
+                    <div className="right-text">
+                        ALONE
+                    </div>
+                </div>
+
+                {/* Floating Search Pill */}
+                <button className="search-pill">
+                    Search
+                    <div className="search-icon-wrapper">
+                        {/* Custom SVG combining search glass and AI sparkle */}
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="10" cy="10" r="7"></circle>
+                            <line x1="21" y1="21" x2="15" y2="15"></line>
+                            <path d="M18 4l1.5 1.5L21 7l-1.5 1.5L18 10l-1.5-1.5L15 7l1.5-1.5L18 4z" fill="currentColor" stroke="none" />
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    );
+}

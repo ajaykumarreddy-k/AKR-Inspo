@@ -10,27 +10,48 @@ import { Footer } from "./components/Footer";
 import { LinksPage } from "./components/LinksPage";
 import { InspirationPage } from "./components/InspirationPage";
 import { ResourcesPage } from "./components/ResourcesPage";
+import { useFonts } from "./hooks/useFonts";
 
 export default function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  useFonts(); // auto-load all fonts from assets/Fonts/
+  const getActiveRoute = () => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Normalize e.g. "#/links" or "#links" to "/links"
+      return hash.replace(/^#\/?/, "/");
+    }
+    return window.location.pathname;
+  };
+
+  const [currentPath, setCurrentPath] = useState(getActiveRoute());
 
   useEffect(() => {
-    const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
+    const handleNavigation = () => {
+      setCurrentPath(getActiveRoute());
     };
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
+    window.addEventListener("popstate", handleNavigation);
+    window.addEventListener("hashchange", handleNavigation);
+    return () => {
+      window.removeEventListener("popstate", handleNavigation);
+      window.removeEventListener("hashchange", handleNavigation);
+    };
   }, []);
 
   const navigate = (path: string) => {
-    window.history.pushState({}, "", path);
-    setCurrentPath(path);
+    const cleanPath = path.startsWith("/") ? path : `/${path}`;
+    try {
+      window.history.pushState({}, "", cleanPath);
+      setCurrentPath(cleanPath);
+    } catch (e) {
+      // Fallback for file:// or strict environment restrictions
+      window.location.hash = cleanPath;
+    }
     window.scrollTo({ top: 0, behavior: "instant" });
   };
 
-  const isLinksPage = currentPath === "/links";
-  const isInspirationPage = currentPath === "/inspiration";
-  const isResourcesPage = currentPath === "/resources";
+  const isLinksPage = currentPath.endsWith("/links") || currentPath === "links";
+  const isInspirationPage = currentPath.endsWith("/inspiration") || currentPath === "inspiration";
+  const isResourcesPage = currentPath.endsWith("/resources") || currentPath === "resources";
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0a] text-black dark:text-white font-sans antialiased transition-colors duration-300 relative selection:bg-neutral-200 dark:selection:bg-neutral-800 overflow-x-hidden">
@@ -45,8 +66,7 @@ export default function App() {
           ) : (
             <>
               <Hero onNavigate={navigate} />
-              <div className="w-full max-w-[1440px] mx-auto px-5 md:px-16 pt-2 pb-32 z-10">
-                <h2 className="text-2xl font-bold mb-8 tracking-tight text-center md:text-left text-neutral-800 dark:text-neutral-200">Component Gallery</h2>
+              <div className="w-full max-w-[1440px] mx-auto px-5 md:px-16 pt-0 pb-32 z-10">
                 <Gallery />
               </div>
             </>

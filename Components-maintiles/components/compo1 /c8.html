@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a; /* Darker than the first card to create contrast */
+            margin: 0;
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .palette-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            /* Container shadow to lift the whole block */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 28px;
+        }
+
+        .color-row {
+            position: relative;
+            width: 100%;
+            border-radius: 28px;
+            padding: 3.5rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            
+            /* The critical overlapping effect */
+            margin-top: -32px; 
+            
+            /* Upward drop shadow to separate layers slightly */
+            box-shadow: 0 -8px 20px rgba(0,0,0,0.06); 
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .color-row:first-child {
+            margin-top: 0;
+            box-shadow: none;
+        }
+
+        /* Hover effect to pull a row forward slightly */
+        .color-row:hover {
+            transform: translateY(-6px);
+            z-index: 50 !important;
+        }
+
+        .row-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 1024px) {
+            .row-content {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+        }
+
+        .color-name {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3.5rem, 6vw, 5.5rem); /* Responsive giant text */
+            line-height: 0.85;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            margin: 0;
+            max-width: 60%;
+            white-space: pre-line;
+        }
+
+        .color-data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .color-data-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .color-data-grid {
+                width: 480px; /* Fixed width ensures columns perfectly align down the rows */
+                flex-shrink: 0;
+                margin-top: 0.5rem; /* Optical alignment with the top of the giant text */
+            }
+        }
+
+        .data-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .data-val {
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .data-label {
+            font-size: 0.85rem;
+        }
+
+        /* Custom Inner Highlights for that sharp top edge */
+        .highlight-white { box-shadow: inset 0 2px 0 rgba(255,255,255,0.8), 0 -8px 20px rgba(0,0,0,0.06); }
+        .highlight-light { box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), 0 -8px 20px rgba(0,0,0,0.06); }
+
+    </style>
+</head>
+<body>
+
+    <div class="palette-container">
+
+        <!-- SIGNAL BLACK -->
+        <div class="color-row bg-[#282828] text-white">
+            <div class="row-content">
+                <h1 class="color-name">SIGNAL<br>BLACK</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-[#D1D1D1]">#282828</span>
+                        <span class="data-label text-[#888888]">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-[#D1D1D1]">40, 40, 40</span>
+                        <span class="data-label text-[#888888]">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-[#D1D1D1]">0, 0, 0, 84</span>
+                        <span class="data-label text-[#888888]">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CREAMY MILK -->
+        <div class="color-row bg-[#F8F3EC] text-[#282828] highlight-white">
+            <div class="row-content">
+                <h1 class="color-name">CREAMY<br>MILK</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-[#282828]">#F8F3EC</span>
+                        <span class="data-label text-[#777777]">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-[#282828]">248, 243, 236</span>
+                        <span class="data-label text-[#777777]">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-[#282828]">0, 2, 5, 3</span>
+                        <span class="data-label text-[#777777]">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WATERMELON WITH CARROT -->
+        <div class="color-row bg-[#FF5E54] text-white highlight-light">
+            <div class="row-content">
+                <h1 class="color-name">WATERMELON<br>WITH CARROT</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-white">#FF5E54</span>
+                        <span class="data-label text-white/60">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">255, 94, 84</span>
+                        <span class="data-label text-white/60">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">0, 63, 67, 0</span>
+                        <span class="data-label text-white/60">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIGHT MALACHITE -->
+        <div class="color-row bg-[#2BBF5D] text-white highlight-light">
+            <div class="row-content">
+                <h1 class="color-name">LIGHT<br>MALACHITE</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-white">#2BBF5D</span>
+                        <span class="data-label text-white/60">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">43, 191, 93</span>
+                        <span class="data-label text-white/60">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">77, 0, 51, 25</span>
+                        <span class="data-label text-white/60">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AZURE CORNFLOWER -->
+        <div class="color-row bg-[#1283EB] text-white highlight-light">
+            <div class="row-content">
+                <h1 class="color-name">AZURE<br>CORNFLOWER</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-white">#1283EB</span>
+                        <span class="data-label text-white/60">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">18, 131, 235</span>
+                        <span class="data-label text-white/60">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">92, 44, 0, 8</span>
+                        <span class="data-label text-white/60">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEMON AND BANANA -->
+        <div class="color-row bg-[#FFE459] text-[#282828] highlight-white">
+            <div class="row-content">
+                <h1 class="color-name">LEMON<br>AND BANANA</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-[#282828]">#FFE459</span>
+                        <span class="data-label text-[#666666]">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-[#282828]">255, 228, 89</span>
+                        <span class="data-label text-[#666666]">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-[#282828]">0, 11, 65, 0</span>
+                        <span class="data-label text-[#666666]">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AMETHYST BELLFLOWER -->
+        <div class="color-row bg-[#7B61FF] text-white highlight-light pb-[4.5rem]">
+            <div class="row-content">
+                <h1 class="color-name">AMETHYST<br>BELLFLOWER</h1>
+                
+                <div class="color-data-grid">
+                    <div class="data-block">
+                        <span class="data-val text-white">#7B61FF</span>
+                        <span class="data-label text-white/60">hex</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">123, 97, 255</span>
+                        <span class="data-label text-white/60">rgb</span>
+                    </div>
+                    <div class="data-block">
+                        <span class="data-val text-white">52, 62, 0, 0</span>
+                        <span class="data-label text-white/60">cmyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

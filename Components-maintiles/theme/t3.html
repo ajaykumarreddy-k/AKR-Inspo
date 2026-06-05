@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Automotive Dashboard UI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:#b6aa8e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    font-family:'Inter',sans-serif;
+}
+
+
+/* APP */
+
+.dashboard{
+    width:100%;
+    max-width:1450px;
+    height:760px;
+    background:#1f1d22;
+    border-radius:34px;
+    padding:14px;
+    overflow:hidden;
+    border:6px solid #2d2a30;
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.25);
+}
+
+
+/* TOPBAR */
+
+.topbar{
+    height:58px;
+    background:#2a272d;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    margin-bottom:14px;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+}
+
+.nav a{
+    text-decoration:none;
+    color:#c5c1c8;
+    font-size:12px;
+    transition:0.3s ease;
+}
+
+.nav a:hover{
+    color:#fff;
+}
+
+.search{
+    width:260px;
+    height:36px;
+    background:#1f1d22;
+    border-radius:30px;
+    display:flex;
+    align-items:center;
+    padding:0 16px;
+    color:#76727b;
+    font-size:12px;
+}
+
+.post-btn{
+    height:38px;
+    padding:0 18px;
+    border:none;
+    border-radius:40px;
+    background:#ff5b2e;
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+
+/* MAIN */
+
+.main{
+    display:grid;
+    grid-template-columns:390px 1fr;
+    gap:14px;
+    height:calc(100% - 72px);
+}
+
+
+/* LEFT PANEL */
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+
+/* PROFILE CARD */
+
+.profile-card{
+    background:#101010;
+    border-radius:24px;
+    overflow:hidden;
+    height:220px;
+    position:relative;
+}
+
+.profile-image{
+    position:absolute;
+    inset:0;
+    background:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop')
+    center/cover;
+}
+
+.profile-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.8),
+        rgba(0,0,0,0.1)
+    );
+}
+
+.profile-content{
+    position:absolute;
+    bottom:18px;
+    left:18px;
+    z-index:2;
+    color:#fff;
+}
+
+.profile-content h2{
+    font-size:28px;
+    line-height:1.1;
+    margin-bottom:8px;
+}
+
+.profile-content p{
+    font-size:12px;
+    opacity:0.8;
+}
+
+
+/* INFO GRID */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 100px;
+    gap:14px;
+}
+
+.news-card{
+    background:#d74924;
+    border-radius:26px;
+    padding:26px;
+    color:#fff;
+    min-height:410px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.news-card span{
+    font-size:11px;
+    opacity:0.7;
+}
+
+.news-card h1{
+    font-size:42px;
+    line-height:1;
+    margin:18px 0;
+    letter-spacing:-2px;
+}
+
+.news-card p{
+    font-size:13px;
+    line-height:1.8;
+    opacity:0.85;
+}
+
+.read-btn{
+    width:120px;
+    height:40px;
+    border-radius:40px;
+    border:1px solid rgba(255,255,255,0.3);
+    background:transparent;
+    color:#fff;
+    margin-top:24px;
+    cursor:pointer;
+}
+
+.bottom-row{
+    margin-top:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12px;
+}
+
+.arrow{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+
+/* SMALL COLUMN */
+
+.side-stack{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.date-card,
+.evs-card{
+    background:#d9d3ca;
+    border-radius:24px;
+    height:110px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.date-card h1{
+    font-size:52px;
+    color:#c34b2d;
+    line-height:1;
+}
+
+.date-card p{
+    font-size:11px;
+    color:#555;
+    margin-top:4px;
+}
+
+.evs-card{
+    background:#3a373d;
+    color:#fff;
+}
+
+.evs-card h2{
+    font-size:34px;
+}
+
+
+/* RIGHT */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    background:#000;
+}
+
+.hero video,
+.hero-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-image{
+    background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop')
+    center/cover;
+    filter:blur(1px);
+    transform:scale(1.03);
+}
+
+
+/* FLOATING PANEL */
+
+.floating-card{
+    position:absolute;
+    right:24px;
+    bottom:24px;
+    width:180px;
+    background:#26242a;
+    border-radius:26px;
+    padding:20px;
+    color:#fff;
+    backdrop-filter:blur(10px);
+}
+
+.wheel{
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    margin:auto;
+    margin-bottom:16px;
+    background:url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop')
+    center/cover;
+}
+
+.floating-card h3{
+    font-size:24px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.shop-btn{
+    width:100%;
+    height:42px;
+    border:none;
+    border-radius:40px;
+    background:#403b44;
+    color:#fff;
+    font-size:12px;
+    cursor:pointer;
+}
+
+
+/* FLOATING ACTIONS */
+
+.actions{
+    position:absolute;
+    top:22px;
+    right:22px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.action{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.45);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter:blur(10px);
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+    .main{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard{
+        height:auto;
+    }
+
+    .hero{
+        min-height:650px;
+    }
+
+}
+
+@media(max-width:700px){
+
+    body{
+        padding:12px;
+    }
+
+    .topbar{
+        flex-wrap:wrap;
+        height:auto;
+        gap:14px;
+        padding:14px;
+    }
+
+    .nav{
+        flex-wrap:wrap;
+        gap:16px;
+    }
+
+    .search{
+        width:100%;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .news-card h1{
+        font-size:30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div class="nav">
+
+            <div class="logo">A-News</div>
+
+            <a href="#">Automotive</a>
+            <a href="#">Electromobility</a>
+            <a href="#">Shop</a>
+            <a href="#">Docs</a>
+
+        </div>
+
+        <div class="search">
+            🔍 Search by
+        </div>
+
+        <button class="post-btn">
+            + Create post
+        </button>
+
+    </div>
+
+
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+
+        <!-- LEFT -->
+
+        <div class="sidebar">
+
+            <div class="info-grid">
+
+                <div class="profile-card">
+
+                    <div class="profile-image"></div>
+
+                    <div class="profile-overlay"></div>
+
+                    <div class="profile-content">
+                        <h2>Interview with<br>Klse Schneider</h2>
+                        <p>by Max Weber</p>
+                    </div>
+
+                </div>
+
+
+                <div class="side-stack">
+
+                    <div class="date-card">
+                        <h1>12</h1>
+                        <p>JUNE</p>
+                    </div>
+
+                    <div class="evs-card">
+                        <h2>⚡</h2>
+                        <p>EVS</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="news-card">
+
+                <div>
+
+                    <span>Recommended</span>
+
+                    <h1>
+                        The Vintage Event showcased a stunning array of classic cars
+                    </h1>
+
+                    <p>
+                        Among the highlights were iconic models such as the sleek Jaguar E-Type,
+                        the timeless Ford Mustang, and the elegant Mercedes-Benz 300SL.
+                    </p>
+
+                    <button class="read-btn">
+                        Read more
+                    </button>
+
+                </div>
+
+
+                <div class="bottom-row">
+
+                    <span>
+                        The whole truth about electromobility...
+                    </span>
+
+                    <div class="arrow">
+                        ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="hero">
+
+            <div class="hero-image"></div>
+
+
+            <div class="actions">
+
+                <div class="action">💬</div>
+
+                <div class="action">♡</div>
+
+                <div class="action">↗</div>
+
+            </div>
+
+
+
+            <div class="floating-card">
+
+                <div class="wheel"></div>
+
+                <h3>
+                    Discover new products
+                </h3>
+
+                <button class="shop-btn">
+                    Shop now
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
