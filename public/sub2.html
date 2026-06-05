@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Decryption - Stage 2</title>
+  <script>
+    // Security check: Must pass Stage 1 first
+    if (sessionStorage.getItem('sub1_passed') !== 'true' || !sessionStorage.getItem('sub1_num')) {
+      window.location.href = '/sub1.html';
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Ambient glow background */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+      top: 10%;
+      left: 15%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 66, 0, 0.15) 0%, transparent 70%);
+      bottom: 10%;
+      right: 15%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .container {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(15, 15, 15, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border-radius: 32px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 40%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 99px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #34d399;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    /* Number Grid Container */
+    .grid-container {
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 8px;
+      margin-bottom: 25px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 16px;
+    }
+    /* Scrollbar styling */
+    .grid-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    .grid-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 99px;
+    }
+    .grid-container::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 99px;
+    }
+    .grid-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    /* Number Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 580px) {
+      .grid {
+        grid-template-columns: repeat(8, 1fr);
+      }
+    }
+    @media (max-width: 440px) {
+      .grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+    .num-btn {
+      aspect-ratio: 1;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
+      color: #9ca3af;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .num-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      transform: scale(1.08);
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+    }
+    .num-btn.error {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      animation: shake 0.4s ease;
+    }
+    .num-btn.success {
+      background: #10b981;
+      border-color: #10b981;
+      color: #000000;
+      transform: scale(1.15);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+    .status-msg {
+      min-height: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ef4444;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+    .status-msg.active {
+      opacity: 1;
+    }
+    .status-msg.passed {
+      color: #10b981;
+    }
+
+    /* Decrypted Link Panel */
+    .link-panel {
+      display: none;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 30px;
+      border-radius: 24px;
+      margin-top: 25px;
+      animation: expandPanel 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes expandPanel {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .link-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #34d399;
+      margin-bottom: 8px;
+    }
+    .link-desc {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+    .decrypted-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: #ff4200;
+      color: #000000;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 16px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 24px rgba(255, 66, 0, 0.25);
+    }
+    .decrypted-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 66, 0, 0.4);
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 30px;
+      color: #6b7280;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="badge">Decryption Stage 02</div>
+    <h1 id="main-heading">Unlock Bookmark</h1>
+    <p class="subtitle" id="main-desc">Choose the final sequence key to unlock and decrypt the bookmark destination.</p>
+
+    <div class="grid-container" id="grid-container">
+      <div class="grid" id="grid">
+        <!-- 1000 Buttons will be generated here -->
+      </div>
+    </div>
+
+    <div class="status-msg" id="status">Verification Failed. Try again.</div>
+
+    <div class="link-panel" id="bday-panel">
+      <div class="link-title">🔐 Final Authentication Required</div>
+      <p class="link-desc">To complete the secure handshake, please answer the security prompt:</p>
+      
+      <div style="margin-bottom: 20px; text-align: left;">
+        <label for="bday-input" style="display: block; font-size: 0.85rem; font-weight: 700; color: #a7f3d0; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Security Question: What is Ajay's birthday?</label>
+        <input type="text" id="bday-input" placeholder="" style="width: 100%; padding: 12px 16px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #ffffff; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; outline: none; transition: border-color 0.2s;" />
+      </div>
+
+      <button id="verify-bday-btn" class="decrypted-btn" style="width: 100%; justify-content: center; cursor: pointer; border: none;">
+        Verify & Decrypt Link
+      </button>
+    </div>
+
+    <a href="/sub1.html" class="back-link" id="abort-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      Restart Decryption
+    </a>
+  </div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const gridContainer = document.getElementById('grid-container');
+    const status = document.getElementById('status');
+    const bdayPanel = document.getElementById('bday-panel');
+    const mainHeading = document.getElementById('main-heading');
+    const mainDesc = document.getElementById('main-desc');
+    const abortBtn = document.getElementById('abort-btn');
+    let cooldown = false;
+
+    // Generate 1 to 1000 grid buttons
+    for (let i = 1; i <= 1000; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'num-btn';
+      btn.innerText = i;
+      btn.addEventListener('click', () => handleChoice(i, btn));
+      grid.appendChild(btn);
+    }
+
+    function handleChoice(num, element) {
+      if (cooldown) return;
+
+      // Obfuscated formula for correct key = 600:
+      // (600 * 7919) % 10007 === 8082
+      const isCorrect = ((num * 7919) % 10007) === 8082;
+
+      if (isCorrect) {
+        cooldown = true;
+        element.classList.add('success');
+        status.innerText = "Stage 02 Verified! Finalizing handshake...";
+        status.className = "status-msg active passed";
+
+        // Retrieve Stage 1 details
+        const sub1Num = Number(sessionStorage.getItem('sub1_num'));
+
+        setTimeout(() => {
+          // Hide grid container and show birthday input panel
+          gridContainer.style.display = 'none';
+          status.style.display = 'none';
+          mainHeading.innerText = "Final Handshake";
+          mainDesc.innerText = "Verify the secret key to finish decryption.";
+          abortBtn.style.display = 'none';
+
+          bdayPanel.style.display = 'block';
+          
+          document.getElementById('verify-bday-btn').addEventListener('click', () => {
+            const bdayVal = document.getElementById('bday-input').value.toLowerCase().trim();
+            const key = `${sub1Num}-${num}-${bdayVal}`;
+            
+            // XOR encrypted Google Spreadsheets URL using key "200-600-feb 6"
+            const encrypted = [90,68,68,93,69,10,31,2,2,10,1,83,24,85,95,95,74,90,85,30,78,9,8,77,83,70,64,85,81,73,69,88,85,72,18,22,77,68,25,3,74,114,122,114,100,111,107,83,19,33,108,123,6,106,117,103,98,64,96,98,11,16,40,86,122,112,91,73,88,92,90,65,110,45,60,27,122,6,64,120,105,117,14,31,85,73,15,17,93,71,95,86,13,5,30,14,3,6,20,94,81,87,3,81,91,84,13,24,5,8,3,27,95,93,86,21];
+            
+            let decrypted = "";
+            for (let i = 0; i < encrypted.length; i++) {
+              decrypted += String.fromCharCode(encrypted[i] ^ key.charCodeAt(i % key.length));
+            }
+            
+            if (decrypted.startsWith("https://")) {
+              status.innerText = "Authentication successful! Redirecting...";
+              status.className = "status-msg active passed";
+              status.style.display = 'block';
+              
+              // Clear credentials
+              sessionStorage.removeItem('sub1_passed');
+              sessionStorage.removeItem('sub1_num');
+              
+              setTimeout(() => {
+                window.location.href = decrypted;
+              }, 1000);
+            } else {
+              // Failed decryption
+              status.innerText = "Decryption error. Incorrect birthday password.";
+              status.className = "status-msg active";
+              status.style.display = 'block';
+            }
+          });
+          
+          // Focus input on render
+          document.getElementById('bday-input').focus();
+          
+          // Also trigger verify on enter key
+          document.getElementById('bday-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              document.getElementById('verify-bday-btn').click();
+            }
+          });
+        }, 1200);
+      } else {
+        element.classList.add('error');
+        status.innerText = "Signature mismatch. Key " + num + " rejected.";
+        status.className = "status-msg active";
+        
+        setTimeout(() => {
+          element.classList.remove('error');
+        }, 500);
+      }
+    }
+  </script>
+
+</body>
+</html>

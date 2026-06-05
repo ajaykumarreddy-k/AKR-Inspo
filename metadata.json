@@ -1,0 +1,6 @@
+{
+  "name": "AKR-Inspo Component Library",
+  "description": "A minimalist, responsive glassmorphism UI showcase",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
