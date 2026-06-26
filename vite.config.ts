@@ -154,6 +154,45 @@ export default defineConfig(() => {
       react(), 
       tailwindcss(),
       {
+        name: 'enforce-html-paths',
+        enforce: 'post',
+        generateBundle(options, bundle) {
+          const root = process.cwd();
+          const projectsJsonPath = path.resolve(root, 'src/data/projects.json');
+          if (!fs.existsSync(projectsJsonPath)) return;
+          
+          const projects = JSON.parse(fs.readFileSync(projectsJsonPath, 'utf-8'));
+          
+          projects.forEach((p: any) => {
+            if (!p.id || !p.folder) return;
+            // The exact path Vercel expects (relative to dist)
+            const expectedRel = `${p.folder}/index.html`;
+            
+            // If Vite preserved directory structure, it will be here
+            if (bundle[expectedRel]) return;
+            
+            // If Vite flattened it using the key from inputs (e.g., "id.html")
+            const flattenedName = `${p.id}.html`;
+            if (bundle[flattenedName]) {
+              console.log(`Fixing flattened path: ${flattenedName} -> ${expectedRel}`);
+              const chunk = bundle[flattenedName];
+              chunk.fileName = expectedRel;
+              bundle[expectedRel] = chunk;
+              delete bundle[flattenedName];
+            } else {
+              // Try finding any HTML file that matches the folder name just in case
+              const altName = Object.keys(bundle).find(k => k.includes(p.folder) && k.endsWith('.html'));
+              if (altName && altName !== expectedRel) {
+                const chunk = bundle[altName];
+                chunk.fileName = expectedRel;
+                bundle[expectedRel] = chunk;
+                delete bundle[altName];
+              }
+            }
+          });
+        }
+      },
+      {
         name: 'universal-alias',
         enforce: 'pre',
         async resolveId(source, importer, options) {
