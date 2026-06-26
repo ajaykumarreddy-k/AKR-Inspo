@@ -1,6 +1,6 @@
 {
-  "framework": "vite",
-  "buildCommand": "node scripts/prepare-projects.mjs && vite build",
+  "buildCommand": "",
+  "installCommand": "echo 'skipping install'",
   "outputDirectory": "dist",
   "cleanUrls": false
 }
