@@ -123,16 +123,17 @@ try {
 }
 
 export default defineConfig(() => {
-  const inputs: string[] = [
-    './index.html'
-  ];
-  const projectsJsonPath = './src/data/projects.json';
+  const root = process.cwd();
+  const inputs: Record<string, string> = {
+    main: path.resolve(root, 'index.html')
+  };
+  const projectsJsonPath = path.resolve(root, 'src/data/projects.json');
   if (fs.existsSync(projectsJsonPath)) {
     try {
       const projects = JSON.parse(fs.readFileSync(projectsJsonPath, 'utf-8'));
       projects.forEach((p: any) => {
         if (p.id && p.folder) {
-          inputs.push(`./${p.folder}/index.html`);
+          inputs[p.id] = path.resolve(root, p.folder, 'index.html');
         }
       });
     } catch (e) {
@@ -157,16 +158,19 @@ export default defineConfig(() => {
         enforce: 'pre',
         async resolveId(source, importer, options) {
           if (source.startsWith('@/')) {
-            let baseDir = path.resolve(__dirname, 'src'); // Default for root project
+            const rootDir = process.cwd();
+            let baseDir = path.resolve(rootDir, 'src'); // Default for root project
             
             if (importer) {
-              const relativeImporter = path.relative(__dirname, importer);
-              const topLevelFolder = relativeImporter.split(path.sep)[0];
-              if (topLevelFolder && topLevelFolder !== 'src' && !topLevelFolder.startsWith('..')) {
-                const subProjectSrc = path.resolve(__dirname, topLevelFolder, 'src');
-                if (fs.existsSync(subProjectSrc)) {
-                  baseDir = subProjectSrc;
+              let currentDir = path.dirname(importer);
+              // Walk up the directory tree until we hit the root project directory
+              while (currentDir !== rootDir && currentDir.startsWith(rootDir)) {
+                const maybeSrc = path.join(currentDir, 'src');
+                if (fs.existsSync(maybeSrc)) {
+                  baseDir = maybeSrc;
+                  break;
                 }
+                currentDir = path.dirname(currentDir);
               }
             }
             
