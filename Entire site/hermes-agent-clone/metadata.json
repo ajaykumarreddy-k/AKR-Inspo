@@ -1,0 +1,6 @@
+{
+  "name": "Hermes Agent Clone",
+  "description": "A high-fidelity React clone of the Hermes Agent landing page.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

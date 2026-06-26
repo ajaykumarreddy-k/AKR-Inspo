@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Footer UI</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for the digital text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-digital {
+            font-family: 'DotGothic16', sans-serif;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- Outer wrapper to simulate the page bottom -->
+    <div class="min-h-screen flex flex-col justify-end font-sans">
+      
+      <!-- Main Footer Container -->
+      <footer class="w-full bg-black px-2 sm:px-4 pb-4">
+        
+        <!-- Top Section (Light Wrapper) -->
+        <div class="bg-[#F2F2F0] p-3 sm:p-4 rounded-[2.5rem] w-full max-w-7xl mx-auto">
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4 h-auto md:h-[380px]">
+            
+            <!-- Card 1: Start Project -->
+            <div class="bg-[#E5E5E3] rounded-[2rem] p-8 flex flex-col justify-between col-span-1 h-full min-h-[250px]">
+              <h2 class="text-[1.75rem] leading-[1.15] font-medium text-[#111] tracking-tight">
+                Vamos começar<br />
+                um projeto.
+              </h2>
+              <div>
+                <!-- Lucide ArrowUpRight SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#111]">
+                  <path d="M7 7h10v10"/>
+                  <path d="M7 17 17 7"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card 2: Newsletter (Wider) -->
+            <div class="bg-[#247B5A] rounded-[2rem] p-8 md:p-10 flex flex-col justify-between col-span-1 md:col-span-2 h-full min-h-[300px] text-white">
+              <h2 class="text-[1.75rem] md:text-[2rem] leading-[1.25] font-medium max-w-[90%] tracking-tight">
+                Assine nossa newsletter e saiba sobre novos projetos, lançamentos e notícias.
+              </h2>
+              
+              <div class="flex items-center border-b border-white pb-3 mt-12 md:mt-0">
+                <input 
+                  type="email" 
+                  placeholder="Seu email" 
+                  class="bg-transparent text-[1.35rem] w-full outline-none placeholder:text-white/90"
+                />
+                <button aria-label="Subscribe" class="hover:opacity-80 transition-opacity">
+                  <!-- Lucide ArrowRight SVG -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white ml-4">
+                    <path d="M5 12h14"/>
+                    <path d="m12 5 7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 3: Contact Info -->
+            <div class="bg-[#E5E5E3] rounded-[2rem] p-8 flex flex-col justify-between col-span-1 h-full min-h-[250px] text-[#111]">
+              <h2 class="text-[1.75rem] leading-[1.15] font-medium tracking-tight">
+                Vamos conversar.
+              </h2>
+              <div class="text-[1.25rem] leading-[1.4] tracking-tight mt-12 md:mt-0">
+                <p class="mb-4">info@polar.ltda</p>
+                <p>
+                  Rua General<br />
+                  Jardim, 618 Cj 12 —<br />
+                  São Paulo
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bottom Section (Links and Buttons) -->
+        <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 py-8 gap-6 md:gap-0">
+          
+          <!-- Left: Digital Text -->
+          <div class="font-digital text-[#D4FF00] text-2xl uppercase">
+            VAMOS JOGAR
+          </div>
+
+          <!-- Center: Action Buttons -->
+          <div class="flex items-center gap-2">
+            <button class="bg-[#E8FF00] hover:bg-[#D4FF00] transition-colors text-black px-6 py-2.5 rounded-full font-semibold text-sm tracking-wide">
+              Polar, Ltda.
+            </button>
+            <button class="bg-[#6B6B6B] hover:bg-[#5A5A5A] transition-colors text-black px-6 py-2.5 rounded-full font-semibold text-sm tracking-wide">
+              MENU
+            </button>
+          </div>
+
+          <!-- Right: Social Links -->
+          <div class="flex items-center gap-8 text-[0.9rem] font-medium text-white/90">
+            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+            <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+            <a href="#" class="hover:text-white transition-colors">Behance</a>
+          </div>
+
+        </div>
+
+      </footer>
+    </div>
+
+</body>
+</html>

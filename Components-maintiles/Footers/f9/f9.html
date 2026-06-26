@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nudge - Perfect Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 'Outfit' perfectly matches the geometric curves and single-story 'g' of the logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Exact color sampling from the image */
+            --bg-color: #f2f1ec;
+            --text-dark: #201f1b;
+            --text-light: #94938d;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* * The content box is the crucial element that ensures the footer links 
+         * perfectly align with the left and right edges of the main logo text.
+         */
+        .content-box {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            margin: 0 auto;
+            position: relative;
+            z-index: 20;
+            /* Shifts the text block up slightly to center it within the 'sky' area */
+            transform: translateY(-8vh);
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            /* Fluid typography that scales identically to the reference */
+            font-size: clamp(6rem, 24vw, 24rem);
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            user-select: none;
+            /* Removing slight left/right padding inherent to the font to ensure flush alignment */
+            margin-left: -0.02em;
+            margin-right: -0.02em;
+        }
+
+        .footer-bar {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 0.25rem; /* Slight optical adjustment */
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .watercolor-trees {
+            position: fixed;
+            bottom: -2%;
+            left: 0;
+            width: 100%;
+            height: 45vh;
+            z-index: 10;
+            pointer-events: none;
+            /* Blends the SVG into the background beautifully */
+            mix-blend-mode: multiply;
+        }
+
+        .watercolor-trees svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex items-center justify-center relative z-20 w-full px-4">
+        
+        <div class="content-box">
+            <!-- Main Logo -->
+            <h1 class="logo-text">nudge</h1>
+            
+            <!-- Precisely Aligned Footer Bar -->
+            <div class="footer-bar">
+                <span class="font-medium tracking-wide">Nudge Technologies LLC</span>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 
+      Custom SVG Watercolor Illustration
+      Uses feTurbulence and feDisplacementMap to create an organic, hand-drawn watercolor edge.
+    -->
+    <div class="watercolor-trees">
+        <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- This filter creates the jagged, organic watercolor bleeding effect -->
+                <filter id="watercolor" x="-20%" y="-20%" width="140%" height="140%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                    <feGaussianBlur stdDeviation="1" result="blurred" />
+                    <feMerge>
+                        <feMergeNode in="blurred" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <g filter="url(#watercolor)">
+                <!-- Trunks -->
+                <path d="M 150 400 L 145 280 M 350 400 L 355 250 M 650 400 L 640 200 M 820 400 L 825 220 M 1050 400 L 1045 260 M 1250 400 L 1260 250 M 1380 400 L 1375 280" stroke="#685f52" stroke-width="4" fill="none" opacity="0.8" />
+                <path d="M 330 400 L 340 320 M 620 400 L 630 280 M 1080 400 L 1070 300 M 1220 400 L 1230 310" stroke="#685f52" stroke-width="2.5" fill="none" opacity="0.6" />
+
+                <!-- Far Background Trees (Light Yellow/Green) -->
+                <path d="M -50 450 Q 50 300 150 320 T 350 250 T 550 280 T 750 260 T 950 220 T 1150 270 T 1350 230 T 1500 350 L 1500 450 Z" fill="#d0cd87" opacity="0.6" />
+                
+                <!-- Midground Fluffy Trees (Classic Green) -->
+                <path d="M -20 450 Q 80 260 200 290 T 400 210 T 500 240 T 600 180 Q 700 250 780 200 T 920 250 T 1100 190 T 1280 240 T 1450 200 L 1450 450 Z" fill="#9db46f" opacity="0.8" />
+                
+                <!-- Right Side Autumn/Yellow Canopy -->
+                <circle cx="1250" cy="220" r="110" fill="#ccbf62" opacity="0.85" />
+                <circle cx="1380" cy="250" r="90" fill="#d9c25e" opacity="0.85" />
+                <circle cx="1150" cy="260" r="80" fill="#aab85b" opacity="0.8" />
+                
+                <!-- Left Side Fluffy Canopy -->
+                <circle cx="100" cy="280" r="100" fill="#8ca75b" opacity="0.9" />
+                <circle cx="250" cy="230" r="120" fill="#7d9b4f" opacity="0.9" />
+                <circle cx="380" cy="260" r="90" fill="#95b060" opacity="0.85" />
+
+                <!-- Center Prominent Pine Tree -->
+                <path d="M 640 90 L 610 160 L 630 160 L 590 240 L 620 240 L 570 330 L 710 330 L 660 240 L 690 240 L 650 160 L 670 160 Z" fill="#445d41" opacity="0.95" />
+                
+                <!-- Foreground Darker Leaf Accents -->
+                <path d="M 150 450 Q 250 280 350 310 T 550 270 T 750 300 T 850 260 T 1050 310 T 1250 280 T 1450 320 L 1450 450 Z" fill="#6a8643" opacity="0.7" />
+
+                <!-- Detailed Canopy Blobs to add texture -->
+                <circle cx="520" cy="230" r="70" fill="#587637" opacity="0.8" />
+                <circle cx="850" cy="200" r="85" fill="#7d9b4f" opacity="0.9" />
+                <circle cx="950" cy="250" r="75" fill="#5e7a3a" opacity="0.8" />
+                <circle cx="750" cy="270" r="60" fill="#506935" opacity="0.9" />
+                <circle cx="450" cy="280" r="65" fill="#759349" opacity="0.9" />
+            </g>
+        </svg>
+    </div>
+
+</body>
+</html>

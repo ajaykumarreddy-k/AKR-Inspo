@@ -31,8 +31,95 @@ try {
     fs.copyFileSync(srcLogo, path.join(destPublic, 'logo.png'));
     console.log('Successfully copied logo.png!');
   }
+
+  // 4. Automatically Reorganize Components-maintiles
+  const baseTiles = '/home/prince/ProjectsMain/akr-inspo-component-library (1)/Components-maintiles';
+  if (fs.existsSync(baseTiles)) {
+    const moves: [string, string][] = [
+      // UI-Components (from components/compo1/)
+      ["components/compo1/compo1.html", "UI-Components/compo1/compo1.html"],
+      ["components/compo1/compo1.png",  "UI-Components/compo1/compo1.png"],
+      ["components/compo1/compo2.html", "UI-Components/compo2/compo2.html"],
+      ["components/compo1/compo2.png",  "UI-Components/compo2/compo2.png"],
+      
+      // UI-Components c3-c6, c8-c11
+      ...[3,4,5,6,8,9,10,11].map(n => ["components/compo1/c" + n + ".html", "UI-Components/c" + n + "/c" + n + ".html"] as [string, string]),
+      ...[3,4,5,6,8,9,10,11].map(n => ["components/compo1/c" + n + ".png",  "UI-Components/c" + n + "/c" + n + ".png"] as [string, string]),
+      
+      // UI-Components c7
+      ["components/c7.html", "UI-Components/c7/c7.html"],
+      ["components/c7.png",  "UI-Components/c7/c7.png"],
+      
+      // Page-Templates
+      ["Trvel agency/index.html",        "Page-Templates/travel-agency/travel-agency.html"],
+      ["Trvel agency/designref.png",     "Page-Templates/travel-agency/travel-agency.png"],
+      ["Trvel agency/roundedcorner.html","Page-Templates/travel-agency/roundedcorner.html"],
+      
+      // Themes t1-t6
+      ...[1,2,3,4,5,6].map(i => ["theme/t" + i + ".html", "Themes/t" + i + "/t" + i + ".html"] as [string, string]),
+      ...[1,2,3,4,5,6].map(i => ["theme/t" + i + ".png",  "Themes/t" + i + "/t" + i + ".png"] as [string, string]),
+      
+      // Theme-unique
+      ["theme-unique/index.html", "Themes/theme-unique/theme-unique.html"],
+      ["theme-unique/image.png",  "Themes/theme-unique/theme-unique.png"],
+      
+      // Testimonials
+      ["testimonials/1.html", "Testimonials/ts1/ts1.html"],
+      ["testimonials/1.png",  "Testimonials/ts1/ts1.png"],
+      
+      // Flows-Layouts
+      ["Flow/c1.html", "Flows-Layouts/fl1/fl1.html"],
+      ["Flow/c1.png",  "Flows-Layouts/fl1/fl1.png"],
+
+      // Footers (c1-c9 -> f1-f9)
+      ...[1,2,3,4,5,6,7,8,9].map(n => ["footer/c" + n + ".html", "Footers/f" + n + "/f" + n + ".html"] as [string, string]),
+      ...[1,2,3,4,5,6,7,8,9].map(n => ["footer/c" + n + ".png",  "Footers/f" + n + "/f" + n + ".png"] as [string, string]),
+    ];
+
+    let movedCount = 0;
+    for (const [srcRel, destRel] of moves) {
+      const srcPath = path.join(baseTiles, srcRel);
+      const destPath = path.join(baseTiles, destRel);
+      if (fs.existsSync(srcPath)) {
+        fs.mkdirSync(path.dirname(destPath), { recursive: true });
+        fs.renameSync(srcPath, destPath);
+        movedCount++;
+      }
+    }
+    if (movedCount > 0) {
+      console.log(`Successfully reorganized ${movedCount} component files!`);
+    }
+
+    // Clean up old directories if they exist
+    const oldDirs = [
+      "components/compo1",
+      "components",
+      "Trvel agency",
+      "theme",
+      "theme-unique",
+      "footer",
+      "testimonials",
+      "Flow"
+    ];
+    for (const oldRel of oldDirs) {
+      const oldPath = path.join(baseTiles, oldRel);
+      if (fs.existsSync(oldPath)) {
+        try {
+          fs.rmdirSync(oldPath);
+          console.log(`Cleaned up empty directory: ${oldRel}`);
+        } catch (e) {
+          try {
+            fs.rmSync(oldPath, { recursive: true, force: true });
+            console.log(`Cleaned up directory recursively: ${oldRel}`);
+          } catch (err) {
+            console.error(`Error cleaning up directory ${oldRel}:`, err);
+          }
+        }
+      }
+    }
+  }
 } catch (err) {
-  console.error('Error copying assets:', err);
+  console.error('Error copying assets or reorganizing tiles:', err);
 }
 
 export default defineConfig(() => {

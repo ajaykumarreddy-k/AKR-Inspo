@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { Hero } from "./components/Hero";
 import { Gallery } from "./components/Gallery";
 import { Footer } from "./components/Footer";
@@ -11,6 +11,8 @@ import { LinksPage } from "./components/LinksPage";
 import { InspirationPage } from "./components/InspirationPage";
 import { ResourcesPage } from "./components/ResourcesPage";
 import { useFonts } from "./hooks/useFonts";
+
+const ScrollAnimationsPage = lazy(() => import("./scroll-animations/ScrollAnimationsPage"));
 
 export default function App() {
   useFonts(); // auto-load all fonts from assets/Fonts/
@@ -52,12 +54,17 @@ export default function App() {
   const isLinksPage = currentPath.endsWith("/links") || currentPath === "links";
   const isInspirationPage = currentPath.endsWith("/inspiration") || currentPath === "inspiration";
   const isResourcesPage = currentPath.endsWith("/resources") || currentPath === "resources";
+  const isScrollAnimationsPage = currentPath.startsWith("/scroll-animations");
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#0a0a0a] text-black dark:text-white font-sans antialiased transition-colors duration-300 relative selection:bg-neutral-200 dark:selection:bg-neutral-800 overflow-x-hidden">
       <div className="relative z-10 flex flex-col min-h-screen">
         <main className="flex-grow w-full flex flex-col relative">
-          {isLinksPage ? (
+          {isScrollAnimationsPage ? (
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-neutral-400">Loading animations...</div>}>
+              <ScrollAnimationsPage />
+            </Suspense>
+          ) : isLinksPage ? (
             <LinksPage onNavigate={navigate} />
           ) : isInspirationPage ? (
             <InspirationPage onNavigate={navigate} />
@@ -72,7 +79,7 @@ export default function App() {
             </>
           )}
         </main>
-        {!isLinksPage && !isInspirationPage && !isResourcesPage && <Footer onNavigate={navigate} />}
+        {!isLinksPage && !isInspirationPage && !isResourcesPage && !isScrollAnimationsPage && <Footer onNavigate={navigate} />}
       </div>
     </div>
   );

@@ -79,6 +79,16 @@ export function Hero({ onNavigate }: { onNavigate: (path: string) => void }) {
               >
                 Inspiration <ArrowUpRight className="w-4 h-4"/>
               </a>
+              <a 
+                href="/scroll-animations" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate("/scroll-animations");
+                }}
+                className="border-t border-black/30 pt-3 pb-4 flex justify-between items-center hover:opacity-60 transition-opacity mix-blend-multiply"
+              >
+                Scroll <ArrowUpRight className="w-4 h-4"/>
+              </a>
             </div>
           </div>
         </div>

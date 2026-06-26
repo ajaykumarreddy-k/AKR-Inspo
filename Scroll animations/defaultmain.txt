@@ -1,0 +1,1 @@
+npx uilayouts@latest add text-marquee

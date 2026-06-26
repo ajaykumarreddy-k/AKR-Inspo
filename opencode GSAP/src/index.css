@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --radius: 0.75rem;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Dark Theme (Default) */
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-surface-2: #1a1a26;
+  --color-border: #2a2a3e;
+  --color-text: #e4e4f0;
+  --color-text-muted: #8888a0;
+  --color-primary: #ffffff;
+  --color-primary-hover: #f3f4f6;
+  --color-accent: #818cf8;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+}
+
+.light {
+  /* Light Theme */
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-surface-2: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-primary: #000000;
+  --color-primary-hover: #374151;
+  --color-accent: #3b82f6;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.glass {
+  background: rgba(18, 18, 26, 0.4);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-light {
+  background: rgba(26, 26, 38, 0.6);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.mesh-gradient {
+  background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.2) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.2) 0, transparent 50%);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent), transparent, transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: rgba(10, 10, 15, 0.8);
+  border-bottom: 1px solid var(--color-border);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.difficulty-beginner { color: var(--color-success); }
+.difficulty-intermediate { color: var(--color-warning); }
+.difficulty-advanced { color: var(--color-danger); }
+
+/* PrismJS theme overrides */
+pre[class*="language-"] {
+  background: rgba(10, 10, 15, 0.9) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 0 0 var(--radius) var(--radius) !important;
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+code[class*="language-"] {
+  color: var(--color-text) !important;
+  text-shadow: none !important;
+  font-size: 13px !important;
+}
+
+/* Force hide any GSAP markers globally */
+.gsap-marker-start,
+.gsap-marker-end,
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end {
+  display: none !important;
+}

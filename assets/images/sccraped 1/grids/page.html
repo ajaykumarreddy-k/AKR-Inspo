@@ -1,0 +1,323 @@
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="shortcut icon" href="./assets/img/favicon.ico"><meta name="keywords" content="css animations, js animations, ui components, web animations, frontend library, gsap, threejs, webgl shaders, scroll animations, hover effects, page transitions, hero animations, sliders, navigation menus, text animations, 3d animations, mouse effects, svg animations, physics effects, awwwards components, Animmaster, animmaster, Animmaster Lib, animmaster lib, 200 components"><meta name="description" content="Animmaster Lib — a modern frontend library of 250 PRO-level animated UI components with live video previews. Scroll animations, WebGL shaders, hero sections, sliders, menus and more — copy, paste, ship."><title>Animmaster Lib | 250 PRO-Level Animated Components – HTML, CSS, JavaScript</title><style>
+			@charset "UTF-8";@import url(https://fonts.googleapis.com/css?family=Inter:300,regular,500,600,700,800,900&display=swap);*{padding:0;margin:0;border:0}*,::after,::before{box-sizing:border-box}::after,::before{display:inline-block}body,html{height:100%}body{line-height:1;scrollbar-gutter:stable;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}button{font-family:inherit;font-size:inherit;line-height:inherit;color:inherit;background-color:transparent}a{display:inline-block;color:inherit;text-decoration:none}ul li{list-style:none}img{max-width:100%;height:auto;vertical-align:middle}h2,h3{font-weight:inherit;font-size:inherit}body{min-width:320px;color:#fff;background-color:#020617;font-family:Inter;font-size:16px}.wrapper{min-height:100%;display:flex;flex-direction:column;overflow:clip}.wrapper>main{flex:1 1 auto}.wrapper>*{min-width:0}[class*=__container]{max-width:1470px;margin:0 auto;padding-left:15px;padding-right:15px}.components{position:relative}.components{isolation:isolate}.components__wrapper{position:relative}.components__wrapper{background:radial-gradient(120% 140% at 20% -20%,rgba(0,212,255,.08),transparent 40%),linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015)),rgba(15,23,42,.6);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(22px)}@media (min-width:47.99875em){.components__wrapper{box-shadow:0 40px 100px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.08)}}.components__top{display:flex;align-items:center;justify-content:space-between;gap:20px}@media (max-width:47.99875em){.components__top{flex-direction:column}}.components__title{letter-spacing:-.03em}.components__layout{display:grid;grid-template-columns:250px 1fr;position:relative;align-items:start}.components__sidebar{position:sticky;top:85px}@media (max-width:61.99875em){.components__layout{grid-template-columns:1fr}.components__sidebar{display:none}}.components__sidebar-sticky{padding:12px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01)),#0a0f1f;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06)}.components__filters{display:flex;flex-direction:column;gap:9px;max-height:calc(100vh - 130px);overflow-y:auto;box-sizing:border-box;-webkit-overflow-scrolling:touch;scrollbar-width:none}.components__filters::-webkit-scrollbar{width:0;height:0}.components__filter{padding:14px 18px;border-radius:16px;text-align:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);color:#94a3b8;font-size:14px;font-weight:500}.components__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}@media (max-width:68.75em){.components__grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}}@media (max-width:29.99875em){.components__wrapper{margin:0 -15px}.components__grid{grid-template-columns:1fr}}.component-card{position:relative;padding:8px;border-radius:30px;display:flex;flex-direction:column;will-change:transform;background:radial-gradient(120% 120% at 0 0,rgba(0,212,255,.08),transparent 40%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),#0f172a;border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 60px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.05)}.component-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,rgba(0,212,255,.35),transparent 60%);opacity:0}.component-card__preview{position:relative;overflow:hidden;border-radius:24px;margin-bottom:16px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 80px rgba(0,0,0,.85);flex:1 1 auto;aspect-ratio:16/9}.component-card .component-poster,.component-card .component-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:opacity}.component-card .component-poster{opacity:1;z-index:2}.component-card .component-video{opacity:0;z-index:1}.component-card__info{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 10px 5px}.component-card__type-name{font-weight:700;color:#fff;letter-spacing:-.01em}.component-card__tags{display:flex;align-items:center}.component-card__type-value{display:grid;place-items:center}.component-card__type-value{line-height:1;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.04)),rgba(0,212,255,.18);border:1px solid rgba(0,212,255,.45);position:relative;backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 22px rgba(0,212,255,.45)}.pricing{background:#020617}.pricing{overflow:visible}.pricing__container{padding:0}.pricing__top{padding-right:15px;padding-left:15px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;row-gap:20px}.pricing__title-top{font-weight:800;letter-spacing:-.03em;line-height:1.2}.pricing__subtitle{color:rgba(255,255,255,.7);line-height:1.45;max-width:560px;margin:0 auto}.pricing__stats{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap}.pricing__stats{font-size:14px;color:rgba(255,255,255,.85)}.pricing__stats span{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 0 10px rgba(0,212,255,.05)}.pricing__card{display:flex;flex-direction:column;position:relative;background:rgba(15,23,42,.75);border-radius:28px;padding-top:35px}.pricing__card{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);box-shadow:0 0 30px rgba(0,212,255,.08);will-change:transform}.pricing__card::before{content:"";position:absolute;inset:0;border-radius:28px;opacity:0}.pricing__card--junior{opacity:.97}.pricing__card--junior::before{background:radial-gradient(120% 120% at 50% 0,rgba(0,212,255,.3),transparent 60%)}.pricing__card--junior .pricing__item{padding-left:0}.pricing__card--junior .pricing__item::before{display:none}.pricing__card--standard{border:1px solid #00d4ff;box-shadow:0 0 50px rgba(0,212,255,.4);z-index:2}.pricing__card--standard::before{background:radial-gradient(120% 120% at 50% 0,rgba(0,212,255,.6),transparent 60%)}.pricing__card--premium{border:1px solid rgba(140,108,240,.6);box-shadow:0 0 30px rgba(140,108,240,.2)}.pricing__card--premium .pricing__badge{position:absolute;top:-12px;left:50%;z-index:3;transform:translateX(-50%);font-size:11px;padding:6px 14px;border-radius:16px;font-weight:700;letter-spacing:1px;background:linear-gradient(135deg,#8c6cf0 0,#d45cf0 100%);color:#fff;box-shadow:0 0 20px rgba(140,108,240,.5),0 0 40px rgba(212,92,240,.25)}.pricing__card--premium::before{background:radial-gradient(120% 120% at 50% 0,rgba(140,108,240,.55),transparent 60%)}.pricing__title{z-index:3;text-align:center;font-weight:700;margin-bottom:19px;letter-spacing:.5px}.pricing__discount{position:absolute;top:15px;z-index:3;right:15px}.pricing__discount{padding-top:6px;padding-bottom:6px;border-radius:14px}.pricing__discount{font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#1a1200;background:linear-gradient(135deg,#fc3,#ff9f1a);box-shadow:0 0 12px rgba(255,170,0,.6),0 0 30px rgba(255,140,0,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.pricing__discount--soft{background:linear-gradient(135deg,#7e9af8,#8c6cf0);color:#0a0a1a;box-shadow:0 0 14px rgba(140,108,240,.35)}.pricing__price{z-index:3;display:flex;justify-content:center;align-items:end;column-gap:10px}.pricing__price{font-weight:800;margin-left:-60px;letter-spacing:-2px}.pricing__price--none{margin-left:0}.pricing__price span{text-decoration:line-through;color:#94a3b8;margin-left:4px;font-weight:600}.pricing__special-item-row{z-index:3}.pricing__special-item{z-index:3;display:flex;align-items:center;column-gap:4px}.pricing__special-item:not(:last-child){margin-bottom:10px}.pricing__features{padding:12px 0;flex:1 1 auto}.pricing__item{color:#94a3b8;line-height:110%;position:relative}.pricing__item::before{content:"✔";position:absolute;left:0;top:0;color:#2f8}.pricing__item:not(:last-child){padding-bottom:12px}.pricing__item:not(:last-child)::after{content:"";position:absolute;background-color:rgba(255,255,255,.1);width:100%;height:1px;left:0;bottom:6px}.pricing__slider{padding-right:25px;padding-left:25px}@media (min-width:76.25em){.pricing__card--standard{transform:translateY(0) scale(1.08)}.pricing__slider{display:grid;justify-items:center}}.pricing__wrapper{display:grid;justify-items:center;grid-template-columns:repeat(3,1fr)}@media (min-width:76.25em){.pricing__wrapper{column-gap:40px;grid-template-columns:repeat(3,350px)}}.pricing__slide{display:grid;width:100%;max-width:350px}@media (max-width:76.25em){.swiper-slide{transform-style:preserve-3d}.swiper-wrapper{width:100%;height:100%;box-sizing:content-box;display:flex;position:relative}.swiper-slide{display:grid}.swiper-slide{flex-shrink:0;position:relative;will-change:transform}}.shiny-text{font-weight:800;color:#b5b5b5;background:linear-gradient(120deg,#b5b5b5 0,#b5b5b5 35%,#fff 50%,#b5b5b5 65%,#b5b5b5 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#00d4ff 0,#09f 100%);color:#000}.btn{font-weight:600;letter-spacing:.02em;box-shadow:0 0 25px rgba(0,212,255,.4),0 0 80px rgba(0,212,255,.15)}.btn--header{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px rgba(0,212,255,.25)}.btn--header::before{display:none}.btn--header{position:relative;animation:2.8s ease-in-out infinite proPulseHeader;will-change:transform}@keyframes proPulseHeader{0%,100%{box-shadow:0 0 8px rgba(0,212,255,.35),0 0 20px rgba(0,212,255,.3),0 0 40px rgba(0,212,255,.2),0 0 60px rgba(0,212,255,.1)}50%{box-shadow:0 0 12px rgba(0,212,255,.55),0 0 28px rgba(0,212,255,.45),0 0 55px rgba(0,212,255,.3),0 0 80px rgba(0,212,255,.15)}}.header{position:fixed;top:0;left:0;right:0;z-index:50;padding:10px 0;background:linear-gradient(180deg,rgba(2,6,23,.85),rgba(2,6,23,.65));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);box-shadow:0 10px 40px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.05)}.header::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,.6),transparent)}.menu{display:flex;align-items:center;justify-content:space-between}.menu__logo{display:flex;align-items:center;z-index:5}@media (max-width:25.9375em){.menu__logo svg{display:none}}.menu__logo span{font-weight:700}@media (max-width:22.8125em){.menu__logo span{font-size:15.5px}}.menu__logo rect{transform-box:fill-box;transform-origin:center}.menu__logo rect:last-child{transform:rotate(-10deg)}.menu__list{row-gap:5px}@media (min-width:47.99875em){.pricing__card--standard::before{opacity:1}.menu__list{display:flex;flex-wrap:wrap;align-items:center}}.menu__item{text-align:center}@media (max-width:47.99875em){.menu__body{position:fixed;background-color:#020617;width:100%;height:100svh;left:-100%;top:0;overflow:auto;padding:90px 15px 30px}.menu__item:not(:last-child){margin-bottom:20px}.menu__link{font-size:27px}}.menu__link{position:relative;color:rgba(255,255,255,.7)}.menu__link::after{content:"";position:absolute;left:50%;bottom:-6px;width:0;height:2px;background:linear-gradient(90deg,transparent,#00d4ff,transparent);transform:translateX(-50%);filter:drop-shadow(0 0 6px rgba(0,212,255,.6))}.menu__action{display:flex;align-items:center}.menu__cta{animation:3s ease-in-out infinite proPulseHeader}.icon-menu{display:none}@media (max-width:47.99875em){.icon-menu{display:inline-flex;align-items:center;justify-content:center;background:0 0;border:none;padding:6px;color:#fff;z-index:5}.icon-menu__svg{width:30px;height:22px}.icon-menu .line{transform-origin:center;will-change:transform,opacity}.icon-menu .line--top{transform-origin:12px 2px}.icon-menu .line--bottom{transform-origin:12px 16px}}.footer__brand{grid-area:logo}.footer__cta{grid-area:cta;display:flex;flex-direction:column;align-items:center;text-align:center;row-gap:7px}.footer__contacts{grid-area:contacts}.social-list__link span{display:none}[data-anim-popup][hidden]{display:none!important}body::after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 30% 40%,rgba(0,212,255,.15),transparent 60%),rgba(2,6,23,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;z-index:149}[data-anim-popup]{position:fixed;inset:0;z-index:-1;padding:40px 16px;opacity:0;visibility:hidden}.popup__wrapper{min-height:100%;display:flex;align-items:center;justify-content:center}.popup__body{position:relative;width:100%;max-width:1000px}.popup__body{background:rgba(15,23,42,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.06);box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 60px rgba(0,212,255,.25);transform:scale(.85) translateY(40px);opacity:0;overflow:hidden}.popup__body::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#00d4ff 0,#09f 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.4}.popup__close{position:absolute;right:2%;top:3%;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,212,255,.3);box-shadow:0 0 0 1px rgba(255,255,255,.04),0 10px 30px rgba(0,0,0,.6)}.popup__close svg{width:14px;height:14px}.popup__close svg path{stroke:#5BE7FF;stroke-width:2}.popup__row{display:grid;grid-template-rows:1fr auto}.popup__video{aspect-ratio:16/9}.popup__video{background:#0f172a;box-shadow:0 0 40px rgba(0,212,255,.15),inset 0 0 20px rgba(0,0,0,.4);width:100%;height:100%;object-fit:cover;display:block}@keyframes shineLoop{0%{left:-120%}40%{left:130%}100%{left:130%}}.popup__btn{position:relative;display:inline-flex;align-items:center;justify-content:center}.popup__btn{text-align:center}.popup__btn{border-radius:25px}.popup__btn{width:100%}.popup__btn{text-decoration:none;color:#000;overflow:hidden;transform:translateY(0)}.popup__btn strong{opacity:.7}.popup__btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg)}.popup__btn--pro{background:linear-gradient(135deg,#00d4ff 0,#09f 100%);box-shadow:0 10px 30px rgba(0,180,255,.35)}.popup__btn--pro::before{animation:3s ease-in-out infinite shineLoop}
+		</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-12XWK69E1M"></script><script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-12XWK69E1M');
+		</script><script type="module" crossorigin="" src="./js/app.min.js?v=1781628776855"></script><link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1781628776855" media="print" onload="this.media='all'"></head><body>
+		<div class="wrapper" id="app">
+			<header class="header" data-anim-header=""><div class="header__container">
+					<div class="header__menu menu">
+						<a class="menu__logo" href="/index.html">
+							<svg width="50" height="50" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="12" width="8" height="40" rx="2" fill="white"></rect><rect x="22" y="12" width="8" height="40" rx="2" fill="white"></rect><rect x="34" y="12" width="8" height="40" rx="2" fill="white" transform="rotate(-25 34 12)"></rect></svg><span>Animmaster Lib</span>
+						</a>
+						<nav class="menu__body"><ul class="menu__list"><li class="menu__item">
+									<a class="menu__link menu__link--top" href="#" type="button">Scroll to top</a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#components" type="button" data-anim-scrollto-header="" data-anim-scrollto=".components">Components</a>
+								</li>
+								<li class="menu__item">
+									<a class="menu__link" href="#pricing" type="button" data-anim-scrollto-header="" data-anim-scrollto=".pricing">Pricing</a>
+								</li>
+							</ul></nav><div class="menu__action">
+							<button class="menu__cta btn btn--header" type="button" data-anim-scrollto-header="" data-anim-scrollto=".pricing" data-rotate-text="Unlock PRO|LvL Up Skill|In 1 Click" onclick="gtag('event','header_click')">
+								<span class="btn-text">Unlock PRO</span>
+							</button>
+							<button class="menu__icon icon-menu" type="button" data-anim-menu="" aria-label="Toggle menu">
+								<svg class="icon-menu__svg" viewbox="0 0 24 18" width="30" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line class="line line--top" x1="2" y1="2" x2="22" y2="2"></line><line class="line line--middle" x1="2" y1="9" x2="22" y2="9"></line><line class="line line--bottom" x1="2" y1="16" x2="22" y2="16"></line></svg></button>
+						</div>
+					</div>
+				</div>
+			</header><main class="page"><div class="index" data-anim-grids="">
+					<section class="components" data-anim-watcher="navigator"><div class="components__container">
+							<div class="components__wrapper">
+								<div class="components__top">
+									<h2 class="components__title shiny-text">PRO-Level Grid Animations</h2>
+									<select data-anim-select="" data-anim-select-modif="form" onchange="if(this.value)window.location.href=this.value"><option value="/index.html" data-label="Select category">All Components</option><option value="/scroll.html">Scroll Animations</option><option value="/mouseeff.html">Mouse Effects</option><option value="/pagetr.html">Page Transitions</option><option value="" selected>Grid Animations</option><option value="/sliders.html">Sliders</option><option value="/hero.html">Hero Animations</option><option value="/webgl.html">WebGL Shaders</option><option value="/bg.html">Background Animations</option><option value="/navs.html">Navigation Menus</option><option value="/hovers.html">Hover Effects</option><option value="/text.html">Text Animations</option><option value="/3d.html">3D Animations</option><option value="/physics.html">Physics Effects</option><option value="/svgs.html">SVG Animations</option></select></div>
+								<div class="components__layout">
+									<aside class="components__sidebar"><div class="components__sidebar-sticky">
+											<div class="components__filters">
+												<a class="components__filter" href="/index.html">All</a>
+												<a class="components__filter" href="/scroll.html">Scroll Animations</a>
+												<a class="components__filter" href="/mouseeff.html">Mouse Effects</a>
+												<a class="components__filter" href="/pagetr.html">Page Transitions</a>
+												<a class="components__filter --tab-active" href="/">Grid Animations</a>
+												<a class="components__filter" href="/sliders.html">Sliders</a>
+												<a class="components__filter" href="/hero.html">Hero Animations</a>
+												<a class="components__filter" href="/webgl.html">WebGL Shaders</a>
+												<a class="components__filter" href="/bg.html">Background
+                           Animations</a>
+												<a class="components__filter" href="/navs.html">Navigation Menus</a>
+												<a class="components__filter" href="/hovers.html">Hover Effects</a>
+												<a class="components__filter" href="/text.html">Text Animations</a>
+												<a class="components__filter" href="/3d.html">3D Animations</a>
+												<a class="components__filter" href="/physics.html">Physics Effects</a>
+												<a class="components__filter" href="/svgs.html">SVG Animations</a>
+											</div>
+										</div>
+									</aside><div class="components__inner __content">
+										<div class="components__content" id="all">
+											<div class="components__grid">
+												<article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-7-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-7-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-2-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-2-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-3-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-3-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-4-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-4-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-5-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-5-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-6-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-6-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-8-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-8-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-9-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-9-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-10-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-10-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article><article class="component-card" data-anim-popup-link="popup-pro"><div class="component-card__preview">
+														<img class="component-poster" src="./assets/img/grid-1-500.webp" alt="Grid animation" loading="lazy"><video class="component-video" loop muted playsinline="" preload="none"><source data-src="files/grid-1-650.webm" type="video/webm"></source></video></div>
+													<div class="component-card__info">
+														<h3 class="component-card__type-name">Grid Animation</h3>
+														<div class="component-card__tags">
+															<button type="button" class="component-card__type-value" data-anim-tippy-content="Unlock PRO to access code">💎</button>
+														</div>
+													</div>
+												</article></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section><section class="pricing" data-anim-watcher="navigator"><div class="pricing__container">
+							<div class="pricing__top">
+								<h2 class="pricing__title-top">Simple pricing — Powerful results</h2>
+								<div class="pricing__subtitle">
+									Save
+									<strong class="shiny-text">10000+ hours</strong>
+									of development
+									<br>
+									Upgrade your skills with
+									<strong class="shiny-text">250 PRO components</strong>
+								</div>
+								<div class="pricing__stats">
+									<span>👨‍💻 2,400+ developers</span>
+									<span>⭐ 4.9 rating</span>
+									<span>🚀 250+ projects</span>
+								</div>
+							</div>
+							<div class="pricing__slider swiper" data-anim-slider="">
+								<div class="pricing__wrapper swiper-wrapper">
+									<div class="pricing__slide pricing__slide--junior swiper-slide">
+										<div class="pricing__card pricing__card--junior">
+											<h3 class="pricing__title">Junior</h3>
+											<div class="pricing__price pricing__price--none">$3</div>
+											<ul class="pricing__features"><li class="pricing__item">+ Animmaster Roadmap</li>
+												<li class="pricing__item">+ 63 Figma Website Mockups</li>
+												<li class="pricing__item">+ Best courses collection</li>
+											</ul><a class="pricing__btn btn btn--size" target="_blank" href="/payment.html" onclick="gtag('event','buy_jun_click')">
+												<span class="pricing__btn-text pricing__btn-text--default">Start Learning</span>
+												<span class="pricing__btn-text pricing__btn-text--hover">Get Junior Pack</span>
+											</a>
+										</div>
+									</div>
+									<div class="pricing__slide pricing__slide--pro swiper-slide">
+										<div class="pricing__card pricing__card--standard">
+											<h3 class="pricing__title">PRO</h3>
+											<p class="pricing__price">
+												<span>$10</span>
+												$4.99
+											</p>
+											<div class="pricing__discount">Save 50%</div>
+											<div class="pricing__special-item">
+												💎
+												<span class="shiny-text">250 PRO-Level Components</span>
+											</div>
+											<ul class="pricing__features"><li class="pricing__item">48 Scroll Animations</li>
+												<li class="pricing__item">22 Hero Animations</li>
+												<li class="pricing__item">21 Navigation Menus</li>
+												<li class="pricing__item">18 Mouse Effects</li>
+												<li class="pricing__item">18 Sliders</li>
+												<li class="pricing__item">17 Hover Effects</li>
+												<li class="pricing__item">16 3D Animations</li>
+												<li class="pricing__item">16 WebGL Shaders</li>
+												<li class="pricing__item">14 Text Animations</li>
+												<li class="pricing__item">12 Page Transitions</li>
+												<li class="pricing__item">11 SVG Animations</li>
+												<li class="pricing__item">10 Background Animations</li>
+												<li class="pricing__item">10 Grid Animations</li>
+												<li class="pricing__item">10 Physics Effects</li>
+												<li class="pricing__item">Junior Pack</li>
+												<li class="pricing__item">Lifetime access</li>
+											</ul><a class="pricing__btn btn btn--primary btn--size" target="_blank" href="/payment.html" onclick="gtag('event','buy_pro_click')">
+												<span class="pricing__btn-text pricing__btn-text--default">Unlock PRO</span>
+												<span class="pricing__btn-text pricing__btn-text--hover">Get 250 Components</span>
+											</a>
+										</div>
+									</div>
+									<div class="pricing__slide swiper-slide">
+										<div class="pricing__card pricing__card--premium">
+											<div class="pricing__badge">Most Popular</div>
+											<h3 class="pricing__title">Premium</h3>
+											<p class="pricing__price">
+												<span>$20</span>
+												$8
+											</p>
+											<div class="pricing__discount pricing__discount--soft">Save 70%</div>
+											<div class="pricing__special-item-row">
+												<div class="pricing__special-item">
+													💎
+													<span class="shiny-text">Animmaster Premium Pack</span>
+												</div>
+												<div class="pricing__special-item">
+													💎
+													<span class="shiny-text">250 PRO-Level Components</span>
+												</div>
+											</div>
+											<ul class="pricing__features"><li class="pricing__item">250 PRO Components</li>
+												<li class="pricing__item">Animmaster Vite Template</li>
+												<li class="pricing__item">Webdoc for Vite Template</li>
+												<li class="pricing__item">Awwwards Portfolio Website</li>
+												<li class="pricing__item">Senior-level VScode configs</li>
+												<li class="pricing__item">PDF of All VSсode Shortcuts</li>
+												<li class="pricing__item">63 PRO Figma Web Mockups</li>
+												<li class="pricing__item">45 best VScode extensions</li>
+												<li class="pricing__item">21 best resources for Devs</li>
+												<li class="pricing__item">100+ frontend interview questions</li>
+												<li class="pricing__item">Animmaster frontend roadmap</li>
+												<li class="pricing__item">Premium community access</li>
+												<li class="pricing__item">Best Video Courses Collection</li>
+												<li class="pricing__item">Lifetime access</li>
+												<li class="pricing__item">Future Updates</li>
+											</ul><a class="pricing__btn btn btn--size" target="_blank" href="/payment.html" onclick="gtag('event','buy_prem_click')">
+												<span class="pricing__btn-text pricing__btn-text--default">Go Premium</span>
+												<span class="pricing__btn-text pricing__btn-text--hover">Unlock Everything</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section></div>
+			</main><footer class="footer" data-anim-footer=""><div class="footer__container">
+					<div class="footer__top">
+						<div class="footer__brand">
+							<div class="footer__logo">
+								<svg width="50" height="50" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="12" width="8" height="40" rx="2" fill="white"></rect><rect x="22" y="12" width="8" height="40" rx="2" fill="white"></rect><rect x="34" y="12" width="8" height="40" rx="2" fill="white" transform="rotate(-25 34 12)"></rect></svg><span>Animmaster Lib</span>
+							</div>
+							<p class="footer__desc">Ready-made animated PRO-level UI components for modern web products.</p>
+						</div>
+						<div class="footer__cta">
+							<h2 class="footer__cta-title">
+								<span>Save weeks of work</span>
+								<br><span>
+									For the price of
+									<strong>one coffee</strong>
+								</span>
+							</h2>
+							<p class="footer__cta-subtitle">250 PRO-level components, ready to drop into any project</p>
+						</div>
+						<div class="footer__contacts">
+							<div class="footer__contacts-label">Contacts</div>
+							<a class="footer__email" href="/cdn-cgi/l/email-protection#1d7c737470707c6e69786f7e7271717c7f5d7a707c7471337e7270"><span class="__cf_email__" data-cfemail="31505f585c5c5042455443525e5d5d505371565c50585d1f525e5c">[email protected]</span></a>
+							<ul class="footer__list social-list"><li class="social-list__item">
+									<a class="social-list__link --icon-instagram" href="https://www.instagram.com/animmaster_studio?igsh=MXN0MXkycGxrbDlpag==" target="_blank" aria-label="go to Instagram">
+										<span>Instagram</span>
+									</a>
+								</li>
+								<li class="social-list__item">
+									<a class="social-list__link --icon-telegram" href="https://t.me/animmaster_studio" target="_blank" aria-label="go to Telegram">
+										<span>Telegram</span>
+									</a>
+								</li>
+							</ul></div>
+					</div>
+					<div class="footer__bottom">
+						<div class="footer__copy">© 2026 Animmaster Lib</div>
+						<div class="footer__author">
+							Crafted with
+							<span>🤍</span>
+							by
+							<a target="_blank" href="https://www.instagram.com/animmaster_studio?igsh=MXN0MXkycGxrbDlpag==">Animmaster</a>
+						</div>
+					</div>
+				</div>
+			</footer></div>
+		<div class="popup" data-anim-popup="popup-pro" aria-hidden="true" hidden>
+			<div class="popup__wrapper" data-anim-popup-wrapper="">
+				<div class="popup__body" data-anim-popup-body="">
+					<button class="popup__close" data-anim-popup-close="" type="button">
+						<svg width="23" height="23" viewbox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.850056" d="M1.73333 1.48883L21.5469 21.0288" stroke="#979797" stroke-linecap="square"></path><path opacity="0.850056" d="M21.2667 1.48883L1.45309 21.0288" stroke="#979797" stroke-linecap="square"></path></svg></button>
+					<div class="popup__row" data-anim-popup-content="">
+						<video class="popup__video" loop muted playsinline="" preload="metadata"><source type="video/webm"><source type="video/mp4"></source></source></video><button class="popup__btn popup__btn--pro" type="button" data-anim-scrollto-header="" data-anim-scrollto=".pricing" data-anim-popup-close="" onclick="gtag('event','pop_pro_click')">
+							<strong>Unlock PRO</strong>
+							<span>🔥</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<noscript>
+			<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1781628776855"></noscript>
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"5d6d5053e6ac41439fd2d54527ffe043","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script></body></html>

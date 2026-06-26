@@ -24,8 +24,8 @@ moves = [
     ("theme-unique/index.html", "Themes/theme-unique/theme-unique.html"),
     ("theme-unique/image.png",  "Themes/theme-unique/theme-unique.png"),
     # Footers
-    ("footer/c1.html", "Footers/f1/f1.html"),
-    ("footer/c1.png",  "Footers/f1/f1.png"),
+    *[(f"footer/c{n}.html", f"Footers/f{n}/f{n}.html") for n in range(1, 10)],
+    *[(f"footer/c{n}.png",  f"Footers/f{n}/f{n}.png")  for n in range(1, 10)],
     # Testimonials
     ("testimonials/1.html", "Testimonials/ts1/ts1.html"),
     ("testimonials/1.png",  "Testimonials/ts1/ts1.png"),
@@ -50,8 +50,11 @@ for src_rel, dst_rel in moves:
 for old in ["components/compo1", "components", "Trvel agency", "theme", "theme-unique", "footer", "testimonials", "Flow"]:
     old_path = os.path.join(BASE, old)
     if os.path.exists(old_path):
-        shutil.rmtree(old_path)
-        print(f"  REMOVED  {old}/")
+        try:
+            shutil.rmtree(old_path)
+            print(f"  REMOVED  {old}/")
+        except Exception as e:
+            print(f"  ERROR REMOVING {old}/: {e}")
 
 if errors:
     print("\n⚠️  Some files were missing:")

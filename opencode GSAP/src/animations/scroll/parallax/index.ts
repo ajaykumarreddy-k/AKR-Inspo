@@ -1,0 +1,8 @@
+export { default as MultiLayerParallax } from './MultiLayerParallax'
+export { default as ImageParallax } from './ImageParallax'
+export { default as BackgroundParallax } from './BackgroundParallax'
+export { default as TextParallax } from './TextParallax'
+export { default as MouseScrollHybrid } from './MouseScrollHybrid'
+export { default as PerspectiveParallax } from './PerspectiveParallax'
+export { default as FloatingLayers } from './FloatingLayers'
+export { default as DepthBasedMovement } from './DepthBasedMovement'

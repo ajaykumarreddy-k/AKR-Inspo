@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Design Report 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Georgia', 'Times New Roman', 'serif'],
+                    },
+                    colors: {
+                        'brand-orange': '#F45B38',
+                        'brand-purple': '#C4A8FF',
+                        'brand-green': '#D1E1D1',
+                        'brand-dark': '#000000',
+                    },
+                    letterSpacing: {
+                        tighter: '-0.05em',
+                        tight: '-0.025em',
+                        widest: '0.1em',
+                    },
+                    borderWidth: {
+                        '1': '1px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Abstract Hero Banner */
+        .hero-banner {
+            width: 100%;
+            height: 35vh;
+            min-height: 250px;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            mix-blend-mode: multiply;
+            opacity: 0.8;
+            filter: contrast(1.2) saturate(1.4) hue-rotate(-10deg);
+        }
+
+        /* Brutalist Borders */
+        .border-black {
+            border-color: #000000 !important;
+        }
+
+        /* Chapter Button Hover */
+        .chapter-btn {
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .chapter-btn:hover {
+            background-color: #222222;
+        }
+        .chapter-btn:hover svg {
+            transform: translateX(4px);
+            transition: transform 0.2s ease;
+        }
+        .chapter-btn svg {
+            transition: transform 0.2s ease;
+        }
+        
+        /* List item hover */
+        .chapter-list li {
+            transition: opacity 0.2s ease;
+        }
+        .chapter-list li:hover {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-brand-orange selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 px-6 lg:px-8 py-5 flex justify-between items-center text-[15px] font-medium tracking-tight border-b-1 border-black">
+        <a href="#" class="hover:opacity-60 transition-opacity">AiiD 26</a>
+        <div class="flex items-center space-x-6 lg:space-x-10">
+            <a href="#" class="hover:opacity-60 transition-opacity flex items-center">Read the Report <span class="ml-1 text-lg leading-none font-light">+</span></a>
+            <a href="#" class="hover:opacity-60 transition-opacity hidden sm:block">About</a>
+            <a href="#" class="hover:opacity-60 transition-opacity flex items-center">Case Studies <span class="ml-1 text-lg leading-none font-light">+</span></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-[73px]">
+        <!-- Top Abstract Banner -->
+        <div class="px-6 lg:px-8 max-w-[1920px] mx-auto w-full pt-6">
+            <div class="hero-banner border-1 border-black/10"></div>
+        </div>
+        
+        <div class="px-6 lg:px-8 max-w-[1920px] mx-auto mt-12 pb-16">
+            <div class="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16">
+                <!-- Left text -->
+                <div class="lg:w-[280px] shrink-0 text-[15px] font-medium leading-[1.4] pt-4">
+                    <p>How designers are evolving their tools, craft, and teams with AI</p>
+                    <div class="mt-8">
+                        <span class="inline-block border-1 border-black px-2 py-1 text-[10px] font-bold uppercase tracking-widest bg-white">HEAD OF DESIGN</span>
+                    </div>
+                </div>
+
+                <!-- Main Title -->
+                <div class="w-full">
+                    <h1 class="text-[14vw] sm:text-[11vw] lg:text-[10vw] leading-[0.85] font-medium tracking-tighter -ml-1">
+                        AI in Design Report<br>2026
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Bottom row of hero -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end mt-24 sm:mt-32 lg:mt-40">
+                <div class="text-[10px] font-bold uppercase tracking-widest leading-[1.6]">
+                    <p>BY DESIGNER FUND IN PARTNERSHIP<br>WITH FOUNDATION CAPITAL</p>
+                </div>
+                <div class="flex md:justify-center text-[15px] font-medium">
+                    <span class="cursor-pointer hover:opacity-60 transition-opacity">Scroll to read</span>
+                </div>
+                <div class="flex md:justify-end">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"></line><polyline points="18 14 12 20 6 14"></polyline></svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Partners Section -->
+    <section class="border-y-1 border-black py-6 sm:py-8 overflow-hidden bg-white">
+        <div class="px-6 lg:px-8 max-w-[1920px] mx-auto flex flex-col xl:flex-row items-start xl:items-center">
+            <span class="text-[10px] font-bold uppercase tracking-widest xl:mr-32 mb-6 xl:mb-0 whitespace-nowrap">OUR PARTNERS</span>
+            <div class="flex flex-wrap items-center w-full gap-x-12 gap-y-8 opacity-80 grayscale">
+                <span class="font-serif font-bold text-2xl flex items-center tracking-tight"><span class="border-2 border-black px-1.5 text-lg mr-2 leading-none py-0.5">N</span> Notion</span>
+                <span class="font-sans font-semibold text-xl tracking-widest flex items-center"><svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> SIERRA</span>
+                <span class="font-sans font-bold text-3xl flex items-center tracking-tighter"><svg class="w-6 h-6 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L24 12H12v12L0 12h12V0z"/></svg> Framer</span>
+                <span class="font-sans font-semibold text-2xl flex items-center tracking-tight"><span class="w-4 h-4 rounded-full bg-black mr-2"></span> Linear</span>
+                <span class="font-serif tracking-widest text-[15px] font-bold uppercase">ANTHROPIC</span>
+                <span class="font-sans font-bold text-3xl flex items-center tracking-tighter"><span class="bg-green-700 text-white px-2 rounded-sm text-lg mr-1.5">S</span> shopify</span>
+                <span class="font-sans font-bold text-3xl tracking-tighter">stripe</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inflection Point Section -->
+    <section class="py-24 lg:py-32 px-6 lg:px-8 max-w-[1920px] mx-auto">
+        <p class="text-[10px] font-bold uppercase tracking-widest mb-10">AN INFLECTION POINT</p>
+        
+        <h2 class="text-4xl md:text-6xl lg:text-[6rem] leading-[1.05] font-medium tracking-tighter max-w-[80rem] mb-20 lg:mb-32">
+            In 2025, designers were experimenting with AI. In 2026, they're rebuilding around it.
+        </h2>
+
+        <div class="w-full aspect-[21/9] lg:aspect-[2.5/1] bg-[#e5e5e5] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2850&auto=format&fit=crop" alt="Designers collaborating" class="w-full h-full object-cover">
+        </div>
+    </section>
+
+    <!-- Context Text Block -->
+    <section class="pb-24 lg:pb-32 px-6 lg:px-8 max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+        <div class="lg:col-start-6 lg:col-span-7">
+            <h3 class="text-3xl md:text-[2.5rem] lg:text-[3rem] font-medium tracking-tighter mb-10 leading-[1.1] max-w-4xl">
+                AI in Design 2026 aims to capture how AI is transforming tech design across designers' desks and within their teams.
+            </h3>
+            <div class="text-[17px] leading-[1.6] text-black font-medium space-y-6 max-w-2xl">
+                <p>We ran our first AI in Design survey in early 2025 because we consistently heard designers and leaders ask, "How are others doing this, and what's working?" A year later, we're attempting to get a sense for what's changed and share firsthand perspectives.</p>
+                <p>The answers come from over 900 designers at startups, enterprises, and agencies who work across disciplines like product design, brand design, research, and design engineering. We also conducted over 20 interviews with leaders at companies actively navigating this shift.</p>
+                <p>Given how quickly practices are evolving, we'll continue to release new findings throughout the year, including case studies about design at companies like Anthropic, Sierra, Stripe, Notion, Shopify, Linear, and Framer. Sign up for new releases.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Split Section -->
+    <section class="flex flex-col lg:flex-row min-h-[60vh] border-y-1 border-black">
+        <!-- Left Black Area -->
+        <div class="bg-black text-white p-8 sm:p-12 lg:p-16 lg:w-[35%] flex flex-col justify-between border-b-1 lg:border-b-0 lg:border-r-1 border-black">
+            <div class="text-[10rem] font-serif leading-[0.5] mt-10">“</div>
+            <div class="flex items-center space-x-5 mt-32 lg:mt-0">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Katie Dill" class="w-14 h-14 rounded-none object-cover grayscale brightness-75">
+                <span class="font-medium text-lg">Katie Dill</span>
+            </div>
+        </div>
+        <!-- Right Green Area -->
+        <div class="bg-[#D2DFCD] p-8 sm:p-12 lg:p-24 lg:w-[65%] flex items-center">
+            <p class="text-3xl sm:text-5xl lg:text-[4.5rem] font-medium tracking-tighter leading-[1.05] max-w-5xl">
+                AI is sparking a creative renaissance in design. With new instruments, it's our chance to compose wholly new music.
+            </p>
+        </div>
+    </section>
+
+    <!-- Chapter 01: Tools -->
+    <section class="bg-brand-orange text-black border-b-1 border-black">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Left col -->
+            <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-between border-b-1 lg:border-b-0 lg:border-r-1 border-black min-h-[60vh]">
+                <div>
+                    <h2 class="text-[12rem] lg:text-[14rem] leading-[0.8] tracking-tighter font-medium mb-4 -ml-2">01</h2>
+                    <h3 class="text-5xl lg:text-[5rem] font-medium tracking-tighter">Tools</h3>
+                </div>
+                <!-- Abstract block -->
+                <div class="mt-16 aspect-video lg:aspect-[4/3] w-full relative overflow-hidden mix-blend-multiply opacity-90 border-1 border-black/10">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#ffa1b5] via-[#ffb982] to-[#d6bcff]"></div>
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover mix-blend-overlay opacity-50">
+                </div>
+            </div>
+            
+            <!-- Right col -->
+            <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-center">
+                <h4 class="text-4xl lg:text-[3.5rem] font-medium mb-8 tracking-tighter leading-[1.1] max-w-xl">The great toolstack shakeup</h4>
+                <p class="text-[19px] leading-[1.6] mb-16 font-medium text-black max-w-2xl">
+                    AI usage has surged, but the toolstack is still in flux. Designers are using double the number of off-the-shelf tools than they did in 2025, and they're building custom software with AI that matches how they like to work. As everyone rushes to keep up with new releases, reliable output quality remains the largest area for improvement.
+                </p>
+
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6">IN THIS CHAPTER, WE'LL COVER</p>
+                <ul class="chapter-list border-t-1 border-black text-[19px] font-medium w-full">
+                    <li class="border-b-1 border-black py-5 cursor-pointer flex justify-between">The most-used AI design tools</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer flex justify-between">The toolstack that's multiplying</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer flex justify-between">What makes tools stick (+ why many don't)</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer flex justify-between">Designers as builders of their own tools</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer flex justify-between">Tool fatigue and the pressure to keep up</li>
+                </ul>
+
+                <button class="chapter-btn mt-12 bg-black text-white px-8 py-5 flex items-center justify-between w-full font-medium text-lg rounded-none">
+                    Read the Tools Chapter
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 02: Craft -->
+    <section class="bg-brand-purple text-black border-b-1 border-black">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Left col -->
+            <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-between border-b-1 lg:border-b-0 lg:border-r-1 border-black min-h-[60vh]">
+                <div>
+                    <h2 class="text-[12rem] lg:text-[14rem] leading-[0.8] tracking-tighter font-medium mb-4 -ml-2">02</h2>
+                    <h3 class="text-5xl lg:text-[5rem] font-medium tracking-tighter">Craft</h3>
+                </div>
+                <!-- Abstract block -->
+                <div class="mt-16 aspect-video lg:aspect-[4/3] w-full relative overflow-hidden mix-blend-multiply opacity-90 border-1 border-black/10">
+                     <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover contrast-125 saturate-150">
+                </div>
+            </div>
+            
+            <!-- Right col -->
+            <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-center">
+                <h4 class="text-4xl lg:text-[3.5rem] font-medium mb-8 tracking-tighter leading-[1.1] max-w-xl">Craft in the age of infinite output</h4>
+                <p class="text-[19px] leading-[1.6] mb-16 font-medium text-black max-w-2xl">
+                    Everyone is shipping faster. But is speed good for craft? AI has unlocked a new gear for designers: they're ideating faster, prototyping more, and learning to code. Half of respondents have pushed AI-generated code to production. At the same time, we hear concerns about craft atrophy and the loneliness of designing alongside AI instead of teammates.
+                </p>
+
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6">IN THIS CHAPTER, WE'LL COVER</p>
+                <ul class="chapter-list border-t-1 border-black text-[19px] font-medium w-full">
+                    <li class="border-b-1 border-black py-5 cursor-pointer">Coding as a core design skill</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">Prototyping as a default output</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">The tension between speed and quality</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">Preserving judgment and taste</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">The trend toward designers as builders</li>
+                </ul>
+
+                <button class="chapter-btn mt-12 bg-black text-white px-8 py-5 flex items-center justify-between w-full font-medium text-lg rounded-none">
+                    Read the Craft Chapter
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 03: Teams -->
+    <section class="bg-brand-green text-black border-b-1 border-black">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Left col -->
+            <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-between border-b-1 lg:border-b-0 lg:border-r-1 border-black min-h-[60vh]">
+                <div>
+                    <h2 class="text-[12rem] lg:text-[14rem] leading-[0.8] tracking-tighter font-medium mb-4 -ml-2">03</h2>
+                    <h3 class="text-5xl lg:text-[5rem] font-medium tracking-tighter">Teams</h3>
+                </div>
+                <!-- Abstract block -->
+                <div class="mt-16 aspect-video lg:aspect-[4/3] w-full relative overflow-hidden mix-blend-multiply opacity-90 border-1 border-black/10 bg-[#a1a1a1]">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover grayscale opacity-70">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-[#F45B38]/30 to-[#C4A8FF]/30 mix-blend-overlay"></div>
+                </div>
+            </div>
+            
+            <!-- Right col -->
+            <div class="p-8 sm:p-12 lg:p-20 flex flex-col justify-center">
+                <h4 class="text-4xl lg:text-[3.5rem] font-medium mb-8 tracking-tighter leading-[1.1] max-w-xl">Redesigning the design org</h4>
+                <p class="text-[19px] leading-[1.6] mb-16 font-medium text-black max-w-2xl">
+                    AI gave designers new powers. Now organizations need to adapt. Roles are blurring as designers take on PM and engineering work, and vice versa. Hiring managers want AI fluency alongside a high bar for craft, vision, and storytelling. But few companies have updated performance reviews, team structures, or hiring practices to match how the work has changed.
+                </p>
+
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6">IN THIS CHAPTER, WE'LL COVER:</p>
+                <ul class="chapter-list border-t-1 border-black text-[19px] font-medium w-full">
+                    <li class="border-b-1 border-black py-5 cursor-pointer">How companies support AI adoption</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">Blurring of design, PM, and engineering</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">The messy nature of collaboration</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">Changing expectations and company policy</li>
+                    <li class="border-b-1 border-black py-5 cursor-pointer">What hiring managers are now looking for</li>
+                </ul>
+
+                <button class="chapter-btn mt-12 bg-black text-white px-8 py-5 flex items-center justify-between w-full font-medium text-lg rounded-none">
+                    Read the Teams Chapter
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Case Studies Section -->
+    <section class="py-24 lg:py-32 px-6 lg:px-8 max-w-[1920px] mx-auto bg-white">
+        <div class="flex flex-col md:flex-row justify-between items-start mb-16">
+            <div class="mb-8 md:mb-0">
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-8">VIDEO CASE STUDIES</p>
+                <h2 class="text-4xl md:text-[4rem] font-medium tracking-tighter max-w-[45rem] leading-[1.05]">
+                    Seven companies. Seven ways of navigating the same shift.
+                </h2>
+            </div>
+            <div class="flex space-x-3 mt-4 md:mt-0">
+                <button class="w-14 h-14 rounded-full border-1 border-black flex items-center justify-center hover:bg-gray-100 transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>
+                </button>
+                <button class="w-14 h-14 rounded-full border-1 border-black flex items-center justify-center hover:bg-gray-100 transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M19 12l-7 7M19 12l-7-7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Video Grid Top Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Video Item 1 -->
+            <div class="relative group cursor-pointer">
+                <div class="aspect-video bg-[#eaeaea] overflow-hidden relative border-1 border-transparent hover:border-black/20 transition-colors">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute top-4 left-4 text-white text-[11px] font-bold px-2 py-1 bg-black/60 backdrop-blur-sm">Coming soon</div>
+                </div>
+                <div class="mt-5">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1.5">Stripe</p>
+                    <p class="font-medium text-[17px] leading-snug">Scaling craft, writing the book</p>
+                </div>
+            </div>
+            
+            <!-- Video Item 2 -->
+            <div class="relative group cursor-pointer">
+                <div class="aspect-video bg-[#eaeaea] overflow-hidden relative border-1 border-transparent hover:border-black/20 transition-colors">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute top-4 left-4 text-white text-[11px] font-bold px-2 py-1 bg-black/60 backdrop-blur-sm">Coming soon</div>
+                </div>
+                <div class="mt-5">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1.5">Sierra</p>
+                    <p class="font-medium text-[17px] leading-snug">When code is no longer the constraint</p>
+                </div>
+            </div>
+
+            <!-- Video Item 3 -->
+            <div class="relative group cursor-pointer">
+                <div class="aspect-video bg-[#eaeaea] overflow-hidden relative border-1 border-transparent hover:border-black/20 transition-colors">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute top-4 left-4 text-white text-[11px] font-bold px-2 py-1 bg-black/60 backdrop-blur-sm">Coming soon</div>
+                </div>
+                <div class="mt-5">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1.5">Shopify</p>
+                    <p class="font-medium text-[17px] leading-snug">Creating the conditions for adoption</p>
+                </div>
+            </div>
+
+            <!-- Video Item 4 -->
+            <div class="relative group cursor-pointer">
+                <div class="aspect-video bg-[#eaeaea] overflow-hidden relative border-1 border-transparent hover:border-black/20 transition-colors">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute top-4 left-4 text-white text-[11px] font-bold px-2 py-1 bg-black/60 backdrop-blur-sm">Coming soon</div>
+                </div>
+                <div class="mt-5">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1.5">Linear</p>
+                    <p class="font-medium text-[17px] leading-snug">Growing as a designer</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Grid Bottom Row (Large Feature) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 mt-16 lg:mt-24 items-center">
+            <div class="order-2 lg:order-1 lg:pr-16">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-6">COMING SOON</p>
+                <h3 class="text-4xl md:text-[3.25rem] font-medium tracking-tighter mb-8 leading-[1.05]">Inside AI-native design teams</h3>
+                <p class="text-[19px] text-black font-medium leading-[1.6] mb-10 max-w-xl">
+                    Seven video case studies with the design teams at Anthropic, Framer, Linear, Notion, Shopify, Sierra, and Stripe. Go inside the workflows they've rebuilt, the tradeoffs they're navigating, and how they're operating differently as a team.
+                </p>
+                <a href="#" class="inline-block border-b-1 border-black pb-1 font-semibold text-[15px] hover:opacity-60 transition-opacity">Get notified when they're released</a>
+            </div>
+            
+            <div class="relative group cursor-pointer order-1 lg:order-2 w-full">
+                <div class="aspect-[16/9] bg-black overflow-hidden relative border-1 border-black/10">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 transition-transform duration-1000 group-hover:scale-105 filter contrast-125 grayscale-[20%]">
+                    <!-- Play Button Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center z-10">
+                        <div class="w-24 h-16 bg-white/20 backdrop-blur-md flex items-center justify-center transition-transform group-hover:scale-110 border-1 border-white/30">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-6 left-6 text-white z-10">
+                        <p class="text-[11px] font-bold uppercase tracking-widest opacity-90">Anthropic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Signup Section -->
+    <footer class="bg-black text-white pt-32 pb-6 overflow-hidden">
+        <div class="max-w-2xl mx-auto px-6 text-center mb-32">
+            <h3 class="text-3xl md:text-[2.5rem] font-medium tracking-tighter mb-6 leading-tight">Get new case studies & report markdown</h3>
+            <p class="text-[#a1a1a1] font-medium text-[19px] mb-10 mx-auto leading-[1.6]">Download the markdown version of the report, ready to drop into any tool. Get notified as new case studies go live.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-0 max-w-lg mx-auto">
+                <input type="email" placeholder="Your email" class="flex-1 bg-white text-black px-6 py-4 outline-none rounded-none placeholder-gray-500 text-[15px] font-medium" required>
+                <button type="submit" class="bg-brand-orange text-white px-10 py-4 font-semibold hover:bg-[#d64b2a] transition-colors text-[15px] rounded-none border-none">Submit</button>
+            </form>
+            <p class="text-[10px] text-gray-500 mt-6 leading-relaxed max-w-lg mx-auto uppercase tracking-wider font-semibold">
+                By subscribing, you agree to receive communications from Designer Fund and Foundation Capital in accordance with their privacy policies.
+            </p>
+        </div>
+
+        <div class="border-t-1 border-gray-800 pt-16 px-6 lg:px-8 max-w-[1920px] mx-auto">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-12">METHODOLOGY</p>
+            
+            <!-- Stats Row -->
+            <div class="flex flex-col md:flex-row gap-12 lg:gap-24 mb-24 lg:mb-32">
+                <div class="md:w-32 flex items-end pb-4">
+                    <p class="text-gray-400 uppercase text-[10px] font-bold tracking-widest leading-relaxed">This report<br>draws from</p>
+                </div>
+                <div>
+                    <p class="text-7xl md:text-[8.5rem] font-medium tracking-tighter leading-none mb-4 -ml-1">195</p>
+                    <p class="text-gray-400 uppercase text-[10px] font-bold tracking-widest">Survey responses</p>
+                </div>
+                <div>
+                    <p class="text-7xl md:text-[8.5rem] font-medium tracking-tighter leading-none mb-4 -ml-1">5+</p>
+                    <p class="text-gray-400 uppercase text-[10px] font-bold tracking-widest">Interviews</p>
+                </div>
+                <div>
+                    <p class="text-7xl md:text-[8.5rem] font-medium tracking-tighter leading-none mb-4 -ml-1">11+</p>
+                    <p class="text-gray-400 uppercase text-[10px] font-bold tracking-widest">Public sources</p>
+                </div>
+            </div>
+
+            <!-- Typography & Links Grid -->
+            <div class="w-full relative">
+                <!-- Ai in Design full width -->
+                <h1 class="text-[18vw] sm:text-[19vw] leading-[0.8] tracking-tighter font-medium select-none text-white whitespace-nowrap mb-12 lg:mb-20" style="letter-spacing: -0.06em;">
+                    Ai in Design<sup class="text-[4vw] top-[-1.5em] ml-2 font-medium text-gray-400">™</sup>
+                </h1>
+
+                <!-- Links and 2026 row -->
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end pb-12 lg:pb-16 w-full relative">
+                    
+                    <!-- Left aligned links -->
+                    <div class="grid grid-cols-2 gap-12 lg:gap-32 text-[15px] font-medium w-full lg:w-auto z-10 mb-8 lg:mb-0 lg:pb-4">
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-bold mb-6 uppercase tracking-widest">Report</p>
+                            <ul class="space-y-4">
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Read the Report</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">About</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Case Studies</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-bold mb-6 uppercase tracking-widest">Report Partner</p>
+                            <ul class="grid grid-cols-2 gap-x-12 gap-y-4">
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Anthropic</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Notion</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Framer</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Shopify</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Stripe</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Linear</a></li>
+                                <li><a href="#" class="hover:text-gray-400 transition-colors">Sierra</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 2026 aligned to bottom right -->
+                    <div class="lg:absolute lg:bottom-0 lg:right-0 w-full lg:w-auto text-right">
+                        <h2 class="text-[25vw] lg:text-[19vw] leading-[0.75] tracking-tighter font-medium text-white -mb-2 lg:-mb-4 -mr-1 lg:-mr-3">
+                            2026
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom border/copyright -->
+            <div class="flex flex-col sm:flex-row justify-between items-center text-[12px] text-gray-500 border-t-1 border-gray-800 pt-6 pb-2 font-medium">
+                <p>© 2026 Designer Fund, Foundation Capital. All rights reserved.</p>
+                <div class="flex items-center space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">#Designer Fund</a>
+                    <a href="#" class="hover:text-white transition-colors flex items-center">
+                        Made in Framer by <span class="text-white ml-2 tracking-widest font-bold">✦✦ hrilihello</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
