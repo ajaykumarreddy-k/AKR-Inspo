@@ -3,9 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <title>AKR Studio</title>
   </head>
-  <body>
+  <body style="background: white">
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        document.body.innerHTML = 
+          '<div style="padding: 2rem; background: #111; color: #ff5555; font-family: monospace; min-height: 100vh;">' +
+          '<h1 style="color: white; margin-bottom: 1rem;">Fatal Error</h1>' +
+          '<p><strong>Message:</strong> ' + message + '</p>' +
+          '<p><strong>Source:</strong> ' + source + ':' + lineno + ':' + colno + '</p>' +
+          '<pre style="margin-top: 1rem; padding: 1rem; background: #000; overflow: auto;">' + (error && error.stack ? error.stack : error) + '</pre>' +
+          '</div>';
+        return false;
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        document.body.innerHTML = 
+          '<div style="padding: 2rem; background: #111; color: #ffaa00; font-family: monospace; min-height: 100vh;">' +
+          '<h1 style="color: white; margin-bottom: 1rem;">Unhandled Promise Rejection</h1>' +
+          '<pre style="margin-top: 1rem; padding: 1rem; background: #000; overflow: auto;">' + (event.reason && (event.reason.stack || event.reason)) + '</pre>' +
+          '</div>';
+      });
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

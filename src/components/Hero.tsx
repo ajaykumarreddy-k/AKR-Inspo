@@ -90,6 +90,18 @@ export function Hero({ onNavigate }: { onNavigate: (path: string) => void }) {
                 Scroll <ArrowUpRight className="w-4 h-4"/>
               </a>
             </div>
+            <div className="flex flex-col w-[45%] sm:w-[160px] lg:w-[150px]">
+              <a 
+                href="/projects" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate("/projects");
+                }}
+                className="border-t border-black/30 pt-3 pb-4 flex justify-between items-center hover:opacity-60 transition-opacity mix-blend-multiply"
+              >
+                Component Projects <ArrowUpRight className="w-4 h-4"/>
+              </a>
+            </div>
           </div>
         </div>
 

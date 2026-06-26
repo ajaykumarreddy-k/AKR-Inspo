@@ -15,13 +15,13 @@
 
 const pngModules = import.meta.glob(
   '/Components-maintiles/**/*.png',
-  { eager: true, query: '?url', import: 'default' }
-) as Record<string, string>;
+  { eager: true, query: '?url' }
+) as Record<string, any>;
 
 const htmlModules = import.meta.glob(
   '/Components-maintiles/**/*.html',
-  { eager: true, query: '?raw', import: 'default' }
-) as Record<string, string>;
+  { eager: true, query: '?raw' }
+) as Record<string, any>;
 
 // ─── Category display names ─────────────────────────────────────────────────
 // Map folder slug → human-readable label.
@@ -154,7 +154,9 @@ export interface ComponentCategory {
 const _components: ComponentEntry[] = (() => {
   // Build a stem → { url, categorySlug } map from PNGs
   const pngByStem: Record<string, { url: string; cat: string }> = {};
-  for (const [path, url] of Object.entries(pngModules)) {
+  for (const [path, mod] of Object.entries(pngModules)) {
+    const url = typeof mod === 'string' ? mod : mod?.default;
+    if (!url) continue;
     const s = stem(path);
     // If there's a collision, prefer the one that's deeper (in a named subfolder)
     if (!pngByStem[s] || path.split('/').length > pngByStem[s].url.split('/').length) {
@@ -164,7 +166,9 @@ const _components: ComponentEntry[] = (() => {
 
   const entries: ComponentEntry[] = [];
 
-  for (const [path, rawHtml] of Object.entries(htmlModules)) {
+  for (const [path, mod] of Object.entries(htmlModules)) {
+    const rawHtml = typeof mod === 'string' ? mod : mod?.default;
+    if (!rawHtml) continue;
     const s = stem(path);
     const png = pngByStem[s];
     if (!png) continue; // skip HTML files with no matching PNG

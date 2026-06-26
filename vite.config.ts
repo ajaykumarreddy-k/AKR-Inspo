@@ -124,10 +124,54 @@ try {
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    optimizeDeps: {
+      force: true
+    },
+    plugins: [
+      react(), 
+      tailwindcss(),
+      {
+        name: 'universal-alias',
+        enforce: 'pre',
+        async resolveId(source, importer, options) {
+          if (source.startsWith('@/')) {
+            let baseDir = path.resolve(__dirname, 'src'); // Default for root project
+            
+            if (importer) {
+              const relativeImporter = path.relative(__dirname, importer);
+              const topLevelFolder = relativeImporter.split(path.sep)[0];
+              if (topLevelFolder && topLevelFolder !== 'src' && !topLevelFolder.startsWith('..')) {
+                const subProjectSrc = path.resolve(__dirname, topLevelFolder, 'src');
+                if (fs.existsSync(subProjectSrc)) {
+                  baseDir = subProjectSrc;
+                }
+              }
+            }
+            
+            const resolvedPath = path.resolve(baseDir, source.slice(2));
+            
+            // Try Vite's internal resolution first
+            const resolution = await this.resolve(resolvedPath, importer, { skipSelf: true, ...options });
+            if (resolution) return resolution;
+
+            // Manual fallback for extensions
+            const exts = ['.tsx', '.ts', '.jsx', '.js', '.json', '.css'];
+            for (const ext of exts) {
+               if (fs.existsSync(resolvedPath + ext)) return resolvedPath + ext;
+            }
+            if (fs.existsSync(resolvedPath + '/index.tsx')) return resolvedPath + '/index.tsx';
+            if (fs.existsSync(resolvedPath + '/index.ts')) return resolvedPath + '/index.ts';
+            if (fs.existsSync(resolvedPath)) return resolvedPath;
+          }
+          return null;
+        }
+      }
+    ],
     resolve: {
+      dedupe: ['react', 'react-dom'],
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        'react': path.resolve(__dirname, 'node_modules/react'),
+        'react-dom': path.resolve(__dirname, 'node_modules/react-dom')
       },
     },
     server: {

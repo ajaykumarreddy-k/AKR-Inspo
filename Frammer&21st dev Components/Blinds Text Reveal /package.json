@@ -1,0 +1,23 @@
+{
+  "name": "blinds-text-reveal",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --hot ./dev.ts"
+  },
+  "dependencies": {
+    "framer": "^3.0.4",
+    "framer-motion": "^12.42.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

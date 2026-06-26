@@ -10,6 +10,7 @@ import { Footer } from "./components/Footer";
 import { LinksPage } from "./components/LinksPage";
 import { InspirationPage } from "./components/InspirationPage";
 import { ResourcesPage } from "./components/ResourcesPage";
+import { ProjectsDashboard } from "./components/ProjectsDashboard";
 import { useFonts } from "./hooks/useFonts";
 
 const ScrollAnimationsPage = lazy(() => import("./scroll-animations/ScrollAnimationsPage"));
@@ -54,6 +55,7 @@ export default function App() {
   const isLinksPage = currentPath.endsWith("/links") || currentPath === "links";
   const isInspirationPage = currentPath.endsWith("/inspiration") || currentPath === "inspiration";
   const isResourcesPage = currentPath.endsWith("/resources") || currentPath === "resources";
+  const isProjectsPage = currentPath.endsWith("/projects") || currentPath === "projects";
   const isScrollAnimationsPage = currentPath.startsWith("/scroll-animations");
 
   return (
@@ -70,6 +72,8 @@ export default function App() {
             <InspirationPage onNavigate={navigate} />
           ) : isResourcesPage ? (
             <ResourcesPage onNavigate={navigate} />
+          ) : isProjectsPage ? (
+            <ProjectsDashboard onNavigate={navigate} />
           ) : (
             <>
               <Hero onNavigate={navigate} />
@@ -79,7 +83,7 @@ export default function App() {
             </>
           )}
         </main>
-        {!isLinksPage && !isInspirationPage && !isResourcesPage && !isScrollAnimationsPage && <Footer onNavigate={navigate} />}
+        {!isLinksPage && !isInspirationPage && !isResourcesPage && !isProjectsPage && !isScrollAnimationsPage && <Footer onNavigate={navigate} />}
       </div>
     </div>
   );
