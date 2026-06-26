@@ -123,7 +123,29 @@ try {
 }
 
 export default defineConfig(() => {
+  const inputs: Record<string, string> = {
+    main: path.resolve(__dirname, 'index.html')
+  };
+  const projectsJsonPath = path.resolve(__dirname, 'src/data/projects.json');
+  if (fs.existsSync(projectsJsonPath)) {
+    try {
+      const projects = JSON.parse(fs.readFileSync(projectsJsonPath, 'utf-8'));
+      projects.forEach((p: any) => {
+        if (p.id && p.folder) {
+          inputs[p.id] = path.resolve(__dirname, p.folder, 'index.html');
+        }
+      });
+    } catch (e) {
+      console.error('Failed to parse projects.json', e);
+    }
+  }
+
   return {
+    build: {
+      rollupOptions: {
+        input: inputs
+      }
+    },
     optimizeDeps: {
       force: true
     },
