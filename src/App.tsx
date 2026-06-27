@@ -77,9 +77,7 @@ export default function App() {
           ) : (
             <>
               <Hero onNavigate={navigate} />
-              <div className="w-full max-w-[1440px] mx-auto px-5 md:px-16 pt-0 pb-32 z-10">
-                <Gallery />
-              </div>
+              <ProjectsDashboard onNavigate={navigate} isHome={true} />
             </>
           )}
         </main>

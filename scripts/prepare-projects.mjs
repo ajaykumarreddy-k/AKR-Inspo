@@ -76,6 +76,41 @@ function findProjects(dir, depth = 0) {
       } catch(e){}
     }
 
+    // 3. Find a thumbnail image
+    let thumbnail = null;
+    const imageExtensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+    try {
+      const projEntries = readdirSync(dir, { withFileTypes: true });
+      for (const entry of projEntries) {
+        if (entry.isFile()) {
+          const ext = entry.name.toLowerCase().split('.').pop();
+          if (imageExtensions.includes(ext)) {
+            thumbnail = `${dir}/${entry.name}`.replace(/\\/g, '/');
+            break;
+          }
+        }
+      }
+      if (!thumbnail) {
+        // Look one level deep
+        for (const entry of projEntries) {
+          if (entry.isDirectory() && entry.name !== 'node_modules' && entry.name !== '.git') {
+            const subDir = join(dir, entry.name);
+            const subEntries = readdirSync(subDir, { withFileTypes: true });
+            for (const sub of subEntries) {
+              if (sub.isFile()) {
+                const ext = sub.name.toLowerCase().split('.').pop();
+                if (imageExtensions.includes(ext)) {
+                  thumbnail = `${dir}/${entry.name}/${sub.name}`.replace(/\\/g, '/');
+                  break;
+                }
+              }
+            }
+            if (thumbnail) break;
+          }
+        }
+      }
+    } catch (e) {}
+
     // Convert folder path to a URL path
     const urlPath = `/${dir}/index.html`.replace(/\\/g, '/');
     
@@ -83,7 +118,8 @@ function findProjects(dir, depth = 0) {
       id: dir.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase(),
       name: name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
       path: urlPath,
-      folder: dir
+      folder: dir,
+      thumbnail: thumbnail
     });
     
     return; // Don't scan deeper inside this project
