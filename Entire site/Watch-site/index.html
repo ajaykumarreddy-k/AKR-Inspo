@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singer Reimagined - Collector</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cormorant Garamond for elegant serif, Montserrat for modern sans, Pinyon Script for the logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            copper: '#E34E35', // Exact punchy orange from the screenshot
+                            dark: '#111111',
+                            gray: '#f7f7f7',
+                            text: '#000000',
+                            muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Pinyon Script"', 'cursive'],
+                    },
+                    letterSpacing: {
+                        'widest-lg': '0.25em',
+                        'widest-xl': '0.3em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            color: theme('colors.brand.text');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        /* Hide scrollbar for carousels */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered Delays for Grid items */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        
+        /* Custom image zoom hover effect for products */
+        .product-img-wrapper {
+            overflow: hidden;
+        }
+        .product-img-wrapper img {
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .group:hover .product-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        /* Parallax subtle effect on full width images */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-brand-text">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-500 ease-in-out border-b border-transparent">
+        <div class="max-w-[1700px] mx-auto px-6 lg:px-12 h-[100px] flex items-center justify-between">
+            
+            <!-- Logo (Left) -->
+            <div class="flex-shrink-0 w-48">
+                <a href="#" class="font-script text-[48px] leading-none text-black block mt-2">Singer</a>
+            </div>
+
+            <!-- Main Navigation (Center) -->
+            <nav class="hidden lg:flex absolute left-1/2 -translate-x-1/2 space-x-12 mt-1">
+                <a href="#" class="text-[11px] font-semibold uppercase tracking-[0.25em] text-black hover:text-brand-copper transition-colors">Collections</a>
+                <a href="#" class="text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-muted hover:text-black transition-colors">Lifestyle</a>
+                <a href="#" class="text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-muted hover:text-black transition-colors">Boutique</a>
+                <a href="#" class="text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-muted hover:text-black transition-colors">Journal</a>
+            </nav>
+
+            <!-- Right Icons (Refined thin strokes) -->
+            <div class="flex items-center space-x-7 w-48 justify-end text-black">
+                <button class="hover:text-brand-copper transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+                <button class="hover:text-brand-copper transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </button>
+                <button class="hover:text-brand-copper transition-colors relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="lg:hidden flex items-center">
+                 <button class="text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-[100px]">
+        <section class="w-full bg-white mb-16 reveal">
+            <!-- Title and Shop Button Row -->
+            <div class="max-w-[1700px] mx-auto px-6 lg:px-12 pt-16 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <p class="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-copper mb-5">The New</p>
+                    <h1 class="font-serif text-[48px] md:text-[64px] lg:text-[76px] font-light text-black tracking-[0.02em] leading-none">
+                        DUALTRAC - Collector
+                    </h1>
+                </div>
+                <div class="mb-3">
+                    <a href="#" class="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-[0.25em] px-10 py-4 rounded-full hover:bg-brand-copper transition-colors duration-300">
+                        Shop
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="max-w-[1700px] mx-auto px-6 lg:px-12">
+                <div class="w-full overflow-hidden bg-[#e0e8ef]">
+                    <img src="https://images.unsplash.com/photo-1623998021446-45cd9b269056?auto=format&fit=crop&q=80&w=2560&h=800" alt="Dualtrac Watches" class="w-full object-cover h-[500px] md:h-[650px] lg:h-[750px] hover:scale-[1.02] transition-transform duration-[2s]">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 flex flex-col items-center justify-center text-center max-w-[1000px] mx-auto">
+            <!-- Custom SR Monogram Emblem -->
+            <div class="mb-8 text-brand-copper reveal">
+                <svg viewBox="0 0 100 100" class="w-[44px] h-[44px] mx-auto" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <circle cx="50" cy="50" r="45" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.6"/>
+                    <path d="M 35 40 C 35 20, 65 20, 65 40 C 65 60, 35 60, 35 80" stroke-linecap="round"/>
+                    <path d="M 45 80 L 45 40 C 65 35, 75 50, 55 60 L 65 80" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3 class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand-copper mb-10 reveal delay-100">The Brand</h3>
+            <p class="font-serif text-[36px] md:text-[48px] lg:text-[56px] font-light leading-[1.2] text-black mb-14 reveal delay-200">
+                Born in Design. Fuelled By Vision. We<br class="hidden md:block"/>
+                Re-imagined Icons with Soul, Beauty and<br class="hidden md:block"/>
+                Precision.
+            </p>
+            <div class="reveal delay-300">
+                <a href="#" class="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-[0.25em] px-10 py-4 rounded-full hover:bg-brand-copper transition-colors duration-300">
+                    Discover
+                </a>
+            </div>
+        </section>
+
+        <section class="py-20 border-t border-gray-100 relative">
+            <div class="max-w-[1700px] mx-auto px-6 lg:px-12">
+                <!-- Section Header -->
+                <div class="flex justify-between items-end mb-16 reveal">
+                    <h2 class="text-[32px] md:text-[40px] font-serif text-black uppercase tracking-[0.05em] font-light">COLLECTIONS</h2>
+                    <!-- Navigation Arrows -->
+                    <div class="flex space-x-3">
+                        <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Carousel -->
+                <div class="flex overflow-x-auto no-scrollbar gap-8 pb-8 snap-x snap-mandatory">
+                    <!-- Product 1 -->
+                    <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-100">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&q=80&w=600" alt="Track1" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">Track1</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 60,000</span>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-200">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1587836374828-cbd27f42c139?auto=format&fit=crop&q=80&w=600" alt="Flytrack" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">Flytrack</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 26,500</span>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-300">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=80&w=600" alt="1969" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">1969</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 50,000</span>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-400">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=600" alt="Dualtrac" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">Dualtrac</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 45,000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-20 mb-8 reveal">
+                    <a href="#" class="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-black border-b border-black pb-1.5 hover:text-brand-copper hover:border-brand-copper transition-colors">VIEW ALL</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full reveal">
+            <!-- Watchmaker full image -->
+            <div class="w-full h-[500px] md:h-[750px] bg-[url('https://images.unsplash.com/photo-1580436541340-a17056627581?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center parallax-bg"></div>
+        </section>
+
+        <!-- Latest Models Section -->
+        <section class="py-24 border-b border-gray-100">
+            <div class="max-w-[1700px] mx-auto px-6 lg:px-12">
+                <div class="flex justify-between items-end mb-16 reveal">
+                    <h2 class="text-[32px] md:text-[40px] font-serif text-black font-light tracking-[0.02em]">Latest Models</h2>
+                    <div class="flex space-x-3">
+                        <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-black hover:border-black transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex overflow-x-auto no-scrollbar gap-8 pb-8 snap-x snap-mandatory">
+                    <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-100">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=80&w=600" alt="Flytrack Blue" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">Flytrack Blue</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 26,500</span>
+                        </div>
+                    </div>
+                    <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-200">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&q=80&w=600" alt="Track1 Black" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">Track1 Black</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 60,000</span>
+                        </div>
+                    </div>
+                     <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-300">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?auto=format&fit=crop&q=80&w=600" alt="1969 Bronze" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">1969 Bronze</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 50,000</span>
+                        </div>
+                    </div>
+                     <div class="flex-none w-[280px] md:w-[380px] snap-start group cursor-pointer reveal delay-400">
+                        <div class="bg-[#f7f7f7] aspect-[4/5] product-img-wrapper flex items-center justify-center mb-6 relative p-12">
+                            <img src="https://images.unsplash.com/photo-1587836374828-cbd27f42c139?auto=format&fit=crop&q=80&w=600" alt="Dualtrac Steel" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="px-2 text-left">
+                            <h4 class="font-serif text-[26px] text-black font-light mb-1">Dualtrac Steel</h4>
+                            <span class="text-[12px] text-brand-muted font-medium tracking-wider">CHF 45,000</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="text-center mt-20 reveal">
+                    <a href="#" class="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-black border-b border-black pb-1.5 hover:text-brand-copper hover:border-brand-copper transition-colors">VIEW ALL</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blue Dial Image -->
+        <section class="w-full bg-[#1c303f] reveal">
+            <div class="w-full h-[500px] md:h-[850px] bg-[url('https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center parallax-bg"></div>
+        </section>
+
+        <!-- The Movement -->
+        <section class="py-32 px-6 flex flex-col items-center justify-center text-center max-w-[1000px] mx-auto">
+            <div class="mb-8 text-brand-copper reveal">
+                <svg viewBox="0 0 100 100" class="w-[44px] h-[44px] mx-auto" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <circle cx="50" cy="50" r="45" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.6"/>
+                    <path d="M 35 40 C 35 20, 65 20, 65 40 C 65 60, 35 60, 35 80" stroke-linecap="round"/>
+                    <path d="M 45 80 L 45 40 C 65 35, 75 50, 55 60 L 65 80" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3 class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand-copper mb-10 reveal delay-100">The Movement</h3>
+            <p class="font-serif text-[36px] md:text-[48px] lg:text-[56px] font-light leading-[1.2] text-black mb-14 reveal delay-200">
+                Behind every label lies a labour of<br class="hidden md:block"/>
+                love. For design, for engineering, for the<br class="hidden md:block"/>
+                quiet discipline of creating something<br class="hidden md:block"/>
+                enduring.
+            </p>
+            <div class="reveal delay-300">
+                <a href="#" class="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-[0.25em] px-10 py-4 rounded-full hover:bg-brand-copper transition-colors duration-300">
+                    Discover
+                </a>
+            </div>
+        </section>
+
+        <!-- Black Dial Image -->
+        <section class="w-full bg-[#0a0a0a] reveal">
+            <div class="w-full h-[500px] md:h-[850px] bg-[url('https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&q=80&w=2560')] bg-cover bg-center opacity-90 parallax-bg"></div>
+        </section>
+
+        <!-- The Collection -->
+        <section class="py-32 px-6 flex flex-col items-center justify-center text-center max-w-[1000px] mx-auto">
+             <div class="mb-8 text-brand-copper reveal">
+                <svg viewBox="0 0 100 100" class="w-[44px] h-[44px] mx-auto" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <circle cx="50" cy="50" r="45" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.6"/>
+                    <path d="M 35 40 C 35 20, 65 20, 65 40 C 65 60, 35 60, 35 80" stroke-linecap="round"/>
+                    <path d="M 45 80 L 45 40 C 65 35, 75 50, 55 60 L 65 80" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3 class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand-copper mb-10 reveal delay-100">The Collection</h3>
+            <p class="font-serif text-[36px] md:text-[48px] lg:text-[56px] font-light leading-[1.2] text-black mb-14 reveal delay-200">
+                The core model that reinvented the<br class="hidden md:block"/>
+                chronograph.
+            </p>
+            <div class="reveal delay-300">
+                <a href="#" class="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-[0.25em] px-10 py-4 rounded-full hover:bg-brand-copper transition-colors duration-300">
+                    Explore
+                </a>
+            </div>
+        </section>
+
+        <section class="py-24 pb-40">
+            <div class="max-w-[1500px] mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row items-center gap-16 lg:gap-32">
+                    <div class="w-full md:w-1/2 reveal">
+                        <!-- Box Image - strictly proportioned -->
+                        <div class="bg-gray-100 overflow-hidden relative w-[85%] lg:w-[75%] aspect-square">
+                            <img src="https://images.unsplash.com/photo-1549970997-c8cb24b4249a?auto=format&fit=crop&q=80&w=1000" alt="Watch in box" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 mt-12 md:mt-0 reveal delay-200">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.3em] text-brand-copper mb-6">Journal</h4>
+                        <!-- All caps serif for the title -->
+                        <h2 class="font-serif text-[36px] md:text-[48px] text-black mb-8 leading-[1.1] font-light tracking-wide uppercase">
+                            INNOVATION AND BEAUTY<br>IN WATCHMAKING
+                        </h2>
+                        <p class="text-gray-500 font-light text-[15px] leading-[1.8] mb-12 max-w-md">
+                            Discover the story behind our latest caliber. A journey of passion, precision, and the relentless pursuit of redefining the mechanical chronograph.
+                        </p>
+                        <a href="#" class="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-[0.25em] px-10 py-4 rounded-full hover:bg-brand-copper transition-colors duration-300">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Top Image -->
+        <section class="w-full reveal">
+            <img src="https://images.unsplash.com/photo-1533036683501-1e9036f01a35?auto=format&fit=crop&q=80&w=2560" alt="Watchmaker detailing" class="w-full h-[500px] md:h-[750px] object-cover">
+        </section>
+    </main>
+
+    <footer class="bg-brand-dark text-white pt-32 pb-12 px-6 lg:px-12">
+        <div class="max-w-[1700px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24">
+                
+                <div class="md:col-span-3 flex items-start">
+                    <a href="#" class="font-script text-[64px] text-white block leading-none mt-[-15px]">Singer</a>
+                </div>
+                
+                <div class="md:col-span-6 flex flex-col items-start md:items-center text-left md:text-center">
+                    <p class="text-gray-400 font-light text-[15px] mb-10 max-w-sm leading-relaxed">
+                        Join the Collector's community. Receive invitations, latest news and releases.
+                    </p>
+                    <form class="w-full max-w-md flex flex-col sm:flex-row gap-6 items-end justify-center">
+                        <input type="email" placeholder="Email address" class="flex-grow bg-transparent border-b border-gray-700 pb-4 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors text-sm rounded-none tracking-wide">
+                        <button type="submit" class="bg-white text-black text-[10px] font-bold uppercase tracking-[0.25em] px-10 py-4 rounded-full hover:bg-brand-copper hover:text-white transition-colors duration-300 whitespace-nowrap">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="md:col-span-3 flex flex-col items-start md:items-end space-y-4 text-[13px] font-light text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Contact</a>
+                    <a href="#" class="hover:text-white transition-colors">FAQ</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms & Conditions</a>
+                    <a href="#" class="hover:text-white transition-colors">Shipping & Returns</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-500 uppercase tracking-[0.2em]">
+                <div class="mb-4 md:mb-0">
+                    &copy; 2024 Singer Reimagined. All rights reserved.
+                </div>
+                <div class="flex space-x-12">
+                    <a href="#" class="hover:text-white transition-colors flex items-center gap-2">
+                        Instagram
+                    </a>
+                    <a href="#" class="hover:text-white transition-colors flex items-center gap-2">
+                        Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header shadow on scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md', 'border-gray-100');
+                header.classList.remove('border-transparent');
+            } else {
+                header.classList.remove('shadow-md', 'border-gray-100');
+                header.classList.add('border-transparent');
+            }
+        });
+
+        // Intersection Observer for Scroll Animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: Unobserve after revealing if you only want it to happen once
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15, // Trigger when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>

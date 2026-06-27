@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Genre Studio - Clone</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Sans Font -->
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+
+    <!-- Custom Configuration and Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Google Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#111111',
+                            gray: '#f4f4f4',
+                            text: '#4a4a4a',
+                            border: '#e5e5e5'
+                        }
+                    },
+                    spacing: {
+                        '128': '32rem',
+                        '144': '36rem',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Complex Top Gradient (Sky transition matching the image precisely) */
+        .hero-gradient {
+            background: linear-gradient(
+                180deg, 
+                #101826 0%,     /* Very Dark Slate Navy */
+                #4A7097 22%,    /* Muted Blue */
+                #94B5D0 42%,    /* Light Steel Blue */
+                #F3E9C7 70%,    /* Pale Yellow/Cream */
+                #FFFFFF 100%    /* Pure White */
+            );
+        }
+
+        /* Complex Bottom Gradient (Earth transition matching the image precisely) */
+        .footer-gradient {
+            background: linear-gradient(
+                180deg, 
+                #FFFFFF 0%,     /* White */
+                #FCE7C5 20%,    /* Pale Orange/Peach */
+                #E8874E 45%,    /* Burnt Orange */
+                #823214 65%,    /* Dark Brown/Rust */
+                #23110A 85%,    /* Very Dark Brown */
+                #130906 100%    /* Near Black */
+            );
+        }
+
+        /* Newsletter Gradient */
+        .newsletter-gradient {
+            background: linear-gradient(90deg, #F9FAFB 0%, #FFF5EF 50%, #FFE5CD 100%);
+        }
+
+        /* Smooth Image hover zoom */
+        .img-hover-zoom {
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-container:hover .img-hover-zoom {
+            transform: scale(1.04);
+        }
+
+        /* Sticky alignment for project text */
+        .sticky-col {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 8rem;
+        }
+
+        /* Hide scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="font-sans leading-relaxed selection:bg-black selection:text-white">
+
+    <nav class="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-8 md:px-12 text-white/90 text-sm font-medium">
+        <div class="flex-1">
+            <a href="#" class="tracking-widest font-semibold hover:text-white transition-colors duration-300">New Genre ®</a>
+        </div>
+        <div class="hidden md:flex flex-1 justify-center space-x-10 text-[13px] font-medium tracking-wide">
+            <a href="#" class="hover:text-white transition-colors duration-300">Work</a>
+            <a href="#" class="hover:text-white transition-colors duration-300">Services</a>
+            <a href="#" class="hover:text-white transition-colors duration-300">Studio</a>
+            <a href="#" class="hover:text-white transition-colors duration-300">Journal</a>
+            <a href="#" class="hover:text-white transition-colors duration-300">Contact</a>
+        </div>
+        <div class="flex-1 flex justify-end">
+            <a href="#" class="border border-white/20 rounded-full px-5 py-2 hover:bg-white hover:text-black transition-all duration-300 text-[13px]">Start a project</a>
+        </div>
+    </nav>
+
+    <header class="hero-gradient w-full relative min-h-[90vh] md:min-h-[110vh] px-6 md:px-12 flex flex-col justify-center pb-32">
+        <div class="max-w-[90rem] mx-auto w-full mt-24">
+            <h1 class="text-white text-6xl md:text-8xl lg:text-[11rem] font-light tracking-tighter leading-none mb-16">
+                New Genre <sup class="text-3xl md:text-5xl lg:text-7xl -top-12 md:-top-24 relative font-light">®</sup>
+            </h1>
+            
+            <button class="flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 text-white hover:bg-white hover:text-black transition-all duration-300 text-sm font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <span>Play reel</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-[90rem] mx-auto px-6 md:px-12 pt-12 pb-24">
+        
+        <!-- Filter Section -->
+        <section class="mb-32">
+            <h2 class="text-2xl md:text-3xl mb-10 max-w-xl font-medium tracking-tight">We partner with ambitious companies to shape the future.</h2>
+            
+            <div class="flex flex-wrap gap-2.5">
+                <button class="px-5 py-2.5 rounded-full bg-black text-white text-[13px] font-medium transition-colors">All work</button>
+                <button class="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-gray-400 text-[13px] font-medium transition-colors shadow-sm">Design</button>
+                <button class="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-gray-400 text-[13px] font-medium transition-colors shadow-sm">Strategy</button>
+                <button class="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-gray-400 text-[13px] font-medium transition-colors shadow-sm">Content</button>
+                <button class="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-gray-400 text-[13px] font-medium transition-colors shadow-sm">Digital</button>
+                <button class="px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-700 hover:border-gray-400 text-[13px] font-medium transition-colors shadow-sm">Physical</button>
+            </div>
+        </section>
+
+        <!-- Selected Work -->
+        <section class="mb-40">
+            <div class="flex justify-between items-baseline mb-16 border-b border-gray-200 pb-5">
+                <h3 class="text-[22px] font-medium tracking-tight">Selected work <span class="text-gray-400 font-normal ml-3 text-lg">24 projects</span></h3>
+                <a href="#" class="text-sm border-b border-black pb-0.5 hover:text-gray-500 hover:border-gray-500 transition-colors font-medium">View all</a>
+            </div>
+
+            <div class="space-y-32 md:space-y-48">
+                <!-- Project 1: Omura -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16 items-start">
+                    <div class="md:col-span-4 lg:col-span-3 flex flex-col justify-start sticky-col">
+                        <h4 class="text-2xl font-medium mb-3">Omura</h4>
+                        <p class="text-gray-500 text-[15px] mb-8 max-w-[280px] leading-relaxed">Elevating the experience of pure, precise flower consumption.</p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Strategy</span>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Identity</span>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Digital</span>
+                        </div>
+                        <a href="#" class="text-[13px] font-medium flex items-center group w-max border-b border-black pb-0.5">
+                            Read case study 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                    <div class="md:col-span-8 lg:col-span-9">
+                        <div class="img-container rounded-2xl overflow-hidden bg-[#121212] aspect-[16/10] w-full shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=1600" alt="Omura Forest" class="w-full h-full object-cover img-hover-zoom grayscale contrast-125">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Flytamo -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16 items-start">
+                    <div class="md:col-span-4 lg:col-span-3 flex flex-col justify-start sticky-col">
+                        <h4 class="text-2xl font-medium mb-3">Flytamo</h4>
+                        <p class="text-gray-500 text-[15px] mb-8 max-w-[280px] leading-relaxed">A modern operating system for the future of aviation.</p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Identity</span>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Digital</span>
+                        </div>
+                        <a href="#" class="text-[13px] font-medium flex items-center group w-max border-b border-black pb-0.5">
+                            Read case study 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                    <div class="md:col-span-8 lg:col-span-9">
+                        <div class="img-container rounded-2xl overflow-hidden bg-[#0A3320] aspect-[16/10] w-full flex items-center justify-center shadow-sm">
+                            <div class="text-white text-[2rem] font-medium tracking-tight flex items-center gap-3 img-hover-zoom">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                Flytamo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Rödel -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16 items-start">
+                    <div class="md:col-span-4 lg:col-span-3 flex flex-col justify-start sticky-col">
+                        <h4 class="text-2xl font-medium mb-3">Rödel</h4>
+                        <p class="text-gray-500 text-[15px] mb-8 max-w-[280px] leading-relaxed">A new standard in high-performance materials.</p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Identity</span>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Packaging</span>
+                        </div>
+                        <a href="#" class="text-[13px] font-medium flex items-center group w-max border-b border-black pb-0.5">
+                            Read case study 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                    <div class="md:col-span-8 lg:col-span-9">
+                        <div class="img-container rounded-2xl overflow-hidden bg-[#FAF7F2] aspect-[16/10] w-full flex items-center justify-center shadow-sm">
+                            <div class="text-black text-[3rem] font-bold tracking-[0.2em] uppercase img-hover-zoom">
+                                RÖDEL
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Link -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16 items-start">
+                    <div class="md:col-span-4 lg:col-span-3 flex flex-col justify-start sticky-col">
+                        <h4 class="text-2xl font-medium mb-3">Link</h4>
+                        <p class="text-gray-500 text-[15px] mb-8 max-w-[280px] leading-relaxed">Connecting the dots between data and human behavior.</p>
+                        <div class="flex flex-wrap gap-2 mb-10">
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Digital</span>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">Campaign</span>
+                            <span class="text-[11px] uppercase tracking-wider text-gray-500 border border-gray-200 rounded px-2.5 py-1 font-medium">3D</span>
+                        </div>
+                        <a href="#" class="text-[13px] font-medium flex items-center group w-max border-b border-black pb-0.5">
+                            Read case study 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </a>
+                    </div>
+                    <div class="md:col-span-8 lg:col-span-9">
+                        <div class="img-container rounded-2xl overflow-hidden bg-[#EAE8E3] aspect-[16/10] w-full shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1600" alt="Link Project 3D" class="w-full h-full object-cover img-hover-zoom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-40">
+            <div class="flex justify-between items-baseline mb-12 border-b border-gray-200 pb-5">
+                <h3 class="text-[22px] font-medium tracking-tight">Our distinct approach to creating value</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-[#F6F7F9] rounded-[1.25rem] p-8 flex flex-col justify-between aspect-[3/4] group cursor-pointer relative overflow-hidden transition-colors hover:bg-[#F0F2F5]">
+                    <div>
+                        <span class="text-[10px] font-bold text-gray-400 mb-3 block uppercase tracking-widest">01</span>
+                        <h4 class="text-lg font-medium leading-snug">Immersive discovery and strategic foresight.</h4>
+                    </div>
+                    <div class="mt-8 flex justify-center items-end flex-1">
+                        <img src="https://images.unsplash.com/photo-1506804886640-3983a54013b6?auto=format&fit=crop&q=80&w=400&bg=white" alt="Botanical 1" class="w-32 h-auto mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#F6F7F9] rounded-[1.25rem] p-8 flex flex-col justify-between aspect-[3/4] group cursor-pointer relative overflow-hidden transition-colors hover:bg-[#F0F2F5]">
+                    <div>
+                        <span class="text-[10px] font-bold text-gray-400 mb-3 block uppercase tracking-widest">02</span>
+                        <h4 class="text-lg font-medium leading-snug">Design thinking rooted in human behavior.</h4>
+                    </div>
+                    <div class="mt-8 flex justify-center items-end flex-1">
+                        <img src="https://images.unsplash.com/photo-1596547609652-9cb5d8d7ebd4?auto=format&fit=crop&q=80&w=400" alt="Botanical 2" class="w-24 h-auto mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#F6F7F9] rounded-[1.25rem] p-8 flex flex-col justify-between aspect-[3/4] group cursor-pointer relative overflow-hidden transition-colors hover:bg-[#F0F2F5]">
+                    <div>
+                        <span class="text-[10px] font-bold text-gray-400 mb-3 block uppercase tracking-widest">03</span>
+                        <h4 class="text-lg font-medium leading-snug">Iterative prototyping and rapid validation.</h4>
+                    </div>
+                    <div class="mt-8 flex justify-center items-end flex-1">
+                        <img src="https://images.unsplash.com/photo-1509315811345-672d83ef2fbc?auto=format&fit=crop&q=80&w=400" alt="Botanical 3" class="w-36 h-auto mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-[#F6F7F9] rounded-[1.25rem] p-8 flex flex-col justify-between aspect-[3/4] group cursor-pointer relative overflow-hidden transition-colors hover:bg-[#F0F2F5]">
+                    <div>
+                        <span class="text-[10px] font-bold text-gray-400 mb-3 block uppercase tracking-widest">04</span>
+                        <h4 class="text-lg font-medium leading-snug">Flawless execution and continuous evolution.</h4>
+                    </div>
+                    <div class="mt-8 flex justify-center items-end flex-1">
+                        <img src="https://images.unsplash.com/photo-1610427320077-bd1c9c45bfeb?auto=format&fit=crop&q=80&w=400" alt="Botanical 4" class="w-32 h-auto mix-blend-multiply opacity-90 group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-40">
+            <div class="flex justify-between items-baseline mb-12 border-b border-gray-200 pb-5">
+                <h3 class="text-[22px] font-medium tracking-tight">Things we're thinking about</h3>
+                <a href="#" class="text-sm border-b border-black pb-0.5 hover:text-gray-500 hover:border-gray-500 transition-colors font-medium">View all</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
+                
+                <!-- Row 1 -->
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-gray-100 img-container">
+                        <img src="https://images.unsplash.com/photo-1581382575275-97901c2635b7?auto=format&fit=crop&q=80&w=800" alt="Portrait Man" class="w-full h-full object-cover img-hover-zoom">
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Culture</span>
+                        <span class="text-[13px] text-gray-500">June 24, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">Building a team that thrives on ambiguity.</h4>
+                </a>
+
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-gray-100 img-container">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Portrait Woman" class="w-full h-full object-cover img-hover-zoom">
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Process</span>
+                        <span class="text-[13px] text-gray-500">June 18, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">Why perfectionism is the enemy of innovation.</h4>
+                </a>
+
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-gray-100 img-container">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Team Working" class="w-full h-full object-cover img-hover-zoom">
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Studio</span>
+                        <span class="text-[13px] text-gray-500">June 12, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">A look inside our new London headquarters.</h4>
+                </a>
+
+                <!-- Row 2 -->
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-[#1F242A] img-container relative">
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-white img-hover-zoom">
+                            <div class="w-3/4 h-1/2 bg-gradient-to-b from-blue-400 to-blue-900 rounded-t-lg shadow-2xl relative overflow-hidden">
+                                <div class="absolute top-0 w-full h-4 bg-white/20"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Design</span>
+                        <span class="text-[13px] text-gray-500">June 05, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">The evolution of digital interfaces in 2026.</h4>
+                </a>
+
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-gray-100 img-container">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=800" alt="Meeting" class="w-full h-full object-cover img-hover-zoom">
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Strategy</span>
+                        <span class="text-[13px] text-gray-500">May 28, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">Navigating shifting consumer expectations.</h4>
+                </a>
+
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-[#091127] flex flex-col justify-end p-6 img-container">
+                        <div class="text-white text-center w-full mb-12 img-hover-zoom">
+                            <h2 class="text-4xl font-bold uppercase tracking-tighter leading-none mb-2">Fonts<br>In Use</h2>
+                            <div class="h-40 w-32 bg-white/10 mx-auto rounded-lg backdrop-blur-sm border border-white/20 shadow-2xl mt-6"></div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Typography</span>
+                        <span class="text-[13px] text-gray-500">May 15, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">Selecting the right typeface for digital products.</h4>
+                </a>
+
+                <!-- Row 3 -->
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-[#D95F57] flex items-center justify-center img-container">
+                        <div class="text-white transform -rotate-12 font-bold text-5xl uppercase tracking-tighter mix-blend-overlay img-hover-zoom">
+                            FONTS<br>IN USE
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Typography</span>
+                        <span class="text-[13px] text-gray-500">May 02, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">A playful approach to editorial design.</h4>
+                </a>
+
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-[#173F35] flex items-center justify-center img-container p-8">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800" alt="Shoe Detail" class="w-full h-full object-cover rounded-lg grayscale img-hover-zoom mix-blend-luminosity opacity-80">
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Physical</span>
+                        <span class="text-[13px] text-gray-500">April 20, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">Bridging the gap between physical and digital.</h4>
+                </a>
+
+                <a href="#" class="group block">
+                    <div class="rounded-xl overflow-hidden aspect-[4/5] mb-5 bg-[#D7D9DB] flex items-center justify-center img-container">
+                        <div class="text-red-500 font-black text-6xl tracking-tighter uppercase mix-blend-multiply img-hover-zoom transform scale-150">
+                            NEW GENRE
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-baseline mb-2">
+                        <span class="text-[11px] uppercase tracking-wider text-gray-900 font-semibold">Studio</span>
+                        <span class="text-[13px] text-gray-500">April 08, 2026</span>
+                    </div>
+                    <h4 class="text-[17px] font-medium group-hover:text-gray-600 transition-colors leading-snug">Brand evolution and our new visual language.</h4>
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <div class="newsletter-gradient rounded-[2rem] p-10 md:p-16 flex flex-col lg:flex-row justify-between items-center gap-10 shadow-sm border border-orange-50/50">
+                <div class="lg:w-5/12">
+                    <h3 class="text-[26px] md:text-3xl font-medium mb-4 leading-tight">A semi-regular dispatch from the studio.</h3>
+                    <p class="text-gray-600 text-[15px]">Insights on design, technology, and culture, delivered to your inbox.</p>
+                </div>
+                <div class="w-full lg:w-5/12">
+                    <form class="flex w-full bg-white rounded-full p-1.5 shadow-sm border border-gray-200 focus-within:border-gray-300 transition-colors">
+                        <input type="email" placeholder="Your email address" class="flex-1 bg-transparent px-5 text-[15px] outline-none text-gray-800 placeholder-gray-400" required>
+                        <button type="submit" class="bg-black text-white px-7 py-3 rounded-full text-[13px] font-medium hover:bg-gray-800 transition-colors">Subscribe</button>
+                    </form>
+                    <p class="text-[12px] text-gray-500 mt-4 px-2">By subscribing, you agree to our <a href="#" class="underline hover:text-black">Privacy Policy</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="footer-gradient w-full pt-32 flex flex-col items-center relative overflow-hidden">
+        
+        <!-- Large Quote -->
+        <div class="max-w-[72rem] mx-auto px-6 text-left mb-48 md:mb-64 relative z-10 w-full pt-16">
+            <h2 class="text-[28px] md:text-4xl lg:text-[42px] font-medium leading-[1.3] tracking-tight text-[#221008] mix-blend-color-burn">
+                "At our core we believe in culture, code, and craft.<br>
+                Turning abstract visions into tangible realities—<br>
+                from brand identity to digital platforms, building<br>
+                and scaling companies for the next decade of<br>
+                interaction."
+            </h2>
+            <div class="mt-8 text-[13px] font-medium text-[#4A2614] mix-blend-color-burn uppercase tracking-widest">
+                — Studio Philosophy
+            </div>
+        </div>
+
+        <!-- Footer Content -->
+        <footer class="w-full max-w-[90rem] mx-auto px-6 md:px-12 text-white/80 relative z-20">
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16 pt-16 border-t border-white/10">
+                <!-- Address 1 -->
+                <div class="col-span-2 lg:col-span-1">
+                    <h4 class="text-[11px] font-semibold uppercase tracking-widest text-white/40 mb-6">Oslo</h4>
+                    <p class="text-[13px] leading-relaxed font-light">
+                        Thorvald Meyers gate 73A,<br>
+                        0552 Oslo,<br>
+                        Norway
+                    </p>
+                </div>
+                <!-- Address 2 -->
+                <div class="col-span-2 lg:col-span-1">
+                    <h4 class="text-[11px] font-semibold uppercase tracking-widest text-white/40 mb-6">London</h4>
+                    <p class="text-[13px] leading-relaxed font-light">
+                        100 Shoreditch High St,<br>
+                        London E1 6JQ,<br>
+                        United Kingdom
+                    </p>
+                </div>
+                <!-- Spacer for layout -->
+                <div class="hidden lg:block col-span-1"></div>
+                <!-- Links -->
+                <div class="col-span-1">
+                    <h4 class="text-[11px] font-semibold uppercase tracking-widest text-white/40 mb-6">Studio</h4>
+                    <ul class="space-y-3 text-[13px] font-light">
+                        <li><a href="#" class="hover:text-white transition-colors">Work</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">About us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Journal</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div class="col-span-1">
+                    <h4 class="text-[11px] font-semibold uppercase tracking-widest text-white/40 mb-6">Social</h4>
+                    <ul class="space-y-3 text-[13px] font-light">
+                        <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Twitter (X)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Behance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Central Flower / Abstract Graphic matching the visual -->
+            <div class="w-full flex justify-center mb-16 relative pointer-events-none">
+                 <!-- Using an isolated leaf/flower with blending to match the dark background -->
+                 <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?auto=format&fit=crop&q=80&w=800" 
+                      alt="Abstract Botanical Motif" 
+                      class="h-72 md:h-96 object-contain mix-blend-screen opacity-90 sepia-[0.3] hue-rotate-15">
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="flex flex-col md:flex-row justify-between items-center text-[11px] font-light text-white/40 pt-6 pb-8 border-t border-white/10">
+                <div class="mb-4 md:mb-0 flex items-center gap-3">
+                    <div class="w-4 h-4 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+                        <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                    </div>
+                    © 2026 New Genre Studio
+                </div>
+                <div class="flex space-x-8 uppercase tracking-widest font-semibold">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

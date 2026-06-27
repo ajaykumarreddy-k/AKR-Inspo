@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@theme {
+  --color-background: #020617; /* Very dark blue */
+  --color-foreground: #ffffff;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  margin: 0;
+  font-family: 'Google Sans', 'Product Sans', 'DM Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}

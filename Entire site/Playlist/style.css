@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f2f2f2; /* Exact off-white/grey background */
+    color: #000;
+    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 2.5vw 3.5vw;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px; /* Large gap before table */
+    position: relative;
+}
+
+.title-section h1, .name-section h1 {
+    font-family: "Arial Black", "Impact", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9.5vw; /* Massive size to cover ~1/2 the screen */
+    line-height: 0.88;
+    font-weight: 900;
+    letter-spacing: -0.05em; /* Tightly packed */
+    text-transform: none;
+    /* Simulate dotted font if exact font is missing */
+    background: radial-gradient(circle, #f2f2f2 15%, transparent 16%) 0 0 / 10px 10px, #000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #000; /* Fallback */
+    white-space: nowrap; /* Force on one line as in design */
+    -webkit-text-stroke: 1px #000; /* Extra bolding trick */
+}
+
+/* Specific for by */
+.by-section {
+    position: absolute;
+    left: 50%;
+    top: 10%; /* Moved way up! */
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.by-section span {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 4.5vw; 
+    font-weight: 900;
+    display: inline-block;
+    transform: rotate(-55deg);
+    background: radial-gradient(circle, #f2f2f2 15%, transparent 16%) 0 0 / 5px 5px, #000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #000;
+    /* Removed the heavy text-stroke so the text doesn't look like a black blob */
+}
+
+.name-section {
+    text-align: right;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 6px;
+}
+
+.buttons button {
+    border: 2px solid #000;
+    background: transparent;
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 22px; /* Large font size */
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Inter", "Helvetica Neue", sans-serif;
+    letter-spacing: -0.02em;
+    transition: all 0.2s ease;
+    line-height: 1.2;
+}
+
+.buttons button.active {
+    background: #000;
+    color: #f2f2f2;
+}
+
+.buttons button:hover:not(.active) {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Table */
+.table-container {
+    width: 100%;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 20% 25% 10% 25% 18% 2%;
+    padding: 14px 0;
+    border-bottom: 1px solid #000;
+    font-size: 13px; /* Clean readable size */
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    align-items: center;
+}
+
+.grid-header {
+    border-top: 1.5px solid #000;
+    border-bottom: 4px double #000; /* Creates the double line effect */
+    font-size: 12px;
+    font-weight: 500;
+    padding: 12px 0;
+    margin-bottom: 2px;
+}
+
+.grid-row div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+}
+
+.grid-row .plus-col {
+    text-align: right;
+    padding-right: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+footer div {
+    cursor: pointer;
+}
+footer div:hover {
+    text-decoration: underline;
+}

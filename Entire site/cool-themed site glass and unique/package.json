@@ -1,0 +1,15 @@
+{
+  "name": "cool-themed-site-glass-and-unique",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bunx serve -p 3000"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-google-sans: "Google Sans", "Inter", "SF Pro", system-ui, sans-serif;
+  --color-rainbow-1: #ff453a;
+  --color-rainbow-2: #ff9f0a;
+  --color-rainbow-3: #ffd60a;
+  --color-rainbow-4: #30d158;
+  --color-rainbow-5: #0a84ff;
+  --color-rainbow-6: #5e5ce6;
+  --color-rainbow-7: #bf5af2;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: var(--font-google-sans);
+    background-color: #ffffff;
+    color: #1d1d1f;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Lenis overrides */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+}
+
+@layer utilities {
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .origin-bottom-center {
+    transform-origin: center bottom;
+  }
+}
