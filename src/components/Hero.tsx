@@ -116,7 +116,7 @@ export function Hero({ onNavigate }: { onNavigate: (path: string) => void }) {
           {/* Giant Text */}
           <div className="w-full flex justify-center -mb-4 md:-mb-10 overflow-hidden">
              <h1 className="text-[18vw] leading-[0.72] font-[900] tracking-[-0.05em] text-black text-center select-none w-full">
-               akrinspo
+               Akr-InsPo
              </h1>
           </div>
         </div>
