@@ -6,16 +6,52 @@
     "folder": "3d text animations/3d-text-animation-codrops-master"
   },
   {
+    "id": "entire-site-new-genere---gradient-site",
+    "name": "New Genere   Gradient Site",
+    "path": "/Entire site/New Genere - Gradient site/index.html",
+    "folder": "Entire site/New Genere - Gradient site"
+  },
+  {
+    "id": "entire-site-playlist",
+    "name": "Playlist",
+    "path": "/Entire site/Playlist/index.html",
+    "folder": "Entire site/Playlist"
+  },
+  {
+    "id": "entire-site-watch-site",
+    "name": "Watch Site",
+    "path": "/Entire site/Watch-site/index.html",
+    "folder": "Entire site/Watch-site"
+  },
+  {
+    "id": "entire-site-cool-themed-site-glass-and-unique",
+    "name": "Cool Themed Site Glass And Unique",
+    "path": "/Entire site/cool-themed site glass and unique/index.html",
+    "folder": "Entire site/cool-themed site glass and unique"
+  },
+  {
     "id": "entire-site-hermes-agent-clone",
     "name": "Hermes Agent Clone",
     "path": "/Entire site/hermes-agent-clone/index.html",
     "folder": "Entire site/hermes-agent-clone"
   },
   {
+    "id": "entire-site-research-paper",
+    "name": "Research Paper",
+    "path": "/Entire site/research paper/index.html",
+    "folder": "Entire site/research paper"
+  },
+  {
     "id": "frammer-21st-dev-components-3d-rug-effect",
     "name": "3d Rug Effect",
     "path": "/Frammer&21st dev Components/3D Rug Effect/index.html",
     "folder": "Frammer&21st dev Components/3D Rug Effect"
+  },
+  {
+    "id": "frammer-21st-dev-components-ajay-harmes-custom-scroll",
+    "name": "Ajay Harmes Custom Scroll",
+    "path": "/Frammer&21st dev Components/Ajay-Harmes Custom Scroll/index.html",
+    "folder": "Frammer&21st dev Components/Ajay-Harmes Custom Scroll"
   },
   {
     "id": "frammer-21st-dev-components-blinds-text-reveal-",
@@ -34,6 +70,12 @@
     "name": "Case Study Hover ",
     "path": "/Frammer&21st dev Components/Case Study Hover /index.html",
     "folder": "Frammer&21st dev Components/Case Study Hover "
+  },
+  {
+    "id": "frammer-21st-dev-components-emoji-perfecto",
+    "name": "Emoji Perfecto",
+    "path": "/Frammer&21st dev Components/Emoji-Perfecto/index.html",
+    "folder": "Frammer&21st dev Components/Emoji-Perfecto"
   },
   {
     "id": "frammer-21st-dev-components-exploding-input-component",
@@ -82,6 +124,12 @@
     "name": "Bun React Template",
     "path": "/Frammer&21st dev Components/Pixel Hero Section/index.html",
     "folder": "Frammer&21st dev Components/Pixel Hero Section"
+  },
+  {
+    "id": "frammer-21st-dev-components-rainbowfooter-on-scrool",
+    "name": "Rainbow Footer",
+    "path": "/Frammer&21st dev Components/RainbowFooter on scrool/index.html",
+    "folder": "Frammer&21st dev Components/RainbowFooter on scrool"
   },
   {
     "id": "frammer-21st-dev-components-signature-animation",
