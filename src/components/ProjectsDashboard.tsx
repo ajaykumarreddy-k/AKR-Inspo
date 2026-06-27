@@ -2,9 +2,33 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, FolderGit2, Folder, ChevronLeft, Play, Pause, Sparkles } from "lucide-react";
 import projectsData from "../data/projects.json";
 
-// Load raw images from assets/images
-const assetImages = import.meta.glob('../../assets/images/*.{jpg,jpeg,png,webp,gif}', { eager: true, query: '?url', import: 'default' });
+// Glob import ALL images across the entire project for production-safe URLs
+const allProjectImages = import.meta.glob(
+  '../../**/*.{jpg,jpeg,png,webp,gif,JPG,PNG}',
+  { eager: true, query: '?url', import: 'default' }
+) as Record<string, string>;
+
+const assetImages = import.meta.glob(
+  '../../assets/images/*.{jpg,jpeg,png,webp,gif}',
+  { eager: true, query: '?url', import: 'default' }
+);
 const rawImageUrls = Object.values(assetImages) as string[];
+
+// Helper: resolve a thumbnail path (from projects.json) to a bundled Vite URL
+function resolveProjectThumbnail(thumbnail: string | null, folder: string): string | null {
+  if (!thumbnail) return null;
+
+  // Try the exact thumbnail path
+  const key = `../../${thumbnail}`;
+  if (allProjectImages[key]) return allProjectImages[key];
+
+  // Fallback: try folder/foldername.png
+  const folderName = folder.split('/').pop();
+  const fallbackKey = `../../${folder}/${folderName}.png`;
+  if (allProjectImages[fallbackKey]) return allProjectImages[fallbackKey];
+
+  return null;
+}
 
 export function ProjectsDashboard({ onNavigate, isHome = false }: { onNavigate: (path: string) => void, isHome?: boolean }) {
   const projects = projectsData || [];
@@ -55,43 +79,47 @@ export function ProjectsDashboard({ onNavigate, isHome = false }: { onNavigate: 
       );
     }
 
-    const renderProjectCard = (project: any) => {
-      const projectThumbnail = project.thumbnail 
-        ? project.thumbnail 
-        : `/${project.folder}/${project.folder.split('/').pop()}.png`;
-      const resolvedThumbnail = projectThumbnail.startsWith('/') ? projectThumbnail : `/${projectThumbnail}`;
-
+    const renderProjectCard = (project: any, requireImage = false) => {
+      const resolvedThumbnail = resolveProjectThumbnail(project.thumbnail, project.folder);
+      if (requireImage && !resolvedThumbnail) return null; // skip no-image cards in home grid
       return (
         <a 
           key={project.id}
           href={project.path}
           className="group relative block w-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-2xl hover:border-[var(--color-accent)] transition-all hover:-translate-y-1 hover:shadow-lg overflow-hidden break-inside-avoid mb-6 min-h-[12rem]"
         >
-          <div className="w-full overflow-hidden bg-[var(--color-bg)]">
-            <img 
-              src={resolvedThumbnail} 
-              alt={project.name} 
-              className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 block"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} 
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
-          </div>
+          {resolvedThumbnail ? (
+            <div className="w-full overflow-hidden bg-[var(--color-bg)]">
+              <img 
+                src={resolvedThumbnail} 
+                alt={project.name} 
+                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 block"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} 
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10 pointer-events-none" />
+            </div>
+          ) : (
+            // No-image fallback for folder view
+            <div className="w-full h-36 flex items-center justify-center bg-[var(--color-bg)]">
+              <FolderGit2 className="w-12 h-12 text-[var(--color-accent)]/30" />
+            </div>
+          )}
 
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20" />
           
-          <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-start z-20 pointer-events-none">
-            <div className="p-3 bg-[var(--color-bg)]/80 backdrop-blur-md border border-[var(--color-border)] rounded-xl group-hover:bg-[var(--color-accent)]/10 transition-colors pointer-events-auto">
-              <FolderGit2 className="w-6 h-6 text-[var(--color-accent)]" />
+          <div className="absolute top-0 left-0 w-full p-4 flex justify-between items-start z-20 pointer-events-none">
+            <div className="p-2 bg-[var(--color-bg)]/80 backdrop-blur-md border border-[var(--color-border)] rounded-xl group-hover:bg-[var(--color-accent)]/10 transition-colors pointer-events-auto">
+              <FolderGit2 className="w-5 h-5 text-[var(--color-accent)]" />
             </div>
             <div className="p-2 bg-[var(--color-bg)]/80 backdrop-blur-md rounded-full shadow-sm pointer-events-auto">
-              <ArrowUpRight className="w-5 h-5 text-[var(--color-text)] group-hover:text-[var(--color-accent)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              <ArrowUpRight className="w-4 h-4 text-[var(--color-text)] group-hover:text-[var(--color-accent)] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
             </div>
           </div>
 
-          <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-20 pointer-events-none">
-            <div className="flex flex-col gap-1 bg-[var(--color-bg)]/80 backdrop-blur-md p-3 rounded-xl shadow-sm border border-[var(--color-border)]/50 pointer-events-auto">
-              <h3 className="font-bold text-lg truncate text-[var(--color-text)]">{project.name}</h3>
-              <p className="text-sm text-[var(--color-text)]/70 font-mono truncate">
+          <div className="absolute bottom-0 left-0 w-full p-4 flex flex-col justify-end z-20 pointer-events-none">
+            <div className="flex flex-col gap-0.5 bg-[var(--color-bg)]/80 backdrop-blur-md p-3 rounded-xl shadow-sm border border-[var(--color-border)]/50 pointer-events-auto">
+              <h3 className="font-bold text-base truncate text-[var(--color-text)]">{project.name}</h3>
+              <p className="text-xs text-[var(--color-text)]/70 font-mono truncate">
                 {project.folder.split('/').slice(1).join('/') || project.folder}
               </p>
             </div>
@@ -101,8 +129,8 @@ export function ProjectsDashboard({ onNavigate, isHome = false }: { onNavigate: 
     };
 
     if (isHome) {
-      // Flatten all projects into one big masonry grid
-      const projectElements = projects.map(renderProjectCard);
+      // Flatten all projects into one big masonry grid (filter out those with no image)
+      const projectElements = projects.map(p => renderProjectCard(p, true)).filter(Boolean);
       
       const rawImageElements = rawImageUrls.map((url, index) => (
         <a 
