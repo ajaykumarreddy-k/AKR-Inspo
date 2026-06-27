@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembly Movement Footer Replica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importing exact matching fonts for the typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500&family=Titan+One&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Font Utility Classes */
+        .font-titan {
+            font-family: 'Titan One', display, sans-serif;
+        }
+        .font-serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Smooth scaling for the giant text */
+        .giant-text-container {
+            /* Clamp ensures it looks massive on desktop but fits on mobile */
+            font-size: clamp(3rem, 12.8vw, 15rem);
+        }
+    </style>
+</head>
+<body class="bg-stone-100 min-h-screen flex flex-col justify-end pt-20">
+
+    <!-- Footer Wrapper -->
+    <!-- Max-width container to prevent infinite stretching on ultra-wide monitors while keeping the rounded top -->
+    <footer class="bg-[#f39c9c] rounded-t-[40px] px-8 py-12 md:px-12 md:py-16 lg:px-16 lg:pt-20 lg:pb-10 text-[#223521] w-full max-w-[1920px] mx-auto overflow-hidden">
+        
+        <!-- Top Grid Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16 lg:mb-24">
+            
+            <!-- Column 1: Come by -->
+            <div class="col-span-1 lg:col-span-3">
+                <h3 class="text-[#FFFDFB] text-[28px] font-bold mb-6 tracking-tight">Come by</h3>
+                
+                <div class="mb-8 text-[15px] leading-[1.6] font-medium">
+                    <p>Little Italy Studio<br>832 College Street<br>Level 2, Toronto,<br>ON M6G 1C8</p>
+                </div>
+                
+                <div class="text-[15px] leading-[1.6] font-medium">
+                    <p>Leslieville Studio<br>1114 Queen Street East<br>Toronto, ON<br>M4M 1K8</p>
+                </div>
+            </div>
+
+            <!-- Column 2: Say hello -->
+            <div class="col-span-1 lg:col-span-2">
+                <h3 class="text-[#FFFDFB] text-[28px] font-bold mb-6 tracking-tight">Say hello</h3>
+                <p class="text-[15px] font-medium leading-[1.6] mb-4 hover:opacity-70 transition-opacity cursor-pointer">Email us</p>
+                
+                <!-- Instagram Icon -->
+                <a href="#" class="inline-block text-[#FFFDFB] hover:scale-110 transition-transform duration-300">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Column 3: Explore -->
+            <div class="col-span-1 sm:col-span-2 lg:col-span-2">
+                <h3 class="text-[#FFFDFB] text-[28px] font-bold mb-6 tracking-tight">Explore</h3>
+                <ul class="space-y-3.5 text-[15px] font-medium">
+                    <li><a href="#" class="hover:underline hover:opacity-70 transition-all">Home</a></li>
+                    <li><a href="#" class="hover:underline hover:opacity-70 transition-all">About</a></li>
+                    <li><a href="#" class="hover:underline hover:opacity-70 transition-all">Pricing</a></li>
+                    <li><a href="#" class="hover:underline hover:opacity-70 transition-all">Classes</a></li>
+                    <li><a href="#" class="hover:underline hover:opacity-70 transition-all">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Quote, Button & Flower -->
+            <div class="col-span-1 sm:col-span-2 lg:col-span-5 flex flex-col sm:flex-row justify-between items-start gap-8 lg:gap-4 relative">
+                <div class="flex-1">
+                    <h2 class="font-serif-italic text-[32px] lg:text-[2.5rem] leading-[1.1] mb-8 max-w-[340px]">
+                        Progressive Pilates.<br>Low impact, high energy.
+                    </h2>
+                    <a href="#" class="inline-block bg-[#1B3B24] text-[#FFFDFB] px-8 py-3.5 rounded-full font-medium text-[15px] hover:bg-[#122818] transition-colors shadow-sm">
+                        Book a Class
+                    </a>
+                </div>
+                
+                <!-- Custom Flower SVG Icon -->
+                <div class="w-20 h-20 lg:w-24 lg:h-24 flex-shrink-0 lg:-mt-2">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="text-[#FFFDFB] fill-current w-full h-full drop-shadow-sm">
+                        <defs>
+                            <mask id="flower-hole">
+                                <!-- The white rect reveals everything -->
+                                <rect width="100" height="100" fill="white" />
+                                <!-- The black circle masks/cuts out the center -->
+                                <circle cx="50" cy="50" r="15" fill="black" />
+                            </mask>
+                        </defs>
+                        <g mask="url(#flower-hole)">
+                            <!-- 8 Overlapping Petals -->
+                            <circle cx="50" cy="18" r="18" />
+                            <circle cx="72.6" cy="27.4" r="18" />
+                            <circle cx="82" cy="50" r="18" />
+                            <circle cx="72.6" cy="72.6" r="18" />
+                            <circle cx="50" cy="82" r="18" />
+                            <circle cx="27.4" cy="72.6" r="18" />
+                            <circle cx="18" cy="50" r="18" />
+                            <circle cx="27.4" cy="27.4" r="18" />
+                            <!-- Solid base to fill any microscopic gaps between petals -->
+                            <circle cx="50" cy="50" r="26" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Middle Section: Giant Text Lockup -->
+        <!-- Negative letter spacing and ultra tight line height to match the edge-to-edge bubbly aesthetic -->
+        <div class="w-full mt-12 lg:mt-24 mb-6 lg:mb-12">
+            <h1 class="font-titan text-[#FFFDFB] uppercase flex flex-col leading-[0.8] tracking-[-0.01em] giant-text-container select-none">
+                <span class="block">ASSEMBLY</span>
+                <span class="block">MOVEMENT</span>
+            </h1>
+        </div>
+
+        <!-- Bottom Legal & Links Section -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 text-[13px] md:text-[14px] font-medium pt-2">
+            
+            <!-- Copyright & Credits -->
+            <div class="space-y-1.5 order-2 md:order-1">
+                <p>© 2024 Assembly Movement Ltd. All rights reserved.</p>
+                <p class="text-[11px] md:text-[12px] opacity-80 cursor-pointer hover:underline">Site credit</p>
+            </div>
+            
+            <!-- Policy Links -->
+            <div class="flex flex-wrap gap-5 md:gap-8 order-1 md:order-2">
+                <a href="#" class="hover:underline hover:opacity-70 transition-opacity">Cancellation Policy</a>
+                <a href="#" class="hover:underline hover:opacity-70 transition-opacity">Terms</a>
+                <a href="#" class="hover:underline hover:opacity-70 transition-opacity">Privacy</a>
+            </div>
+            
+        </div>
+
+    </footer>
+
+</body>
+</html>

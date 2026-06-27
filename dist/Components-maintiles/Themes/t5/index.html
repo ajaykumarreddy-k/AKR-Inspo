@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Dots & Lines</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- CLOSEST MATCH -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#d9ff00;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    min-height:100vh;
+    padding:18px;
+    overflow-x:hidden;
+}
+
+
+/* MAIN */
+
+.wrapper{
+    width:100%;
+    max-width:1600px;
+    margin:auto;
+}
+
+
+/* LOGO */
+
+.logo{
+    color:#000;
+    font-size:88px;
+    font-weight:800;
+    line-height:0.82;
+    letter-spacing:-7px;
+    margin-bottom:90px;
+    margin-left:28px;
+}
+
+
+/* CARD */
+
+.card{
+    background:#efefef;
+    border-radius:22px;
+    overflow:hidden;
+    padding:0;
+}
+
+
+/* ROW */
+
+.service-row{
+    position:relative;
+    display:grid;
+    grid-template-columns:90px 1fr;
+    align-items:center;
+    min-height:150px;
+    padding:0 38px;
+    border-top:1.5px solid rgba(0,0,0,0.22);
+}
+
+.service-row:first-child{
+    border-top:none;
+}
+
+
+/* NUMBER */
+
+.number{
+    font-size:18px;
+    font-weight:700;
+    color:#222;
+    opacity:0.85;
+}
+
+
+/* TITLE */
+
+.title{
+    font-size:150px;
+    font-weight:800;
+    line-height:0.82;
+    letter-spacing:-11px;
+    color:#000;
+    text-transform:lowercase;
+    transform:translateY(8px);
+}
+
+
+/* CONTENT */
+
+.bottom{
+    padding:40px 38px 34px;
+    display:grid;
+    grid-template-columns:1fr 520px;
+    gap:70px;
+}
+
+
+/* LEFT */
+
+.left{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.description{
+    max-width:760px;
+    font-size:22px;
+    line-height:1.35;
+    font-weight:500;
+    letter-spacing:-0.5px;
+    color:#111;
+}
+
+
+/* SERVICES */
+
+.services{
+    margin-top:70px;
+    border-top:1.5px solid rgba(0,0,0,0.2);
+    padding-top:24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+.services ul{
+    list-style:none;
+}
+
+.services li{
+    font-size:23px;
+    line-height:1.42;
+    font-weight:500;
+    color:#111;
+    letter-spacing:-0.6px;
+}
+
+
+/* IMAGE */
+
+.image-box{
+    width:100%;
+    height:360px;
+    overflow:hidden;
+    background:#d8d8d8;
+}
+
+.image-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1400px){
+
+    .title{
+        font-size:118px;
+        letter-spacing:-8px;
+    }
+
+}
+
+@media(max-width:1100px){
+
+    .bottom{
+        grid-template-columns:1fr;
+    }
+
+    .title{
+        font-size:92px;
+    }
+
+    .logo{
+        font-size:64px;
+    }
+
+}
+
+@media(max-width:760px){
+
+    body{
+        padding:10px;
+    }
+
+    .logo{
+        font-size:44px;
+        letter-spacing:-3px;
+        margin-bottom:50px;
+        margin-left:12px;
+    }
+
+    .service-row{
+        grid-template-columns:1fr;
+        gap:8px;
+        padding:18px;
+        min-height:auto;
+    }
+
+    .title{
+        font-size:58px;
+        letter-spacing:-4px;
+    }
+
+    .bottom{
+        padding:22px;
+    }
+
+    .description{
+        font-size:16px;
+    }
+
+    .services{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .services li{
+        font-size:17px;
+    }
+
+    .image-box{
+        height:240px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+        dots<br>
+        and<br>
+        lines
+    </div>
+
+
+
+    <!-- CARD -->
+
+    <section class="card">
+
+
+        <!-- ROW 1 -->
+
+        <div class="service-row">
+
+            <div class="number">01</div>
+
+            <div class="title">
+                strategy
+            </div>
+
+        </div>
+
+
+
+        <!-- ROW 2 -->
+
+        <div class="service-row">
+
+            <div class="number">02</div>
+
+            <div class="title">
+                identity
+            </div>
+
+        </div>
+
+
+
+        <!-- ROW 3 -->
+
+        <div class="service-row">
+
+            <div class="number">03</div>
+
+            <div class="title">
+                experience
+            </div>
+
+        </div>
+
+
+
+        <!-- BOTTOM -->
+
+        <div class="bottom">
+
+
+            <!-- LEFT -->
+
+            <div class="left">
+
+                <div class="description">
+
+                    Based on your strategy, we create digital experiences and products
+                    that look great, feel right, and work flawlessly — and that’s
+                    what makes them effective. Even when things get really complex:
+                    with broad skills and precise execution, we craft digital
+                    solutions where intent and intuition are front and center.
+
+                </div>
+
+
+
+                <div class="services">
+
+                    <ul>
+                        <li>User Research</li>
+                        <li>Accessibility</li>
+                        <li>User Experience Design</li>
+                        <li>User Interface Design</li>
+                        <li>Webshop Design</li>
+                    </ul>
+
+                    <ul>
+                        <li>Design Systems</li>
+                        <li>Native App Design</li>
+                        <li>Web Design</li>
+                        <li>Visual Prototyping</li>
+                        <li>User Testing</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RIGHT -->
+
+            <div class="image-box">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1400&auto=format&fit=crop"
+                    alt="Laptop"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

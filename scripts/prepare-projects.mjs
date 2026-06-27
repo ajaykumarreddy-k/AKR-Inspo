@@ -15,7 +15,7 @@ function findProjects(dir, depth = 0) {
   }
   
   let hasIndexHtml = entries.includes('index.html');
-  const isIgnored = dir.includes('node_modules') || dir.includes('dist') || dir.includes('.git') || dir.includes('public');
+  const isIgnored = dir.includes('node_modules') || dir.includes('dist') || dir.includes('.git') || dir.includes('public') || dir.includes('assets') || dir.includes('Resource-Boy');
 
   // Auto-rename solitary .html files to index.html
   if (!hasIndexHtml) {
@@ -90,7 +90,7 @@ function findProjects(dir, depth = 0) {
   }
 
   for (const entry of entries) {
-    if (entry === 'node_modules' || entry === '.git' || entry === 'dist' || entry === 'public' || entry === 'src') continue;
+    if (entry === 'node_modules' || entry === '.git' || entry === 'dist' || entry === 'public' || entry === 'src' || entry === 'assets' || entry.startsWith('Resource-Boy')) continue;
     const fullPath = join(dir, entry);
     try {
       if (statSync(fullPath).isDirectory()) {

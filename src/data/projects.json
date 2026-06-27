@@ -288,18 +288,6 @@
     "folder": "Scroll animations"
   },
   {
-    "id": "assets-fonts-lucida-calligraphy-bold-lucida-calligraphy-bold",
-    "name": "Lucida Calligraphy Bold",
-    "path": "/assets/Fonts/lucida-calligraphy-bold/Lucida Calligraphy Bold/index.html",
-    "folder": "assets/Fonts/lucida-calligraphy-bold/Lucida Calligraphy Bold"
-  },
-  {
-    "id": "assets-images-sccraped-1",
-    "name": "Sccraped 1",
-    "path": "/assets/images/sccraped 1/index.html",
-    "folder": "assets/images/sccraped 1"
-  },
-  {
     "id": "opencode-gsap",
     "name": "Opencode Gsap",
     "path": "/opencode GSAP/index.html",

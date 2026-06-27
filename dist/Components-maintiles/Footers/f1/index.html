@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gudtrip.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .app-container {
+            width: 98vw;
+            height: 96vh;
+            background-color: #f6f6f6;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Top right text styling */
+        .top-text {
+            position: absolute;
+            top: 4vh;
+            right: 3vw;
+            text-align: left;
+            z-index: 10;
+        }
+
+        .top-text-bold {
+            font-size: clamp(1rem, 2vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: #0a0a0a;
+            margin-bottom: 2vh;
+        }
+
+        .top-text-mono {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.5rem, 0.75vw, 1rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        /* Large center text styling */
+        .main-title-container {
+            position: absolute;
+            bottom: -6vw; /* Pull text down so descenders hit the edge */
+            left: -2vw;
+            width: 100%;
+            z-index: 1;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .main-title {
+            font-size: 33vw; /* Massive scaling */
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            color: #050505;
+            line-height: 0.75;
+            white-space: nowrap;
+        }
+
+        /* Buy Now button */
+        .buy-now-btn {
+            position: absolute;
+            right: 20vw; /* Positioned between r and i */
+            bottom: 12vw;
+            background-color: rgba(10, 10, 10, 0.8);
+            color: #f0f0f0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 0.5vw 1vw;
+            font-size: clamp(0.7rem, 1.2vw, 1.5rem);
+            border-radius: 4px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+            z-index: 20;
+            text-decoration: none;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #fff;
+            color: #000;
+            border-color: #000;
+        }
+
+        /* Floating Gradient Card */
+        .floating-card-container {
+            position: absolute;
+            left: 2vw;
+            top: 2vw;
+            z-index: 30;
+            transform: rotate(-18deg) scale(1);
+            transform-origin: center center;
+            transition: transform 0.1s linear; /* Smooth JS tracking */
+        }
+
+        .floating-card {
+            width: 22vw;
+            height: 46vw;
+            max-width: 400px;
+            max-height: 836px;
+            background: linear-gradient(155deg, #fdfbff 0%, #d8b8ff 20%, #874fff 60%, #5016ff 100%);
+            border-radius: 1.5vw;
+            padding: 1.5vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 
+                -1vw 2vw 4vw rgba(0, 0, 0, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Clover Shape */
+        .clover-shape {
+            width: 14vw;
+            height: 14vw;
+            max-width: 260px;
+            max-height: 260px;
+            position: relative;
+            margin-top: 1vw;
+        }
+
+        .clover-petal {
+            position: absolute;
+            width: 65%; /* Adjusted for tighter overlap */
+            height: 65%;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .petal-tl { top: 0; left: 0; }
+        .petal-tr { top: 0; right: 0; }
+        .petal-bl { bottom: 0; left: 0; }
+        .petal-br { bottom: 0; right: 0; }
+
+        /* Label at bottom of card */
+        .card-label {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: white;
+            padding: 0.8vw 1.2vw;
+            border-radius: 999px; /* Pill shape */
+            text-align: center;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 1.8vw, 2.5rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5vw;
+            width: 90%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .app-container { border-radius: 16px; }
+            .top-text { top: 2vh; right: 4vw; }
+            .main-title { font-size: 38vw; }
+            .main-title-container { bottom: -2vw; }
+            .floating-card-container { left: -5vw; transform: rotate(-15deg) scale(0.8); }
+            .buy-now-btn { right: 15vw; bottom: 8vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Top Right Text Block -->
+        <div class="top-text">
+            <div class="top-text-bold">
+                a playful feeling. you know<br>
+                you're in it when you're in it.
+            </div>
+            <div class="top-text-mono">
+                THE REASON YOU'RE HERE IS THE REASON<br>
+                WE'LL TAKE YOU FAR
+            </div>
+        </div>
+
+        <!-- Floating Purple Card -->
+        <div class="floating-card-container" id="floatingCard">
+            <div class="floating-card">
+                <div class="clover-shape">
+                    <div class="clover-petal petal-tl"></div>
+                    <div class="clover-petal petal-tr"></div>
+                    <div class="clover-petal petal-bl"></div>
+                    <div class="clover-petal petal-br"></div>
+                </div>
+                <div class="card-label">
+                    gudtrip.com
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Large Text -->
+        <div class="main-title-container">
+            <div class="main-title">
+                gudtrip.
+            </div>
+            <!-- Buy Now Button positioned perfectly over the text -->
+            <a href="#" class="buy-now-btn" id="buyBtn">buy now</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('floatingCard');
+            const buyBtn = document.getElementById('buyBtn');
+
+            // Interactive parallax effect on the card
+            document.addEventListener('mousemove', (e) => {
+                // Calculate position relative to center of screen
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 60;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 60;
+                
+                // Maintain base rotation and add slight dynamic movement
+                card.style.transform = `rotate(-18deg) translate(${xAxis}px, ${yAxis}px)`;
+            });
+            
+            // Reset position
+            document.addEventListener('mouseleave', () => {
+                card.style.transform = `rotate(-18deg) translate(0px, 0px)`;
+            });
+
+            // Button click handler
+            buyBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const originalText = buyBtn.innerText;
+                buyBtn.innerText = 'added';
+                buyBtn.style.backgroundColor = 'white';
+                buyBtn.style.color = 'black';
+                
+                setTimeout(() => {
+                    buyBtn.innerText = originalText;
+                    buyBtn.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
+                    buyBtn.style.color = '#f0f0f0';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Normal Footer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Inter, Arial, Helvetica, sans-serif;
+}
+
+.footer{
+    background:#e10600;
+    min-height:100vh;
+    color:#d8d8d8;
+    position:relative;
+    overflow:hidden;
+    padding:20px;
+}
+
+.logo{
+    font-size:clamp(160px,15vw,220px);
+    line-height:.8;
+    font-weight:900;
+    letter-spacing:-10px;
+    text-transform:uppercase;
+    color:#d8d8d8;
+    user-select:none;
+}
+
+.center-nav{
+    position:absolute;
+    left:255px;
+    top:165px;
+}
+
+.center-nav ul{
+    list-style:none;
+}
+
+.center-nav li{
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    line-height:1.15;
+    letter-spacing:.4px;
+}
+
+.social{
+    display:flex;
+    gap:10px;
+    margin-top:18px;
+    font-size:12px;
+}
+
+.social a{
+    color:#d8d8d8;
+    text-decoration:none;
+}
+
+.talk{
+    position:absolute;
+    top:165px;
+    right:25px;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    color:#d8d8d8;
+    text-decoration:none;
+}
+
+.bottom{
+    position:absolute;
+    bottom:18px;
+    left:20px;
+    right:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.left{
+    font-size:10px;
+    text-transform:uppercase;
+}
+
+.left p{
+    margin-bottom:10px;
+}
+
+.left a{
+    color:#d8d8d8;
+    text-decoration:underline;
+    margin-right:10px;
+}
+
+.newsletter{
+    width:280px;
+}
+
+.newsletter h4{
+    font-size:11px;
+    line-height:1.2;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    font-weight:700;
+}
+
+.newsletter label{
+    display:block;
+    font-size:10px;
+    margin-bottom:6px;
+    text-transform:uppercase;
+}
+
+.newsletter input{
+    width:100%;
+    border:none;
+    border-bottom:1px solid rgba(216,216,216,.4);
+    background:transparent;
+    color:#d8d8d8;
+    padding-bottom:6px;
+    outline:none;
+}
+
+.newsletter button{
+    margin-top:10px;
+    background:none;
+    border:none;
+    color:#d8d8d8;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<footer class="footer">
+
+    <div class="logo">NORMAL</div>
+
+    <div class="center-nav">
+        <ul>
+            <li>ABOUT</li>
+            <li>SOLUTIONS</li>
+            <li>WRITING</li>
+            <li>RESEARCH</li>
+            <li>CAREERS</li>
+        </ul>
+
+        <div class="social">
+            <a href="#">X</a>
+            <a href="#">in</a>
+            <a href="#">◔</a>
+            <a href="#">✉</a>
+        </div>
+    </div>
+
+    <a href="#" class="talk">LET'S TALK ↗</a>
+
+    <div class="bottom">
+
+        <div class="left">
+            <p>© 2025 NORMAL COMPUTING CORP.</p>
+
+            <a href="#">PRIVACY POLICY</a>
+            <a href="#">TERMS & CONDITIONS</a>
+        </div>
+
+        <div class="newsletter">
+            <h4>
+                SIGN UP FOR THE LATEST<br>
+                NEWS & INSIGHTS
+            </h4>
+
+            <label>EMAIL ADDRESS</label>
+
+            <input type="email">
+
+            <button>SUBMIT ↗</button>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

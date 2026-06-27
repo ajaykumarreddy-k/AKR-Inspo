@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baba Care Footer Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap');
+        /* Optional: Adding a nice sans-serif font to match the clean aesthetic */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#c3b1d3] relative flex flex-col justify-end overflow-hidden font-sans m-0">
+      
+    <!-- === DECORATIVE BACKGROUND (FOR PREVIEW ONLY) === -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <!-- Giant "baba" text background -->
+        <div class="absolute bottom-16 left-0 w-full text-center text-white font-extrabold text-[38vw] leading-[0.7] tracking-tighter">
+            baba
+        </div>
+        
+        <!-- Simulated colorful illustration elements behind the haze -->
+        <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-[80px] opacity-70"></div>
+        <div class="absolute bottom-0 left-[25%] w-96 h-64 bg-green-500 rounded-full mix-blend-multiply filter blur-[80px] opacity-60"></div>
+        <div class="absolute bottom-10 left-[55%] w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-[80px] opacity-70"></div>
+        <div class="absolute -bottom-20 -right-10 w-[400px] h-[400px] bg-red-400 rounded-full mix-blend-multiply filter blur-[100px] opacity-50"></div>
+    </div>
+    <!-- ================================================ -->
+
+
+    <!-- === REUSABLE FOOTER COMPONENT STARTS HERE === -->
+    
+    <!-- The hazy gradient background specific to the footer area -->
+    <div class="absolute bottom-0 left-0 w-full h-44 bg-gradient-to-t from-[#899ac6] via-[#899ac6]/80 to-transparent z-10 pointer-events-none"></div>
+
+    <footer class="relative z-20 w-full px-5 py-4 md:px-8 md:pb-5 text-white antialiased">
+        <div class="max-w-[1800px] mx-auto flex flex-col gap-3">
+          
+            <!-- Top Links Row -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[13px] font-medium tracking-wide">
+                
+                <!-- Left Links -->
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-2 drop-shadow-sm">
+                    <span>© Baba Care 2025</span>
+                    <a href="#" class="hover:opacity-80 transition-opacity">Privacy Policy</a>
+                    <a href="#" class="hover:opacity-80 transition-opacity">Terms and Conditions</a>
+                </div>
+
+                <!-- Right Links -->
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-2 drop-shadow-sm">
+                    <a href="#" class="hover:opacity-80 transition-opacity">About</a>
+                    <a href="#" class="hover:opacity-80 transition-opacity">Contact</a>
+                    <a href="#" class="hover:opacity-80 transition-opacity">Blog</a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Disclaimer Text -->
+            <div class="text-[10px] leading-snug text-white/90 drop-shadow-sm pr-4 max-w-full">
+                Baba Care, Inc. is a private online software technology company not affiliated with nor endorsed by any Government agency. Baba Care, Inc. does not charge clients for any official Government forms, however, we charge fees for the use of Baba Care, Inc. software in assisting clients with accurately completing such forms. Baba Care, Inc. is not a financial, accounting or law firm and does not provide legal or financial advice.
+            </div>
+
+        </div>
+    </footer>
+    
+    <!-- === REUSABLE FOOTER COMPONENT ENDS HERE === -->
+
+</body>
+</html>

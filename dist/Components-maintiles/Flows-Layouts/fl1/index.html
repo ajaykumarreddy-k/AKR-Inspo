@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Build Trust on Your Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        handwriting: ['Kalam', 'cursive'],
+                    },
+                    colors: {
+                        bgLight: '#f8f9fa',
+                        textMain: '#5a5a5a', /* Slightly lighter dark gray for titles */
+                        textBody: '#888888', /* Lighter gray for body text */
+                        card1Bg: '#fef5ec', /* Subtle orange bg */
+                        card2Bg: '#f0f3ff', /* Subtle blue bg */
+                        card3Bg: '#fcf5ff', /* Subtle purple bg */
+                        pinOrange: '#ff6b35',
+                        pinBlue: '#2563eb',
+                        pinPurple: '#7c3aed',
+                        pinGlowOrange: 'rgba(255, 107, 53, 0.35)',
+                        pinGlowBlue: 'rgba(37, 99, 235, 0.35)',
+                        pinGlowPurple: 'rgba(124, 58, 237, 0.35)'
+                    },
+                    boxShadow: {
+                        'soft-xl': '0 25px 50px -12px rgba(0,0,0,0.08), 0 0 15px rgba(0,0,0,0.03)', /* Softer, larger shadow */
+                        'pin-shadow': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fcfcfc;
+            /* Subtle horizontal lines */
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 49px,
+                #f0f0f0 50px
+            );
+            background-attachment: local;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #4a4a4a;
+        }
+
+        .svg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .dashed-line {
+            fill: none;
+            stroke: #d1d5db;
+            stroke-width: 1.5;
+            stroke-dasharray: 4 6;
+        }
+
+        .rotate-n5 { transform: rotate(-5deg); }
+        .rotate-5 { transform: rotate(5deg); }
+        .rotate-n8 { transform: rotate(-8deg); }
+
+        .push-pin-container {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .push-pin-head {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* 3D highlight on pin head */
+        .push-pin-head::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            filter: blur(1px);
+        }
+
+        /* The cylinder part under the head */
+        .push-pin-base {
+            width: 12px;
+            height: 8px;
+            border-radius: 0 0 4px 4px;
+            margin-top: -2px;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* The actual metal pin (mostly hidden in top-down view, but implies depth) */
+        .push-pin-needle {
+            width: 2px;
+            height: 6px;
+            background: #888;
+            margin-top: -1px;
+            z-index: 0;
+            border-radius: 0 0 2px 2px;
+        }
+
+        /* Orange Pin Colors */
+        .pin-orange .push-pin-head { background: radial-gradient(circle at 30% 30%, #ff8a5c, #e65100); }
+        .pin-orange .push-pin-base { background: linear-gradient(to right, #d84315, #bf360c); box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+        
+        /* Blue Pin Colors */
+        .pin-blue .push-pin-head { background: radial-gradient(circle at 30% 30%, #60a5fa, #1d4ed8); }
+        .pin-blue .push-pin-base { background: linear-gradient(to right, #1e40af, #1e3a8a); box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+
+        /* Purple Pin Colors */
+        .pin-purple .push-pin-head { background: radial-gradient(circle at 30% 30%, #a78bfa, #6d28d9); }
+        .pin-purple .push-pin-base { background: linear-gradient(to right, #5b21b6, #4c1d95); box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+
+        .pin-glow {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            filter: blur(8px);
+            z-index: 19;
+        }
+        .glow-orange { background: var(--tw-colors-pinGlowOrange); }
+        .glow-blue { background: var(--tw-colors-pinGlowBlue); }
+        .glow-purple { background: var(--tw-colors-pinGlowPurple); }
+
+        @media (min-width: 768px) {
+            .card-container {
+                position: relative;
+                width: 100%;
+                max-width: 900px;
+                height: 1100px;
+                margin: 0 auto;
+            }
+            .note-card { position: absolute; width: 260px; } /* Slightly narrower cards */
+            
+            /* Precise positioning to match image */
+            .card-1 { top: 120px; left: 8%; z-index: 10; }
+            .card-2 { top: 200px; right: 12%; z-index: 9; }
+            .card-3 { top: 430px; left: 10%; z-index: 8; }
+            .card-4 { top: 540px; right: 15%; z-index: 7; }
+            .card-5 { top: 760px; left: 18%; z-index: 6; }
+            .footer-profile { top: 880px; right: 28%; position: absolute; z-index: 5;}
+        }
+
+        @media (max-width: 767px) {
+            .card-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+                padding: 20px;
+                padding-top: 40px;
+            }
+            .note-card { width: 85%; max-width: 320px; position: relative;}
+            .svg-container { display: none; }
+            .footer-profile { margin-top: 40px; display: flex; flex-direction: column; align-items: center; text-align: center;}
+        }
+        
+        .number-style {
+            font-family: 'Kalam', cursive;
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        
+        .card-inner-box {
+            border-radius: 12px; /* Inner rounding */
+            padding: 1.25rem 1rem 1.5rem 1rem;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body class="antialiased min-h-screen relative pt-12 pb-32">
+
+    <header class="text-center mb-8 relative z-20 px-4">
+        <!-- Main title pin (orange blur behind title) -->
+        <div class="relative inline-block mb-4">
+             <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-orange-400 blur-xl opacity-30 z-0"></div>
+             <!-- The actual pin is roughly here in the image, partially cut off -->
+             <div class="push-pin-container relative z-10" style="top: -20px; transform: translateX(-50%) scale(1.2);">
+                 <div class="push-pin-head bg-gradient-to-br from-orange-300 to-orange-500"></div>
+                 <div class="push-pin-base bg-orange-600"></div>
+             </div>
+        </div>
+        <h1 class="text-[2.75rem] md:text-[3.5rem] font-[800] text-[#555] tracking-tighter leading-[1.1] max-w-2xl mx-auto">
+            How to Build Trust on<br/>Your Website
+        </h1>
+    </header>
+
+    <main class="card-container relative z-10">
+        
+        <svg class="svg-container hidden md:block">
+            <!-- Path starts from under title, goes through cards -->
+            <path d="M 450 80 
+                     C 450 150, 250 150, 250 250
+                     C 250 300, 600 280, 650 350
+                     C 700 420, 250 450, 220 550
+                     C 190 650, 650 650, 650 720
+                     C 650 800, 350 820, 350 900
+                     C 350 950, 500 950, 550 920" 
+                  class="dashed-line" />
+        </svg>
+
+        <article class="note-card card-1 rotate-n5 transition-transform hover:-translate-y-2 duration-300">
+            <div class="bg-white rounded-[20px] shadow-soft-xl p-[6px] relative">
+                <div class="pin-glow glow-orange"></div>
+                <div class="push-pin-container pin-orange">
+                    <div class="push-pin-head"></div>
+                    <div class="push-pin-base"></div>
+                    <div class="push-pin-needle"></div>
+                </div>
+                <div class="card-inner-box bg-card1Bg">
+                    <div class="number-style text-[#e65100]">01</div>
+                    <h2 class="text-[1.15rem] font-[700] text-textMain mb-2 tracking-tight">Testimonials</h2>
+                    <p class="text-[0.8rem] text-textBody leading-[1.4] font-medium pr-2">
+                        The only way to attract new clients, is to show your experience with the previous ones. Include: real photo, position at company, links their profiles
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="note-card card-2 rotate-5 transition-transform hover:-translate-y-2 duration-300">
+            <div class="bg-white rounded-[20px] shadow-soft-xl p-[6px] relative">
+                <div class="pin-glow glow-blue"></div>
+                <div class="push-pin-container pin-blue">
+                    <div class="push-pin-head"></div>
+                    <div class="push-pin-base"></div>
+                    <div class="push-pin-needle"></div>
+                </div>
+                <div class="card-inner-box bg-card2Bg">
+                    <div class="number-style text-[#2563eb]">02</div>
+                    <h2 class="text-[1.15rem] font-[700] text-textMain mb-2 tracking-tight">Trust Badges</h2>
+                    <p class="text-[0.8rem] text-textBody leading-[1.4] font-medium pr-2">
+                        Show all the achievements you have. Awards, certificates, payment protections, etc.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="note-card card-3 rotate-n8 transition-transform hover:-translate-y-2 duration-300">
+            <div class="bg-white rounded-[20px] shadow-soft-xl p-[6px] relative">
+                <div class="pin-glow glow-purple"></div>
+                <div class="push-pin-container pin-purple">
+                    <div class="push-pin-head"></div>
+                    <div class="push-pin-base"></div>
+                    <div class="push-pin-needle"></div>
+                </div>
+                <div class="card-inner-box bg-card3Bg">
+                    <div class="number-style text-[#7c3aed]">03</div>
+                    <h2 class="text-[1.15rem] font-[700] text-textMain mb-2 tracking-tight">Add Contacts</h2>
+                    <p class="text-[0.8rem] text-textBody leading-[1.4] font-medium pr-2">
+                        People need to understand that if something will happen, they can always reach out to you. Leave links to your social media, your email and the phone
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="note-card card-4 rotate-5 transition-transform hover:-translate-y-2 duration-300">
+            <div class="bg-white rounded-[20px] shadow-soft-xl p-[6px] relative">
+                <div class="pin-glow glow-orange"></div>
+                <div class="push-pin-container pin-orange">
+                    <div class="push-pin-head"></div>
+                    <div class="push-pin-base"></div>
+                    <div class="push-pin-needle"></div>
+                </div>
+                <div class="card-inner-box bg-card1Bg">
+                    <div class="number-style text-[#e65100]">04</div>
+                    <h2 class="text-[1.15rem] font-[700] text-textMain mb-2 tracking-tight">Case Studies</h2>
+                    <p class="text-[0.8rem] text-textBody leading-[1.4] font-medium pr-2">
+                        Share detailed examples of how your product or service solved real problems. This helps visitors imagine their own success.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="note-card card-5 rotate-n5 transition-transform hover:-translate-y-2 duration-300">
+            <div class="bg-white rounded-[20px] shadow-soft-xl p-[6px] relative">
+                <div class="pin-glow glow-blue"></div>
+                <div class="push-pin-container pin-blue">
+                    <div class="push-pin-head"></div>
+                    <div class="push-pin-base"></div>
+                    <div class="push-pin-needle"></div>
+                </div>
+                <div class="card-inner-box bg-card2Bg">
+                    <div class="number-style text-[#2563eb]">05</div>
+                    <h2 class="text-[1.15rem] font-[700] text-textMain mb-2 tracking-tight">Clear Refund Policy</h2>
+                    <p class="text-[0.8rem] text-textBody leading-[1.4] font-medium pr-2">
+                        Offer a transparent money-back guarantee or easy return process
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <div class="footer-profile flex flex-col md:flex-row items-center gap-3">
+             <div class="w-10 h-10 rounded-full overflow-hidden shadow-[0_4px_10px_rgba(0,0,0,0.15)] bg-gray-900 flex-shrink-0 border-2 border-white">
+                 <!-- Placeholder profile image matching the dark theme of the original -->
+                 <img src="https://ui-avatars.com/api/?name=P&background=111&color=fff&size=80" alt="Profile" class="w-full h-full object-cover">
+             </div>
+             <div class="text-[0.7rem] text-gray-500 font-medium leading-tight">
+                 Your <span class="text-orange-500 font-bold">all in one</span><br>design partner.
+             </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

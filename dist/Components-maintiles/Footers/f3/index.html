@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Milk Footer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,700;1,900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-cream': '#FDFBF5',
+                        'brand-red': '#FA1A55',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['"Arial Black"', '"Helvetica Black"', 'Impact', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFBF5;
+        }
+
+        .massive-text {
+            /* Adjusted to fit completely inside the viewport without overflowing */
+            font-size: clamp(60px, 20vw, 350px);
+            line-height: 0.8;
+            letter-spacing: 0.02em;
+        }
+
+        .curved-text-container {
+            /* Pull the curved text slightly closer to the main heading */
+            margin-top: -1vw;
+        }
+
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 50%;
+            background-color: #FA1A55;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-brand-red selection:text-brand-cream text-brand-red">
+
+    <!-- Top spacer to push content down if used standalone -->
+    <div class="flex-grow"></div>
+
+    <!-- Main Footer Visuals -->
+    <div class="w-full flex flex-col items-center justify-center relative px-4">
+        
+        <!-- Giant "OTHER" - Now fits inside the screen -->
+        <div class="w-full flex justify-center items-center select-none pb-2">
+            <h1 class="massive-text font-display font-black whitespace-nowrap text-center">
+                OTHER
+            </h1>
+        </div>
+
+        <!-- Curved "MILK" -->
+        <div class="curved-text-container w-full flex justify-center relative z-10 select-none">
+            <!-- SVG used to create the perfect arch for the text -->
+            <svg viewBox="0 0 500 160" class="w-[60vw] max-w-[400px] min-w-[220px] overflow-visible">
+                <!-- An invisible quadratic bezier curve path for the text to follow -->
+                <path id="milk-arc" d="M 20 20 Q 250 180 480 20" fill="transparent" stroke="none" />
+                <text fill="currentColor" style="font-size: 42px; font-weight: 900; font-style: italic; letter-spacing: 0.65em; font-family: 'Inter', sans-serif;">
+                    <textPath href="#milk-arc" startOffset="50%" text-anchor="middle">MILK</textPath>
+                </text>
+            </svg>
+        </div>
+        
+    </div>
+
+    <!-- Navigation Links -->
+    <footer class="w-full pb-10 pt-12 sm:pt-20 px-4 sm:px-8 z-20">
+        <nav>
+            <ul class="flex flex-wrap justify-center items-center gap-x-6 sm:gap-x-10 md:gap-x-12 gap-y-6 text-center max-w-6xl mx-auto">
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">About Us</a></li>
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">Products</a></li>
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">Wholesale</a></li>
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">Find Us</a></li>
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">Cart</a></li>
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">Subscribe</a></li>
+                <li><a href="#" class="nav-link text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">Log In</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>
