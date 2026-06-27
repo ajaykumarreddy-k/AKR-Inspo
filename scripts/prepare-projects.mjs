@@ -1,11 +1,11 @@
-import { readdirSync, existsSync, statSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readdirSync, existsSync, statSync, readFileSync, writeFileSync, mkdirSync, renameSync } from 'fs';
 import { join } from 'path';
 
 const projects = [];
 
 // Function to find nested projects
 function findProjects(dir, depth = 0) {
-  if (depth > 2) return; // limit depth
+  if (depth > 5) return; // limit depth
   
   let entries;
   try {
@@ -16,6 +16,23 @@ function findProjects(dir, depth = 0) {
   
   let hasIndexHtml = entries.includes('index.html');
   const isIgnored = dir.includes('node_modules') || dir.includes('dist') || dir.includes('.git') || dir.includes('public');
+
+  // Auto-rename solitary .html files to index.html
+  if (!hasIndexHtml) {
+    const htmlFiles = entries.filter(e => e.endsWith('.html'));
+    if (htmlFiles.length === 1) {
+      const oldPath = join(dir, htmlFiles[0]);
+      const newPath = join(dir, 'index.html');
+      try {
+        renameSync(oldPath, newPath);
+        console.log(`  -> Renamed ${htmlFiles[0]} to index.html for ${dir}`);
+        hasIndexHtml = true;
+        entries.push('index.html');
+      } catch (e) {
+        console.error(`  -> Failed to rename ${htmlFiles[0]} in ${dir}`, e);
+      }
+    }
+  }
   
   // Auto-promote src/index.html to root if missing
   if (!hasIndexHtml && entries.includes('src')) {
