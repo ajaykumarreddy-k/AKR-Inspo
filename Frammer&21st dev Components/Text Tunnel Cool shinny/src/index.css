@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    @apply text-white bg-black font-sans;
+  }
+
+  body {
+    @apply min-h-screen relative m-0;
+  }
+}
+#root {
+  @apply w-full h-full min-h-screen;
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flair Footer Recreation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        body {
+            background-color: #111111;
+            color: #d1d5db; /* A slightly muted white for text to match the image */
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px; /* Outer padding to match the image framing */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1200px;
+            border: 1px solid #333333;
+            box-sizing: border-box;
+            background-color: #111111;
+        }
+
+        /* Using grid to create the precise layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            border-bottom: none; /* Handled by container */
+        }
+
+        /* Common border styles for grid items */
+        .grid-item {
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            padding: 2.5rem 2rem;
+            box-sizing: border-box;
+        }
+        
+        .grid-item:last-child,
+        .grid-item.col-end {
+             border-right: none;
+        }
+
+        .grid-item.no-bottom-border {
+             border-bottom: none;
+        }
+
+        /* Typography styles */
+        .footer-link {
+            display: block;
+            margin-bottom: 1.25rem;
+            font-size: 0.9rem;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 300;
+        }
+
+        .footer-link:last-child {
+            margin-bottom: 0;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #d1d5db;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 3fr; /* 1 column for arrow/copyright, 3 for logo */
+        }
+
+        .left-panel {
+            border-right: 1px solid #333333;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 300px; /* To ensure the arrow graphic has space */
+            padding: 2rem;
+            box-sizing: border-box;
+            overflow: hidden; /* Keep the SVG inside */
+        }
+
+        .right-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #111111;
+            position: relative;
+        }
+
+        /* Geometric arrow graphic */
+        .arrow-graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* So it doesn't block interactions */
+        }
+        
+        /* Specific SVG lines */
+        .arrow-line {
+            stroke: #333333;
+            stroke-width: 1;
+            fill: none;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: #a3a3a3;
+            font-weight: 300;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Massive Logo Typography */
+        .massive-logo {
+            font-size: 15rem; /* Base size, will scale */
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            width: 100%;
+            text-align: left; /* Align to match image layout within its 3/4 column */
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .registered-mark {
+            font-size: 3rem;
+            font-weight: 400;
+            vertical-align: baseline;
+            margin-left: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-item {
+                 border-right: 1px solid #333333;
+            }
+            .grid-item:nth-child(2n) {
+                border-right: none;
+            }
+            .massive-logo {
+                font-size: 10vw;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .grid-item {
+                 border-right: none;
+            }
+            .bottom-row {
+                grid-template-columns: 1fr;
+            }
+            .left-panel {
+                border-right: none;
+                border-bottom: 1px solid #333333;
+                min-height: 200px;
+            }
+            .massive-logo {
+                font-size: 15vw;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+        
+        /* Fine tuning for the massive 'Flair' text to closely match the visual weight */
+        .flair-text-wrapper {
+             width: 100%;
+             position: relative;
+        }
+        
+        .flair-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="footer-container">
+        
+        <!-- Top Row Grid -->
+        <div class="grid-layout">
+            
+            <!-- Column 1: Navigation -->
+            <div class="grid-item">
+                <a href="#" class="footer-link">Work</a>
+                <a href="#" class="footer-link">Services</a>
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+
+            <!-- Column 2: Social -->
+            <div class="grid-item">
+                <a href="#" class="footer-link">Instagram</a>
+                <a href="#" class="footer-link">Dribbble</a>
+                <a href="#" class="footer-link">Behance</a>
+                <a href="#" class="footer-link">LinkedIn</a>
+            </div>
+
+            <!-- Column 3: Address -->
+            <div class="grid-item">
+                <div class="footer-text">Paupio g. 50,</div>
+                <div class="footer-text">Vilnius, Lithuania</div>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="grid-item col-end">
+                <div class="footer-text">+37061747093</div>
+                <div class="footer-text">hello@flair.digital</div>
+            </div>
+            
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="bottom-row">
+            
+            <!-- Left Panel: Graphic & Copyright -->
+            <div class="left-panel">
+                <!-- SVG graphic for the geometric arrow -->
+                <svg class="arrow-graphic" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <!-- Horizontal line across middle -->
+                    <line x1="0" y1="50" x2="100" y2="50" class="arrow-line" />
+                    <!-- Diagonal line from top middle to right middle -->
+                    <line x1="50" y1="0" x2="100" y2="50" class="arrow-line" />
+                    <!-- Diagonal line from bottom middle to right middle -->
+                    <line x1="50" y1="100" x2="100" y2="50" class="arrow-line" />
+                </svg>
+                
+                <div class="copyright">© Flair 2025</div>
+            </div>
+
+            <!-- Right Panel: Massive Logo -->
+            <div class="right-panel">
+                 <!-- Using SVG for the logo text to ensure exact scaling, layout, and visual fidelity as an image would have, while remaining vector -->
+                 <div class="flair-text-wrapper">
+                    <svg class="flair-svg" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                             <style>
+                                 .cls-1 { font-size: 260px; fill: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; letter-spacing: -0.05em; }
+                                 .cls-2 { font-size: 60px; font-weight: normal; }
+                             </style>
+                        </defs>
+                        <!-- Approximate recreation of the letterforms using standard fonts to match the aesthetic. A real implementation would use their exact brand font or vector paths. -->
+                        <text x="-10" y="210" class="cls-1">Flair<tspan class="cls-2" dx="10" dy="-20">®</tspan></text>
+                    </svg>
+                 </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

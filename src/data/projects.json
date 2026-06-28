@@ -28,6 +28,13 @@
     "thumbnail": "Components-maintiles/Footers/f10/Pasted image.png"
   },
   {
+    "id": "components-maintiles-footers-f11",
+    "name": "F11",
+    "path": "/Components-maintiles/Footers/f11/index.html",
+    "folder": "Components-maintiles/Footers/f11",
+    "thumbnail": "Components-maintiles/Footers/f11/Pasted image.png"
+  },
+  {
     "id": "components-maintiles-footers-f2",
     "name": "F2",
     "path": "/Components-maintiles/Footers/f2/index.html",
@@ -168,6 +175,13 @@
     "thumbnail": "Components-maintiles/UI-Components/c7/c7.png"
   },
   {
+    "id": "entire-site-design-by-ajay",
+    "name": "Design By Ajay",
+    "path": "/Entire site/Design by Ajay/index.html",
+    "folder": "Entire site/Design by Ajay",
+    "thumbnail": "Entire site/Design by Ajay/Pasted image.png"
+  },
+  {
     "id": "entire-site-new-genere---gradient-site",
     "name": "New Genere   Gradient Site",
     "path": "/Entire site/New Genere - Gradient site/index.html",
@@ -224,11 +238,25 @@
     "thumbnail": "Frammer&21st dev Components/Ajay-Harmes Custom Scroll/screencapture-localhost-5173-2026-06-27-21_46_00.png"
   },
   {
+    "id": "frammer-21st-dev-components-bg-changer-on-scroll",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Bg changer on scroll/index.html",
+    "folder": "Frammer&21st dev Components/Bg changer on scroll",
+    "thumbnail": "Frammer&21st dev Components/Bg changer on scroll/image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-blinds-text-reveal-",
     "name": "Blinds Text Reveal",
     "path": "/Frammer&21st dev Components/Blinds Text Reveal /index.html",
     "folder": "Frammer&21st dev Components/Blinds Text Reveal ",
     "thumbnail": "Frammer&21st dev Components/Blinds Text Reveal /Pasted image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-box-reveal",
+    "name": "Page Loader",
+    "path": "/Frammer&21st dev Components/Box reveal/index.html",
+    "folder": "Frammer&21st dev Components/Box reveal",
+    "thumbnail": "Frammer&21st dev Components/Box reveal/image.png"
   },
   {
     "id": "frammer-21st-dev-components-burn-transition-",
@@ -243,6 +271,13 @@
     "path": "/Frammer&21st dev Components/Case Study Hover /index.html",
     "folder": "Frammer&21st dev Components/Case Study Hover ",
     "thumbnail": "Frammer&21st dev Components/Case Study Hover /Pasted image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-counting-loader",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Counting loader/index.html",
+    "folder": "Frammer&21st dev Components/Counting loader",
+    "thumbnail": "Frammer&21st dev Components/Counting loader/image.png"
   },
   {
     "id": "frammer-21st-dev-components-exploding-input-component",
@@ -266,6 +301,13 @@
     "thumbnail": "Frammer&21st dev Components/Focus Gallary/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-grid-hover",
+    "name": "Grid Hover",
+    "path": "/Frammer&21st dev Components/Grid Hover/index.html",
+    "folder": "Frammer&21st dev Components/Grid Hover",
+    "thumbnail": null
+  },
+  {
     "id": "frammer-21st-dev-components-hover-link-previews",
     "name": "Hover Link Previews",
     "path": "/Frammer&21st dev Components/Hover Link Previews/index.html",
@@ -278,6 +320,27 @@
     "path": "/Frammer&21st dev Components/Image Unroll Effect/index.html",
     "folder": "Frammer&21st dev Components/Image Unroll Effect",
     "thumbnail": "Frammer&21st dev Components/Image Unroll Effect/Pasted image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-nav-bar-side",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Nav Bar Side/index.html",
+    "folder": "Frammer&21st dev Components/Nav Bar Side",
+    "thumbnail": null
+  },
+  {
+    "id": "frammer-21st-dev-components-page-start-animation",
+    "name": "Page Start Animation",
+    "path": "/Frammer&21st dev Components/Page Start Animation/index.html",
+    "folder": "Frammer&21st dev Components/Page Start Animation",
+    "thumbnail": "Frammer&21st dev Components/Page Start Animation/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-pageloader",
+    "name": "Page Loader",
+    "path": "/Frammer&21st dev Components/PageLoader/index.html",
+    "folder": "Frammer&21st dev Components/PageLoader",
+    "thumbnail": null
   },
   {
     "id": "frammer-21st-dev-components-parallax-image-scroll",
@@ -301,11 +364,39 @@
     "thumbnail": "Frammer&21st dev Components/Pixel Hero Section/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-pixelscroll",
+    "name": "Pixel Scroll",
+    "path": "/Frammer&21st dev Components/PixelScroll/index.html",
+    "folder": "Frammer&21st dev Components/PixelScroll",
+    "thumbnail": "Frammer&21st dev Components/PixelScroll/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-porttrait-flip",
+    "name": "Porttrait Flip",
+    "path": "/Frammer&21st dev Components/Porttrait Flip/index.html",
+    "folder": "Frammer&21st dev Components/Porttrait Flip",
+    "thumbnail": "Frammer&21st dev Components/Porttrait Flip/image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-rainbowfooter-on-scrool",
     "name": "Rainbow Footer",
     "path": "/Frammer&21st dev Components/RainbowFooter on scrool/index.html",
     "folder": "Frammer&21st dev Components/RainbowFooter on scrool",
     "thumbnail": "Frammer&21st dev Components/RainbowFooter on scrool/img.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-runaround-text-wrap",
+    "name": "Runaround Text Wrap",
+    "path": "/Frammer&21st dev Components/Runaround Text Wrap/index.html",
+    "folder": "Frammer&21st dev Components/Runaround Text Wrap",
+    "thumbnail": "Frammer&21st dev Components/Runaround Text Wrap/F0gg5kHYD79EG2o1ClT6nqcGtfo.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-svg-path-follow",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/SVG Path Follow/index.html",
+    "folder": "Frammer&21st dev Components/SVG Path Follow",
+    "thumbnail": "Frammer&21st dev Components/SVG Path Follow/image.png"
   },
   {
     "id": "frammer-21st-dev-components-signature-animation",
@@ -320,6 +411,34 @@
     "path": "/Frammer&21st dev Components/Text Mask Animation in Framer/index.html",
     "folder": "Frammer&21st dev Components/Text Mask Animation in Framer",
     "thumbnail": "Frammer&21st dev Components/Text Mask Animation in Framer/Pasted image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-text-tunnel-cool-shinny",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Text Tunnel Cool shinny/index.html",
+    "folder": "Frammer&21st dev Components/Text Tunnel Cool shinny",
+    "thumbnail": "Frammer&21st dev Components/Text Tunnel Cool shinny/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-text-reveal",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Text reveal/index.html",
+    "folder": "Frammer&21st dev Components/Text reveal",
+    "thumbnail": "Frammer&21st dev Components/Text reveal/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-vertical-dail-nav",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Vertical Dail Nav/index.html",
+    "folder": "Frammer&21st dev Components/Vertical Dail Nav",
+    "thumbnail": "Frammer&21st dev Components/Vertical Dail Nav/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-web-preloder",
+    "name": "Web Preloder",
+    "path": "/Frammer&21st dev Components/web preloder/index.html",
+    "folder": "Frammer&21st dev Components/web preloder",
+    "thumbnail": "Frammer&21st dev Components/web preloder/image.png"
   },
   {
     "id": "scroll-animations",

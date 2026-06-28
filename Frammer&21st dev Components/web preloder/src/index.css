@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .instrument-serif-italic {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+  }
+}
