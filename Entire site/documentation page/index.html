@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scale Studio - Viral Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paper': '#EBE7DB',        /* The main warm beige */
+                        'paper-dark': '#D8D3C3',   /* Darker beige for the text box */
+                        'ink': '#1a1a1a',          /* Black for lines/text */
+                        'highlight': '#7dd3fc',    /* Cyan highlight */
+                    },
+                    fontFamily: {
+                        serif: ['"Google Sans"', 'Roboto', 'sans-serif'],
+                        sans: ['"Google Sans"', 'Roboto', 'sans-serif'],
+                        mono: ['"Google Sans Mono"', 'IBM Plex Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #131313; /* Dark outer background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            color: #1a1a1a;
+            /* subtle noise on body just in case */
+        }
+
+        /* Full container shadow and sizing */
+        .app-container {
+            width: 100%;
+            max-width: 1400px;
+            height: 85vh;
+            min-height: 700px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Subtle grid background */
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-size: 80px 80px;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), 
+                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            z-index: 0;
+            pointer-events: none;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        /* Highlight block matching the image */
+        .highlight {
+            background-color: #8DE4E8; /* Precise cyan from image */
+            display: inline;
+            padding: 2px 4px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+
+        /* Blinking cursor */
+        .cursor-blink::after {
+            content: '|';
+            color: #1a1a1a;
+            animation: blink 1s step-end infinite;
+            font-weight: 300;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* 3D Isometric Graphics */
+        .iso-wrapper {
+            position: relative;
+            width: 320px;
+            height: 500px;
+            perspective: 2000px; /* high perspective keeps it relatively orthographic */
+        }
+
+        .iso-layer {
+            position: absolute;
+            left: 50%;
+            width: 160px;
+            height: 160px;
+            margin-left: -80px;
+            transform-style: preserve-3d;
+            transform: rotateX(60deg) rotateZ(-45deg);
+        }
+
+        /* Vertically stack the layers */
+        .layer-1 { top: 30px; }
+        .layer-2 { top: 190px; }
+        .layer-3 { top: 350px; }
+
+        /* The common wireframe box setup */
+        .iso-face-top {
+            position: absolute;
+            inset: 0;
+            border: 1px solid #1a1a1a;
+            background: #FAFAF7; /* Bright white top face */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .iso-face-bottom {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(26,26,26,0.3);
+            transform: translateZ(-24px); /* Box depth */
+            background: rgba(0,0,0,0.02);
+            z-index: 0;
+        }
+
+        /* Connecting edges for wireframe */
+        .iso-edge {
+            position: absolute;
+            width: 1px;
+            height: 24px; /* Matches translateZ depth */
+            background: rgba(26,26,26,0.3);
+            transform-origin: top;
+            z-index: 1;
+        }
+        .iso-edge-1 { top: 0; left: 0; transform: rotateX(-90deg); }
+        .iso-edge-2 { top: 0; right: 0; transform: rotateX(-90deg); }
+        .iso-edge-3 { bottom: 0; left: 0; transform: rotateX(-90deg); }
+        .iso-edge-4 { bottom: 0; right: 0; transform: rotateX(-90deg); }
+
+        /* Specific setup for the 4 small boxes */
+        .small-box-container {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 12px;
+            transform-style: preserve-3d;
+        }
+        .small-iso-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        /* The vertical dashed line connecting the whole stack */
+        .vertical-connector {
+            position: absolute;
+            left: 50%;
+            top: 100px;
+            bottom: 80px;
+            width: 1px;
+            border-left: 2px dashed rgba(26,26,26,0.2);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Navigation buttons */
+        .nav-btn {
+            padding: 0.25rem 0.875rem;
+            border: 1px solid #1a1a1a;
+            border-radius: 9999px;
+            font-size: 0.8125rem;
+            font-family: 'Inter', sans-serif;
+            background-color: transparent;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-btn.dark {
+            background-color: #1a1a1a;
+            color: #FAFAF7;
+        }
+
+        /* Crop marks around the inner box */
+        .crop-mark {
+            position: absolute;
+            background-color: #1a1a1a;
+            opacity: 0.6;
+        }
+        .crop-v { width: 1px; height: 12px; }
+        .crop-h { height: 1px; width: 12px; }
+
+        /* Crosshairs in the background */
+        .bg-crosshair {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+        .bg-crosshair::before { content: ''; position: absolute; top: 11px; left: 0; right: 0; height: 1px; background: #1a1a1a; }
+        .bg-crosshair::after { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 1px; background: #1a1a1a; }
+
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <!-- Main Application Container -->
+    <div class="app-container flex flex-col relative z-10">
+        
+        <!-- HEADER (The Tab Shape) -->
+        <div class="flex items-end w-full">
+            
+            <!-- 1. Left High Tab -->
+            <div class="w-[260px] h-[70px] border-t border-l border-ink rounded-tl-[16px] bg-paper flex items-center px-8 relative z-20" style="margin-bottom: -1px; border-bottom: 1px solid transparent;">
+                <h1 class="font-serif text-[1.35rem] leading-tight text-ink font-medium tracking-tight">
+                    Scale<br>Studio
+                </h1>
+            </div>
+
+            <!-- 2. The Angled Connector -->
+            <div class="w-[30px] h-[70px] relative z-20" style="margin-left: -1px; margin-right: -1px; margin-bottom: -1px;">
+                <svg viewBox="0 0 30 70" class="w-full h-full" preserveAspectRatio="none">
+                    <!-- Fills the area below the line with paper color -->
+                    <polygon points="0,0 30,30 30,75 0,75" fill="#EBE7DB" />
+                    <!-- Draws the angled black border -->
+                    <line x1="0" y1="0" x2="30" y2="30" stroke="#1a1a1a" stroke-width="1.5" />
+                </svg>
+            </div>
+
+            <!-- 3. Right Lower Navigation Area -->
+            <div class="flex-1 h-[40px] border-t border-r border-ink rounded-tr-[16px] bg-paper flex items-center justify-end px-6 gap-2 relative z-20" style="margin-bottom: -1px; border-bottom: 1px solid transparent;">
+                <button class="nav-btn">Home</button>
+                <button class="nav-btn">About</button>
+                <button class="nav-btn">How It Works</button>
+                <button class="nav-btn">Resources <span class="text-[10px]">↓</span></button>
+                <button class="nav-btn dark ml-2">More <span class="text-[10px]">≡</span></button>
+            </div>
+        </div>
+
+        <!-- MAIN BODY -->
+        <div class="flex-1 w-full border-l border-r border-b border-ink rounded-b-[16px] bg-paper relative overflow-hidden flex z-10 shadow-[inset_0_0_100px_rgba(0,0,0,0.02)]">
+            
+            <!-- Grid Background -->
+            <div class="grid-bg"></div>
+            
+            <!-- Specific Crosshairs (from image) -->
+            <div class="bg-crosshair" style="top: 25%; left: 55%;"></div>
+            <div class="bg-crosshair" style="top: 25%; right: 10%;"></div>
+            <div class="bg-crosshair" style="bottom: 15%; left: 55%;"></div>
+            <div class="bg-crosshair" style="bottom: 15%; right: 10%;"></div>
+            <div class="bg-crosshair" style="bottom: 25%; left: 10%;"></div>
+
+            <!-- Right side scroll indicator -->
+            <div class="absolute right-3 top-24 bottom-24 w-[3px] rounded-full bg-ink/10 flex flex-col justify-start z-30">
+                <div class="w-full h-12 bg-ink rounded-full mt-4"></div>
+            </div>
+
+            <!-- Content Container -->
+            <div class="w-full h-full flex flex-col lg:flex-row relative z-10 pl-16 pr-24 pt-20 pb-12 overflow-y-auto">
+                
+                <!-- Left Column (Typography) -->
+                <div class="w-full lg:w-[55%] flex flex-col">
+                    
+                    <!-- Headline -->
+                    <h2 class="font-serif text-[4.5rem] leading-[1.05] mb-20 tracking-tight cursor-blink text-ink">
+                        The <span class="highlight">Science of Viral</span><br>
+                        <span class="highlight">Content</span> for Building<br>
+                        Experts
+                    </h2>
+
+                    <!-- Darker Text Box with Crop Marks -->
+                    <div class="relative w-[480px] mt-auto mb-10">
+                        
+                        <!-- Crop Marks (Top Left) -->
+                        <div class="crop-mark crop-v -top-6 left-0"></div>
+                        <div class="crop-mark crop-h top-0 -left-6"></div>
+                        
+                        <!-- Crop Marks (Top Right) -->
+                        <div class="crop-mark crop-v -top-6 right-0"></div>
+                        <div class="crop-mark crop-h top-0 -right-6"></div>
+                        
+                        <!-- Crop Marks (Bottom Left) -->
+                        <div class="crop-mark crop-v -bottom-6 left-0"></div>
+                        <div class="crop-mark crop-h bottom-0 -left-6"></div>
+                        
+                        <!-- Crop Marks (Bottom Right) -->
+                        <div class="crop-mark crop-v -bottom-6 right-0"></div>
+                        <div class="crop-mark crop-h bottom-0 -right-6"></div>
+
+                        <!-- Inner Box -->
+                        <div class="bg-paper-dark p-8 shadow-sm">
+                            <h3 class="font-serif text-[1.1rem] text-ink mb-4 font-medium">
+                                Viral Growth, Made Predictable
+                            </h3>
+                            <p class="font-sans text-[14px] leading-[1.6] text-ink/80 pr-4">
+                                After analyzing over 10,000 high-performing posts, we've identified the exact formula that separates viral content from the noise. Our systematic approach eliminates the trial-and-error of audience building—delivering consistent follower growth through content that's engineered to spread.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Isometric Graphics) -->
+                <div class="w-full lg:w-[45%] flex justify-center items-center relative mt-12 lg:mt-0">
+                    
+                    <div class="iso-wrapper">
+                        <!-- Connecting dashed line -->
+                        <div class="vertical-connector"></div>
+
+                        <!-- LAYER 1: Top 4 Small Users -->
+                        <div class="iso-layer layer-1">
+                            <div class="small-box-container">
+                                <!-- Box 1 -->
+                                <div class="small-iso-box">
+                                    <div class="iso-face-bottom"></div>
+                                    <div class="iso-edge iso-edge-1"></div><div class="iso-edge iso-edge-2"></div>
+                                    <div class="iso-edge iso-edge-3"></div><div class="iso-edge iso-edge-4"></div>
+                                    <div class="iso-face-top">
+                                        <!-- User Icon (Lays flat on the isometric plane) -->
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21v-2a4 4 0 0 0-4-4H10a4 4 0 0 0-4 4v2"></path><circle cx="14" cy="7" r="4"></circle></svg>
+                                    </div>
+                                </div>
+                                <!-- Box 2 -->
+                                <div class="small-iso-box">
+                                    <div class="iso-face-bottom"></div>
+                                    <div class="iso-edge iso-edge-1"></div><div class="iso-edge iso-edge-2"></div>
+                                    <div class="iso-edge iso-edge-3"></div><div class="iso-edge iso-edge-4"></div>
+                                    <div class="iso-face-top">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21v-2a4 4 0 0 0-4-4H10a4 4 0 0 0-4 4v2"></path><circle cx="14" cy="7" r="4"></circle></svg>
+                                    </div>
+                                </div>
+                                <!-- Box 3 -->
+                                <div class="small-iso-box">
+                                    <div class="iso-face-bottom"></div>
+                                    <div class="iso-edge iso-edge-1"></div><div class="iso-edge iso-edge-2"></div>
+                                    <div class="iso-edge iso-edge-3"></div><div class="iso-edge iso-edge-4"></div>
+                                    <div class="iso-face-top">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21v-2a4 4 0 0 0-4-4H10a4 4 0 0 0-4 4v2"></path><circle cx="14" cy="7" r="4"></circle></svg>
+                                    </div>
+                                </div>
+                                <!-- Box 4 -->
+                                <div class="small-iso-box">
+                                    <div class="iso-face-bottom"></div>
+                                    <div class="iso-edge iso-edge-1"></div><div class="iso-edge iso-edge-2"></div>
+                                    <div class="iso-edge iso-edge-3"></div><div class="iso-edge iso-edge-4"></div>
+                                    <div class="iso-face-top">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21v-2a4 4 0 0 0-4-4H10a4 4 0 0 0-4 4v2"></path><circle cx="14" cy="7" r="4"></circle></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LAYER 2: Network Diagram -->
+                        <div class="iso-layer layer-2">
+                            <div class="iso-face-bottom"></div>
+                            <div class="iso-edge iso-edge-1"></div><div class="iso-edge iso-edge-2"></div>
+                            <div class="iso-edge iso-edge-3"></div><div class="iso-edge iso-edge-4"></div>
+                            <div class="iso-face-top">
+                                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" stroke="#1a1a1a" stroke-width="4">
+                                    <circle cx="50" cy="50" r="10" fill="none"></circle>
+                                    <circle cx="30" cy="25" r="8"></circle>
+                                    <circle cx="70" cy="25" r="8"></circle>
+                                    <circle cx="20" cy="65" r="8"></circle>
+                                    <circle cx="80" cy="65" r="8"></circle>
+                                    <!-- Connections -->
+                                    <line x1="45" y1="42" x2="35" y2="30"></line>
+                                    <line x1="55" y1="42" x2="65" y2="30"></line>
+                                    <line x1="42" y1="55" x2="25" y2="62"></line>
+                                    <line x1="58" y1="55" x2="75" y2="62"></line>
+                                    <line x1="32" y1="33" x2="22" y2="58"></line>
+                                    <line x1="68" y1="33" x2="78" y2="58"></line>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- LAYER 3: X Logo -->
+                        <div class="iso-layer layer-3">
+                            <div class="iso-face-bottom"></div>
+                            <div class="iso-edge iso-edge-1"></div><div class="iso-edge iso-edge-2"></div>
+                            <div class="iso-edge iso-edge-3"></div><div class="iso-edge iso-edge-4"></div>
+                            <div class="iso-face-top">
+                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5">
+                                    <path d="M4 4l16 16m0-16L4 20" stroke-linecap="square"></path>
+                                    <!-- Double lines to simulate thickness of the logo in the image -->
+                                    <path d="M6 4l14 16m0-16L6 20" stroke-linecap="square"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Controls (Floating) -->
+            <div class="absolute bottom-6 left-6 right-8 flex justify-between items-center pointer-events-none z-30">
+                <!-- Down Arrow Circle -->
+                <div class="w-10 h-10 rounded-full border border-ink flex justify-center items-center bg-paper pointer-events-auto cursor-pointer hover:bg-ink/5 transition-colors">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </div>
+                
+                <!-- Search Image Button -->
+                <div class="bg-paper border border-ink rounded-[16px] px-4 py-2 flex items-center gap-2 pointer-events-auto cursor-pointer hover:bg-ink/5 transition-colors shadow-sm mr-6">
+                    <span class="text-[13px] font-sans font-medium">Search image</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
