@@ -196,6 +196,20 @@
     "thumbnail": "Entire site/Playlist/screencapture-localhost-3000-2026-06-27-21_57_21.png"
   },
   {
+    "id": "entire-site-red-themed-skeovalue",
+    "name": "Red Themed Skeovalue",
+    "path": "/Entire site/Red themed Skeovalue/index.html",
+    "folder": "Entire site/Red themed Skeovalue",
+    "thumbnail": "Entire site/Red themed Skeovalue/Pasted image.png"
+  },
+  {
+    "id": "entire-site-the-site",
+    "name": "THE Site",
+    "path": "/Entire site/THE-site/index.html",
+    "folder": "Entire site/THE-site",
+    "thumbnail": "Entire site/THE-site/image.png"
+  },
+  {
     "id": "entire-site-watch-site",
     "name": "Watch Site",
     "path": "/Entire site/Watch-site/index.html",
@@ -203,11 +217,25 @@
     "thumbnail": "Entire site/Watch-site/main.png"
   },
   {
+    "id": "entire-site-yellow-theme-half-screen",
+    "name": "Yellow Theme Half Screen",
+    "path": "/Entire site/Yellow Theme half screen/index.html",
+    "folder": "Entire site/Yellow Theme half screen",
+    "thumbnail": null
+  },
+  {
     "id": "entire-site-cool-themed-site-glass-and-unique",
     "name": "Cool Themed Site Glass And Unique",
     "path": "/Entire site/cool-themed site glass and unique/index.html",
     "folder": "Entire site/cool-themed site glass and unique",
     "thumbnail": "Entire site/cool-themed site glass and unique/screencapture-localhost-35579-2026-06-27-21_55_44.png"
+  },
+  {
+    "id": "entire-site-documentation-page",
+    "name": "Documentation Page",
+    "path": "/Entire site/documentation page/index.html",
+    "folder": "Entire site/documentation page",
+    "thumbnail": "Entire site/documentation page/Pasted image.png"
   },
   {
     "id": "entire-site-hermes-agent-clone",

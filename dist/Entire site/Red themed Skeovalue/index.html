@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEKO EVOLVE</title>
+    <!-- Importing a condensed font for the main title and a standard sans-serif for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sekoRed: '#ff1414',
+                        sekoGrey: '#e6e5df',
+                        sekoBlack: '#111111'
+                    },
+                    fontFamily: {
+                        // Anton is a good approximation for the condensed, heavy title font
+                        display: ['Anton', 'sans-serif'], 
+                        // Inter for the clean, readable body copy
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'xxs': '0.5rem', // For the very small text block
+                        '10xl': '10rem', // For the massive title
+                        '12xl': '14rem',
+                    },
+                    lineHeight: {
+                        'tighter': '0.85',
+                        'super-tight': '0.75'
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for specific alignment needs not easily handled by standard tailwind classes */
+        body {
+            background-color: #222; /* Dark background behind the main container like in the screenshot */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: transparent;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .asterisk-icon {
+            font-size: 8rem; /* Size of the asterisk in the title */
+            line-height: 0.5;
+            transform: translateY(-0.1em); /* Adjust vertical alignment */
+        }
+        
+        .small-asterisk {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        /* Styling for the condensed list numbers */
+        .condensed-number {
+            font-family: 'Anton', sans-serif;
+            font-size: 6rem;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+        }
+
+        .divider-line {
+            border-top: 1px solid #111;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="font-body text-sekoBlack antialiased">
+    <div class="main-container flex flex-col">
+        
+        <!-- SECTION 1: RED HEADER AREA -->
+        <section class="bg-sekoRed text-white px-8 pt-8 pb-12 relative flex flex-col justify-between min-h-[500px]">
+            
+            <!-- Top Header Row -->
+            <div class="flex justify-between items-start w-full">
+                <div class="w-1/3">
+                    <p class="text-xl font-bold leading-tight tracking-tight">System evolution starts<br>here and now</p>
+                </div>
+                <!-- Small text block in top right -->
+                <div class="w-1/3 text-right flex justify-end">
+                    <p class="text-[0.45rem] leading-tight tracking-widest uppercase opacity-90 max-w-[150px] text-left">
+                        SEKO REPRESENTS THE CORE OF A DECENTRALIZED SYSTEM, WHERE ARCHITECTURE, IDENTITY AND NETWORK LOGIC CONVERGE INTO A SINGLE EVOLVING PROTOCOL.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Massive Title -->
+            <div class="mt-4 mb-2 flex justify-center items-center w-full">
+                <h1 class="font-display text-[9rem] sm:text-[11rem] md:text-[13rem] leading-none tracking-tighter flex items-center justify-center w-full">
+                    <span>SEKO</span>
+                    <span class="text-sekoBlack mx-[-0.05em] translate-y-[-0.1em] text-[7rem] sm:text-[9rem] md:text-[11rem]">*</span>
+                    <span>VOLVE</span>
+                </h1>
+            </div>
+
+            <!-- Subtitle below massive text -->
+            <div class="w-full max-w-2xl mb-24">
+                <p class="text-2xl sm:text-3xl md:text-[2.2rem] font-bold leading-tight tracking-tight">
+                    Innovative and adaptable blockchain ecosystem<br>
+                    with strong expertise in building decentralized,<br>
+                    high-performance, and user-oriented systems.
+                </p>
+            </div>
+
+            <!-- Bottom of Red Section -->
+            <div class="mt-auto">
+                <div class="flex justify-between items-end border-b border-white border-opacity-20 pb-4 mb-4">
+                    <h2 class="text-3xl tracking-tight">SEKO Ecosystem</h2>
+                    <p class="text-[0.45rem] leading-tight tracking-widest uppercase opacity-90 max-w-[200px]">
+                        SEKO IS A DECENTRALIZED PROTOCOL DESIGNED TO SUPPORT SCALABLE BLOCKCHAIN SYSTEMS, MODULAR ARCHITECTURES, AND SUSTAINABLE ON-CHAIN GROWTH.
+                    </p>
+                </div>
+                
+                <div class="flex justify-between items-start">
+                    <div class="w-1/3">
+                        <p class="text-[0.55rem] tracking-widest uppercase opacity-80">SEKO NETWORK</p>
+                    </div>
+                    <div class="w-2/3 flex">
+                        <div class="w-1/2">
+                            <p class="text-[0.45rem] tracking-widest uppercase opacity-80 mb-1">YEARS</p>
+                            <p class="text-[0.55rem] tracking-widest uppercase">GENESIS — ONGOING</p>
+                        </div>
+                        <div class="w-1/2">
+                            <p class="text-[0.45rem] tracking-widest uppercase opacity-80 mb-1">ROLE</p>
+                            <p class="text-[0.55rem] tracking-widest uppercase">CORE PROTOCOL LAYER</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GREY METRICS AREA -->
+        <section class="bg-sekoGrey px-8 pt-12 pb-16 relative flex flex-col items-center min-h-[400px]">
+            
+            <!-- Asterisk and Protocol Text -->
+            <div class="flex flex-col items-center text-center mb-16">
+                <span class="font-display text-4xl leading-none mb-4">*</span>
+                <h3 class="text-xl font-bold leading-tight tracking-tight mb-4 max-w-[250px]">
+                    The protocol is live<br>and continuously<br>evolving
+                </h3>
+                <p class="text-[0.45rem] tracking-widest uppercase opacity-70 w-32">
+                    REAL METRICS OF A DECENTRALIZED SYSTEM
+                </p>
+            </div>
+
+            <!-- Metrics List -->
+            <div class="w-full max-w-3xl flex flex-col mt-4">
+                
+                <!-- Metric Item 01 -->
+                <div class="flex items-center justify-between w-full pb-2 relative group">
+                    <div class="w-1/4 text-sm font-medium">01</div>
+                    <div class="w-1/2 flex justify-center">
+                        <span class="condensed-number">4</span>
+                    </div>
+                    <div class="w-1/4 flex justify-end text-right">
+                        <p class="text-[0.4rem] tracking-widest uppercase opacity-60 w-24">AVERAGE BLOCK TIME, SECONDS</p>
+                    </div>
+                    <!-- Divider Line -->
+                    <div class="absolute bottom-0 left-0 w-full divider-line"></div>
+                </div>
+
+                <!-- Metric Item 02 -->
+                <div class="flex items-center justify-between w-full pt-4 pb-2 relative group">
+                    <div class="w-1/4 text-sm font-medium">02</div>
+                    <div class="w-1/2 flex justify-center">
+                        <span class="condensed-number">17</span>
+                    </div>
+                    <div class="w-1/4 flex justify-end text-right">
+                        <p class="text-[0.4rem] tracking-widest uppercase opacity-60 w-24">ACTIVE NETWORK PARTICIPANTS</p>
+                    </div>
+                    <!-- Divider Line -->
+                    <div class="absolute bottom-0 left-0 w-full divider-line"></div>
+                </div>
+
+                <!-- Metric Item 03 -->
+                <div class="flex items-center justify-between w-full pt-4 pb-2 relative group">
+                    <div class="w-1/4 text-sm font-medium">03</div>
+                    <div class="w-1/2 flex justify-center">
+                        <span class="condensed-number">32</span>
+                    </div>
+                    <div class="w-1/4 flex justify-end text-right">
+                        <p class="text-[0.4rem] tracking-widest uppercase opacity-60 w-24">CORE PROTOCOL MODULES</p>
+                    </div>
+                    <!-- Divider Line -->
+                    <div class="absolute bottom-0 left-0 w-full divider-line"></div>
+                </div>
+
+                <!-- Metric Item 04 -->
+                <div class="flex items-center justify-between w-full pt-4 pb-2 relative group">
+                    <div class="w-1/4 text-sm font-medium">04</div>
+                    <div class="w-1/2 flex justify-center">
+                        <span class="condensed-number">18</span>
+                    </div>
+                    <div class="w-1/4 flex justify-end text-right">
+                        <p class="text-[0.4rem] tracking-widest uppercase opacity-60 w-24">CONNECTED ECOSYSTEM COMPONENTS</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Floating Buttons (Simulating the browser/OS overlay in the image) -->
+            <div class="absolute bottom-6 left-6 flex space-x-2">
+                <button class="bg-white/80 backdrop-blur-md hover:bg-white text-black text-sm font-medium py-2 px-4 rounded-full shadow-sm flex items-center space-x-2 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                    <span>Visit site</span>
+                </button>
+            </div>
+            
+            <div class="absolute bottom-6 right-6 flex space-x-2">
+                 <button class="bg-white/80 backdrop-blur-md hover:bg-white text-black text-sm font-medium py-2 px-4 rounded-full shadow-sm flex items-center space-x-2 transition-colors">
+                    <span>Search image</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </button>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>
