@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+      --color-bg-light: #e4e7eb;
+      --color-liquid-blue: #032aab;
+      --color-panel-bg: #111111;
+      --color-panel-border: #333333;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+  }
+
+  body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-bg-light);
+      font-family: var(--font-sans);
+      overscroll-behavior: none; /* Prevent bounce on Mac */
+  }
+
+  /* Hide scrollbar for cleaner look */
+  ::-webkit-scrollbar { width: 0px; background: transparent; }
+}
+
+/* Typography Classes */
+.font-serif-custom { font-family: var(--font-serif); }
+.text-liquid-blue { color: var(--color-liquid-blue); }
+.bg-liquid-blue { background-color: var(--color-liquid-blue); }
+
+/* Layout Structure */
+#scroll-proxy {
+    /* This defines the total scrollable height of the experience */
+    height: 600vh; 
+    width: 100%;
+}
+
+#fixed-viewport {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* The Image Background Layer (Z: -2) */
+#bg-image-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    /* Simulating the fluid dark background from the image */
+    background: radial-gradient(circle at 50% 50%, #05164f 0%, #010414 70%, #000000 100%);
+    opacity: 0; /* Hidden initially */
+}
+
+/* The Canvas Layer (Z: -1) - Renders colors and wipes */
+#liquid-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Content Layers (Z: 10+) - Hold HTML text and UI */
+.scene-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Handled by GSAP */
+    pointer-events: none; /* Prevent hidden scenes from blocking clicks */
+    z-index: 10;
+}
+
+.scene-container.active {
+    pointer-events: auto;
+}
+
+/* --- Specific UI Components Styling --- */
+
+/* Intro Scroll Indicator */
+.scroll-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+.mouse-icon {
+    width: 12px;
+    height: 20px;
+    border: 1.5px solid var(--color-liquid-blue);
+    border-radius: 10px;
+    position: relative;
+}
+.mouse-icon::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 4px;
+    background-color: var(--color-liquid-blue);
+    border-radius: 2px;
+}
+
+/* Customization Panel (Recreation from image_8ea7e1) */
+.custom-panel {
+    background-color: var(--color-panel-bg);
+    color: #fff;
+    width: 320px;
+    padding: 24px;
+    border-radius: 16px;
+    font-size: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    /* The wavy borders are applied via JS injected SVG masks */
+    margin-bottom: 2rem;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-panel-border);
+}
+
+.panel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.panel-label {
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.panel-label::before {
+    content: '⊛'; /* Gear icon simulation */
+    font-size: 10px;
+}
+
+.panel-control {
+    display: flex;
+    align-items: center;
+    background: #1f1f1f;
+    border-radius: 6px;
+    padding: 4px;
+    border: 1px solid #333;
+}
+
+.color-swatch-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px 4px 6px;
+}
+.color-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.stepper-control {
+    display: flex;
+    align-items: center;
+}
+.stepper-val {
+    width: 40px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 12px;
+}
+.stepper-btn {
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+.stepper-btn:hover { color: white; }
+
+.toggle-btn {
+    background: #333;
+    border: none;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.toggle-btn.active { background: #555; }
+
+/* Direction Buttons (Recreation from image_8ea83d) */
+.direction-buttons-container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.dir-btn {
+    width: 60px;
+    height: 50px;
+    background-color: #111;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.dir-btn:hover {
+    transform: translateY(-2px);
+}
+.dir-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+}

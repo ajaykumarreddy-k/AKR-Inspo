@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wallet Widget</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        /* Custom styles for specific details not easily covered by standard Tailwind utilities */
+        .widget-container {
+            /* Smooth scaling on hover */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .widget-container:hover {
+            transform: scale(1.02);
+        }
+
+        .top-section {
+            /* The specific green color from the image */
+            background-color: #92f778; 
+            /* Inner shadow for slight depth */
+            box-shadow: inset 0 2px 10px rgba(255,255,255,0.3);
+        }
+
+        .crypto-icon {
+            /* Styling for the stacked coins */
+            transition: transform 0.2s ease, z-index 0s;
+        }
+        
+        .crypto-icon:hover {
+            transform: translateY(-4px);
+            z-index: 50 !important;
+        }
+
+        /* Defining the SVG icons explicitly to match the image closely */
+        .icon-btc { background-color: #f7931a; }
+        .icon-bnb { background-color: #f3ba2f; }
+        .icon-usdc { background-color: #2775ca; }
+        .icon-eth { background-color: #627eea; }
+    </style>
+</head>
+<body>
+
+    <!-- Main Card Container -->
+    <div class="widget-container relative w-full max-w-[340px] rounded-[2.5rem] bg-black text-white shadow-2xl overflow-hidden">
+        
+        <!-- Top Green Section -->
+        <div class="top-section relative rounded-[2.2rem] p-8 m-2 pb-10 flex flex-col items-center justify-center overflow-hidden z-10">
+            
+            <!-- Decorative Corner Dots -->
+            <div class="absolute top-5 left-5 w-2 h-2 bg-black rounded-full"></div>
+            <div class="absolute top-5 right-5 w-2 h-2 bg-black rounded-full"></div>
+            <div class="absolute bottom-5 left-5 w-2 h-2 bg-black rounded-full"></div>
+            <div class="absolute bottom-5 right-5 w-2 h-2 bg-black rounded-full"></div>
+
+            <!-- Crypto Icons Stack -->
+            <div class="flex -space-x-3 mb-6 relative z-20 cursor-pointer group">
+                <!-- Bitcoin -->
+                <div class="crypto-icon relative z-[40] rounded-full border-[3px] border-black bg-[#f7931a] w-12 h-12 flex items-center justify-center shadow-md text-white">
+                    <svg viewBox="0 0 32 32" fill="currentColor" class="w-6 h-6"><path d="M23.9 14.5c.9-1 .8-2.6.2-3.4-.6-.8-1.7-1-3-1.2l1.2-4.9-2.2-.6-1.2 4.7c-.6-.2-1.2-.3-1.8-.5l1.2-4.8-2.2-.5-1.2 4.8c-.6-.1-1.2-.2-1.9-.4l-4.1-1-1 3.9s1.2.3 1.1.3c.6.2.8.6.7 1.1l-2.2 9c-.1.3-.3.5-.7.4.1 0-1.1-.3-1.1-.3l-1.6 4.3 3.9 1c.6.2 1.2.3 1.8.5l-1.2 4.9 2.2.6 1.2-4.8c.6.2 1.2.3 1.9.5l-1.2 4.8 2.2.5 1.2-4.9c1.6.3 3.1.5 4.5.3 2.1-.3 3.6-1.3 4-3.1.3-1.4-.2-2.3-1.2-2.9 1-.2 1.8-.8 2.1-2zM15.4 12.3c.4-1.6 2.5-1.1 3.4-.8-1 4-2.8 3.5-3.4 2.4zM16.9 22c-.5 1.9-3.2 1.3-4.3.9 1.1-4.6 3.5-3.8 4.3-2.8z"></path></svg>
+                </div>
+                <!-- Binance Coin (Placeholder SVG for general look) -->
+                <div class="crypto-icon relative z-[30] rounded-full border-[3px] border-black bg-[#f3ba2f] w-12 h-12 flex items-center justify-center shadow-md text-white">
+                     <svg viewBox="0 0 32 32" fill="currentColor" class="w-6 h-6"><path d="M16 31.2l-14.8-14.8 14.8-14.8 14.8 14.8zM16 19.5l3.5-3.5-3.5-3.5-3.5 3.5zM16 8.5l-7.9 7.9 7.9 7.9 7.9-7.9z"></path></svg>
+                </div>
+                <!-- USDC (Placeholder SVG) -->
+                <div class="crypto-icon relative z-[20] rounded-full border-[3px] border-black bg-[#2775ca] w-12 h-12 flex items-center justify-center shadow-md text-white">
+                    <span class="font-bold text-xl">$</span>
+                </div>
+                <!-- Ethereum -->
+                <div class="crypto-icon relative z-[10] rounded-full border-[3px] border-black bg-[#627eea] w-12 h-12 flex items-center justify-center shadow-md text-white">
+                    <svg viewBox="0 0 32 32" fill="currentColor" class="w-5 h-5"><path d="M15.9 23.6l-11.5-6.8 11.5 16.3 11.6-16.3-11.6 6.8zm.1-25.1l-11.7 19.3 11.7 6.9 11.7-6.9-11.7-19.3z"></path></svg>
+                </div>
+            </div>
+
+            <!-- Balance Display -->
+            <div class="text-center relative z-20">
+                <h2 class="text-[3.2rem] leading-none font-bold text-[#0c4e13] tracking-tighter mb-1 flex items-start justify-center">
+                    <span class="text-4xl mt-1 mr-0.5">$</span>
+                    12,000.00
+                </h2>
+                <p class="text-xl font-medium tracking-wide text-[#0f681a] mt-2">
+                    + $45.32
+                </p>
+            </div>
+        </div>
+
+        <!-- Bottom Action Buttons Section -->
+        <div class="flex relative z-0 mt-[-1rem] pt-6 pb-6 px-4 bg-black rounded-b-[2.5rem]">
+            
+            <!-- Swap Button -->
+            <button class="flex-1 flex items-center justify-center gap-3 text-white/90 hover:text-white py-4 transition-all duration-200 group relative cursor-pointer">
+                <!-- Refresh Icon (Swap) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 transition-transform duration-300 group-hover:rotate-180">
+                    <path d="M21 2v6h-6"></path>
+                    <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                    <path d="M3 22v-6h6"></path>
+                    <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                </svg>
+                <span class="text-[1.35rem] font-medium tracking-wide">Swap</span>
+                <!-- Hover subtle glow effect -->
+                <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity"></div>
+            </button>
+
+            <!-- Divider -->
+            <div class="w-[1px] bg-white/20 my-3 rounded-full"></div>
+
+            <!-- Send Button -->
+            <button class="flex-1 flex items-center justify-center gap-3 text-white/90 hover:text-white py-4 transition-all duration-200 group relative cursor-pointer">
+                <!-- Arrow Up Icon (Send) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                <span class="text-[1.35rem] font-medium tracking-wide">Send</span>
+                 <!-- Hover subtle glow effect -->
+                 <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity"></div>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

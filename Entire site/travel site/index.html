@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spots Travel - Recreated</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#FAF8F3', // Slightly warmer/lighter than previous
+                        'brand-text': '#D06A42', // Adjusted to match the specific orange/rust
+                        'brand-dark': '#333333', 
+                        'brand-border': '#E5DED0', // Lighter dashed border
+                        'brand-green': '#0D4A30', // Deep green for button
+                        'brand-light-brown': '#F3F0E8', // For the note section background
+                        'brand-header-text': '#5A5A5A' // Lighter text for nav
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF8F3;
+            color: #333333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Specific Border Styles matching the image */
+        .dashed-border-y {
+            border-top: 1px dashed #E5DED0;
+            border-bottom: 1px dashed #E5DED0;
+        }
+        
+        .dashed-border-b {
+            border-bottom: 1px dashed #E5DED0;
+        }
+
+        .dashed-border-all {
+            border: 1px dashed #E5DED0;
+        }
+
+        /* Hero Image Grid Styles - Precisely tuned to the screenshot */
+        .hero-grid-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align top, we'll use margins for individual positioning */
+            gap: 4px; /* very tight gap */
+            margin-top: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            height: 380px; /* fixed height container to handle absolute/relative positioning if needed, or just rely on flex layout */
+        }
+
+        .hero-img {
+            object-fit: cover;
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-img:hover {
+            transform: scale(1.02);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Top Row */
+        .img-1 { width: 140px; height: 160px; margin-top: 50px; }
+        .img-2 { width: 150px; height: 190px; }
+        .img-3 { width: 130px; height: 150px; margin-top: 30px; }
+        .img-4 { width: 190px; height: 130px; margin-top: 10px; }
+        
+        /* Bottom Row - positioned relative to container to overlap */
+        .bottom-img-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            align-items: flex-end;
+            width: 100%;
+            justify-content: center;
+            padding-left: 20px; /* slight offset */
+        }
+        
+        .img-5 { width: 160px; height: 150px; margin-bottom: 20px;}
+        .img-6 { width: 100px; height: 70px; margin-bottom: 90px; margin-left: 5px;}
+        .img-7 { width: 200px; height: 120px; }
+        .img-8 { width: 110px; height: 160px; }
+
+
+        /* FAQ Accordion Styles */
+        .faq-item {
+            border-bottom: 1px dashed #E5DED0;
+            transition: background-color 0.3s;
+        }
+        .faq-item:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 1.25rem 0;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px; 
+            opacity: 1;
+            margin-bottom: 1rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg); /* Plus to X */
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: #A09E96; /* Color from screenshot */
+        }
+        
+        /* Custom styling for the rotating dots animation */
+        .dot-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin: 5rem auto;
+            /* The image shows them in a slight curve, we can simulate with translateY */
+        }
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #D06A42;
+            transition: transform 0.3s;
+        }
+        /* Simulating the curve and colors from the image */
+        .dot:nth-child(1) { background-color: #E2BBA7; transform: translateY(-4px); }
+        .dot:nth-child(2) { background-color: #D78A69; transform: translateY(2px); }
+        .dot:nth-child(3) { background-color: #934626; transform: translateY(6px); }
+        .dot:nth-child(4) { background-color: #C0704D; transform: translateY(2px); }
+        .dot:nth-child(5) { background-color: #E2BBA7; transform: translateY(-4px); }
+        
+        .dot-spinner:hover .dot {
+            transform: translateY(0) scale(1.2);
+        }
+
+        /* Utility for animation delays */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        
+        /* Form inputs styling */
+        .custom-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px dashed #E5DED0;
+            padding-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .custom-input:focus {
+            border-bottom-color: #D06A42;
+        }
+        .custom-input::placeholder {
+            color: #BDBDBD;
+        }
+        
+        /* Plan Trip Box */
+        .plan-trip-box {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            /* Important: The outer dashed border is on the section, not the white box in the new screenshot */
+        }
+
+    </style>
+</head>
+<body class="font-sans text-brand-dark">
+
+    <header class="dashed-border-b px-6 py-4 flex justify-between items-center sticky top-0 bg-brand-bg/90 backdrop-blur-md z-50">
+        <div class="flex items-center gap-2">
+            <span class="font-serif text-3xl italic tracking-tight text-[#9C4D35]">Spots</span>
+            <div class="flex items-center gap-1 ml-4 border px-2 py-1 rounded-full border-gray-200 text-xs text-gray-500 cursor-pointer hover:bg-gray-50 transition-colors">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" class="w-4 h-3 object-cover rounded-sm" alt="US Flag">
+                <span>EN</span>
+                <i data-lucide="chevron-down" class="w-3 h-3"></i>
+            </div>
+        </div>
+        
+        <!-- Center Nav as per screenshot -->
+        <nav class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-8 text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-header-text">
+            <a href="#" class="hover:text-brand-text transition-colors">JOURNAL</a>
+            <a href="#" class="hover:text-brand-text transition-colors">PRACTICES</a>
+            <a href="#" class="hover:text-brand-text transition-colors">ABOUT</a>
+        </nav>
+        
+        <!-- Right side -->
+        <div class="hidden md:flex items-center gap-6 text-[11px] font-semibold tracking-[0.15em] uppercase text-brand-header-text">
+            <a href="#" class="hover:text-brand-text transition-colors">ACCOUNT</a>
+            <a href="#" class="hover:text-brand-text transition-colors">PLAN A TRIP</a>
+            <i data-lucide="menu" class="w-5 h-5 cursor-pointer"></i>
+        </div>
+        
+        <button class="md:hidden">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+    </header>
+
+    <main class="w-full">
+        
+        <section class="py-20 text-center animate-fade-in-up">
+            <h1 class="font-serif text-[3.5rem] md:text-[4.5rem] leading-none text-brand-text mb-4">Travel, designed with intention</h1>
+            <p class="font-sans text-lg md:text-xl text-[#5A5A5A] max-w-[34rem] mx-auto leading-[1.6] font-light">
+                We design modern journeys and hand-curate every detail, creating thoughtfully curated, editorially driven trips.
+            </p>
+
+            <!-- Recreated Image Mosaic based on screenshot -->
+            <div class="mt-12 relative w-full max-w-[700px] mx-auto h-[400px]">
+                <!-- Top Row Images -->
+                <div class="flex justify-center items-start gap-1 w-full absolute top-0 z-10">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=400&auto=format&fit=crop" alt="Red storefront" class="hero-img img-1 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop" alt="White storefront" class="hero-img img-2 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1524396309943-e03f5249f002?q=80&w=400&auto=format&fit=crop" alt="Outdoor dining path" class="hero-img img-3 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=400&auto=format&fit=crop" alt="Orange table setting" class="hero-img img-4 shadow-md">
+                </div>
+                
+                <!-- Bottom Row Images (overlapping) -->
+                <div class="bottom-img-wrapper z-20">
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=400&auto=format&fit=crop" alt="Bar interior" class="hero-img img-5 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1505931420830-619ed13ece75?q=80&w=400&auto=format&fit=crop" alt="Table detail" class="hero-img img-6 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b46a0eb?q=80&w=400&auto=format&fit=crop" alt="Shop display" class="hero-img img-7 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560205001-a7eb2630ce49?q=80&w=400&auto=format&fit=crop" alt="Clothing display" class="hero-img img-8 shadow-md">
+                </div>
+            </div>
+            
+            <p class="mt-16 text-[9px] font-bold uppercase tracking-[0.2em] text-[#A09E96]">CURATED EXPERIENCES FOR YOU</p>
+        </section>
+
+        <div class="w-full max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
+            <section class="py-24 dashed-border-y dashed-border-x px-8 md:px-16 my-16 text-center animate-fade-in-up delay-100">
+                <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-[#A09E96] mb-8">OUR ETHOS</p>
+                <h2 class="font-serif text-3xl md:text-[2.5rem] text-brand-text mb-8 leading-tight max-w-[500px] mx-auto">
+                    Travel is easier than ever. But meaning is rare.
+                </h2>
+                <p class="font-serif text-xl md:text-2xl text-brand-text mb-10 leading-snug max-w-[600px] mx-auto">
+                    We design journeys through an editorial lens, shaped by place, the lives that move through it, and the quiet evolution of the traveler.
+                </p>
+                <p class="font-sans text-base md:text-lg text-[#888888] font-light leading-relaxed mb-12 max-w-[550px] mx-auto">
+                    These are experiences that endure. They linger because they reshape the way you see. Because they meet you at the right moment.
+                </p>
+                <p class="font-serif italic text-xl md:text-2xl text-[#E5DED0]">
+                    Welcome to the inner circle.
+                </p>
+            </section>
+        </div>
+
+        <div class="w-full max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+            <section class="py-16 dashed-border-all bg-[#FAF8F3]/50 px-4 md:px-12 animate-fade-in-up delay-200">
+                 <p class="text-[9px] font-bold uppercase tracking-[0.2em] text-[#A09E96] text-center mb-12">CURATED COLLECTIONS</p>
+                 <div class="flex flex-wrap justify-center items-start gap-8 md:gap-12">
+                     <!-- Destination 1 -->
+                     <div class="flex flex-col items-center group cursor-pointer w-[140px]">
+                         <div class="w-28 h-28 md:w-[130px] md:h-[130px] rounded-full overflow-hidden mb-5 border border-transparent group-hover:border-brand-text transition-colors duration-300 shadow-sm">
+                             <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=400&auto=format&fit=crop" alt="Paris" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                         </div>
+                         <h3 class="font-serif text-sm md:text-base text-center leading-tight text-brand-dark group-hover:text-brand-text transition-colors">Paris, Normandy<br>& The Loire Valley</h3>
+                     </div>
+                     
+                     <!-- Destination 2 -->
+                     <div class="flex flex-col items-center group cursor-pointer w-[140px]">
+                         <div class="w-28 h-28 md:w-[130px] md:h-[130px] rounded-full overflow-hidden mb-5 border border-transparent group-hover:border-brand-text transition-colors duration-300 shadow-sm">
+                             <img src="https://images.unsplash.com/photo-1515542622106-78b28af7815d?q=80&w=400&auto=format&fit=crop" alt="Italy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                         </div>
+                         <h3 class="font-serif text-sm md:text-base text-center leading-tight text-brand-dark group-hover:text-brand-text transition-colors">Lake Garda &<br>The Dolomites</h3>
+                     </div>
+
+                     <!-- Destination 3 -->
+                     <div class="flex flex-col items-center group cursor-pointer w-[140px]">
+                         <div class="w-28 h-28 md:w-[130px] md:h-[130px] rounded-full overflow-hidden mb-5 border border-transparent group-hover:border-brand-text transition-colors duration-300 shadow-sm">
+                             <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=400&auto=format&fit=crop" alt="New York" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                         </div>
+                         <h3 class="font-serif text-sm md:text-base text-center leading-tight text-brand-dark group-hover:text-brand-text transition-colors">New York City</h3>
+                     </div>
+
+                     <!-- Destination 4 -->
+                     <div class="flex flex-col items-center group cursor-pointer w-[140px]">
+                         <div class="w-28 h-28 md:w-[130px] md:h-[130px] rounded-full overflow-hidden mb-5 border border-transparent group-hover:border-brand-text transition-colors duration-300 shadow-sm">
+                             <img src="https://images.unsplash.com/photo-1533282960533-51328aa26826?q=80&w=400&auto=format&fit=crop" alt="Alps" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                         </div>
+                         <h3 class="font-serif text-sm md:text-base text-center leading-tight text-brand-dark group-hover:text-brand-text transition-colors">The Swiss Alps</h3>
+                     </div>
+                 </div>
+            </section>
+        </div>
+
+        <!-- Decorative Dots from screenshot -->
+        <div class="dot-spinner animate-fade-in-up delay-300">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <section class="py-12 max-w-[700px] mx-auto px-4 w-full animate-fade-in-up delay-300">
+            <h2 class="font-serif text-[2.5rem] text-[#5A5A5A] text-center mb-12">Frequently Asked Questions</h2>
+            
+            <div class="w-full dashed-border-t">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question flex justify-between items-center" onclick="toggleFaq(this)">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] text-[#D06A42] font-semibold">01</span>
+                            <h3 class="font-sans font-medium text-[15px] text-[#333333]">Why use Spots to curate & plan my trip?</h3>
+                        </div>
+                        <i data-lucide="plus" class="w-4 h-4 faq-icon"></i>
+                    </div>
+                    <div class="faq-answer text-[#888888] text-[15px] font-light pl-8">
+                        <p class="pb-6">We provide access to hidden gems, personalized itineraries based on deep local knowledge, and handle all logistics so you can simply focus on experiencing the journey.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question flex justify-between items-center" onclick="toggleFaq(this)">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] text-[#D06A42] font-semibold">02</span>
+                            <h3 class="font-sans font-medium text-[15px] text-[#333333]">How does working with you work?</h3>
+                        </div>
+                        <i data-lucide="plus" class="w-4 h-4 faq-icon"></i>
+                    </div>
+                    <div class="faq-answer text-[#888888] text-[15px] font-light pl-8">
+                        <p class="pb-6">It starts with a conversation to understand your travel style. From there, we present an initial proposal, refine it collaboratively, and then manage all bookings and details until you return home.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question flex justify-between items-center" onclick="toggleFaq(this)">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] text-[#D06A42] font-semibold">03</span>
+                            <h3 class="font-sans font-medium text-[15px] text-[#333333]">How pricing works</h3>
+                        </div>
+                        <i data-lucide="plus" class="w-4 h-4 faq-icon"></i>
+                    </div>
+                    <div class="faq-answer text-[#888888] text-[15px] font-light pl-8">
+                        <p class="pb-6">We charge a flat planning fee based on the complexity and length of your trip, ensuring transparent pricing with no hidden markups on the experiences we book for you.</p>
+                    </div>
+                </div>
+
+                 <!-- FAQ Item 4 -->
+                 <div class="faq-item border-b-0">
+                    <div class="faq-question flex justify-between items-center" onclick="toggleFaq(this)">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] text-[#D06A42] font-semibold">04</span>
+                            <h3 class="font-sans font-medium text-[15px] text-[#333333]">Cancellations and changes</h3>
+                        </div>
+                        <i data-lucide="plus" class="w-4 h-4 faq-icon"></i>
+                    </div>
+                    <div class="faq-answer text-[#888888] text-[15px] font-light pl-8">
+                        <p class="pb-6">We offer flexible policies depending on the vendors selected. We highly recommend travel insurance and will guide you through the options to protect your investment.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dashed-border-b w-full mt-[-1px]"></div>
+        </section>
+
+        <section class="my-24 w-full max-w-[800px] mx-auto px-4">
+            <!-- The outer dashed container for the form area as seen in screenshot -->
+            <div class="dashed-border-all p-4 md:p-8 rounded-sm animate-fade-in-up delay-300">
+                <div class="plan-trip-box p-10 md:p-16">
+                    <div class="text-center mb-12">
+                        <h2 class="font-serif text-[3rem] text-[#333333] mb-3">Plan Your Trip</h2>
+                        <p class="text-[#888888] text-sm">Email <a href="mailto:via@spotstravel.co" class="text-brand-text hover:underline">via@spotstravel.co</a> or use<br>the form. We'll handle the rest.</p>
+                    </div>
+
+                    <form class="space-y-8 max-w-[500px] mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label for="name" class="block text-[10px] font-bold text-[#A09E96] uppercase tracking-[0.1em] mb-2">NAME *</label>
+                                <input type="text" id="name" placeholder="First Name Last Name" class="custom-input" required>
+                            </div>
+                             <div>
+                                <label for="email" class="block text-[10px] font-bold text-[#A09E96] uppercase tracking-[0.1em] mb-2">EMAIL *</label>
+                                <input type="email" id="email" placeholder="you@example.com" class="custom-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label for="phone" class="block text-[10px] font-bold text-[#A09E96] uppercase tracking-[0.1em] mb-2">PHONE</label>
+                                <input type="tel" id="phone" placeholder="123 456 7890" class="custom-input">
+                            </div>
+                            <div>
+                                <label for="dates" class="block text-[10px] font-bold text-[#A09E96] uppercase tracking-[0.1em] mb-2">DATES</label>
+                                <input type="text" id="dates" placeholder="MM/DD/YYYY" class="custom-input">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-center pt-8">
+                            <button type="submit" class="bg-brand-green text-white px-8 py-3 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-opacity-90 transition-all flex items-center gap-2">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Testimonial / Author bio in form block - styled accurately to screenshot -->
+                    <div class="mt-16 bg-[#F8F5EE] p-5 rounded-xl flex items-center justify-center gap-5 max-w-[450px] mx-auto">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Author" class="w-12 h-12 rounded-full object-cover">
+                        <p class="text-[11px] text-[#5A5A5A] leading-[1.6]">
+                            <strong class="font-semibold text-brand-dark block mb-0.5">A note on our process:</strong> Beyond taking the stress out of planning, our goal is to build a relationship with you so every trip feels like it was designed by a close friend.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 text-center">
+        <p class="text-[9px] font-bold tracking-[0.2em] text-[#A09E96] uppercase">© 2026 SPOTS TRAVEL</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // FAQ Toggle Logic tailored for the + to X transition
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            
+            // Close other open items
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(faq => {
+                if (faq !== item && faq.classList.contains('active')) {
+                    faq.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            item.classList.toggle('active');
+        }
+
+        // Add simple form submission prevention for demo
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Sent Successfully!';
+            btn.classList.replace('bg-brand-green', 'bg-[#D06A42]');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.replace('bg-[#D06A42]', 'bg-brand-green');
+                this.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

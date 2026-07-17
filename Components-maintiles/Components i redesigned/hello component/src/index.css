@@ -1,0 +1,4 @@
+/* Replaced old CSS with Tailwind utilities for the Keycap component */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -7,6 +7,27 @@
     "thumbnail": null
   },
   {
+    "id": "components-maintiles-components-i-redesigned-money-send-and-receive",
+    "name": "Money Send And Receive",
+    "path": "/Components-maintiles/Components i redesigned/Money send and receive/index.html",
+    "folder": "Components-maintiles/Components i redesigned/Money send and receive",
+    "thumbnail": "Components-maintiles/Components i redesigned/Money send and receive/Pasted image.png"
+  },
+  {
+    "id": "components-maintiles-components-i-redesigned-hello-component",
+    "name": "Akr V1 Bun React Template",
+    "path": "/Components-maintiles/Components i redesigned/hello component/index.html",
+    "folder": "Components-maintiles/Components i redesigned/hello component",
+    "thumbnail": "Components-maintiles/Components i redesigned/hello component/image.png"
+  },
+  {
+    "id": "components-maintiles-components-i-redesigned-receipt-out",
+    "name": "Akr V1 Bun React Template",
+    "path": "/Components-maintiles/Components i redesigned/receipt out/index.html",
+    "folder": "Components-maintiles/Components i redesigned/receipt out",
+    "thumbnail": "Components-maintiles/Components i redesigned/receipt out/Pasted image.png"
+  },
+  {
     "id": "components-maintiles-flows-layouts-fl1",
     "name": "Fl1",
     "path": "/Components-maintiles/Flows-Layouts/fl1/index.html",
@@ -89,6 +110,13 @@
     "path": "/Components-maintiles/Footers/f9/index.html",
     "folder": "Components-maintiles/Footers/f9",
     "thumbnail": "Components-maintiles/Footers/f9/f9.png"
+  },
+  {
+    "id": "components-maintiles-hero-sections-hero-1",
+    "name": "Hero 1",
+    "path": "/Components-maintiles/Hero-Sections/Hero 1/index.html",
+    "folder": "Components-maintiles/Hero-Sections/Hero 1",
+    "thumbnail": "Components-maintiles/Hero-Sections/Hero 1/Pasted image.png"
   },
   {
     "id": "components-maintiles-testimonials-ts1",
@@ -182,6 +210,13 @@
     "thumbnail": "Entire site/Design by Ajay/Pasted image.png"
   },
   {
+    "id": "entire-site-figits-and-rabbtis",
+    "name": "Figits And Rabbtis",
+    "path": "/Entire site/Figits and rabbtis/index.html",
+    "folder": "Entire site/Figits and rabbtis",
+    "thumbnail": "Entire site/Figits and rabbtis/screencapture-file-home-prince-ProjectsMain-akr-inspo-component-library-1-Entire-site-Figits-and-rabbtis-index-html-2026-07-18-00_05_24.png"
+  },
+  {
     "id": "entire-site-new-genere---gradient-site",
     "name": "New Genere   Gradient Site",
     "path": "/Entire site/New Genere - Gradient site/index.html",
@@ -250,6 +285,13 @@
     "path": "/Entire site/research paper/index.html",
     "folder": "Entire site/research paper",
     "thumbnail": "Entire site/research paper/screencapture-localhost-3000-2026-06-27-21_57_53.png"
+  },
+  {
+    "id": "entire-site-travel-site",
+    "name": "Travel Site",
+    "path": "/Entire site/travel site/index.html",
+    "folder": "Entire site/travel site",
+    "thumbnail": "Entire site/travel site/screencapture-file-home-prince-ProjectsMain-akr-inspo-component-library-1-Entire-site-travel-site-index-html-2026-07-18-01_47_04.png"
   },
   {
     "id": "frammer-21st-dev-components-3d-rug-effect",
@@ -460,6 +502,13 @@
     "path": "/Frammer&21st dev Components/Vertical Dail Nav/index.html",
     "folder": "Frammer&21st dev Components/Vertical Dail Nav",
     "thumbnail": "Frammer&21st dev Components/Vertical Dail Nav/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-scroll-animartion-liquid",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/scroll-animartion-liquid/index.html",
+    "folder": "Frammer&21st dev Components/scroll-animartion-liquid",
+    "thumbnail": null
   },
   {
     "id": "frammer-21st-dev-components-web-preloder",
