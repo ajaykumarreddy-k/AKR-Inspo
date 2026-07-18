@@ -1,0 +1,87 @@
+3. Google Reviews Testimonial Video
+Use case: Paste any business’s Google Maps/Business Profile link. Claude scrapes the real reviews, star rating, and business info, then creates an animated testimonial ad featuring real customer quotes with star animations and social proof counters.
+
+Prompt:
+
+Use the Remotion best practices skill.
+Create a 20-second testimonial/social proof video (1080x1920, 30fps) for the business at this Google Business Profile: https://maps.google.com/your-business-link-here
+
+SAFE ZONE: All text and key content must stay within the safe zone — at least 150px from the top (platform search bars, status bar) and 170px from the bottom (navigation buttons, swipe-up UI). Side margins: 60px minimum. Nothing important should touch the edges. MINIMUM FONT SIZES: Headlines 56px+, body/subtitles 36px+, labels/small text 28px absolute minimum. Nothing under 28px — it’s unreadable on mobile.
+
+STEP 1 — SCRAPE REVIEWS: Visit the Google Business Profile URL using Playwright. Extract:
+- Business name and category
+- Overall star rating (e.g., 4.8)
+- Total number of reviews (e.g., “2,340 reviews”)
+- The 3 best/most compelling reviews (5-star, with actual review text and reviewer first name)
+- Business photo or logo if available (screenshot it to public/)
+If Playwright can’t load Google reviews directly, use an alternative: search for the business name + “reviews” and scrape from the search results card, or use the Google Maps page.
+Show me the business info and 3 selected reviews. Wait for approval before coding.
+
+STEP 2 — BUILD THE VIDEO: After approval, build 5 scenes:
+
+SCENE 1 - Hook (3s):
+- Clean white/light background (#f8f9fa) with a subtle warm gradient (soft peach #fff7ed fading to white)
+- Large gold star cluster: 3 overlapping star SVGs at different sizes and rotations, scattered in the upper area, faded to 15% opacity as a decorative background element
+- Bold text centered in safe zone, two lines:
+  - Line 1: “What people are saying about” — Inter 700, 44px, dark text #1a1a1a
+  - Line 2: “[Business Name]” — Inter 800, 56px, gold #f59e0b
+- Text enters with spring from below (translateY 40px to 0)
+- Below the text: the overall star rating as 5 inline stars (40px, gold filled) with the number next to them (e.g., “4.8”) — fades in 10 frames after the text
+
+SCENE 2 - Star Rating Reveal (3s):
+- Same light background (#f8f9fa)
+- 5 large star SVGs (60px each) in a row, centered
+- Stars fill in one by one from left to right with gold (#f59e0b) using spring animation, staggered by 8 frames
+- If rating is 4.8, the 5th star fills only 80% (use clip-path or width mask)
+- Below the stars: the rating number counts up from 0.0 to the actual rating using interpolate() with 1 decimal place, dark text #1a1a1a
+- Below that: “Based on [X] reviews” fades in, #64748b, with the number counting up from 0
+- Subtle gold particle shimmer behind the stars
+
+SCENE 3 - Review Carousel (9s, 3 reviews x 3s each):
+- Same light background (#f8f9fa)
+- Each review is a card that takes the full safe zone width:
+  - Top: 5 small gold stars (28px) in a row
+  - Middle: the review text in quotes, Inter 400, 36px, dark text #1a1a1a — max 3 lines, truncate with “...” if longer
+  - Bottom: reviewer first name + “Google Review” label, Inter 400, 28px, #64748b
+  - Card background: white (#ffffff) with subtle border (#e2e8f0), rounded corners (16px), soft shadow (0 4px 20px rgba(0,0,0,0.08))
+- Card transitions: each card slides out to the left while the next slides in from the right, using TransitionSeries with slide transitions
+- Add a small Google “G” logo icon (built as SVG — the 4-color G) next to “Google Review” for authenticity
+- A thin progress indicator below the card shows which review we’re on (3 dots, active dot is gold)
+
+DECORATIVE GRAPHICS AROUND EACH REVIEW (fill the empty space above and below the card):
+- ABOVE the review card: large quotation mark SVG in gold at 10% opacity, 200px tall, positioned top-left of safe zone. Fades in with the card.
+- BELOW the review card: an animated graphic relevant to the review content. Pick ONE per review:
+  - Review 1: animated 5-star rating bar chart showing the business’s rating distribution (5 horizontal bars, gold fill on light gray #f1f5f9 track, spring animation)
+  - Review 2: a thumbs-up icon that scales in with spring + a count-up number showing total reviews
+  - Review 3: a simple map pin icon with the business location text, with a subtle pulse animation
+- These decorative elements enter with the card and exit with it
+- Keep them subtle (muted colors, 30-50% opacity) so they don’t compete with the review text
+- All decorative icons/graphics use gold (#f59e0b) or muted gray (#94a3b8)
+
+SCENE 4 - Social Proof Stack (3s):
+- Same light background (#f8f9fa)
+- 3 stat lines stagger in from the bottom with spring, 10-frame delays:
+  - Line 1: gold star icon + “[X] star rating” — dark text #1a1a1a
+  - Line 2: people icon + “[X]+ happy customers” (count up animation)
+  - Line 3: map pin icon + “[City, State]” location
+- Each line has an icon (SVG) on the left and text on the right
+- Icons are gold (#f59e0b), text is dark #1a1a1a
+
+SCENE 5 - CTA (2s):
+- Same light background (#f8f9fa)
+- Business name in large text (Inter 800, 56px, #1a1a1a), scales in with spring, centered in safe zone
+- Below: a prominent CTA button (full safe-zone width, 72px tall, rounded corners 16px, gold background #f59e0b, white text “Book Now” or “Call Today” at 40px)
+- Button enters with spring from below
+- Below the button: the business’s website URL or phone number in Inter 600, 36px, #64748b — generate a plausible URL based on the business name (e.g., “www.flplumber.com” or “(555) 123-4567”)
+- Positioned above bottom safe zone
+- No fade to black — end on the clean light background with CTA visible
+
+COLORS: Light theme throughout. Background #f8f9fa on all scenes. Card backgrounds white #ffffff. Primary text dark #1a1a1a. Secondary text #64748b. Accent gold #f59e0b for stars, highlights, and CTA button. Card borders #e2e8f0.
+
+FONT: Inter (weights 400, 600, 700, 800)
+Use spring() for all entrances. Use interpolate() with clamp for counting animations.
+
+PREVIEW: After building, launch Remotion Studio (npx remotion studio) so I can preview the video in my browser.
+Paste any business’s Google Maps link. Claude scrapes the real star rating, review count, and actual customer reviews, then creates an animated testimonial video with star-fill animations, review cards sliding through a carousel, and social proof counters — all using real data.
+
+Works for restaurants, agencies, dentists, salons, any local business. This is the kind of video businesses pay $200-500 for on Fiverr. Change the link, get a new video.

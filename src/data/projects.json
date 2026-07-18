@@ -350,6 +350,13 @@
     "thumbnail": "Frammer&21st dev Components/Counting loader/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-entire-lib",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Entire lib/index.html",
+    "folder": "Frammer&21st dev Components/Entire lib",
+    "thumbnail": null
+  },
+  {
     "id": "frammer-21st-dev-components-exploding-input-component",
     "name": "Exploding Input Component",
     "path": "/Frammer&21st dev Components/Exploding Input Component/index.html",

@@ -1,0 +1,57 @@
+4. Avatar Video with Animated Overlays
+Use case: Drop in a 9:16 talking-head video. Claude transcribes what you’re saying, then overlays animated titles, topic graphics, captions, and progress indicators on top of the video — synced to your speech. Your original video stays full-frame, untouched.
+
+Prompt:
+
+Use the Remotion best practices skill.
+I’ve placed my talking-head video in public/avatar.mp4. This is a 9:16 vertical video (1080x1920) of me talking to camera — a selfie-style shot where my face is in the lower 60% of the frame, with open space above my head.
+Create a Remotion composition (1080x1920, 30fps) that plays this video FULL FRAME as the background layer, then overlays animated graphics on top — specifically in the open space above my head (roughly the top 35-40% of the frame). The video itself is never cropped, split, or resized. It plays edge-to-edge at its original 1080x1920 resolution.
+
+SAFE ZONE: All overlay text and graphics must stay within the safe zone — at least 150px from the top (platform search bars, status bar) and at least 170px from the bottom (navigation buttons, swipe-up UI). Side margins: 60px minimum. MINIMUM FONT SIZES: Headlines 56px+, body/subtitles 36px+, labels/small text 28px absolute minimum. Nothing under 28px — it’s unreadable on mobile.
+
+STEP 1 — TRANSCRIBE & PLAN: Use Whisper to transcribe public/avatar.mp4. Analyze the transcript to identify:
+- The total duration (set composition length to match the video)
+- 3-5 key topic segments with their start timestamps
+- For each segment, propose an overlay graphic to display in the top portion of the frame (above my head). Examples:
+  - Topic title with a large step number (e.g., “01” faded in background, “Elements of AI” as headline)
+  - Keyword pill/badge that highlights the current topic
+  - Simple animated icon or diagram illustrating the concept
+  - Progress bar or step indicator showing where we are in the video
+  - Animated caption/quote pulling a key phrase from what I’m saying
+Show me the transcript segments and proposed overlay for each. Wait for approval before coding.
+
+STEP 2 — BUILD:
+
+BASE LAYER — FULL-FRAME AVATAR VIDEO:
+- <OffthreadVideo src={staticFile(”avatar.mp4”)} /> filling the entire 1080x1920 composition
+- style={{ width: “100%”, height: “100%”, objectFit: “cover” }}
+- This is the background. It plays from frame 0 for the full duration.
+- Audio from this video is the composition’s audio track (me speaking)
+- Do NOT crop, resize, split, or put this in a panel. It IS the full frame.
+
+OVERLAY LAYER — ANIMATED GRAPHICS (positioned in top ~35% of frame, above my head):
+- Use AbsoluteFill on top of the video layer
+- All graphics positioned in the top portion of the frame (y: 150px to ~700px) — this is the open space above my head
+- Add a subtle dark gradient overlay ONLY in the top 40% of the frame (transparent at bottom, rgba(0,0,0,0.6) at top) so white text is readable against any background
+For each topic segment, display an overlay timed to the transcript:
+
+OVERLAY STYLE (like the reference image):
+- Large faded step number in background (”01”, “02”, etc.) — Inter 800, ~200px, rgba(255,255,255,0.08)
+- Topic headline below it — Inter 700, 56-64px, white
+- Keyword badge — small rounded pill with glass-morphism background, 32px text
+- Animated progress bar under the badge — thin line that fills to show progress through current segment, accent color #22c55e
+- Each overlay enters with spring({ damping: 200 }) at its segment’s start timestamp
+- Previous overlay fades out (opacity 0 over 10 frames) as the new one enters
+- Use Sequence components with from={Math.round(timestamp * fps)} to sync to speech
+
+OPTIONAL BOTTOM OVERLAY — CAPTIONS:
+- If you can extract word-level timestamps from Whisper, add animated captions in the lower portion of the frame (above bottom safe zone, around y: 1600-1700px)
+- Style: bold white text, 36px, with a subtle text shadow for readability
+- Highlight the current word in accent color (#6366f1)
+
+COLORS: Accent #6366f1 (indigo), secondary #22c55e (green), text white
+
+FONT: Inter (weights 400, 600, 700, 800)
+
+PREVIEW: After building, launch Remotion Studio (npx remotion studio) so I can preview the video in my browser.
+Why it’s mindblowing: Drop in any selfie talking-head video. Claude transcribes your speech, then layers animated titles, step numbers, keyword badges, progress bars, and captions on top of your original video — all synced to what you’re actually saying. Your video stays full-frame and untouched. It’s like having a motion graphics editor watch your video and add overlays in real time.

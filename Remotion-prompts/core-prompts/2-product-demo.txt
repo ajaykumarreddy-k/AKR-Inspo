@@ -1,0 +1,85 @@
+2. Product Demo + Launch Video
+Use case: Give Claude any product URL.
+
+It scrapes real branding, downloads product images/screenshots FROM the website (not screenshots OF the website), and creates a full product ad with animated visuals, feature callouts, and a simulated demo. All from one URL.
+
+Prompt:
+
+Use the Remotion best practices skill.
+Create a 25-second product demo and launch video (1080x1920, 30fps) for the product at https://your-product-url.com.
+
+SAFE ZONE: All text and key content must stay within the safe zone — at least 150px from the top (platform search bars, status bar) and 170px from the bottom (navigation buttons, swipe-up UI). Side margins: 60px minimum. Nothing important should touch the edges. MINIMUM FONT SIZES: Headlines 56px+, body/subtitles 36px+, labels/small text 28px absolute minimum. Nothing under 28px — it’s unreadable on mobile.
+
+STEP 1 — RESEARCH & ASSET DOWNLOAD: Visit the URL. Extract:
+- Product name and logo (download any logo/favicon to public/)
+- Brand colors (pull from the site’s CSS or visible design)
+- Tagline / hero headline
+- The core user flow (what does someone DO with this product?)
+- 3 key features or value propositions
+- Any social proof (user counts, testimonials, logos)
+- IMPORTANT — PRODUCT IMAGES: Use the Claude in Chrome MCP tools to navigate to the website, read the page, and find product screenshots/images the site already displays (hero images, product UI screenshots, feature images, app previews). These are images the company designed to showcase their product — they’ll look much better than browser screenshots. Download 2-3 of the best product images and save them to public/product-1.png, product-2.png, etc. Look for <img> tags, og:image meta tags, and background images in the hero/features sections. Prefer PNG/JPG product mockups over generic stock photos.
+- Only take browser screenshots as a LAST RESORT if the website has no downloadable product images.
+Show me what you found (including which product images you downloaded) and a proposed 6-scene outline. Wait for approval before coding.
+
+STEP 2 — BUILD THE VIDEO: After approval, build 6 scenes:
+
+SCENE 1 - Hook (3s):
+- Bold text in safe zone: a pain-point question relevant to the product (e.g., “Still editing videos manually?”)
+- Text slams in with spring from 2x scale, holds 2s, fades out
+- Dark background with subtle brand-color radial glow
+
+SCENE 2 - Product Intro (3s):
+- Product name/logo scales in with spring from 3x to 1x (use the downloaded logo, or render name in brand font)
+- Real tagline slides up below
+- Particle burst behind logo: 20 circles expanding outward with random trajectories, fading out, using brand accent color
+
+SCENE 3 - Simulated Demo (8s):
+- Recreate a simplified, MOBILE-SIZED version of the product’s core interaction using React components (styled divs, inputs, buttons, cards in the brand’s colors)
+- NO device mockup frame — build the UI elements directly on the dark background, large enough to fill the safe zone width (960px+)
+- Keep it simple: just the ONE core interaction (input field + button + result), not the full app UI
+- Animate a cursor (small white circle with subtle trail) that:
+  - Moves to an input field (full width, 72px tall, 36px text) using smooth bezier motion
+  - Click ripple effect on the field (expanding circle that fades)
+  - Text types into the field character by character at 36px font size
+  - Cursor moves to a large “Go” / “Generate” / “Submit” button (full width, 64px tall)
+  - Click ripple on button, button depresses (scale 0.95)
+  - Loading spinner appears (0.5s), then results animate in with staggered spring animations
+  - Result cards/text must also be large (36px+ body text)
+- All cursor movement uses spring({ damping: 15 }) for natural, human-like motion
+- Everything must be readable on a phone screen — if in doubt, make it bigger
+
+SCENE 4 - Product Image Showcase (5s):
+- Display the downloaded product images LARGE — these are polished marketing images, not browser screenshots, so show them big
+- Each image is displayed at near-full width (900px+), centered in the frame with drop shadow and rounded corners (16px)
+- NO device mockup frame needed — the product images already look polished on their own
+- Animate through 2-3 product images as a sequence:
+  - Image 1 scales in from 0.9 to 1.0 with spring, holds 1.5s
+  - Crossfade to Image 2, holds 1.5s
+  - Crossfade to Image 3, holds 1.5s
+- While each image is visible, a short feature headline (56px, Inter 700) fades in above or below the image, updating with each transition
+- If product images are landscape, display them in the center of the frame at full width with dark background above and below
+
+SCENE 5 - Feature Callouts (3s):
+- Product image scales down to 40% and moves to the top
+- 3 feature benefit lines animate in below it, staggered by 10 frames:
+  - Each line has a colored icon (checkmark, lightning bolt, star) + short text (36px+) pulled from real features
+  - Lines slide in from right with spring()
+- Feature text must be LARGE and readable — 36px minimum for each line
+
+SCENE 6 - Social Proof + CTA (3s):
+- Everything fades out
+- If social proof was found, animate the real number counting up from 0 (e.g., “50,000+ users”)
+- Product URL pulses gently (scale 1.0 to 1.03) — positioned above bottom safe zone
+- Fade to black
+
+CURSOR DESIGN: White circle (12px), 50% opacity trailing shadow, smooth bezier paths between click targets. Never teleport — always animate movement.
+
+FONT: Inter (800 headlines, 400 body) unless the website uses a distinctive Google Font — match it.
+Use spring() for entrances, interpolate() with clamp for counting.
+
+PREVIEW: After building, launch Remotion Studio (npx remotion studio) so I can preview the video in my browser.
+Paste any product URL. Claude scrapes real branding, takes real screenshots, and builds the video.
+
+You get a simulated demo (cursor clicking through a fake version of the app) that crossfades into real screenshots scrolling in a phone mockup.
+
+It’s a complete product ad: hook, demo, proof, CTA. Change the URL, get a new video.

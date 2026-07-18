@@ -1,0 +1,62 @@
+5. Data Visualization Infographic
+Use case: Give Claude a CSV file or paste raw data. It designs and animates a full dashboard with charts, KPIs, and trend indicators — no design skills needed.
+
+Prompt:
+
+Use the Remotion best practices skill.
+I’ve placed a data file at public/data.csv. Create an animated data dashboard video (1080x1920, 30fps, 15 seconds) that visualizes this data.
+
+SAFE ZONE: All text and key content must stay within the safe zone — at least 150px from the top (platform search bars, status bar) and 170px from the bottom (navigation buttons, swipe-up UI). Side margins: 60px minimum. Nothing important should touch the edges. MINIMUM FONT SIZES: Headlines 56px+, body/subtitles 36px+, labels/small text 28px absolute minimum. Nothing under 28px — it’s unreadable on mobile.
+
+STEP 1 — ANALYZE: Read the CSV file. Identify:
+- A compelling title for the dashboard
+- The single most impressive KPI stat (for the hero card)
+- Data suitable for a bar chart (categorical comparison)
+- Data suitable for a donut/pie chart (parts of a whole)
+- Data suitable for a line chart (trend over time)
+If the CSV doesn’t have all 4 chart types, pick the best 4 visualizations for the data and adapt. Show me the proposed dashboard layout. Wait for approval before coding.
+
+STEP 2 — ANIMATE:
+
+LAYOUT: Vertical stack of 4 panels with 30px padding between. Top margin at 150px (safe zone), bottom panel ends above 170px (safe zone). Side margins: 60px. Dark background #0a0a0a.
+
+PANEL 1 - KPI Hero Card:
+- Large headline number counting up from 0 using interpolate(), with appropriate suffix (%, $, k, M)
+- Subtitle describing the metric in Inter 400, 20px, #94a3b8
+- Trend indicator: colored arrow (green ▲ or red ▼) with YoY change, slides in after count finishes
+- Glass-morphism card background (rgba(255,255,255,0.05), border 1px solid rgba(255,255,255,0.1), backdrop-blur)
+- tabular-nums font-variant for smooth counting
+- Entrance: card scales from 0.8 to 1.0 with spring at frame 10
+
+PANEL 2 - Bar Chart:
+- Horizontal bars, one per category, using real labels and values from the CSV
+- Each bar grows from width 0 using spring({ damping: 200, delay: index * 10 })
+- Bar colors: gradient from #6366f1 to #8b5cf6
+- Labels on left, values appear at bar end after growth completes
+- Rounded-right corners (8px)
+- Entrance: staggered, starting at frame 25
+
+PANEL 3 - Donut Chart:
+- SVG donut using stroke-dasharray / stroke-dashoffset
+- Segments draw clockwise, each starting after previous finishes
+- Colors: #3b82f6, #22c55e, #f59e0b, #ef4444 (cycle if more segments)
+- Radius 80px, stroke-width 24px
+- Center text: category name swaps as each segment draws
+- Colored legend dots below, staggered fade-in
+- Entrance: starts at frame 50
+
+PANEL 4 - Line Chart:
+- SVG polyline drawing left to right via stroke-dashoffset + interpolate()
+- Data point circles (r=4) pop in with scale spring as the line reaches them
+- Gradient fill below the line (color to transparent) reveals with the draw
+- Axis labels from the CSV data
+- Line color: #22c55e
+- Entrance: starts at frame 70
+
+GLOBAL:
+- Dashboard title (from your analysis) fades in at frame 0, top safe zone, Inter 800, 36px
+- Source subtitle fades in at frame 5, Inter 400, 16px, #64748b
+- All panels use matching glass-morphism card style
+Use spring() for entrances, interpolate() with clamp for counts and line drawing. Create reusable CountUp and AnimatedBar components.
+
+PREVIEW: After building, launch Remotion Studio (npx remotion studio) so I can preview the video in my browser.
