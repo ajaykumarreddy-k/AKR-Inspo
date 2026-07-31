@@ -236,7 +236,8 @@ export default defineConfig(() => {
       dedupe: ['react', 'react-dom'],
       alias: {
         'react': path.resolve(__dirname, 'node_modules/react'),
-        'react-dom': path.resolve(__dirname, 'node_modules/react-dom')
+        'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
+        'framer': path.resolve(__dirname, 'src/shims/framer.ts')
       },
     },
     server: {

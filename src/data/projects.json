@@ -301,11 +301,32 @@
     "thumbnail": "Frammer&21st dev Components/3D Rug Effect/Pasted image.png"
   },
   {
+    "id": "frammer-21st-dev-components-3d-depth-effect",
+    "name": "3d Depth Effect",
+    "path": "/Frammer&21st dev Components/3d-depth-effect/index.html",
+    "folder": "Frammer&21st dev Components/3d-depth-effect",
+    "thumbnail": null
+  },
+  {
+    "id": "frammer-21st-dev-components-ac2ii-curseer",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Ac2ii curseer/index.html",
+    "folder": "Frammer&21st dev Components/Ac2ii curseer",
+    "thumbnail": "Frammer&21st dev Components/Ac2ii curseer/image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-ajay-harmes-custom-scroll",
     "name": "Ajay Harmes Custom Scroll",
     "path": "/Frammer&21st dev Components/Ajay-Harmes Custom Scroll/index.html",
     "folder": "Frammer&21st dev Components/Ajay-Harmes Custom Scroll",
     "thumbnail": "Frammer&21st dev Components/Ajay-Harmes Custom Scroll/screencapture-localhost-5173-2026-06-27-21_46_00.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-anolog-curver-image-follow",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Anolog curver image follow/index.html",
+    "folder": "Frammer&21st dev Components/Anolog curver image follow",
+    "thumbnail": "Frammer&21st dev Components/Anolog curver image follow/image.png"
   },
   {
     "id": "frammer-21st-dev-components-bg-changer-on-scroll",
@@ -343,6 +364,13 @@
     "thumbnail": "Frammer&21st dev Components/Case Study Hover /Pasted image.png"
   },
   {
+    "id": "frammer-21st-dev-components-cool--bg",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Cool  bg/index.html",
+    "folder": "Frammer&21st dev Components/Cool  bg",
+    "thumbnail": null
+  },
+  {
     "id": "frammer-21st-dev-components-counting-loader",
     "name": "Bun React Template",
     "path": "/Frammer&21st dev Components/Counting loader/index.html",
@@ -378,6 +406,13 @@
     "thumbnail": "Frammer&21st dev Components/Focus Gallary/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-gravity---ferammer-",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Gravity - ferammer /index.html",
+    "folder": "Frammer&21st dev Components/Gravity - ferammer ",
+    "thumbnail": "Frammer&21st dev Components/Gravity - ferammer /image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-grid-hover",
     "name": "Grid Hover",
     "path": "/Frammer&21st dev Components/Grid Hover/index.html",
@@ -397,6 +432,13 @@
     "path": "/Frammer&21st dev Components/Image Unroll Effect/index.html",
     "folder": "Frammer&21st dev Components/Image Unroll Effect",
     "thumbnail": "Frammer&21st dev Components/Image Unroll Effect/Pasted image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-image-stack----cool",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Image stack -> cool/index.html",
+    "folder": "Frammer&21st dev Components/Image stack -> cool",
+    "thumbnail": null
   },
   {
     "id": "frammer-21st-dev-components-nav-bar-side",
@@ -511,11 +553,32 @@
     "thumbnail": "Frammer&21st dev Components/Vertical Dail Nav/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-crossal-scroll-aniomatiion-tiles-",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/crossal scroll aniomatiion tiles]/index.html",
+    "folder": "Frammer&21st dev Components/crossal scroll aniomatiion tiles]",
+    "thumbnail": "Frammer&21st dev Components/crossal scroll aniomatiion tiles]/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-expand-over-the-list",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/expand over the list/index.html",
+    "folder": "Frammer&21st dev Components/expand over the list",
+    "thumbnail": "Frammer&21st dev Components/expand over the list/image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-scroll-animartion-liquid",
     "name": "Bun React Template",
     "path": "/Frammer&21st dev Components/scroll-animartion-liquid/index.html",
     "folder": "Frammer&21st dev Components/scroll-animartion-liquid",
     "thumbnail": null
+  },
+  {
+    "id": "frammer-21st-dev-components-switchoverhiover",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/switchoverhiover/index.html",
+    "folder": "Frammer&21st dev Components/switchoverhiover",
+    "thumbnail": "Frammer&21st dev Components/switchoverhiover/image.png"
   },
   {
     "id": "frammer-21st-dev-components-web-preloder",
