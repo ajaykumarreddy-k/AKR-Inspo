@@ -1,0 +1,2371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mindoo - The help healthcare teams were missing.</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid currentColor; }
+html { -webkit-text-size-adjust: 100%; line-height: normal; }
+body { margin: 0; }
+ul, ol, menu { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea, optgroup { font: inherit; color: inherit; background: transparent; border: 0; padding: 0; margin: 0; text-align: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+table { border-collapse: separate; border-spacing: 0; }
+img, picture, video, canvas, svg { display: inline-block; }
+/* Lottie runtime fit: the player re-mounts its svg/canvas into an absolute overlay that fills
+   the host's captured (per-viewport, definite) box. Force that runtime media to fit the box so
+   an aspect-mismatched viewBox (e.g. a portrait animation in a shorter, letterboxed source box)
+   can't inflate past the pinned height. Scoped to the runtime-marked host only. */
+[data-ditto-lottie] > div > svg, [data-ditto-lottie] > div > canvas { width: 100%; height: 100%; display: block; }
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd { margin: 0; }
+/* Neutralize UA text defaults to inherit so the generator's default-skipping is
+   correct: a property equal to its inherited value is simply not emitted. */
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+b, strong, th { font-weight: inherit; }
+em, i, cite, var, dfn, address, q { font-style: inherit; }
+small, big, sub, sup { font-size: inherit; }
+sub, sup { vertical-align: inherit; }
+code, kbd, samp, pre, tt, var { font-family: inherit; font-size: inherit; }
+mark { background-color: transparent; color: inherit; }
+abbr[title] { text-decoration: none; }
+fieldset, legend { min-width: 0; }
+
+/* fonts */
+@font-face {
+  font-family: "Abcdiatype";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("public/assets/cloned/fonts/12443f768789.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Intertight";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("public/assets/cloned/fonts/ea138a59b4ec.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Intertight";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("public/assets/cloned/fonts/cbd9e36e3ed4.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Martina Plantijn";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("public/assets/cloned/fonts/137872df8712.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Test Martina Plantijn";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("public/assets/cloned/fonts/6872bd8b56ad.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "webflow-icons";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBiUAAAC8AAAAYGNtYXDpP+a4AAABHAAAAFxnYXNwAAAAEAAAAXgAAAAIZ2x5ZmhS2XEAAAGAAAADHGhlYWQTFw3HAAAEnAAAADZoaGVhCXYFgQAABNQAAAAkaG10eCe4A1oAAAT4AAAAMGxvY2EDtALGAAAFKAAAABptYXhwABAAPgAABUQAAAAgbmFtZSoCsMsAAAVkAAABznBvc3QAAwAAAAAHNAAAACAAAwP4AZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAQAAAAAwACAACAAQAAQAg5gPpA//9//8AAAAAACDmAOkA//3//wAB/+MaBBcIAAMAAQAAAAAAAAAAAAAAAAABAAH//wAPAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEBIAAAAyADgAAFAAAJAQcJARcDIP5AQAGA/oBAAcABwED+gP6AQAABAOAAAALgA4AABQAAEwEXCQEH4AHAQP6AAYBAAcABwED+gP6AQAAAAwDAAOADQALAAA8AHwAvAAABISIGHQEUFjMhMjY9ATQmByEiBh0BFBYzITI2PQE0JgchIgYdARQWMyEyNj0BNCYDIP3ADRMTDQJADRMTDf3ADRMTDQJADRMTDf3ADRMTDQJADRMTAsATDSANExMNIA0TwBMNIA0TEw0gDRPAEw0gDRMTDSANEwAAAAABAJ0AtAOBApUABQAACQIHCQEDJP7r/upcAXEBcgKU/usBFVz+fAGEAAAAAAL//f+9BAMDwwAEAAkAABcBJwEXAwE3AQdpA5ps/GZsbAOabPxmbEMDmmz8ZmwDmvxmbAOabAAAAgAA/8AEAAPAAB0AOwAABSInLgEnJjU0Nz4BNzYzMTIXHgEXFhUUBw4BBwYjNTI3PgE3NjU0Jy4BJyYjMSIHDgEHBhUUFx4BFxYzAgBqXV6LKCgoKIteXWpqXV6LKCgoKIteXWpVSktvICEhIG9LSlVVSktvICEhIG9LSlVAKCiLXl1qal1eiygoKCiLXl1qal1eiygoZiEgb0tKVVVKS28gISEgb0tKVVVKS28gIQABAAABwAIAA8AAEgAAEzQ3PgE3NjMxFSIHDgEHBhUxIwAoKIteXWpVSktvICFmAcBqXV6LKChmISBvS0pVAAAAAgAA/8AFtgPAADIAOgAAARYXHgEXFhUUBw4BBwYHIxUhIicuAScmNTQ3PgE3NjMxOAExNDc+ATc2MzIXHgEXFhcVATMJATMVMzUEjD83NlAXFxYXTjU1PQL8kz01Nk8XFxcXTzY1PSIjd1BQWlJJSXInJw3+mdv+2/7c25MCUQYcHFg5OUA/ODlXHBwIAhcXTzY1PTw1Nk8XF1tQUHcjIhwcYUNDTgL+3QFt/pOTkwABAAAAAQAAmM7nP18PPPUACwQAAAAAANciZKUAAAAA1yJkpf/9/70FtgPDAAAACAACAAAAAAAAAAEAAAPA/8AAAAW3//3//QW2AAEAAAAAAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAAAAgAAAAQAASAEAADgBAAAwAQAAJ0EAP/9BAAAAAQAAAAFtwAAAAAAAAAKABQAHgAyAEYAjACiAL4BFgE2AY4AAAABAAAADAA8AAMAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADQAAAAEAAAAAAAIABwCWAAEAAAAAAAMADQBIAAEAAAAAAAQADQCrAAEAAAAAAAUACwAnAAEAAAAAAAYADQBvAAEAAAAAAAoAGgDSAAMAAQQJAAEAGgANAAMAAQQJAAIADgCdAAMAAQQJAAMAGgBVAAMAAQQJAAQAGgC4AAMAAQQJAAUAFgAyAAMAAQQJAAYAGgB8AAMAAQQJAAoANADsd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzUmVndWxhcgBSAGUAZwB1AGwAYQByd2ViZmxvdy1pY29ucwB3AGUAYgBmAGwAbwB3AC0AaQBjAG8AbgBzRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==);
+}
+
+/* tokens */
+:root {
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(64, 64, 64);
+  --primary: rgb(0, 89, 255);
+  --border: rgb(229, 229, 229);
+  --muted-foreground: rgb(115, 115, 115);
+  --surface: rgb(245, 245, 245);
+  --surface-2: rgb(239, 239, 239);
+  --color-001: rgb(23, 23, 23);
+  --color-002: rgb(13, 13, 13);
+  --color-003: rgba(21, 21, 21, 0.72);
+}
+
+:root {
+  /* fonts */
+  --font-body: Intertight, Arial, sans-serif;
+  --font-001: "Martina Plantijn", Arial, sans-serif;
+  /* fontSizes */
+  --font-size-001: 10px;
+  --font-size-002: 12px;
+  --font-size-003: 14px;
+  --font-size-004: 16px;
+  --font-size-005: 20px;
+  --font-size-006: 24px;
+  --font-size-007: 40px;
+  --font-size-008: 48px;
+  --font-size-009: 64px;
+  --font-size-010: 80px;
+  --font-size-011: 106px;
+  /* fontWeights */
+  --font-weight-001: 500;
+  /* lineHeights */
+  --line-height-001: 24px;
+  --line-height-002: 43.2px;
+  --line-height-003: 70.4px;
+  --line-height-004: 21px;
+  --line-height-005: 80px;
+  --line-height-006: 14px;
+  --line-height-007: 30px;
+  --line-height-008: 95.4px;
+  --line-height-009: 18px;
+  --line-height-010: 40px;
+  --line-height-011: 12px;
+  /* spacing */
+  --space-001: 2px;
+  --space-002: 4px;
+  --space-003: 8px;
+  --space-004: 12px;
+  --space-005: normal 12px;
+  --space-006: 14px;
+  --space-007: 16px;
+  --space-008: 20px;
+  --space-009: 24px;
+  --space-010: 32px;
+  --space-011: 40px;
+  --space-012: 48px;
+  --space-013: 64px;
+  --space-014: 80px;
+  --space-015: 96px;
+  --space-016: 110px;
+  --space-017: 128px;
+  /* radii */
+  --radius-001: 12px;
+  --radius-002: 16px;
+  --radius-003: 1000px;
+  --radius-004: 100000px;
+  /* zIndices */
+  --z-001: 3;
+  --z-002: 4;
+  --z-003: 5;
+  /* breakpoints */
+  --bp-375: 375px;
+  --bp-768: 768px;
+  --bp-1280: 1280px;
+  --bp-1920: 1920px;
+}
+
+
+/* page base */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+html, body { overflow-x: clip; }
+
+/* nodes */
+.cn0{min-height:100%;display:block;color:var(--foreground);font-family:var(--font-body);font-size:var(--font-size-004);font-weight:var(--font-weight-001);font-style:normal;line-height:var(--line-height-001);letter-spacing:normal;word-spacing:0px;text-align:start;text-transform:none;white-space:normal;word-break:normal;overflow-wrap:normal;text-indent:0px;text-shadow:none;font-variant-caps:normal;font-feature-settings:normal;list-style-position:outside;writing-mode:horizontal-tb;direction:ltr;background-color:var(--background)}
+.cn1{min-height:100vh;display:block;overflow-x:clip;overflow-y:clip}
+.cn2{display:block}
+.cn3{display:block}
+.cn4{height:50px;display:block;position:fixed;top:40px;right:0px;left:0px;z-index:1000;transform:matrix(1, 1.74533e-05, -1.74533e-05, 1, 0, 0);transform-origin:640px 25px}
+.cn5{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;z-index:1000}
+.cn6{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn7{display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn8{height:50px;border-width:1px;border-style:solid;border-color:var(--border);display:block;max-width:880px;margin-right:auto;margin-left:auto;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);justify-content:center;align-items:center;background-color:var(--background);box-shadow:rgba(99, 99, 99, 0.1) 0px 2px 8px 0px}
+.cn9{height:100%;display:flex;padding-right:var(--space-003);padding-left:var(--space-007);justify-content:center;align-items:center;row-gap:var(--space-008);column-gap:var(--space-008)}
+.cn10{width:33%;display:flex;justify-content:flex-start;align-items:center}
+.cn11{width:124px;height:25.5938px;display:block;max-width:100%;flex-shrink:0;color:var(--color-001);cursor:pointer}
+.cn12{width:100%;height:24px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn13{display:flex;justify-content:center;align-items:center}
+.cn14{display:flex;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007);list-style-type:none;list-style-position:outside}
+.cn15{display:list-item;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn16{display:flex;max-width:100%;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);justify-content:center;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003);color:var(--color-001);white-space:nowrap;text-wrap:nowrap;background-color:rgba(239, 239, 239, 0);cursor:pointer}
+.cn17{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn18{display:list-item;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn19{display:flex;max-width:100%;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);justify-content:center;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003);color:var(--color-001);white-space:nowrap;text-wrap:nowrap;background-color:rgba(239, 239, 239, 0);cursor:pointer}
+.cn20{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn21{display:list-item;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn22{display:flex;max-width:100%;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);justify-content:center;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003);color:var(--color-001);white-space:nowrap;text-wrap:nowrap;background-color:rgba(239, 239, 239, 0);cursor:pointer}
+.cn23{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn24{display:list-item;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn25{display:flex;max-width:100%;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);justify-content:center;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003);color:var(--color-001);white-space:nowrap;text-wrap:nowrap;background-color:rgba(239, 239, 239, 0);cursor:pointer}
+.cn26{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn27{width:280px;display:flex;justify-content:flex-end;align-items:center;row-gap:var(--space-001);column-gap:var(--space-001)}
+.cn28{display:flex;justify-content:flex-start;align-items:center;row-gap:var(--space-002);column-gap:var(--space-002)}
+.cn29{width:75px;height:34px;border-width:1px;border-style:solid;border-color:var(--border);display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--color-002);background-color:var(--background);cursor:pointer}
+.cn30{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004);white-space:nowrap}
+.cn31{width:113px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn32{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004);white-space:nowrap}
+.cn33{width:40px;height:40px;display:none;min-width:0px;flex-direction:column;justify-content:center;align-items:center;row-gap:6px;column-gap:6px;text-align:center;background-color:rgba(239, 239, 239, 0);cursor:pointer}
+.cn34{display:block}
+.cn35{width:auto;display:flex;justify-content:center;align-items:center;overflow-x:hidden;overflow-y:hidden}
+.cn36{display:block;pointer-events:none}
+.cn36::before{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn36::after{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn37{display:block}
+.cn38{height:4px;display:block;background-image:linear-gradient(90deg, rgb(0, 89, 255), rgb(74, 201, 87) 60%, rgb(229, 149, 196))}
+.cn39{display:block}
+.cn40{display:block}
+.cn41{display:block}
+.cn42{height:62px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-010);padding-left:var(--space-007);justify-content:center;align-items:center;row-gap:10px;column-gap:10px;color:var(--color-001);background-color:var(--surface);cursor:pointer}
+.cn43{height:18px;display:block;overflow-x:hidden;overflow-y:hidden;color:var(--foreground);font-size:var(--font-size-002);line-height:var(--line-height-009);white-space:nowrap;text-wrap:nowrap}
+.cn44{display:flex;justify-content:flex-start;align-items:center;row-gap:var(--space-002);column-gap:var(--space-002);white-space:nowrap;text-wrap:nowrap}
+.cn45{display:block;color:var(--muted-foreground);font-size:var(--font-size-002);line-height:var(--line-height-009)}
+.cn46{width:16px;display:block;color:var(--muted-foreground)}
+.cn47{width:auto;height:16px;display:flex;justify-content:center;align-items:center;overflow-x:hidden;overflow-y:hidden}
+.cn48{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--surface);background-image:linear-gradient(0deg, rgb(245, 245, 245), rgb(255, 255, 255) 30%)}
+.cn49{display:block;padding-top:var(--space-015)}
+.cn50{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn51{display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn52{display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
+.cn53{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007);text-align:center}
+.cn54{height:28px;display:flex;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;justify-content:center;align-items:center;color:var(--muted-foreground);letter-spacing:0.8px;background-color:var(--background)}
+.cn55{height:10px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);justify-content:center;align-items:center;row-gap:var(--space-004);column-gap:var(--space-004)}
+.cn56{display:block;font-size:var(--font-size-001);line-height:10px;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap}
+.cn57{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn58{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn59{display:block;max-width:686px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-010);line-height:var(--line-height-005);letter-spacing:-3.2px}
+.cn60{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn61{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn62{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn63{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn64{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn65{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn66{display:block;max-width:500px;color:var(--muted-foreground)}
+.cn67{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn68{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn69{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn70{display:block}
+.cn71{display:flex;padding-top:var(--space-007);justify-content:center;align-items:center;row-gap:var(--space-001);column-gap:var(--space-001)}
+.cn72{width:113px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn73{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004);white-space:nowrap}
+.cn74{width:115px;height:34px;border-width:1px;border-style:solid;border-color:var(--border);display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--color-002);background-color:var(--background);cursor:pointer}
+.cn75{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004);white-space:nowrap}
+.cn76{display:block;padding-top:var(--space-009)}
+.cn77{height:256px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;justify-content:center;align-items:flex-start}
+.cn78{width:320px;height:160px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;justify-content:center;align-items:flex-start}
+.cn79{display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;justify-content:flex-start;align-items:flex-start}
+.cn80{flex-basis:100%;flex-shrink:0;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;z-index:var(--z-003)}
+.cn81{width:100%;height:241px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn82{height:234.875px;display:block;position:absolute;top:0px;right:-43.1875px;left:112.188px;z-index:var(--z-002);min-width:0px;flex-shrink:0}
+.cn83{width:100%;height:235px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn84{height:234.875px;display:block;position:absolute;top:0px;right:112.188px;left:-43.1875px;z-index:var(--z-002);min-width:0px;flex-shrink:0}
+.cn85{width:100%;height:235px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn86{height:194px;display:block;position:absolute;top:42.1094px;right:-75.5938px;left:167.594px;z-index:var(--z-001);min-width:0px;flex-shrink:0}
+.cn87{width:100%;height:194px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn88{height:194px;display:block;position:absolute;top:42.1094px;right:167.594px;left:-75.5938px;z-index:var(--z-001);min-width:0px;flex-shrink:0}
+.cn89{width:100%;height:194px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn90{width:330px;height:100%;border-width:1px;border-style:solid;border-color:var(--border);display:block;position:absolute;top:0px;left:-448px;z-index:var(--z-003);min-width:0px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;background-color:var(--background);box-shadow:rgba(99, 99, 99, 0.2) 0px 2px 8px 0px}
+.cn91{height:160px;display:flex;padding-top:var(--space-006);padding-right:var(--space-006);padding-bottom:var(--space-006);padding-left:var(--space-006);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-004);column-gap:var(--space-004)}
+.cn92{width:100%;height:24px;display:block}
+.cn93{height:24px;display:flex;justify-content:flex-start;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003)}
+.cn94{width:20px;display:block}
+.cn95{width:100%;height:20px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn96{display:block;color:var(--muted-foreground);font-size:var(--font-size-002);line-height:var(--line-height-009)}
+.cn97{display:block;max-width:300px;color:var(--color-001)}
+.cn98{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn99{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn100{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn101{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn102{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn103{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn104{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn105{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn106{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn107{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn108{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn109{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn110{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn111{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn112{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn113{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn114{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn115{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn116{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn117{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn118{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn119{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn120{width:330px;height:136px;border-width:1px;border-style:solid;border-color:var(--border);display:block;position:absolute;top:16px;right:-464px;z-index:var(--z-003);min-width:0px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;background-color:var(--background);box-shadow:rgba(99, 99, 99, 0.2) 0px 2px 8px 0px}
+.cn121{display:flex;padding-top:var(--space-006);padding-right:var(--space-006);padding-bottom:var(--space-006);padding-left:var(--space-006);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-004);column-gap:var(--space-004)}
+.cn122{width:100%;display:block}
+.cn123{display:flex;justify-content:space-between;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003)}
+.cn124{display:flex;justify-content:flex-start;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003)}
+.cn125{width:20px;display:block}
+.cn126{width:100%;height:20px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn127{display:block;color:var(--muted-foreground);font-size:var(--font-size-002);line-height:var(--line-height-009)}
+.cn128{display:flex;padding-right:var(--space-003);padding-left:var(--space-003);border-top-left-radius:6px;border-top-right-radius:6px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;justify-content:flex-start;align-items:center;row-gap:var(--space-003);column-gap:var(--space-003);background-color:var(--surface-2)}
+.cn129{width:96px;display:block}
+.cn130{width:auto;height:13px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn131{display:block;color:var(--muted-foreground);font-size:var(--font-size-002);line-height:var(--line-height-009)}
+.cn132{display:block;max-width:300px;color:var(--color-001)}
+.cn133{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn134{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn135{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn136{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn137{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn138{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn139{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn140{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn141{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn142{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn143{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn144{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn145{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn146{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn147{height:282.984px;display:block;position:absolute;top:-12.7969px;right:0px;left:729.609px;min-width:0px;max-width:720px}
+.cn148{height:100%;display:block}
+.cn148::before{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn148::after{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn149{width:auto;height:277px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn150{height:256.922px;display:block;position:absolute;top:-56.3125px;right:729.609px;left:0px;min-width:0px;max-width:720px}
+.cn151{height:100%;display:block}
+.cn151::before{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn151::after{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn152{width:auto;height:251px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn153{display:block;padding-top:var(--space-015)}
+.cn154{height:880px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--surface)}
+.cn155{height:100%;display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn156{height:100%;display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn157{height:100%;display:flex;justify-content:center;align-items:center}
+.cn158{display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:flex-start}
+.cn159{width:0px;height:1px;display:block}
+.cn160{height:276px;display:block;position:absolute;top:-192px;right:-320px;left:714px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;filter:blur(0px);transform:matrix(1, 0, 0, 1, 0, -13.8);transform-origin:115px 138px}
+.cn161{width:100%;height:276px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn162{width:128px;height:154px;display:block;position:absolute;top:-64px;left:-240px;opacity:0;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;filter:blur(8px);transform:matrix(1, 0, 0, 1, 0, -7.7);transform-origin:64px 77px}
+.cn163{width:100%;height:154px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn164{height:216px;display:block;position:absolute;right:764px;bottom:-128px;left:-320px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;filter:blur(0px);transform:matrix(1, 0, 0, 1, 0, -21.6);transform-origin:90px 108px}
+.cn165{width:100%;height:216px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn166{width:78px;height:94px;display:block;position:absolute;top:390.219px;left:642px;opacity:0;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;filter:blur(8px);transform:matrix(1, 0, 0, 1, 0, -4.7);transform-origin:39px 47px}
+.cn167{width:100%;height:94px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn168{display:block;max-width:624px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-009);line-height:var(--line-height-003);letter-spacing:-2.56px}
+.cn169{display:inline;color:var(--muted-foreground)}
+.cn170{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn171{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn172{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn173{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn174{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn175{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn176{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn177{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn178{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn179{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn180{display:flex;margin-top:var(--space-012);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn181{display:block;max-width:570px;color:var(--color-001);font-size:var(--font-size-006);line-height:36px}
+.cn182{display:block;max-width:570px;color:var(--color-001);font-size:var(--font-size-006);line-height:36px}
+.cn183{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--background)}
+.cn184{display:block;padding-top:var(--space-017)}
+.cn185{height:1920px;display:block}
+.cn186{height:800px;display:flex;position:sticky;top:64px;justify-content:center;align-items:center}
+.cn187{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn188{display:block;max-width:1280px}
+.cn189{height:937.641px;display:flex;position:sticky;top:0px;flex-direction:column;justify-content:center;align-items:center}
+.cn190{display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn191{display:block;max-width:845px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-011);line-height:var(--line-height-008);letter-spacing:-4.24px;text-align:center}
+.cn192{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn193{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn194{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn195{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn196{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn197{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn198{width:993px;height:268.906px;display:block;position:absolute;bottom:-171.719px;min-width:0px}
+.cn199{width:100%;height:269px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn200{display:none;min-width:0px}
+.cn201{display:block}
+.cn202{width:100%;max-width:500px;display:block}
+.cn203{height:100%;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn204{display:block;min-width:0px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn205{display:block;min-width:0px;color:rgb(82, 82, 82)}
+.cn206{display:block}
+.cn207{display:block;position:relative;z-index:var(--z-003)}
+.cn208{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn209{display:block;position:absolute;top:1%;left:28.3%;z-index:1}
+.cn210{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn211{height:290px;display:block;position:absolute;right:0px;bottom:-1%;left:0px;z-index:var(--z-003);background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(245, 245, 245))}
+.cn212{display:none;min-width:0px}
+.cn213{display:block}
+.cn214{width:100%;max-width:500px;display:block}
+.cn215{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn216{display:block;min-width:0px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn217{display:block;min-width:0px;color:rgb(82, 82, 82)}
+.cn218{display:block}
+.cn219{display:block;position:relative;z-index:var(--z-003)}
+.cn220{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn221{display:block;position:absolute;top:1.3%;left:28.3%;z-index:1;opacity:0}
+.cn222{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn223{height:290px;display:block;position:absolute;right:0px;bottom:-1%;left:0px;z-index:var(--z-003);background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(245, 245, 245))}
+.cn224{height:746.828px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn225{height:746.828px;display:flex}
+.cn226{height:746.828px;display:block;max-width:308px}
+.cn227{display:block;padding-top:192px}
+.cn228{display:block}
+.cn229{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn230{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn231{display:block;color:rgb(82, 82, 82)}
+.cn232{display:flex;justify-content:center;align-items:flex-start;flex-grow:1;flex-basis:0%}
+.cn233{display:flex;justify-content:center;align-items:flex-start;flex-grow:1;flex-basis:0%}
+.cn234{width:576px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;z-index:var(--z-003)}
+.cn235{width:100%;height:747px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn236{width:240px;height:461.953px;display:block;position:absolute;top:7.45312px;left:163px;z-index:1}
+.cn237{width:100%;height:462px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn238{width:240px;height:460.141px;display:block;position:absolute;top:9.70312px;left:163px;z-index:1;opacity:0}
+.cn239{width:100%;height:460px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn240{height:746.828px;display:block;max-width:308px}
+.cn241{height:544px;display:block;padding-top:384px}
+.cn242{display:block;opacity:0;filter:blur(10px)}
+.cn243{height:160px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn244{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn245{display:block;color:rgb(82, 82, 82)}
+.cn246{height:400px;display:block;position:absolute;right:0px;bottom:0px;left:0px;z-index:var(--z-003);min-width:0px;background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(245, 245, 245));pointer-events:none}
+.cn247{display:none;padding-top:var(--space-017)}
+.cn248{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--surface)}
+.cn249{display:block;padding-top:var(--space-017)}
+.cn250{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-013);column-gap:var(--space-013);text-align:center}
+.cn251{display:block;max-width:522px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-008);line-height:var(--line-height-002);letter-spacing:-1.92px}
+.cn252{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn253{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn254{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn255{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn256{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn257{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn258{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn259{display:inline;color:var(--muted-foreground)}
+.cn260{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn261{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn262{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn263{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn264{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn265{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn266{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn267{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn268{width:100%;max-width:1360px;height:402px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;padding-top:var(--space-010);overflow-x:hidden;overflow-y:hidden}
+.cn269{height:370px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-012);column-gap:var(--space-012)}
+.cn270{width:100%;height:290px;display:block}
+.cn271{height:290px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;justify-content:flex-start;align-items:center}
+.cn272{width:100%;height:290px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn273{width:1280px;height:100%;display:block;position:absolute;top:0px;transform:matrix(1, 0, 0, 1, 470.016, 0);transform-origin:640px 145px}
+.cn274{width:340px;height:100%;display:block;position:absolute;top:0px;margin-right:var(--space-009);flex-shrink:0}
+.cn275{width:340px;height:290px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;max-width:340px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--border)}
+.cn276{height:290px;display:flex;padding-top:var(--space-016);padding-right:var(--space-008);padding-bottom:var(--space-009);padding-left:var(--space-008);flex-direction:column;justify-content:flex-start;align-items:stretch;row-gap:var(--space-011);column-gap:var(--space-011)}
+.cn277{height:82px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn278{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn279{display:block;max-width:320px;color:var(--muted-foreground);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn280{height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn281{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn282{width:224px;height:212.406px;display:block;position:absolute;top:-58px;left:170px;transform:matrix(1, 0, 0, 1, -112, 0);transform-origin:112px 106.203px;pointer-events:none}
+.cn283{width:100%;height:212px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle;pointer-events:none}
+.cn284{width:340px;height:100%;display:block;position:absolute;top:0px;margin-right:var(--space-009);flex-shrink:0;transform:matrix(1, 0, 0, 1, 364.004, 0);transform-origin:170px 145px}
+.cn285{width:340px;height:290px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;max-width:340px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--border)}
+.cn286{height:290px;display:flex;padding-top:var(--space-016);padding-right:var(--space-008);padding-bottom:var(--space-009);padding-left:var(--space-008);flex-direction:column;justify-content:flex-start;align-items:stretch;row-gap:var(--space-011);column-gap:var(--space-011)}
+.cn287{height:82px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn288{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn289{display:block;max-width:320px;color:var(--muted-foreground);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn290{width:300px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn291{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn292{width:224px;height:212.406px;display:block;position:absolute;top:-58px;left:170px;transform:matrix(1, 0, 0, 1, -112, 0);transform-origin:112px 106.203px;pointer-events:none}
+.cn293{width:100%;height:212px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle;pointer-events:none}
+.cn294{width:340px;height:100%;display:block;position:absolute;top:0px;margin-right:var(--space-009);flex-shrink:0;transform:matrix(1, 0, 0, 1, 728.008, 0);transform-origin:170px 145px}
+.cn295{width:340px;height:290px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;max-width:340px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--border)}
+.cn296{height:290px;display:flex;padding-top:var(--space-016);padding-right:var(--space-008);padding-bottom:var(--space-009);padding-left:var(--space-008);flex-direction:column;justify-content:flex-start;align-items:stretch;row-gap:var(--space-011);column-gap:var(--space-011)}
+.cn297{height:82px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn298{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn299{display:block;max-width:320px;color:var(--muted-foreground);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn300{width:300px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn301{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn302{width:224px;height:212.406px;display:block;position:absolute;top:-58px;left:170px;transform:matrix(1, 0, 0, 1, -112, 0);transform-origin:112px 106.203px;pointer-events:none}
+.cn303{width:100%;height:212px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle;pointer-events:none}
+.cn304{width:340px;height:100%;display:block;position:absolute;top:0px;margin-right:var(--space-009);flex-shrink:0;transform:matrix(1, 0, 0, 1, -728.008, 0);transform-origin:170px 145px}
+.cn305{width:340px;height:290px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;max-width:340px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--border)}
+.cn306{height:290px;display:flex;padding-top:var(--space-016);padding-right:var(--space-008);padding-bottom:var(--space-009);padding-left:var(--space-008);flex-direction:column;justify-content:flex-start;align-items:stretch;row-gap:var(--space-011);column-gap:var(--space-011)}
+.cn307{height:82px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn308{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn309{display:block;max-width:320px;color:var(--muted-foreground);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn310{width:300px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn311{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn312{width:224px;height:211.75px;display:block;position:absolute;top:-58px;left:170px;transform:matrix(1, 0, 0, 1, -112, 0);transform-origin:112px 105.875px;pointer-events:none}
+.cn313{width:100%;height:212px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle;pointer-events:none}
+.cn314{width:340px;height:100%;display:block;position:absolute;top:0px;margin-right:var(--space-009);flex-shrink:0;transform:matrix(1, 0, 0, 1, -364.004, 0);transform-origin:170px 145px}
+.cn315{width:340px;height:290px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;max-width:340px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--border)}
+.cn316{height:290px;display:flex;padding-top:var(--space-016);padding-right:var(--space-008);padding-bottom:var(--space-009);padding-left:var(--space-008);flex-direction:column;justify-content:flex-start;align-items:stretch;row-gap:var(--space-011);column-gap:var(--space-011)}
+.cn317{height:82px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn318{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn319{display:block;max-width:320px;color:var(--muted-foreground);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn320{width:300px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn321{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn322{width:224px;height:212.406px;display:block;position:absolute;top:-58px;left:170px;transform:matrix(1, 0, 0, 1, -112, 0);transform-origin:112px 106.203px;pointer-events:none}
+.cn323{width:100%;height:212px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle;pointer-events:none}
+.cn324{display:block}
+.cn325{display:flex;justify-content:center;align-items:center;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn326{width:32px;height:32px;border-width:1px;border-style:solid;border-color:var(--border);display:flex;border-top-left-radius:var(--radius-003);border-top-right-radius:var(--radius-003);border-bottom-right-radius:var(--radius-003);border-bottom-left-radius:var(--radius-003);justify-content:center;align-items:center;cursor:pointer}
+.cn327{width:20px;height:20px;display:block;color:var(--muted-foreground)}
+.cn328{width:auto;height:20px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn329{display:block}
+.cn330{display:flex;justify-content:flex-start;align-items:center;row-gap:var(--space-001);column-gap:var(--space-001)}
+.cn331{width:32px;height:2px;display:block;background-color:var(--color-001)}
+.cn332{width:20px;height:2px;display:block;background-color:var(--border)}
+.cn333{width:20px;height:2px;display:block;background-color:var(--border)}
+.cn334{width:20px;height:2px;display:block;background-color:var(--border)}
+.cn335{width:20px;height:2px;display:block;background-color:var(--border)}
+.cn336{width:32px;height:32px;border-width:1px;border-style:solid;border-color:var(--border);display:flex;border-top-left-radius:var(--radius-003);border-top-right-radius:var(--radius-003);border-bottom-right-radius:var(--radius-003);border-bottom-left-radius:var(--radius-003);justify-content:center;align-items:center;transform:matrix(-1, 0, 0, -1, 0, 0);transform-origin:16px 16px;cursor:pointer}
+.cn337{width:20px;height:20px;display:block;color:var(--muted-foreground)}
+.cn338{width:auto;height:20px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn339{width:160px;height:100%;display:block;position:absolute;top:0px;background-image:linear-gradient(90deg, rgb(245, 245, 245), rgba(245, 245, 245, 0))}
+.cn340{width:160px;height:100%;display:block;position:absolute;top:0px;right:0px;background-image:linear-gradient(90deg, rgb(245, 245, 245), rgba(245, 245, 245, 0));transform:matrix(-1, 0, 0, -1, 0, 0);transform-origin:80px 201px}
+.cn341{display:block;max-width:360px;color:var(--muted-foreground);font-size:var(--font-size-001);line-height:15px;letter-spacing:0.5px;text-transform:uppercase}
+.cn342{display:block;padding-top:var(--space-017)}
+.cn343{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--surface)}
+.cn344{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn345{display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn346{display:grid;grid-template-columns:504px;grid-auto-columns:1fr;grid-template-rows:repeat(1, minmax(0, 1fr));aspect-ratio:0.415}
+.cn347{display:block}
+.cn348{height:100%;display:flex;padding-right:var(--space-014);flex-direction:column;justify-content:flex-start;align-items:flex-start}
+.cn349{width:100%;height:353.609px;display:flex;position:sticky;top:0px;padding-top:var(--space-015);padding-bottom:var(--space-017);flex-direction:column;justify-content:flex-start;align-items:flex-start;background-image:linear-gradient(rgb(245, 245, 245) 85%, rgba(245, 245, 245, 0))}
+.cn350{height:100%;display:block;max-width:406px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-008);line-height:var(--line-height-002);letter-spacing:-1.92px}
+.cn351{display:inline;color:var(--muted-foreground)}
+.cn352{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn353{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn354{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn355{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn356{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn357{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn358{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn359{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn360{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn361{display:flex;margin-top:256px;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn362{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn363{display:block;max-width:456px;color:var(--muted-foreground);font-size:var(--font-size-005);line-height:var(--line-height-007)}
+.cn364{width:100%;display:none;position:relative;min-width:0px;max-width:790px;aspect-ratio:4.93 / 5.5}
+.cn365{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn366{display:flex;margin-top:736px;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn367{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn368{height:120px;display:block;max-width:456px;color:var(--muted-foreground);font-size:var(--font-size-005);line-height:var(--line-height-007)}
+.cn369{display:inline}
+.cn370{width:100%;display:none;position:relative;min-width:0px;max-width:790px;aspect-ratio:4.93 / 5.5}
+.cn371{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn372{display:block;position:absolute;bottom:16px;left:16px}
+.cn373{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn374{display:flex;margin-top:736px;padding-bottom:var(--space-013);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-009);column-gap:var(--space-009)}
+.cn375{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-007);line-height:var(--line-height-010);letter-spacing:-1.6px}
+.cn376{height:120px;display:block;max-width:456px;color:var(--muted-foreground);font-size:var(--font-size-005);line-height:var(--line-height-007)}
+.cn377{display:inline}
+.cn378{width:100%;display:none;position:relative;min-width:0px;max-width:790px;aspect-ratio:4.93 / 5.5}
+.cn379{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn380{display:block;position:absolute;top:16px;right:16px}
+.cn381{width:100%;height:100%;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn382{height:2356.17px;display:flex;position:absolute;top:0px;right:0px;left:576px;flex-direction:column;justify-content:flex-start;align-items:flex-end}
+.cn383{width:100%;max-width:790px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;aspect-ratio:4.93 / 5.5}
+.cn384{width:100%;height:785px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn385{width:100%;max-width:790px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;aspect-ratio:4.93 / 5.5}
+.cn386{width:100%;height:785px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn387{width:356px;height:227.906px;display:block;position:absolute;bottom:16px;left:16px}
+.cn388{width:100%;height:228px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn389{width:100%;max-width:790px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;aspect-ratio:4.93 / 5.5}
+.cn390{width:100%;height:785px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn391{width:280px;height:310.297px;display:block;position:absolute;top:16px;right:16px}
+.cn392{width:100%;height:310px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn393{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--surface)}
+.cn394{display:block;padding-top:192px}
+.cn395{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn396{display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn397{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-013);column-gap:var(--space-013);text-align:center}
+.cn398{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn399{display:block;max-width:624px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-009);line-height:var(--line-height-003);letter-spacing:-2.56px}
+.cn400{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn401{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn402{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn403{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn404{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn405{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn406{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn407{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn408{width:100%;max-width:420px;height:72px;display:block;color:var(--muted-foreground)}
+.cn409{display:inline}
+.cn410{width:100%;height:702px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn411{width:100%;height:640px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);justify-content:center;align-items:center;overflow-x:hidden;overflow-y:hidden;background-color:var(--border)}
+.cn412{width:100%;height:100%;display:block}
+.cn413{width:1120px;height:640px;display:inline-block;overflow-x:clip;overflow-y:clip;aspect-ratio:auto 1120 / 640}
+.cn414{height:132px;display:flex;position:absolute;right:0px;bottom:32px;left:0px;min-width:0px;justify-content:center;align-items:flex-start}
+.cn415{height:132px;display:flex;max-width:50%;flex-wrap:wrap;justify-content:center;align-items:flex-start;row-gap:var(--space-002);column-gap:var(--space-002)}
+.cn416{height:30px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);border-top-left-radius:var(--radius-004);border-top-right-radius:var(--radius-004);border-bottom-right-radius:var(--radius-004);border-bottom-left-radius:var(--radius-004);justify-content:center;align-items:center;background-color:var(--surface)}
+.cn417{display:block;color:var(--muted-foreground);font-size:var(--font-size-003);white-space:nowrap}
+.cn418{height:30px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);border-top-left-radius:var(--radius-004);border-top-right-radius:var(--radius-004);border-bottom-right-radius:var(--radius-004);border-bottom-left-radius:var(--radius-004);justify-content:center;align-items:center;background-color:var(--surface)}
+.cn419{display:block;color:var(--muted-foreground);font-size:var(--font-size-003);white-space:nowrap}
+.cn420{height:30px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);border-top-left-radius:var(--radius-004);border-top-right-radius:var(--radius-004);border-bottom-right-radius:var(--radius-004);border-bottom-left-radius:var(--radius-004);justify-content:center;align-items:center;background-color:var(--surface)}
+.cn421{display:block;color:var(--muted-foreground);font-size:var(--font-size-003);white-space:nowrap}
+.cn422{height:30px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);border-top-left-radius:var(--radius-004);border-top-right-radius:var(--radius-004);border-bottom-right-radius:var(--radius-004);border-bottom-left-radius:var(--radius-004);justify-content:center;align-items:center;background-color:var(--surface)}
+.cn423{display:block;color:var(--muted-foreground);font-size:var(--font-size-003);white-space:nowrap}
+.cn424{height:30px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);border-top-left-radius:var(--radius-004);border-top-right-radius:var(--radius-004);border-bottom-right-radius:var(--radius-004);border-bottom-left-radius:var(--radius-004);justify-content:center;align-items:center;background-color:var(--surface)}
+.cn425{display:block;color:var(--muted-foreground);font-size:var(--font-size-003);white-space:nowrap}
+.cn426{height:30px;display:flex;padding-right:var(--space-004);padding-left:var(--space-004);border-top-left-radius:var(--radius-004);border-top-right-radius:var(--radius-004);border-bottom-right-radius:var(--radius-004);border-bottom-left-radius:var(--radius-004);justify-content:center;align-items:center;background-color:var(--surface)}
+.cn427{display:block;color:var(--muted-foreground);font-size:var(--font-size-003);white-space:nowrap}
+.cn428{display:block;max-width:264px;color:var(--muted-foreground);font-size:var(--font-size-001);line-height:15px;letter-spacing:0.5px;text-transform:uppercase}
+.cn429{display:block;padding-top:var(--space-013)}
+.cn430{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--surface);background-image:linear-gradient(rgb(245, 245, 245), rgb(255, 255, 255))}
+.cn431{display:block;padding-top:var(--space-013)}
+.cn432{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn433{display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn434{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-013);column-gap:var(--space-013);text-align:center}
+.cn435{display:block;max-width:780px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-009);line-height:var(--line-height-003);letter-spacing:-2.56px}
+.cn436{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn437{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn438{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn439{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn440{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn441{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn442{display:block}
+.cn443{display:grid;row-gap:var(--space-003);column-gap:var(--space-003);grid-template-rows:480px;grid-auto-columns:1fr;grid-template-columns:repeat(auto-fit, minmax(355px, 1fr))}
+.cn444{height:480px;display:block;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--surface-2)}
+.cn445{height:480px;display:flex;padding-top:var(--space-007);padding-right:var(--space-007);padding-bottom:var(--space-007);padding-left:var(--space-007);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn446{height:292px;display:block;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden}
+.cn447{width:100%;height:292px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn448{width:100%;height:140px;display:block;text-align:left}
+.cn449{height:114px;display:flex;padding-top:var(--space-007);padding-right:var(--space-007);padding-bottom:var(--space-007);padding-left:var(--space-007);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn450{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn451{width:100%;max-width:272px;display:block;color:var(--color-003);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn452{height:480px;display:block;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--surface-2)}
+.cn453{height:480px;display:flex;padding-top:var(--space-007);padding-right:var(--space-007);padding-bottom:var(--space-007);padding-left:var(--space-007);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn454{height:292px;display:block;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden}
+.cn455{width:100%;height:292px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn456{width:100%;height:140px;display:block;text-align:left}
+.cn457{height:156px;display:flex;padding-top:var(--space-007);padding-right:var(--space-007);padding-bottom:var(--space-007);padding-left:var(--space-007);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn458{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn459{width:100%;max-width:272px;display:block;color:var(--color-003);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn460{height:480px;display:block;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);background-color:var(--surface-2)}
+.cn461{height:480px;display:flex;padding-top:var(--space-007);padding-right:var(--space-007);padding-bottom:var(--space-007);padding-left:var(--space-007);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn462{width:100%;height:292px;display:block;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden}
+.cn463{width:100%;height:292px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn464{width:100%;height:140px;display:block;text-align:left}
+.cn465{display:flex;padding-top:var(--space-007);padding-right:var(--space-007);padding-bottom:var(--space-007);padding-left:var(--space-007);flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn466{display:block;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-006);letter-spacing:-0.96px}
+.cn467{width:100%;max-width:272px;display:block;color:var(--color-003);font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn468{display:block;padding-top:var(--space-017)}
+.cn469{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--background)}
+.cn470{display:block;padding-top:var(--space-013)}
+.cn471{display:flex;justify-content:center;align-items:center}
+.cn472{width:320px;height:160px;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;justify-content:center;align-items:flex-start}
+.cn473{display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;justify-content:flex-start;align-items:flex-start}
+.cn474{flex-basis:100%;flex-shrink:0;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;z-index:var(--z-003)}
+.cn475{width:100%;height:241px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn476{height:234.875px;display:block;position:absolute;top:0px;right:-43.1875px;left:112.188px;z-index:var(--z-002);min-width:0px;flex-shrink:0}
+.cn477{width:100%;height:235px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn478{height:234.875px;display:block;position:absolute;top:0px;right:112.188px;left:-43.1875px;z-index:var(--z-002);min-width:0px;flex-shrink:0}
+.cn479{width:100%;height:235px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn480{height:194px;display:block;position:absolute;top:42.1094px;right:-75.5938px;left:167.594px;z-index:var(--z-001);min-width:0px;flex-shrink:0}
+.cn481{width:100%;height:194px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn482{height:194px;display:block;position:absolute;top:42.1094px;right:167.594px;left:-75.5938px;z-index:var(--z-001);min-width:0px;flex-shrink:0}
+.cn483{width:100%;height:194px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn484{height:282.984px;display:block;position:absolute;top:40.1875px;right:0px;left:729.609px;min-width:0px;max-width:720px}
+.cn485{height:100%;display:block}
+.cn485::before{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn485::after{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn486{width:auto;height:277px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn487{height:256.922px;display:block;position:absolute;top:13.3906px;right:729.609px;left:0px;min-width:0px;max-width:720px}
+.cn488{height:100%;display:block}
+.cn488::before{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn488::after{content:" ";display:table;width:0px;height:0px;color:rgb(64, 64, 64);font-size:var(--font-size-004);font-weight:var(--font-weight-001);line-height:var(--line-height-001)}
+.cn489{width:auto;height:251px;display:inline;overflow-x:hidden;overflow-y:hidden}
+.cn490{display:block;padding-top:var(--space-013)}
+.cn491{display:block;padding-right:var(--space-014);padding-left:var(--space-014)}
+.cn492{display:block;max-width:1280px;margin-left:auto;margin-right:auto}
+.cn493{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010);text-align:center}
+.cn494{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-012);column-gap:var(--space-012)}
+.cn495{display:block;max-width:882px;color:var(--color-001);font-family:var(--font-001);font-size:var(--font-size-010);line-height:var(--line-height-005);letter-spacing:-3.2px}
+.cn496{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn497{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn498{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn499{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn500{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn501{display:inline-block;position:relative;top:0px;right:0px;bottom:0px;left:0px;filter:blur(0px)}
+.cn502{height:60px;display:block;color:var(--muted-foreground);font-size:var(--font-size-005);line-height:var(--line-height-007)}
+.cn503{display:inline}
+.cn504{width:113px;height:34px;display:flex;max-width:100%;padding-top:var(--space-004);padding-right:var(--space-007);padding-bottom:var(--space-004);padding-left:var(--space-007);border-top-left-radius:var(--radius-001);border-top-right-radius:var(--radius-001);border-bottom-right-radius:var(--radius-001);border-bottom-left-radius:var(--radius-001);justify-content:center;align-items:center;flex-shrink:0;column-gap:var(--space-004);color:var(--background);background-color:var(--color-002);cursor:pointer}
+.cn505{display:block;font-size:var(--font-size-003);line-height:var(--line-height-004);white-space:nowrap}
+.cn506{display:block;padding-top:var(--space-012)}
+.cn507{display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;background-color:var(--background)}
+.cn508{display:block;padding-top:var(--space-009);padding-right:var(--space-009);padding-bottom:var(--space-009);padding-left:var(--space-009)}
+.cn509{height:545.188px;display:block;position:relative;top:0px;right:0px;bottom:0px;left:0px;max-width:1392px;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);overflow-x:hidden;overflow-y:hidden;aspect-ratio:13.92 / 6.16;background-color:var(--surface);margin-left:auto;margin-right:auto}
+.cn510{height:100%;display:flex;position:relative;top:0px;right:0px;bottom:0px;left:0px;z-index:1;padding-top:var(--space-012);padding-right:var(--space-012);padding-bottom:var(--space-012);padding-left:var(--space-012);justify-content:space-between;align-items:flex-start}
+.cn511{width:21%;display:block;max-width:100%;color:var(--color-001);cursor:pointer}
+.cn512{width:100%;height:46px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn513{display:block}
+.cn514{display:grid;row-gap:var(--space-011);column-gap:var(--space-011);grid-template-rows:132px;grid-auto-columns:1fr;grid-template-columns:repeat(auto-fit, minmax(127px, 1fr))}
+.cn515{display:block}
+.cn516{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn517{display:block;color:var(--primary);font-size:var(--font-size-002);line-height:var(--line-height-011);letter-spacing:0.6px;text-transform:uppercase}
+.cn518{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn519{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn520{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn521{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn522{height:132px;display:block}
+.cn523{height:130px;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn524{display:block;color:var(--primary);font-size:var(--font-size-002);line-height:var(--line-height-011);letter-spacing:0.6px;text-transform:uppercase}
+.cn525{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn526{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn527{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn528{display:block}
+.cn529{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;row-gap:var(--space-007);column-gap:var(--space-007)}
+.cn530{display:block;color:var(--primary);font-size:var(--font-size-002);line-height:var(--line-height-011);letter-spacing:0.6px;text-transform:uppercase}
+.cn531{display:block;color:var(--color-001);font-size:var(--font-size-003);line-height:var(--line-height-006);cursor:pointer}
+.cn532{height:541.297px;display:block;position:absolute;top:54.5156px;right:0px;left:0px;mix-blend-mode:multiply}
+.cn533{width:100%;height:541px;display:inline-block;max-width:100%;overflow-x:clip;overflow-y:clip;object-fit:cover;vertical-align:middle}
+.cn534{height:4px;display:block;background-image:linear-gradient(90deg, rgb(0, 89, 255), rgb(74, 201, 87) 60%, rgb(229, 149, 196))}
+
+@media (max-width: 571px) {
+.cn4{transform-origin:187.5px 25px}
+.cn6{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn8{position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn9{justify-content:space-between}
+.cn10{width:41%}
+.cn13{display:none}
+.cn27{width:40px}
+.cn28{display:none}
+.cn33{border-width:1px;border-style:solid;border-color:var(--border);display:flex;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);min-width:0}
+.cn34{width:15px}
+.cn35{height:14px}
+.cn42{padding-right:var(--space-010);padding-left:var(--space-010)}
+.cn49{padding-top:var(--space-012)}
+.cn50{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn59{max-width:406px;font-size:var(--font-size-008);line-height:48px;letter-spacing:-1.92px}
+.cn71{flex-wrap:wrap}
+.cn81{height:200px}
+.cn82{height:186.969px;top:9.98438px;right:-29.1094px;left:93.1094px}
+.cn83{height:187px}
+.cn84{height:186.969px;top:9.98438px;right:93.1094px;left:-29.1094px}
+.cn85{height:187px}
+.cn86{height:156.938px;top:37.9375px;right:-58.2344px;left:138.234px}
+.cn87{height:157px}
+.cn88{height:156.938px;top:37.9375px;right:138.234px;left:-58.2344px}
+.cn89{height:157px}
+.cn90{display:none}
+.cn120{display:none}
+.cn147{height:167.031px;top:35.8281px;right:-75px;left:130px}
+.cn149{height:161px}
+.cn150{height:151.875px;top:10.2344px;right:130px;left:-75px}
+.cn152{height:146px}
+.cn153{padding-top:var(--space-012)}
+.cn154{height:640px}
+.cn155{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn160{height:124.797px;right:-16px;left:152px;transform:matrix(1, 0, 0, 1, 0, -6.23984);transform-origin:52px 62.3984px}
+.cn161{height:125px}
+.cn163{height:84px}
+.cn164{height:105.594px;right:168px;bottom:-160px;left:-16px;transform:matrix(1, 0, 0, 1, 0, -10.5594);transform-origin:44px 52.7969px}
+.cn165{height:106px}
+.cn167{height:67px}
+.cn168{max-width:240px;font-size:var(--font-size-006);line-height:26.4px;letter-spacing:-0.96px}
+.cn181{max-width:240px;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn182{max-width:240px;font-size:var(--font-size-003);line-height:var(--line-height-004)}
+.cn185{height:1424.55px}
+.cn186{height:1424.55px;position:relative;right:0px;bottom:-64px;left:0px}
+.cn187{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn189{height:1424.55px;row-gap:var(--space-013);column-gap:var(--space-013)}
+.cn191{max-width:377px;font-size:var(--font-size-008);line-height:var(--line-height-002);letter-spacing:-1.92px}
+.cn198{display:none}
+.cn200{display:block;text-align:center;min-width:0}
+.cn201{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn202{height:111px}
+.cn203{align-items:center}
+.cn204{font-size:var(--font-size-006);letter-spacing:-0.96px;min-width:0;line-height:inherit}
+.cn205{font-size:var(--font-size-003);line-height:var(--line-height-004);min-width:0}
+.cn206{position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn207{top:0px;right:0px;bottom:0px;left:0px}
+.cn208{height:424px}
+.cn209{height:274.062px;top:4.23438px;right:92.0781px;left:92.5312px}
+.cn210{height:274px}
+.cn211{height:128px;bottom:-4.23438px;background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+.cn212{display:block;text-align:center;min-width:0}
+.cn213{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn215{align-items:center}
+.cn216{font-size:var(--font-size-006);letter-spacing:-0.96px;min-width:0;line-height:inherit}
+.cn217{min-width:0}
+.cn218{position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn219{top:0px;right:0px;bottom:0px;left:0px}
+.cn220{height:424px}
+.cn221{height:273px;top:5.5px;right:92.0781px;left:92.5312px;opacity:initial}
+.cn222{height:273px}
+.cn223{height:128px;bottom:-4.23438px;background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+.cn224{display:none}
+.cn246{display:none}
+.cn247{display:block}
+.cn251{max-width:360px;font-size:32px;line-height:28.8px;letter-spacing:-1.28px}
+.cn268{height:416px;padding-top:var(--space-012)}
+.cn269{height:368px}
+.cn270{height:288px}
+.cn271{height:288px}
+.cn272{height:288px}
+.cn273{width:375px;transform:matrix(1, 0, 0, 1, 19.5, 0);transform-origin:187.5px 144px}
+.cn274{width:336px}
+.cn275{width:336px;height:288px}
+.cn276{height:286px}
+.cn277{height:78px}
+.cn278{font-size:var(--font-size-005);line-height:20px;letter-spacing:-0.8px}
+.cn282{top:-57.5938px;left:168px}
+.cn285{width:336px;height:288px}
+.cn286{height:286px}
+.cn287{height:78px}
+.cn288{font-size:var(--font-size-005);line-height:20px;letter-spacing:-0.8px}
+.cn290{width:296px}
+.cn295{width:336px;height:288px}
+.cn296{height:286px}
+.cn297{height:78px}
+.cn298{font-size:var(--font-size-005);line-height:20px;letter-spacing:-0.8px}
+.cn300{width:296px}
+.cn305{width:336px;height:288px}
+.cn306{height:286px}
+.cn307{height:78px}
+.cn308{font-size:var(--font-size-005);line-height:20px;letter-spacing:-0.8px}
+.cn310{width:296px}
+.cn315{width:336px;height:288px}
+.cn316{height:307px}
+.cn317{height:99px}
+.cn318{font-size:var(--font-size-005);line-height:20px;letter-spacing:-0.8px}
+.cn320{width:296px}
+.cn324{max-width:480px}
+.cn339{display:none}
+.cn340{display:none}
+.cn344{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn346{grid-template-columns:327px;aspect-ratio:0.142}
+.cn348{padding-right:0}
+.cn349{height:310.391px;position:relative;right:0px;bottom:0px;left:0px}
+.cn350{max-width:280px;font-size:32px;line-height:28.8px;letter-spacing:-1.28px}
+.cn361{margin-bottom:var(--space-013);margin-top:0}
+.cn362{font-size:var(--font-size-006);letter-spacing:-0.96px;line-height:inherit}
+.cn363{max-width:380px;font-size:inherit;line-height:inherit}
+.cn364{display:block;top:0px;right:0px;bottom:0px;left:0px;margin-bottom:var(--space-013);min-width:0;max-width:none}
+.cn365{height:365px}
+.cn366{margin-bottom:var(--space-013);margin-top:0}
+.cn367{font-size:var(--font-size-006);letter-spacing:-0.96px;line-height:inherit}
+.cn368{max-width:380px;font-size:inherit;line-height:inherit}
+.cn370{display:block;top:0px;right:0px;bottom:0px;left:0px;margin-bottom:var(--space-013);min-width:0;max-width:none}
+.cn371{height:365px}
+.cn372{height:153.641px;right:71px}
+.cn373{height:154px}
+.cn374{margin-bottom:var(--space-013);margin-top:0}
+.cn375{font-size:var(--font-size-006);letter-spacing:-0.96px;line-height:inherit}
+.cn376{height:96px;max-width:380px;font-size:inherit;line-height:inherit}
+.cn378{display:block;top:0px;right:0px;bottom:0px;left:0px;margin-bottom:var(--space-013);min-width:0;max-width:none}
+.cn379{height:365px}
+.cn380{height:202.797px;top:154px;right:72px;left:72px}
+.cn381{height:203px}
+.cn382{display:none}
+.cn394{padding-top:var(--space-013)}
+.cn395{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn399{max-width:240px;font-size:var(--font-size-006);line-height:26.4px;letter-spacing:-0.96px}
+.cn408{height:96px}
+.cn413{width:327px}
+.cn414{height:136px;bottom:16px}
+.cn415{height:136px;max-width:100%}
+.cn416{height:24px}
+.cn417{font-size:var(--font-size-002)}
+.cn418{height:24px}
+.cn419{font-size:var(--font-size-002)}
+.cn420{height:24px}
+.cn421{font-size:var(--font-size-002)}
+.cn422{height:24px}
+.cn423{font-size:var(--font-size-002)}
+.cn424{height:24px}
+.cn425{font-size:var(--font-size-002)}
+.cn426{height:24px}
+.cn427{font-size:var(--font-size-002)}
+.cn432{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn435{max-width:300px;font-size:var(--font-size-006);line-height:26.4px;letter-spacing:-0.96px}
+.cn443{display:flex;flex-direction:column;grid-template-columns:1fr 1fr;grid-template-rows:auto}
+.cn460{grid-column-start:span 2;grid-column-end:span 2;grid-row-start:span 1;grid-row-end:span 1}
+.cn475{height:200px}
+.cn476{height:186.969px;top:9.98438px;right:-29.1094px;left:93.1094px}
+.cn477{height:187px}
+.cn478{height:186.969px;top:9.98438px;right:93.1094px;left:-29.1094px}
+.cn479{height:187px}
+.cn480{height:156.938px;top:37.9375px;right:-58.2344px;left:138.234px}
+.cn481{height:157px}
+.cn482{height:156.938px;top:37.9375px;right:138.234px;left:-58.2344px}
+.cn483{height:157px}
+.cn484{height:167.031px;top:83.8125px;right:-112.5px;left:167.5px}
+.cn486{height:161px}
+.cn487{height:151.875px;top:53.3281px;right:167.5px;left:-112.5px}
+.cn489{height:146px}
+.cn491{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn495{max-width:522px;font-size:var(--font-size-008);line-height:48px;letter-spacing:-1.92px}
+.cn502{height:120px}
+.cn509{height:768px;aspect-ratio:initial}
+.cn510{flex-direction:column;justify-content:flex-start;row-gap:var(--space-013);column-gap:var(--space-013)}
+.cn511{width:69.5%}
+.cn512{height:31px}
+.cn514{grid-template-rows:132px 130px 42px}
+.cn522{height:130px}
+.cn532{height:230.406px;top:537.594px}
+.cn533{height:230px}
+}
+
+@media (min-width: 572px) and (max-width: 1024px) {
+.cn4{transform-origin:384px 25px}
+.cn6{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn8{position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn9{justify-content:space-between}
+.cn10{width:18%}
+.cn13{display:none}
+.cn27{width:40px}
+.cn28{display:none}
+.cn33{border-width:1px;border-style:solid;border-color:var(--border);display:flex;border-top-left-radius:var(--radius-002);border-top-right-radius:var(--radius-002);border-bottom-right-radius:var(--radius-002);border-bottom-left-radius:var(--radius-002);min-width:0}
+.cn34{width:15px}
+.cn35{height:14px}
+.cn50{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn59{max-width:546px;font-size:var(--font-size-009);line-height:64px;letter-spacing:-2.56px}
+.cn90{display:none}
+.cn120{display:none}
+.cn147{height:263.672px;top:7.67188px;right:-153.594px;left:409.594px}
+.cn149{height:258px}
+.cn150{height:224.828px;top:-30.7188px;right:441.594px;left:-153.594px}
+.cn152{height:219px}
+.cn155{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn160{height:153.594px;top:-224px;right:-48px;left:464px;transform:matrix(1, 0, 0, 1, 0, -7.67969);transform-origin:64px 76.7969px}
+.cn161{height:154px}
+.cn163{height:116px}
+.cn164{height:153.594px;right:464px;bottom:-176px;left:-48px;transform:matrix(1, 0, 0, 1, 0, -15.3594);transform-origin:64px 76.7969px}
+.cn165{height:154px}
+.cn168{max-width:544px;font-size:56px;line-height:61.6px;letter-spacing:-2.24px}
+.cn181{max-width:456px;font-size:var(--font-size-005);line-height:var(--line-height-007)}
+.cn182{max-width:456px;font-size:var(--font-size-005);line-height:var(--line-height-007)}
+.cn185{height:2032.44px}
+.cn186{height:2032.44px;position:relative;right:0px;bottom:-64px;left:0px}
+.cn187{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn189{height:2032.44px;row-gap:var(--space-013);column-gap:var(--space-013)}
+.cn191{max-width:507px;font-size:var(--font-size-009);line-height:57.6px;letter-spacing:-2.56px}
+.cn198{display:none}
+.cn200{display:block;text-align:center;min-width:0}
+.cn201{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn202{height:104px}
+.cn203{align-items:center}
+.cn204{font-size:32px;line-height:32px;letter-spacing:-1.28px;min-width:0}
+.cn205{min-width:0}
+.cn206{position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn207{top:0px;right:0px;bottom:0px;left:0px}
+.cn208{height:747px}
+.cn209{height:461.953px;top:7.45312px;right:173px;left:163px}
+.cn210{height:462px}
+.cn211{bottom:-7.45312px;background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+.cn212{display:block;text-align:center;min-width:0}
+.cn213{display:flex;flex-direction:column;justify-content:flex-start;align-items:center;row-gap:var(--space-010);column-gap:var(--space-010)}
+.cn215{align-items:center}
+.cn216{font-size:32px;line-height:32px;letter-spacing:-1.28px;min-width:0}
+.cn217{min-width:0}
+.cn218{position:relative;top:0px;right:0px;bottom:0px;left:0px}
+.cn219{top:0px;right:0px;bottom:0px;left:0px}
+.cn220{height:747px}
+.cn221{height:460.141px;top:9.70312px;right:173px;left:163px;opacity:initial}
+.cn222{height:460px}
+.cn223{bottom:-7.45312px;background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+.cn224{display:none}
+.cn246{display:none}
+.cn247{display:block}
+.cn251{max-width:450px;font-size:var(--font-size-007);line-height:36px;letter-spacing:-1.6px}
+.cn273{width:768px;transform:matrix(1, 0, 0, 1, 213.965, 0);transform-origin:384px 145px}
+.cn344{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn346{grid-template-columns:720px;aspect-ratio:0.2}
+.cn348{padding-right:0}
+.cn349{height:332px;position:relative;right:0px;bottom:0px;left:0px}
+.cn350{max-width:350px;font-size:var(--font-size-007);line-height:36px;letter-spacing:-1.6px}
+.cn361{margin-bottom:var(--space-013);margin-top:0}
+.cn362{font-size:32px;line-height:32px;letter-spacing:-1.28px}
+.cn363{max-width:380px;font-size:inherit;line-height:inherit}
+.cn364{display:block;top:0px;right:0px;bottom:0px;left:0px;margin-bottom:var(--space-013);min-width:0;max-width:none}
+.cn365{height:803px}
+.cn366{margin-bottom:var(--space-013);margin-top:0}
+.cn367{font-size:32px;line-height:32px;letter-spacing:-1.28px}
+.cn368{height:72px;max-width:380px;font-size:inherit;line-height:inherit}
+.cn370{display:block;top:0px;right:0px;bottom:0px;left:0px;margin-bottom:var(--space-013);min-width:0;max-width:none}
+.cn371{height:803px}
+.cn372{height:227.828px;right:348px}
+.cn373{height:228px}
+.cn374{margin-bottom:var(--space-013);margin-top:0}
+.cn375{font-size:32px;line-height:32px;letter-spacing:-1.28px}
+.cn376{height:72px;max-width:380px;font-size:inherit;line-height:inherit}
+.cn378{display:block;top:0px;right:0px;bottom:0px;left:0px;margin-bottom:var(--space-013);min-width:0;max-width:none}
+.cn379{height:803px}
+.cn380{height:310.438px;left:424px}
+.cn381{height:310px}
+.cn382{display:none}
+.cn394{padding-top:var(--space-013)}
+.cn395{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn399{max-width:544px;font-size:56px;line-height:61.6px;letter-spacing:-2.24px}
+.cn411{width:85%}
+.cn413{width:612px}
+.cn415{max-width:80%}
+.cn432{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn435{max-width:680px;font-size:56px;line-height:61.6px;letter-spacing:-2.24px}
+.cn443{flex-direction:column;grid-template-rows:480px 480px}
+.cn460{grid-column-start:span 2;grid-column-end:span 2;grid-row-start:span 1;grid-row-end:span 1}
+.cn484{height:263.672px;top:38.2656px;right:-153.594px;left:409.594px}
+.cn486{height:258px}
+.cn487{height:224.828px;top:12.75px;right:441.594px;left:-153.594px}
+.cn489{height:219px}
+.cn491{padding-right:var(--space-009);padding-left:var(--space-009)}
+.cn495{max-width:702px;font-size:var(--font-size-009);line-height:64px;letter-spacing:-2.56px}
+.cn509{height:480px;aspect-ratio:initial}
+.cn510{flex-direction:column;justify-content:flex-start;row-gap:var(--space-013);column-gap:var(--space-013)}
+.cn511{width:38%}
+.cn532{height:253.438px;top:264px;right:144px}
+.cn533{height:253px}
+}
+
+@media (min-width: 1601px) {
+.cn4{transform-origin:960px 25px}
+.cn147{height:368.344px;left:1200px}
+.cn149{height:362px}
+.cn150{height:334.25px;right:1200px}
+.cn152{height:328px}
+.cn185{height:2592px}
+.cn186{height:1080px}
+.cn273{width:1360px;transform:matrix(1, 0, 0, 1, 510, 0);transform-origin:680px 145px}
+.cn346{grid-template-columns:576px;aspect-ratio:0.485}
+.cn368{height:90px}
+.cn376{height:90px}
+.cn382{height:2643.98px;left:864px}
+.cn384{height:881px}
+.cn386{height:881px}
+.cn390{height:881px}
+.cn413{width:1280px}
+.cn484{height:368.344px;left:1200px}
+.cn486{height:362px}
+.cn487{height:334.25px;right:1200px}
+.cn489{height:328px}
+.cn509{height:616px}
+.cn511{width:18.5%}
+.cn532{height:611.609px;top:61.5938px}
+.cn533{height:612px}
+}
+
+</style>
+</head>
+<body class="cn0" data-cid="n0">
+    <div class="cn1" data-cid="n1">
+      <div class="cn2" data-cid="n2">
+        <div class="cn3" data-cid="n3"></div>
+      </div>
+      <div class="cn4" data-cid="n4">
+        <div class="cn5" data-cid="n5">
+          <div class="cn6" data-cid="n6">
+            <div class="cn7" data-cid="n7">
+              <div class="cn8" data-cid="n8">
+                <div class="cn9" data-cid="n9">
+                  <div class="cn10" data-cid="n10">
+                    <a class="cn11" data-cid="n11" aria-current="page" href="https://mindoo.ai/">
+                      <img class="cn12" data-cid="n12" alt="Mindoo logo" src="public/assets/cloned/svg/d16fd1605e4b.svg" />
+                    </a>
+                  </div>
+                  <div class="cn13" data-cid="n13">
+                    <ul class="cn14" data-cid="n14">
+                      <li class="cn15" data-cid="n15">
+                        <a class="cn16" data-cid="n16" href="https://mindoo.ai/#problem">
+                          <span class="cn17" data-cid="n17">
+                            Problem
+                          </span>
+                        </a>
+                      </li>
+                      <li class="cn18" data-cid="n18">
+                        <a class="cn19" data-cid="n19" href="https://mindoo.ai/#solution">
+                          <span class="cn20" data-cid="n20">
+                            Solution
+                          </span>
+                        </a>
+                      </li>
+                      <li class="cn21" data-cid="n21">
+                        <a class="cn22" data-cid="n22" href="https://mindoo.ai/#agents">
+                          <span class="cn23" data-cid="n23">
+                            Agents
+                          </span>
+                        </a>
+                      </li>
+                      <li class="cn24" data-cid="n24">
+                        <a class="cn25" data-cid="n25" href="https://mindoo.ai/#safety">
+                          <span class="cn26" data-cid="n26">
+                            Safety
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="cn27" data-cid="n27">
+                    <div class="cn28" data-cid="n28">
+                      <a class="cn29" data-cid="n29" href="https://platform.mindoo.ai/login" target="_blank">
+                        <div class="cn30" data-cid="n30">
+                          Sign in
+                        </div>
+                      </a>
+                      <a class="cn31" data-cid="n31" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                        <div class="cn32" data-cid="n32">
+                          Book a demo
+                        </div>
+                      </a>
+                    </div>
+                    <button class="cn33" data-cid="n33" aria-expanded="false" aria-label="Toggle menu" type="button">
+                      <div class="cn34" data-cid="n34">
+                        <svg class="cn35" data-cid="n35" fill="none" viewBox="0 0 15 14" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M10.8333 11.6667V13.3333H1.66667V11.6667H10.8333ZM15 5.83333V7.5H0V5.83333H15ZM13.3333 0V1.66667H4.16667V0H13.3333Z" fill="#737373"></path></svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cn36" data-cid="n36"></div>
+      <main class="cn37" data-cid="n37">
+        <div class="cn38" data-cid="n38"></div>
+        <div class="cn39" data-cid="n39">
+          <div class="cn40" data-cid="n40" role="list">
+            <div class="cn41" data-cid="n41" role="listitem">
+              <a class="cn42" data-cid="n42" href="https://mindoo.ai/news/mindoo-raises-eu5m-to-build-ai-agents-that-handle-intake-patient-access-and-follow-up-for-healthcare-teams">
+                <div class="cn43" data-cid="n43">
+                  Mindoo raises €5M to build AI agents that handle intake, patient access and follow-up for healthcare teams.
+                </div>
+                <div class="cn44" data-cid="n44">
+                  <div class="cn45" data-cid="n45">
+                    Read more
+                  </div>
+                  <div class="cn46" data-cid="n46">
+                    <svg class="cn47" data-cid="n47" fill="none" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M10.7809 7.33327L7.2049 3.75726L8.1477 2.81445L13.3332 7.99993L8.1477 13.1853L7.2049 12.2425L10.7809 8.6666H2.6665V7.33327H10.7809Z" fill="currentColor"></path></svg>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <section class="cn48" data-cid="n48">
+          <div class="cn49" data-cid="n49"></div>
+          <div class="cn50" data-cid="n50">
+            <div class="cn51" data-cid="n51">
+              <div class="cn52" data-cid="n52">
+                <div class="cn53" data-cid="n53">
+                  <div class="cn54" data-cid="n54">
+                    <div class="cn55" data-cid="n55">
+                      <div class="cn56" data-cid="n56">
+                        AI intake &amp; patient access automation
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cn57" data-cid="n57">
+                    <div class="cn58" data-cid="n58">
+                      <div class="cn59" data-cid="n59" aria-label="The help healthcare teams were missing.">
+                        <div class="cn60" data-cid="n60" aria-hidden="true">
+                          The
+                        </div>
+                         
+                        <div class="cn61" data-cid="n61" aria-hidden="true">
+                          help
+                        </div>
+                         
+                        <div class="cn62" data-cid="n62" aria-hidden="true">
+                          healthcare
+                        </div>
+                         
+                        <div class="cn63" data-cid="n63" aria-hidden="true">
+                          teams
+                        </div>
+                         
+                        <div class="cn64" data-cid="n64" aria-hidden="true">
+                          were
+                        </div>
+                         
+                        <div class="cn65" data-cid="n65" aria-hidden="true">
+                          missing.
+                        </div>
+                      </div>
+                      <div class="cn66" data-cid="n66" aria-label="Mindoo takes on the routine tasks, so your team can focus on what only humans can do. Intake done. Calls answered. Follow-ups handled. You get more capacity with the same team.">
+                        <div class="cn67" data-cid="n67" aria-hidden="true">
+                          Mindoo takes on the routine tasks, so your team can focus on what 
+                        </div>
+                        <div class="cn68" data-cid="n68" aria-hidden="true">
+                          only humans can do. Intake done. Calls answered. Follow-ups handled. 
+                        </div>
+                        <div class="cn69" data-cid="n69" aria-hidden="true">
+                          You get more capacity with the same team.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cn70" data-cid="n70">
+                    <div class="cn71" data-cid="n71">
+                      <a class="cn72" data-cid="n72" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                        <div class="cn73" data-cid="n73">
+                          Book a demo
+                        </div>
+                      </a>
+                      <a class="cn74" data-cid="n74" href="#how">
+                        <div class="cn75" data-cid="n75">
+                          How it works
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cn76" data-cid="n76"></div>
+          <div class="cn77" data-cid="n77">
+            <div class="cn78" data-cid="n78">
+              <div class="cn79" data-cid="n79">
+                <div class="cn80" data-cid="n80">
+                  <img class="cn81" data-cid="n81" alt="Blue mindoo character" sizes="(max-width: 811px) 100vw, 811px" src="public/assets/cloned/images/c3c150ae1301.png" srcset="public/assets/cloned/images/b804f27ee69d.png 500w, public/assets/cloned/images/c47e546ede7f.png 800w, public/assets/cloned/images/c3c150ae1301.png 811w" />
+                </div>
+                <div class="cn82" data-cid="n82">
+                  <img class="cn83" data-cid="n83" alt="Orange mindoo character" sizes="(max-width: 605px) 100vw, 605px" src="public/assets/cloned/images/8636cb69c6a3.png" srcset="public/assets/cloned/images/3a3733b18682.png 500w, public/assets/cloned/images/8636cb69c6a3.png 605w" />
+                </div>
+                <div class="cn84" data-cid="n84">
+                  <img class="cn85" data-cid="n85" alt="Pink mindoo character" sizes="(max-width: 605px) 100vw, 605px" src="public/assets/cloned/images/c8294150fca8.png" srcset="public/assets/cloned/images/93887c50f1aa.png 500w, public/assets/cloned/images/c8294150fca8.png 605w" />
+                </div>
+                <div class="cn86" data-cid="n86">
+                  <img class="cn87" data-cid="n87" alt="Green mindoo character" sizes="(max-width: 534px) 100vw, 534px" src="public/assets/cloned/images/d179217c5b0e.png" srcset="public/assets/cloned/images/3271f3234178.png 500w, public/assets/cloned/images/d179217c5b0e.png 534w" />
+                </div>
+                <div class="cn88" data-cid="n88">
+                  <img class="cn89" data-cid="n89" alt="Purple mindoo character" sizes="(max-width: 534px) 100vw, 534px" src="public/assets/cloned/images/555282caa1e7.png" srcset="public/assets/cloned/images/70770befa748.png 500w, public/assets/cloned/images/555282caa1e7.png 534w" />
+                </div>
+              </div>
+              <div class="cn90" data-cid="n90">
+                <div class="cn91" data-cid="n91">
+                  <div class="cn92" data-cid="n92">
+                    <div class="cn93" data-cid="n93">
+                      <div class="cn94" data-cid="n94">
+                        <img class="cn95" data-cid="n95" alt="Blue mindoo character" src="public/assets/cloned/images/a800228d19bf.png" />
+                      </div>
+                      <div class="cn96" data-cid="n96">
+                        Max, the Intake agent
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cn97" data-cid="n97" aria-label="I'm Max from Dr. Johnssons clinic. I'll help you prepare for your appointment today. What's the main reason for your visit today?">
+                    <div class="cn98" data-cid="n98" aria-hidden="true">
+                      I'm
+                    </div>
+                     
+                    <div class="cn99" data-cid="n99" aria-hidden="true">
+                      Max
+                    </div>
+                     
+                    <div class="cn100" data-cid="n100" aria-hidden="true">
+                      from
+                    </div>
+                     
+                    <div class="cn101" data-cid="n101" aria-hidden="true">
+                      Dr.
+                    </div>
+                     
+                    <div class="cn102" data-cid="n102" aria-hidden="true">
+                      Johnssons
+                    </div>
+                     
+                    <div class="cn103" data-cid="n103" aria-hidden="true">
+                      clinic.
+                    </div>
+                     
+                    <div class="cn104" data-cid="n104" aria-hidden="true">
+                      I'll
+                    </div>
+                     
+                    <div class="cn105" data-cid="n105" aria-hidden="true">
+                      help
+                    </div>
+                     
+                    <div class="cn106" data-cid="n106" aria-hidden="true">
+                      you
+                    </div>
+                     
+                    <div class="cn107" data-cid="n107" aria-hidden="true">
+                      prepare
+                    </div>
+                     
+                    <div class="cn108" data-cid="n108" aria-hidden="true">
+                      for
+                    </div>
+                     
+                    <div class="cn109" data-cid="n109" aria-hidden="true">
+                      your
+                    </div>
+                     
+                    <div class="cn110" data-cid="n110" aria-hidden="true">
+                      appointment
+                    </div>
+                     
+                    <div class="cn111" data-cid="n111" aria-hidden="true">
+                      today.
+                    </div>
+                     
+                    <div class="cn112" data-cid="n112" aria-hidden="true">
+                      What's
+                    </div>
+                     
+                    <div class="cn113" data-cid="n113" aria-hidden="true">
+                      the
+                    </div>
+                     
+                    <div class="cn114" data-cid="n114" aria-hidden="true">
+                      main
+                    </div>
+                     
+                    <div class="cn115" data-cid="n115" aria-hidden="true">
+                      reason
+                    </div>
+                     
+                    <div class="cn116" data-cid="n116" aria-hidden="true">
+                      for
+                    </div>
+                     
+                    <div class="cn117" data-cid="n117" aria-hidden="true">
+                      your
+                    </div>
+                     
+                    <div class="cn118" data-cid="n118" aria-hidden="true">
+                      visit
+                    </div>
+                     
+                    <div class="cn119" data-cid="n119" aria-hidden="true">
+                      today?
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cn120" data-cid="n120">
+                <div class="cn121" data-cid="n121">
+                  <div class="cn122" data-cid="n122">
+                    <div class="cn123" data-cid="n123">
+                      <div class="cn124" data-cid="n124">
+                        <div class="cn125" data-cid="n125">
+                          <img class="cn126" data-cid="n126" alt="David avatar" src="public/assets/cloned/images/5f82277e1535.png" />
+                        </div>
+                        <div class="cn127" data-cid="n127">
+                          David
+                        </div>
+                      </div>
+                      <div class="cn128" data-cid="n128">
+                        <div class="cn129" data-cid="n129">
+                          <svg class="cn130" data-cid="n130" fill="none" viewBox="0 0 96 13" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M36.6415 12.2138V0.508909C36.6415 0.227846 36.8693 0 37.1504 0C37.4314 0 37.6593 0.227846 37.6593 0.508909V12.2138C37.6593 12.4949 37.4314 12.7227 37.1504 12.7227C36.8693 12.7227 36.6415 12.4949 36.6415 12.2138ZM39.6949 12.2138V0.508909C39.6949 0.227846 39.9228 0 40.2038 0C40.4849 0 40.7128 0.227846 40.7128 0.508909V12.2138C40.7128 12.4949 40.4849 12.7227 40.2038 12.7227C39.9228 12.7227 39.6949 12.4949 39.6949 12.2138ZM58.0157 12.2138V0.508909C58.0157 0.227846 58.2435 0 58.5246 0C58.8056 0 59.0335 0.227846 59.0335 0.508909V12.2138C59.0335 12.4949 58.8056 12.7227 58.5246 12.7227C58.2435 12.7227 58.0157 12.4949 58.0157 12.2138ZM30.5346 10.4326V2.29009C30.5346 2.00903 30.7624 1.78118 31.0435 1.78118C31.3245 1.78118 31.5524 2.00903 31.5524 2.29009V10.4326C31.5524 10.7137 31.3245 10.9416 31.0435 10.9416C30.7624 10.9416 30.5346 10.7137 30.5346 10.4326ZM33.588 10.4326V2.29009C33.588 2.00903 33.8159 1.78118 34.0969 1.78118C34.378 1.78118 34.6058 2.00903 34.6058 2.29009V10.4326C34.6058 10.7137 34.378 10.9416 34.0969 10.9416C33.8159 10.9416 33.588 10.7137 33.588 10.4326ZM48.8553 10.4326V2.29009C48.8553 2.00903 49.0831 1.78118 49.3642 1.78118C49.6453 1.78118 49.8731 2.00903 49.8731 2.29009V10.4326C49.8731 10.7137 49.6453 10.9416 49.3642 10.9416C49.0831 10.9416 48.8553 10.7137 48.8553 10.4326ZM51.9088 10.4326V2.29009C51.9088 2.00903 52.1366 1.78118 52.4177 1.78118C52.6987 1.78118 52.9266 2.00903 52.9266 2.29009V10.4326C52.9266 10.7137 52.6987 10.9416 52.4177 10.9416C52.1366 10.9416 51.9088 10.7137 51.9088 10.4326ZM54.9622 10.4326V2.29009C54.9622 2.00903 55.1901 1.78118 55.4711 1.78118C55.7522 1.78118 55.98 2.00903 55.98 2.29009V10.4326C55.98 10.7137 55.7522 10.9416 55.4711 10.9416C55.1901 10.9416 54.9622 10.7137 54.9622 10.4326ZM6.10691 9.66928V3.05346C6.10691 2.77239 6.33476 2.54455 6.61582 2.54455C6.89689 2.54455 7.12473 2.77239 7.12473 3.05346V9.66928C7.12473 9.95034 6.89689 10.1782 6.61582 10.1782C6.33476 10.1782 6.10691 9.95034 6.10691 9.66928ZM9.16037 9.66928V3.05346C9.16037 2.77239 9.38822 2.54455 9.66928 2.54455C9.95034 2.54455 10.1782 2.77239 10.1782 3.05346V9.66928C10.1782 9.95034 9.95034 10.1782 9.66928 10.1782C9.38822 10.1782 9.16037 9.95034 9.16037 9.66928ZM27.4811 9.16037V3.56237C27.4811 3.2813 27.709 3.05346 27.99 3.05346C28.2711 3.05346 28.4989 3.2813 28.4989 3.56237V9.16037C28.4989 9.44143 28.2711 9.66928 27.99 9.66928C27.709 9.66928 27.4811 9.44143 27.4811 9.16037ZM0 8.39701L0 4.32573C1.22859e-08 4.04467 0.227847 3.81682 0.508909 3.81682C0.789972 3.81682 1.01782 4.04467 1.01782 4.32573L1.01782 8.39701C1.01782 8.67807 0.789972 8.90591 0.508909 8.90591C0.227847 8.90591 -2.63484e-10 8.67807 0 8.39701ZM3.05346 8.39701V4.32573C3.05346 4.04467 3.2813 3.81682 3.56237 3.81682C3.84343 3.81682 4.07128 4.04467 4.07128 4.32573V8.39701C4.07128 8.67807 3.84343 8.90591 3.56237 8.90591C3.2813 8.90591 3.05346 8.67807 3.05346 8.39701ZM18.3207 8.39701V4.32573C18.3207 4.04467 18.5486 3.81682 18.8296 3.81682C19.1107 3.81682 19.3386 4.04467 19.3386 4.32573V8.39701C19.3386 8.67807 19.1107 8.90591 18.8296 8.90591C18.5486 8.90591 18.3207 8.67807 18.3207 8.39701ZM21.3742 8.39701V4.32573C21.3742 4.04467 21.602 3.81682 21.8831 3.81682C22.1642 3.81682 22.392 4.04467 22.392 4.32573V8.39701C22.392 8.67807 22.1642 8.90591 21.8831 8.90591C21.602 8.90591 21.3742 8.67807 21.3742 8.39701ZM24.4277 8.39701V4.32573C24.4277 4.04467 24.6555 3.81682 24.9366 3.81682C25.2176 3.81682 25.4455 4.04467 25.4455 4.32573V8.39701C25.4455 8.67807 25.2176 8.90591 24.9366 8.90591C24.6555 8.90591 24.4277 8.67807 24.4277 8.39701ZM42.7484 8.39701V4.32573C42.7484 4.04467 42.9762 3.81682 43.2573 3.81682C43.5384 3.81682 43.7662 4.04467 43.7662 4.32573V8.39701C43.7662 8.67807 43.5384 8.90591 43.2573 8.90591C42.9762 8.90591 42.7484 8.67807 42.7484 8.39701ZM61.0691 8.39701V4.32573C61.0691 4.04467 61.297 3.81682 61.578 3.81682C61.8591 3.81682 62.0869 4.04467 62.0869 4.32573V8.39701C62.0869 8.67807 61.8591 8.90591 61.578 8.90591C61.297 8.90591 61.0691 8.67807 61.0691 8.39701ZM12.2138 7.63364V5.08909C12.2138 4.80803 12.4417 4.58018 12.7227 4.58018C13.0038 4.58018 13.2316 4.80803 13.2316 5.08909V7.63364C13.2316 7.9147 13.0038 8.14255 12.7227 8.14255C12.4417 8.14255 12.2138 7.9147 12.2138 7.63364ZM64.1226 7.63364V5.08909C64.1226 4.80803 64.3504 4.58018 64.6315 4.58018C64.9126 4.58018 65.1404 4.80803 65.1404 5.08909V7.63364C65.1404 7.9147 64.9126 8.14255 64.6315 8.14255C64.3504 8.14255 64.1226 7.9147 64.1226 7.63364ZM67.176 7.63364V5.08909C67.176 4.80803 67.4039 4.58018 67.685 4.58018C67.966 4.58018 68.1939 4.80803 68.1939 5.08909V7.63364C68.1939 7.9147 67.966 8.14255 67.685 8.14255C67.4039 8.14255 67.176 7.9147 67.176 7.63364ZM70.2295 7.63364V5.08909C70.2295 4.80803 70.4574 4.58018 70.7384 4.58018C71.0195 4.58018 71.2473 4.80803 71.2473 5.08909V7.63364C71.2473 7.9147 71.0195 8.14255 70.7384 8.14255C70.4574 8.14255 70.2295 7.9147 70.2295 7.63364ZM79.3899 7.63364V5.08909C79.3899 4.80803 79.6177 4.58018 79.8988 4.58018C80.1798 4.58018 80.4077 4.80803 80.4077 5.08909V7.63364C80.4077 7.9147 80.1798 8.14255 79.8988 8.14255C79.6177 8.14255 79.3899 7.9147 79.3899 7.63364ZM82.4433 7.63364V5.08909C82.4433 4.80803 82.6712 4.58018 82.9522 4.58018C83.2333 4.58018 83.4611 4.80803 83.4611 5.08909V7.63364C83.4611 7.9147 83.2333 8.14255 82.9522 8.14255C82.6712 8.14255 82.4433 7.9147 82.4433 7.63364ZM85.4968 7.63364V5.08909C85.4968 4.80803 85.7246 4.58018 86.0057 4.58018C86.2868 4.58018 86.5146 4.80803 86.5146 5.08909V7.63364C86.5146 7.9147 86.2868 8.14255 86.0057 8.14255C85.7246 8.14255 85.4968 7.9147 85.4968 7.63364ZM91.6037 7.63364V5.08909C91.6037 4.80803 91.8315 4.58018 92.1126 4.58018C92.3937 4.58018 92.6215 4.80803 92.6215 5.08909V7.63364C92.6215 7.9147 92.3937 8.14255 92.1126 8.14255C91.8315 8.14255 91.6037 7.9147 91.6037 7.63364ZM94.6572 7.63364V5.08909C94.6572 4.80803 94.885 4.58018 95.1661 4.58018C95.4471 4.58018 95.675 4.80803 95.675 5.08909V7.63364C95.675 7.9147 95.4471 8.14255 95.1661 8.14255C94.885 8.14255 94.6572 7.9147 94.6572 7.63364ZM76.3364 7.12473V5.598C76.3364 5.31694 76.5643 5.08909 76.8453 5.08909C77.1264 5.08909 77.3542 5.31694 77.3542 5.598V7.12473C77.3542 7.40579 77.1264 7.63364 76.8453 7.63364C76.5643 7.63364 76.3364 7.40579 76.3364 7.12473ZM88.5502 7.12473V5.598C88.5502 5.31694 88.7781 5.08909 89.0591 5.08909C89.3402 5.08909 89.5681 5.31694 89.5681 5.598V7.12473C89.5681 7.40579 89.3402 7.63364 89.0591 7.63364C88.7781 7.63364 88.5502 7.40579 88.5502 7.12473ZM15.2673 6.87028V5.85246C15.2673 5.5714 15.4951 5.34355 15.7762 5.34355C16.0573 5.34355 16.2851 5.57139 16.2851 5.85246V6.87028C16.2851 7.15134 16.0573 7.37919 15.7762 7.37919C15.4951 7.37919 15.2673 7.15134 15.2673 6.87028ZM45.8018 6.87028V5.85246C45.8018 5.57139 46.0297 5.34355 46.3108 5.34355C46.5918 5.34355 46.8197 5.57139 46.8197 5.85246V6.87028C46.8197 7.15134 46.5918 7.37919 46.3108 7.37919C46.0297 7.37919 45.8018 7.15134 45.8018 6.87028ZM73.283 6.61582V6.10691C73.283 5.82585 73.5108 5.598 73.7919 5.598C74.0729 5.598 74.3008 5.82585 74.3008 6.10691V6.61582C74.3008 6.89689 74.0729 7.12473 73.7919 7.12473C73.5108 7.12473 73.283 6.89689 73.283 6.61582Z" fill="#050400"></path></svg>
+                        </div>
+                        <div class="cn131" data-cid="n131">
+                          00:08
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cn132" data-cid="n132" aria-label="I’ve been having headaches for about two weeks now. They’re getting worse and worse">
+                    <div class="cn133" data-cid="n133" aria-hidden="true">
+                      I’ve
+                    </div>
+                     
+                    <div class="cn134" data-cid="n134" aria-hidden="true">
+                      been
+                    </div>
+                     
+                    <div class="cn135" data-cid="n135" aria-hidden="true">
+                      having
+                    </div>
+                     
+                    <div class="cn136" data-cid="n136" aria-hidden="true">
+                      headaches
+                    </div>
+                     
+                    <div class="cn137" data-cid="n137" aria-hidden="true">
+                      for
+                    </div>
+                     
+                    <div class="cn138" data-cid="n138" aria-hidden="true">
+                      about
+                    </div>
+                     
+                    <div class="cn139" data-cid="n139" aria-hidden="true">
+                      two
+                    </div>
+                     
+                    <div class="cn140" data-cid="n140" aria-hidden="true">
+                      weeks
+                    </div>
+                     
+                    <div class="cn141" data-cid="n141" aria-hidden="true">
+                      now.
+                    </div>
+                     
+                    <div class="cn142" data-cid="n142" aria-hidden="true">
+                      They’re
+                    </div>
+                     
+                    <div class="cn143" data-cid="n143" aria-hidden="true">
+                      getting
+                    </div>
+                     
+                    <div class="cn144" data-cid="n144" aria-hidden="true">
+                      worse
+                    </div>
+                     
+                    <div class="cn145" data-cid="n145" aria-hidden="true">
+                      and
+                    </div>
+                     
+                    <div class="cn146" data-cid="n146" aria-hidden="true">
+                      worse
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cn147" data-cid="n147">
+              <div class="cn148" data-cid="n148">
+                <svg class="cn149" data-cid="n149" fill="none" height="100%" viewBox="0 0 612 308" width="100%" xmlns="http://www.w3.org/2000/svg" data-lines="right">
+<path class="cta-line" d="M794.099 135.516L507.475 177.591C436.446 188.018 363.926 179.801 297.03 153.747C239.151 131.204 176.943 121.97 115.012 126.728L0.618596 135.516" stroke="url(#paint0_linear_430_1480)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 804.157px, 0.1px;"></path>
+<path class="cta-line is-reverse" d="M0.617179 135.662L160.795 83.6771C260.921 51.1814 369.774 59.0294 464.203 105.552C554.557 150.066 658.275 159.242 755.04 131.282L794.098 119.996" stroke="url(#paint1_linear_430_1480)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 819.659px, 0.1px;"></path>
+<path class="cta-line" d="M794.099 306L622.153 104.797C571.232 45.2123 483.559 33.6526 418.934 78.0033C381.797 103.49 335.328 111.349 291.876 99.4919L281.579 96.6822C254.645 89.3326 226.35 88.4855 199.024 94.2106L0.618606 135.779" stroke="url(#paint2_linear_430_1480)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 918.965px, 0.1px;"></path>
+<defs>
+<linearGradient id="paint0_linear_430_1480" x1="621.099" y1="154.508" x2="48.5991" y2="154.508" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4AC957"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_430_1480" x1="626.098" y1="103.87" x2="87.0977" y2="103.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E594C4"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_430_1480" x1="626.099" y1="153" x2="78.5992" y2="153" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0059FF"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+</defs>
+</svg>
+              </div>
+            </div>
+            <div class="cn150" data-cid="n150">
+              <div class="cn151" data-cid="n151">
+                <svg class="cn152" data-cid="n152" fill="none" height="100%" viewBox="0 0 601 274" width="100%" xmlns="http://www.w3.org/2000/svg" data-lines="left">
+<path class="cta-line" d="M-194 138.484L92.624 96.4091C163.653 85.9823 236.173 94.1991 303.069 120.253C360.948 142.796 423.156 152.03 485.087 147.272L599.481 138.484" stroke="url(#paint0_linear_430_1476)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 804.158px, 0.1px;"></path>
+<path class="cta-line is-reverse" d="M599.48 138.22L439.303 190.206C339.177 222.702 230.323 214.854 135.894 168.331C45.5411 123.817 -58.1769 114.641 -154.942 142.601L-194 153.887" stroke="url(#paint1_linear_430_1476)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 819.659px, 0.1px;"></path>
+<path class="cta-line" d="M-194 -32L-22.0541 169.203C28.8667 228.788 116.54 240.347 181.165 195.997C218.302 170.51 264.771 162.651 308.224 174.508L318.52 177.318C345.455 184.667 373.749 185.515 401.075 179.789L599.481 138.221" stroke="url(#paint2_linear_430_1476)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 918.965px, 0.1px;"></path>
+<defs>
+<linearGradient id="paint0_linear_430_1476" x1="-21" y1="119.492" x2="551.5" y2="119.492" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4AC957"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_430_1476" x1="-26.0001" y1="170.013" x2="513" y2="170.013" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E594C4"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_430_1476" x1="-26" y1="121" x2="521.5" y2="121" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0059FF"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+</defs>
+</svg>
+              </div>
+            </div>
+          </div>
+          <div class="cn153" data-cid="n153"></div>
+        </section>
+        <section class="cn154" data-cid="n154" id="problem">
+          <div class="cn155" data-cid="n155">
+            <div class="cn156" data-cid="n156">
+              <div class="cn157" data-cid="n157">
+                <div class="cn158" data-cid="n158">
+                  <div class="cn159" data-cid="n159">
+                    <div class="cn160" data-cid="n160">
+                      <img class="cn161" data-cid="n161" alt="Male doctor with gray hair and stethoscope thoughtfully listening to a patient with blonde hair in a medical office." src="public/assets/cloned/images/8d191f478c51.png" />
+                    </div>
+                    <div class="cn162" data-cid="n162">
+                      <img class="cn163" data-cid="n163" alt="Healthcare worker in blue scrubs pushing a patient on a stretcher through a hospital hallway." src="public/assets/cloned/images/2a0071484c96.png" />
+                    </div>
+                    <div class="cn164" data-cid="n164">
+                      <img class="cn165" data-cid="n165" alt="Surgeon in blue scrubs and surgical cap walking quickly through an operating room." sizes="(max-width: 540px) 100vw, 540px" src="public/assets/cloned/images/56ae038188ea.png" srcset="public/assets/cloned/images/b5b78b3a2f7a.png 500w, public/assets/cloned/images/56ae038188ea.png 540w" />
+                    </div>
+                    <div class="cn166" data-cid="n166">
+                      <img class="cn167" data-cid="n167" alt="Person wearing and adjusting blue disposable gloves on their hands." src="public/assets/cloned/images/1e1d5dd710b8.png" />
+                    </div>
+                  </div>
+                  <div class="cn168" data-cid="n168" aria-label="The real pressure isn’t  the care. It’s everything  around it.">
+                    <span class="cn169" data-cid="n169">
+                      <div class="cn170" data-cid="n170" aria-hidden="true">
+                        The
+                      </div>
+                       
+                      <div class="cn171" data-cid="n171" aria-hidden="true">
+                        real
+                      </div>
+                       
+                      <div class="cn172" data-cid="n172" aria-hidden="true">
+                        pressure
+                      </div>
+                       
+                      <div class="cn173" data-cid="n173" aria-hidden="true">
+                        isn’t
+                      </div>
+                       
+                      <div class="cn174" data-cid="n174" aria-hidden="true">
+                        the
+                      </div>
+                       
+                      <div class="cn175" data-cid="n175" aria-hidden="true">
+                        care.
+                      </div>
+                    </span>
+                     
+                    <div class="cn176" data-cid="n176" aria-hidden="true">
+                      It’s
+                    </div>
+                     
+                    <div class="cn177" data-cid="n177" aria-hidden="true">
+                      everything
+                    </div>
+                     
+                    <div class="cn178" data-cid="n178" aria-hidden="true">
+                      around
+                    </div>
+                     
+                    <div class="cn179" data-cid="n179" aria-hidden="true">
+                      it.
+                    </div>
+                  </div>
+                  <div class="cn180" data-cid="n180">
+                    <p class="cn181" data-cid="n181">
+                      The day breaks under intake, calls, symptom logs, and coordination long before the clinical work starts.
+                    </p>
+                    <p class="cn182" data-cid="n182">
+                      More demand from hospitals. Tighter budgets. Fewer people to handle all that.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="cn183" data-cid="n183" id="solution">
+          <div class="cn184" data-cid="n184"></div>
+          <div class="cn185" data-cid="n185">
+            <div class="cn186" data-cid="n186">
+              <div class="cn187" data-cid="n187">
+                <div class="cn188" data-cid="n188">
+                  <div class="cn189" data-cid="n189">
+                    <div class="cn190" data-cid="n190">
+                      <div class="cn191" data-cid="n191" aria-label="Start where the pressure is highest.">
+                        <div class="cn192" data-cid="n192" aria-hidden="true">
+                          Start
+                        </div>
+                         
+                        <div class="cn193" data-cid="n193" aria-hidden="true">
+                          where
+                        </div>
+                         
+                        <div class="cn194" data-cid="n194" aria-hidden="true">
+                          the
+                        </div>
+                         
+                        <div class="cn195" data-cid="n195" aria-hidden="true">
+                          pressure
+                        </div>
+                         
+                        <div class="cn196" data-cid="n196" aria-hidden="true">
+                          is
+                        </div>
+                         
+                        <div class="cn197" data-cid="n197" aria-hidden="true">
+                          highest.
+                        </div>
+                      </div>
+                      <div class="cn198" data-cid="n198">
+                        <img class="cn199" data-cid="n199" alt="" src="public/assets/cloned/svg/78fee777ce14.svg" />
+                      </div>
+                    </div>
+                    <div class="cn200" data-cid="n200">
+                      <div class="cn201" data-cid="n201">
+                        <div class="cn202" data-cid="n202">
+                          <div class="cn203" data-cid="n203">
+                            <h3 class="cn204" data-cid="n204">
+                              Patient intake.
+                            </h3>
+                            <p class="cn205" data-cid="n205">
+                              Mindoo asks and log in the basics before the patient arrives. Clinicians walk in prepared. Visits feel smoother for everyone.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cn206" data-cid="n206">
+                          <div class="cn207" data-cid="n207">
+                            <img class="cn208" data-cid="n208" alt="Hand holding an iphone" sizes="100vw" src="public/assets/cloned/images/d03d110a40fb.png" srcset="public/assets/cloned/images/271b97580994.png 500w, public/assets/cloned/images/93d6e00ba3df.png 800w, public/assets/cloned/images/e6a6ae687c99.png 1080w, public/assets/cloned/images/d03d110a40fb.png 1288w" />
+                            <div class="cn209" data-cid="n209">
+                              <img class="cn210" data-cid="n210" alt="Patient intake UI" sizes="100vw" src="public/assets/cloned/images/4d720b5b2527.png" srcset="public/assets/cloned/images/6d418217defc.png 500w, public/assets/cloned/images/4d720b5b2527.png 532w" />
+                            </div>
+                          </div>
+                          <div class="cn211" data-cid="n211"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cn212" data-cid="n212">
+                      <div class="cn213" data-cid="n213">
+                        <div class="cn214" data-cid="n214">
+                          <div class="cn215" data-cid="n215">
+                            <h3 class="cn216" data-cid="n216">
+                              Patient access.
+                            </h3>
+                            <p class="cn217" data-cid="n217">
+                              Mindoo picks up the calls your team cannot. It helps with bookings and routine questions. Patients get answers. Instantly and in their native language.
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cn218" data-cid="n218">
+                          <div class="cn219" data-cid="n219">
+                            <img class="cn220" data-cid="n220" alt="Hand holding an iphone" sizes="100vw" src="public/assets/cloned/images/d03d110a40fb.png" srcset="public/assets/cloned/images/271b97580994.png 500w, public/assets/cloned/images/93d6e00ba3df.png 800w, public/assets/cloned/images/e6a6ae687c99.png 1080w, public/assets/cloned/images/d03d110a40fb.png 1288w" />
+                            <div class="cn221" data-cid="n221">
+                              <img class="cn222" data-cid="n222" alt="Patient access UI" sizes="100vw" src="public/assets/cloned/images/480e68a8ace1.png" srcset="public/assets/cloned/images/3d4a8de5996c.png 500w, public/assets/cloned/images/480e68a8ace1.png 532w" />
+                            </div>
+                          </div>
+                          <div class="cn223" data-cid="n223"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cn224" data-cid="n224">
+                      <div class="cn225" data-cid="n225">
+                        <div class="cn226" data-cid="n226">
+                          <div class="cn227" data-cid="n227">
+                            <div class="cn228" data-cid="n228">
+                              <div class="cn229" data-cid="n229">
+                                <h3 class="cn230" data-cid="n230">
+                                  Patient intake.
+                                </h3>
+                                <p class="cn231" data-cid="n231">
+                                  Mindoo asks and log in the basics before the patient arrives. Clinicians walk in prepared. Visits feel smoother for everyone.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cn232" data-cid="n232">
+                          <div class="cn233" data-cid="n233">
+                            <div class="cn234" data-cid="n234">
+                              <img class="cn235" data-cid="n235" alt="Hand holding an iphone" sizes="100vw" src="public/assets/cloned/images/d03d110a40fb.png" srcset="public/assets/cloned/images/271b97580994.png 500w, public/assets/cloned/images/93d6e00ba3df.png 800w, public/assets/cloned/images/e6a6ae687c99.png 1080w, public/assets/cloned/images/d03d110a40fb.png 1288w" />
+                              <div class="cn236" data-cid="n236">
+                                <img class="cn237" data-cid="n237" alt="Patient intake UI" sizes="100vw" src="public/assets/cloned/images/4d720b5b2527.png" srcset="public/assets/cloned/images/6d418217defc.png 500w, public/assets/cloned/images/4d720b5b2527.png 532w" />
+                              </div>
+                              <div class="cn238" data-cid="n238">
+                                <img class="cn239" data-cid="n239" alt="Patient access UI" sizes="100vw" src="public/assets/cloned/images/480e68a8ace1.png" srcset="public/assets/cloned/images/3d4a8de5996c.png 500w, public/assets/cloned/images/480e68a8ace1.png 532w" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cn240" data-cid="n240">
+                          <div class="cn241" data-cid="n241">
+                            <div class="cn242" data-cid="n242">
+                              <div class="cn243" data-cid="n243">
+                                <h3 class="cn244" data-cid="n244">
+                                  Patient access.
+                                </h3>
+                                <p class="cn245" data-cid="n245">
+                                  Mindoo picks up the calls your team cannot. It helps with bookings and routine questions. Patients get answers. Instantly and in their native language.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cn246" data-cid="n246"></div>
+            </div>
+          </div>
+          <div class="cn247" data-cid="n247"></div>
+        </section>
+        <section class="cn248" data-cid="n248" id="agents">
+          <div class="cn249" data-cid="n249"></div>
+          <div class="cn250" data-cid="n250">
+            <div class="cn251" data-cid="n251" aria-label="You don’t need everything on day one. Add AI agents as your team needs them.">
+              <div class="cn252" data-cid="n252" aria-hidden="true">
+                You
+              </div>
+               
+              <div class="cn253" data-cid="n253" aria-hidden="true">
+                don’t
+              </div>
+               
+              <div class="cn254" data-cid="n254" aria-hidden="true">
+                need
+              </div>
+               
+              <div class="cn255" data-cid="n255" aria-hidden="true">
+                everything
+              </div>
+               
+              <div class="cn256" data-cid="n256" aria-hidden="true">
+                on
+              </div>
+               
+              <div class="cn257" data-cid="n257" aria-hidden="true">
+                day
+              </div>
+               
+              <div class="cn258" data-cid="n258" aria-hidden="true">
+                one.
+              </div>
+               
+              <span class="cn259" data-cid="n259">
+                <div class="cn260" data-cid="n260" aria-hidden="true">
+                  Add
+                </div>
+                 
+                <div class="cn261" data-cid="n261" aria-hidden="true">
+                  AI
+                </div>
+                 
+                <div class="cn262" data-cid="n262" aria-hidden="true">
+                  agents
+                </div>
+                 
+                <div class="cn263" data-cid="n263" aria-hidden="true">
+                  as
+                </div>
+                 
+                <div class="cn264" data-cid="n264" aria-hidden="true">
+                  your
+                </div>
+                 
+                <div class="cn265" data-cid="n265" aria-hidden="true">
+                  team
+                </div>
+                 
+                <div class="cn266" data-cid="n266" aria-hidden="true">
+                  needs
+                </div>
+                 
+                <div class="cn267" data-cid="n267" aria-hidden="true">
+                  them.
+                </div>
+              </span>
+            </div>
+            <div class="cn268" data-cid="n268">
+              <div class="cn269" data-cid="n269">
+                <div class="cn270" data-cid="n270">
+                  <div class="cn271" data-cid="n271" role="list">
+                    <div class="cn272" data-cid="n272">
+                      <div class="cn273" data-cid="n273">
+                        <div class="cn274" data-cid="n274" role="listitem">
+                          <div class="cn275" data-cid="n275">
+                            <div class="cn276" data-cid="n276">
+                              <div class="cn277" data-cid="n277">
+                                <h3 class="cn278" data-cid="n278">
+                                  Follow-up agent
+                                </h3>
+                                <div class="cn279" data-cid="n279">
+                                  Checks in after visits and monitors recovery. Alerts your team if something needs attention.
+                                </div>
+                              </div>
+                              <a class="cn280" data-cid="n280" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                                <div class="cn281" data-cid="n281">
+                                  Try Lisa
+                                </div>
+                              </a>
+                            </div>
+                            <div class="cn282" data-cid="n282">
+                              <img class="cn283" data-cid="n283" alt="" sizes="100vw" src="public/assets/cloned/images/d74fcecf50b0.png" srcset="public/assets/cloned/images/6e21bf769440.png 500w, public/assets/cloned/images/d74fcecf50b0.png 696w" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cn284" data-cid="n284" aria-hidden="true" role="listitem">
+                          <div class="cn285" data-cid="n285">
+                            <div class="cn286" data-cid="n286">
+                              <div class="cn287" data-cid="n287">
+                                <h3 class="cn288" data-cid="n288">
+                                  Scribe agent
+                                </h3>
+                                <div class="cn289" data-cid="n289">
+                                  Drafts notes, letters and orders. Finds the details clinicians need. In seconds.
+                                </div>
+                              </div>
+                              <a class="cn290" data-cid="n290" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                                <div class="cn291" data-cid="n291">
+                                  Try Jimmy
+                                </div>
+                              </a>
+                            </div>
+                            <div class="cn292" data-cid="n292">
+                              <img class="cn293" data-cid="n293" alt="" sizes="100vw" src="public/assets/cloned/images/74d5f7b78ffa.png" srcset="public/assets/cloned/images/6f01f0897647.png 500w, public/assets/cloned/images/74d5f7b78ffa.png 696w" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cn294" data-cid="n294" aria-hidden="true" role="listitem">
+                          <div class="cn295" data-cid="n295">
+                            <div class="cn296" data-cid="n296">
+                              <div class="cn297" data-cid="n297">
+                                <h3 class="cn298" data-cid="n298">
+                                  Intake agent
+                                </h3>
+                                <div class="cn299" data-cid="n299">
+                                  Collects symptoms and history before the visit. Prepares a clear summary for the clinician.
+                                </div>
+                              </div>
+                              <a class="cn300" data-cid="n300" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                                <div class="cn301" data-cid="n301">
+                                  Try Max
+                                </div>
+                              </a>
+                            </div>
+                            <div class="cn302" data-cid="n302">
+                              <img class="cn303" data-cid="n303" alt="" sizes="100vw" src="public/assets/cloned/images/322aa0d50103.png" srcset="public/assets/cloned/images/3934ae6ff8dc.png 500w, public/assets/cloned/images/322aa0d50103.png 696w" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cn304" data-cid="n304" aria-hidden="true" role="listitem">
+                          <div class="cn305" data-cid="n305">
+                            <div class="cn306" data-cid="n306">
+                              <div class="cn307" data-cid="n307">
+                                <h3 class="cn308" data-cid="n308">
+                                  Reception agent
+                                </h3>
+                                <div class="cn309" data-cid="n309">
+                                  Answers routine calls. Handles bookings, rescheduling and simple requests.
+                                </div>
+                              </div>
+                              <a class="cn310" data-cid="n310" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                                <div class="cn311" data-cid="n311">
+                                  Try Sara
+                                </div>
+                              </a>
+                            </div>
+                            <div class="cn312" data-cid="n312">
+                              <img class="cn313" data-cid="n313" alt="" sizes="100vw" src="public/assets/cloned/images/5074571cee2a.png" srcset="public/assets/cloned/images/5e34d494e605.png 500w, public/assets/cloned/images/5074571cee2a.png 714w" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cn314" data-cid="n314" aria-hidden="true" role="listitem">
+                          <div class="cn315" data-cid="n315">
+                            <div class="cn316" data-cid="n316">
+                              <div class="cn317" data-cid="n317">
+                                <h3 class="cn318" data-cid="n318">
+                                  Custom agent
+                                </h3>
+                                <div class="cn319" data-cid="n319">
+                                  Custom to your workflows. Teams simply describe what they need, and the agent follows.
+                                </div>
+                              </div>
+                              <a class="cn320" data-cid="n320" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                                <div class="cn321" data-cid="n321">
+                                  Try now
+                                </div>
+                              </a>
+                            </div>
+                            <div class="cn322" data-cid="n322">
+                              <img class="cn323" data-cid="n323" alt="" sizes="100vw" src="public/assets/cloned/images/74515f60a7f6.png" srcset="public/assets/cloned/images/30791d936dfa.png 500w, public/assets/cloned/images/74515f60a7f6.png 696w" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cn324" data-cid="n324">
+                  <div class="cn325" data-cid="n325">
+                    <div class="cn326" data-cid="n326">
+                      <div class="cn327" data-cid="n327">
+                        <svg class="cn328" data-cid="n328" fill="none" viewBox="0 0 20 20" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M6.52385 9.16658H16.6668V10.8332H6.52385L10.9938 15.3032L9.81533 16.4817L3.3335 9.99992L9.81533 3.51807L10.9938 4.69657L6.52385 9.16658Z" fill="currentColor"></path></svg>
+                      </div>
+                    </div>
+                    <div class="cn329" data-cid="n329">
+                      <div class="cn330" data-cid="n330">
+                        <div class="cn331" data-cid="n331"></div>
+                        <div class="cn332" data-cid="n332"></div>
+                        <div class="cn333" data-cid="n333"></div>
+                        <div class="cn334" data-cid="n334"></div>
+                        <div class="cn335" data-cid="n335"></div>
+                      </div>
+                    </div>
+                    <div class="cn336" data-cid="n336">
+                      <div class="cn337" data-cid="n337">
+                        <svg class="cn338" data-cid="n338" fill="none" viewBox="0 0 20 20" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M6.52385 9.16658H16.6668V10.8332H6.52385L10.9938 15.3032L9.81533 16.4817L3.3335 9.99992L9.81533 3.51807L10.9938 4.69657L6.52385 9.16658Z" fill="currentColor"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cn339" data-cid="n339"></div>
+              <div class="cn340" data-cid="n340"></div>
+            </div>
+            <div class="cn341" data-cid="n341">
+              Mindoo is the only agent platform that lets clinicians shape their own agents, inside a safe and governed infrastructure.
+            </div>
+          </div>
+          <div class="cn342" data-cid="n342"></div>
+        </section>
+        <section class="cn343" data-cid="n343" id="how">
+          <div class="cn344" data-cid="n344">
+            <div class="cn345" data-cid="n345">
+              <div class="cn346" data-cid="n346">
+                <div class="cn347" data-cid="n347">
+                  <div class="cn348" data-cid="n348">
+                    <div class="cn349" data-cid="n349">
+                      <div class="cn350" data-cid="n350" aria-label="From start to finish. A calmer, more predictable day.">
+                        <span class="cn351" data-cid="n351">
+                          <div class="cn352" data-cid="n352" aria-hidden="true">
+                            From
+                          </div>
+                           
+                          <div class="cn353" data-cid="n353" aria-hidden="true">
+                            start
+                          </div>
+                           
+                          <div class="cn354" data-cid="n354" aria-hidden="true">
+                            to
+                          </div>
+                           
+                          <div class="cn355" data-cid="n355" aria-hidden="true">
+                            finish.
+                          </div>
+                        </span>
+                         
+                        <div class="cn356" data-cid="n356" aria-hidden="true">
+                          A
+                        </div>
+                         
+                        <div class="cn357" data-cid="n357" aria-hidden="true">
+                          calmer,
+                        </div>
+                         
+                        <div class="cn358" data-cid="n358" aria-hidden="true">
+                          more
+                        </div>
+                         
+                        <div class="cn359" data-cid="n359" aria-hidden="true">
+                          predictable
+                        </div>
+                         
+                        <div class="cn360" data-cid="n360" aria-hidden="true">
+                          day.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cn361" data-cid="n361">
+                      <h3 class="cn362" data-cid="n362">
+                        Before the visit.
+                      </h3>
+                      <p class="cn363" data-cid="n363">
+                        Mindoo asks the key questions: symptoms, history, medications. Patients answer in their own language. Clinicians walk in prepared. Front desks skip the morning intake rush.
+                      </p>
+                    </div>
+                    <div class="cn364" data-cid="n364">
+                      <img class="cn365" data-cid="n365" alt="Person holding a smartphone displaying a virtual assistant with a blue heart icon and a message about preparing for an appointment." sizes="100vw" src="public/assets/cloned/images/a5dd3db5fd9b.png" srcset="public/assets/cloned/images/c1f92aa64b2b.png 500w, public/assets/cloned/images/706d3dfc205c.png 800w, public/assets/cloned/images/c4aa1ccd52fe.png 1080w, public/assets/cloned/images/a5dd3db5fd9b.png 1185w" />
+                    </div>
+                    <div class="cn366" data-cid="n366">
+                      <h3 class="cn367" data-cid="n367">
+                        During the day.
+                      </h3>
+                      <p class="cn368" data-cid="n368">
+                        Mindoo handles routine calls, simple questions, and scheduling. Patients get answers faster.
+                        <br class="cn369" data-cid="n369" />
+                        Staff stay focused on the people in front of them.
+                      </p>
+                    </div>
+                    <div class="cn370" data-cid="n370">
+                      <img class="cn371" data-cid="n371" alt="Male doctor in a white coat looking at a tablet in a hospital hallway." sizes="100vw" src="public/assets/cloned/images/b3bf6cfa83f3.avif" srcset="public/assets/cloned/images/41818d1a92cf.avif 500w, public/assets/cloned/images/b3bf6cfa83f3.avif 1185w" />
+                      <div class="cn372" data-cid="n372">
+                        <img class="cn373" data-cid="n373" alt="During visit Mindoo UI" sizes="100vw" src="public/assets/cloned/images/28f7c6d0c7b1.png" srcset="public/assets/cloned/images/3be88a761db0.png 500w, public/assets/cloned/images/71916d8bec75.png 800w, public/assets/cloned/images/87c8964c5e54.png 1080w, public/assets/cloned/images/28f7c6d0c7b1.png 1512w" />
+                      </div>
+                    </div>
+                    <div class="cn374" data-cid="n374">
+                      <h3 class="cn375" data-cid="n375">
+                        After the visit.
+                      </h3>
+                      <p class="cn376" data-cid="n376">
+                        Mindoo checks in on recovery, medication, and follow-ups. It flags anything that needs attention.
+                        <br class="cn377" data-cid="n377" />
+                        Care continues without gaps.
+                      </p>
+                    </div>
+                    <div class="cn378" data-cid="n378">
+                      <img class="cn379" data-cid="n379" alt="Man in casual clothes reclining on a brown leather couch, talking to Mindoo agent holding his smartphone." sizes="100vw" src="public/assets/cloned/images/3723d8b7b656.avif" srcset="public/assets/cloned/images/a12786f36ba6.avif 500w, public/assets/cloned/images/3723d8b7b656.avif 1185w" />
+                      <div class="cn380" data-cid="n380">
+                        <img class="cn381" data-cid="n381" alt="After visit Mindoo UI" sizes="100vw" src="public/assets/cloned/images/3a2e5d6d8d1b.png" srcset="public/assets/cloned/images/9b614896f95b.png 500w, public/assets/cloned/images/a3b27be4a08b.png 800w, public/assets/cloned/images/c26c6f5808c9.png 1080w, public/assets/cloned/images/3a2e5d6d8d1b.png 1192w" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cn382" data-cid="n382">
+            <div class="cn383" data-cid="n383">
+              <img class="cn384" data-cid="n384" alt="Person holding a smartphone displaying a virtual assistant with a blue heart icon and a message about preparing for an appointment." sizes="100vw" src="public/assets/cloned/images/a5dd3db5fd9b.png" srcset="public/assets/cloned/images/c1f92aa64b2b.png 500w, public/assets/cloned/images/706d3dfc205c.png 800w, public/assets/cloned/images/c4aa1ccd52fe.png 1080w, public/assets/cloned/images/a5dd3db5fd9b.png 1185w" />
+            </div>
+            <div class="cn385" data-cid="n385">
+              <img class="cn386" data-cid="n386" alt="Male doctor in a white coat looking at a tablet in a hospital hallway." sizes="100vw" src="public/assets/cloned/images/b3bf6cfa83f3.avif" srcset="public/assets/cloned/images/41818d1a92cf.avif 500w, public/assets/cloned/images/b3bf6cfa83f3.avif 1185w" />
+              <div class="cn387" data-cid="n387">
+                <img class="cn388" data-cid="n388" alt="During visit Mindoo UI" sizes="100vw" src="public/assets/cloned/images/28f7c6d0c7b1.png" srcset="public/assets/cloned/images/3be88a761db0.png 500w, public/assets/cloned/images/71916d8bec75.png 800w, public/assets/cloned/images/87c8964c5e54.png 1080w, public/assets/cloned/images/28f7c6d0c7b1.png 1512w" />
+              </div>
+            </div>
+            <div class="cn389" data-cid="n389">
+              <img class="cn390" data-cid="n390" alt="Man in casual clothes reclining on a brown leather couch, talking to Mindoo agent holding his smartphone." sizes="100vw" src="public/assets/cloned/images/3723d8b7b656.avif" srcset="public/assets/cloned/images/a12786f36ba6.avif 500w, public/assets/cloned/images/3723d8b7b656.avif 1185w" />
+              <div class="cn391" data-cid="n391">
+                <img class="cn392" data-cid="n392" alt="After visit Mindoo UI" sizes="100vw" src="public/assets/cloned/images/3a2e5d6d8d1b.png" srcset="public/assets/cloned/images/9b614896f95b.png 500w, public/assets/cloned/images/a3b27be4a08b.png 800w, public/assets/cloned/images/c26c6f5808c9.png 1080w, public/assets/cloned/images/3a2e5d6d8d1b.png 1192w" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="cn393" data-cid="n393">
+          <div class="cn394" data-cid="n394"></div>
+          <div class="cn395" data-cid="n395">
+            <div class="cn396" data-cid="n396">
+              <div class="cn397" data-cid="n397">
+                <div class="cn398" data-cid="n398">
+                  <div class="cn399" data-cid="n399" aria-label="Designed to fit the way you already work.">
+                    <div class="cn400" data-cid="n400" aria-hidden="true">
+                      Designed
+                    </div>
+                     
+                    <div class="cn401" data-cid="n401" aria-hidden="true">
+                      to
+                    </div>
+                     
+                    <div class="cn402" data-cid="n402" aria-hidden="true">
+                      fit
+                    </div>
+                     
+                    <div class="cn403" data-cid="n403" aria-hidden="true">
+                      the
+                    </div>
+                     
+                    <div class="cn404" data-cid="n404" aria-hidden="true">
+                      way
+                    </div>
+                     
+                    <div class="cn405" data-cid="n405" aria-hidden="true">
+                      you
+                    </div>
+                     
+                    <div class="cn406" data-cid="n406" aria-hidden="true">
+                      already
+                    </div>
+                     
+                    <div class="cn407" data-cid="n407" aria-hidden="true">
+                      work.
+                    </div>
+                  </div>
+                  <p class="cn408" data-cid="n408">
+                    Mindoo doesn’t replace staff. 
+                    <br class="cn409" data-cid="n409" />
+                    It takes on the repeat work around care. And your team can get back to what they came into healthcare for.
+                  </p>
+                </div>
+                <div class="cn410" data-cid="n410">
+                  <div class="cn411" data-cid="n411">
+                    <div class="cn412" data-cid="n412">
+                      <img class="cn413" data-cid="n413" height="640" src="public/assets/cloned/images/1ecd8452fa34.png" width="1120" alt="" />
+                    </div>
+                    <div class="cn414" data-cid="n414">
+                      <div class="cn415" data-cid="n415">
+                        <div class="cn416" data-cid="n416">
+                          <div class="cn417" data-cid="n417">
+                            No new systems to learn
+                          </div>
+                        </div>
+                        <div class="cn418" data-cid="n418">
+                          <div class="cn419" data-cid="n419">
+                            Minor workflow changes
+                          </div>
+                        </div>
+                        <div class="cn420" data-cid="n420">
+                          <div class="cn421" data-cid="n421">
+                            No tech expertise needed
+                          </div>
+                        </div>
+                        <div class="cn422" data-cid="n422">
+                          <div class="cn423" data-cid="n423">
+                            Built for real-world patient conversations
+                          </div>
+                        </div>
+                        <div class="cn424" data-cid="n424">
+                          <div class="cn425" data-cid="n425">
+                            Fully auditable, MDR, EU AI Act compliant, GDPR-native
+                          </div>
+                        </div>
+                        <div class="cn426" data-cid="n426">
+                          <div class="cn427" data-cid="n427">
+                            Creates capacity without increasing headcount
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cn428" data-cid="n428">
+                    Patients feel heard. Staff feel supported. Time is used where it matters most.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cn429" data-cid="n429"></div>
+        </section>
+        <section class="cn430" data-cid="n430" id="safety">
+          <div class="cn431" data-cid="n431"></div>
+          <div class="cn432" data-cid="n432">
+            <div class="cn433" data-cid="n433">
+              <div class="cn434" data-cid="n434">
+                <div class="cn435" data-cid="n435" aria-label="Highest safety standards, through and through.">
+                  <div class="cn436" data-cid="n436" aria-hidden="true">
+                    Highest
+                  </div>
+                   
+                  <div class="cn437" data-cid="n437" aria-hidden="true">
+                    safety
+                  </div>
+                   
+                  <div class="cn438" data-cid="n438" aria-hidden="true">
+                    standards,
+                  </div>
+                   
+                  <div class="cn439" data-cid="n439" aria-hidden="true">
+                    through
+                  </div>
+                   
+                  <div class="cn440" data-cid="n440" aria-hidden="true">
+                    and
+                  </div>
+                   
+                  <div class="cn441" data-cid="n441" aria-hidden="true">
+                    through.
+                  </div>
+                </div>
+                <div class="cn442" data-cid="n442">
+                  <div class="cn443" data-cid="n443">
+                    <div class="cn444" data-cid="n444">
+                      <div class="cn445" data-cid="n445">
+                        <div class="cn446" data-cid="n446">
+                          <img class="cn447" data-cid="n447" alt="Mindoo character at his desk
+" sizes="100vw" src="public/assets/cloned/images/364f9945d1be.png" srcset="public/assets/cloned/images/1e9bdfe6f3ae.png 500w, public/assets/cloned/images/364f9945d1be.png 779w" />
+                        </div>
+                        <div class="cn448" data-cid="n448">
+                          <div class="cn449" data-cid="n449">
+                            <h3 class="cn450" data-cid="n450">
+                              Transparent by design.
+                            </h3>
+                            <p class="cn451" data-cid="n451">
+                              No black boxes. No hidden processing. No surprises for your governance teams.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cn452" data-cid="n452">
+                      <div class="cn453" data-cid="n453">
+                        <div class="cn454" data-cid="n454">
+                          <img class="cn455" data-cid="n455" alt="Mindoo character in hospital hallway" sizes="100vw" src="public/assets/cloned/images/91c864891bf1.png" srcset="public/assets/cloned/images/37f58126d276.png 500w, public/assets/cloned/images/91c864891bf1.png 779w" />
+                        </div>
+                        <div class="cn456" data-cid="n456">
+                          <div class="cn457" data-cid="n457">
+                            <h3 class="cn458" data-cid="n458">
+                              Proven in real hospitals.
+                            </h3>
+                            <p class="cn459" data-cid="n459">
+                              We test every agent in real clinical workflows to make sure Mindoo behaves safely and reliably. Predictable, stable, reviewable.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cn460" data-cid="n460" id="w-node-_2cbf65de-4f9d-56c6-6261-c80763bfd9f6-a99517c6">
+                      <div class="cn461" data-cid="n461">
+                        <div class="cn462" data-cid="n462">
+                          <img class="cn463" data-cid="n463" alt="Mindoo character sitting on a chair with a safety lock in his hands" sizes="100vw" src="public/assets/cloned/images/ad6a7c052946.png" srcset="public/assets/cloned/images/dd72b86e4f8e.png 500w, public/assets/cloned/images/ad6a7c052946.png 779w" />
+                        </div>
+                        <div class="cn464" data-cid="n464">
+                          <div class="cn465" data-cid="n465">
+                            <h3 class="cn466" data-cid="n466">
+                              Built for strict healthcare governance.
+                            </h3>
+                            <p class="cn467" data-cid="n467">
+                              Full audit trails, clear consent handling, and region-specific data protections.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cn468" data-cid="n468"></div>
+        </section>
+        <section class="cn469" data-cid="n469">
+          <div class="cn470" data-cid="n470"></div>
+          <div class="cn471" data-cid="n471">
+            <div class="cn472" data-cid="n472">
+              <div class="cn473" data-cid="n473">
+                <div class="cn474" data-cid="n474">
+                  <img class="cn475" data-cid="n475" alt="Blue mindoo character" sizes="(max-width: 811px) 100vw, 811px" src="public/assets/cloned/images/c3c150ae1301.png" srcset="public/assets/cloned/images/b804f27ee69d.png 500w, public/assets/cloned/images/c47e546ede7f.png 800w, public/assets/cloned/images/c3c150ae1301.png 811w" />
+                </div>
+                <div class="cn476" data-cid="n476">
+                  <img class="cn477" data-cid="n477" alt="Orange mindoo character" sizes="(max-width: 605px) 100vw, 605px" src="public/assets/cloned/images/8636cb69c6a3.png" srcset="public/assets/cloned/images/3a3733b18682.png 500w, public/assets/cloned/images/8636cb69c6a3.png 605w" />
+                </div>
+                <div class="cn478" data-cid="n478">
+                  <img class="cn479" data-cid="n479" alt="Pink mindoo character" sizes="(max-width: 605px) 100vw, 605px" src="public/assets/cloned/images/c8294150fca8.png" srcset="public/assets/cloned/images/93887c50f1aa.png 500w, public/assets/cloned/images/c8294150fca8.png 605w" />
+                </div>
+                <div class="cn480" data-cid="n480">
+                  <img class="cn481" data-cid="n481" alt="Green mindoo character" sizes="(max-width: 534px) 100vw, 534px" src="public/assets/cloned/images/d179217c5b0e.png" srcset="public/assets/cloned/images/3271f3234178.png 500w, public/assets/cloned/images/d179217c5b0e.png 534w" />
+                </div>
+                <div class="cn482" data-cid="n482">
+                  <img class="cn483" data-cid="n483" alt="Purple mindoo character" sizes="(max-width: 534px) 100vw, 534px" src="public/assets/cloned/images/555282caa1e7.png" srcset="public/assets/cloned/images/70770befa748.png 500w, public/assets/cloned/images/555282caa1e7.png 534w" />
+                </div>
+              </div>
+            </div>
+            <div class="cn484" data-cid="n484">
+              <div class="cn485" data-cid="n485">
+                <svg class="cn486" data-cid="n486" fill="none" height="100%" viewBox="0 0 612 308" width="100%" xmlns="http://www.w3.org/2000/svg" data-lines="right">
+<path class="cta-line" d="M794.099 135.516L507.475 177.591C436.446 188.018 363.926 179.801 297.03 153.747C239.151 131.204 176.943 121.97 115.012 126.728L0.618596 135.516" stroke="url(#paint0_linear_430_1480)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 804.157px, 0.1px;"></path>
+<path class="cta-line is-reverse" d="M0.617179 135.662L160.795 83.6771C260.921 51.1814 369.774 59.0294 464.203 105.552C554.557 150.066 658.275 159.242 755.04 131.282L794.098 119.996" stroke="url(#paint1_linear_430_1480)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 819.659px, 0.1px;"></path>
+<path class="cta-line" d="M794.099 306L622.153 104.797C571.232 45.2123 483.559 33.6526 418.934 78.0033C381.797 103.49 335.328 111.349 291.876 99.4919L281.579 96.6822C254.645 89.3326 226.35 88.4855 199.024 94.2106L0.618606 135.779" stroke="url(#paint2_linear_430_1480)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 918.965px, 0.1px;"></path>
+<defs>
+<linearGradient id="paint0_linear_430_1480" x1="621.099" y1="154.508" x2="48.5991" y2="154.508" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4AC957"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_430_1480" x1="626.098" y1="103.87" x2="87.0977" y2="103.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E594C4"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_430_1480" x1="626.099" y1="153" x2="78.5992" y2="153" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0059FF"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+</defs>
+</svg>
+              </div>
+            </div>
+            <div class="cn487" data-cid="n487">
+              <div class="cn488" data-cid="n488">
+                <svg class="cn489" data-cid="n489" fill="none" height="100%" viewBox="0 0 601 274" width="100%" xmlns="http://www.w3.org/2000/svg" data-lines="left">
+<path class="cta-line" d="M-194 138.484L92.624 96.4091C163.653 85.9823 236.173 94.1991 303.069 120.253C360.948 142.796 423.156 152.03 485.087 147.272L599.481 138.484" stroke="url(#paint0_linear_430_1476)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 804.158px, 0.1px;"></path>
+<path class="cta-line is-reverse" d="M599.48 138.22L439.303 190.206C339.177 222.702 230.323 214.854 135.894 168.331C45.5411 123.817 -58.1769 114.641 -154.942 142.601L-194 153.887" stroke="url(#paint1_linear_430_1476)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 819.659px, 0.1px;"></path>
+<path class="cta-line" d="M-194 -32L-22.0541 169.203C28.8667 228.788 116.54 240.347 181.165 195.997C218.302 170.51 264.771 162.651 308.224 174.508L318.52 177.318C345.455 184.667 373.749 185.515 401.075 179.789L599.481 138.221" stroke="url(#paint2_linear_430_1476)" stroke-width="4" style="stroke-dashoffset: 0; stroke-dasharray: 918.965px, 0.1px;"></path>
+<defs>
+<linearGradient id="paint0_linear_430_1476" x1="-21" y1="119.492" x2="551.5" y2="119.492" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4AC957"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint1_linear_430_1476" x1="-26.0001" y1="170.013" x2="513" y2="170.013" gradientUnits="userSpaceOnUse">
+<stop stop-color="#E594C4"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+<linearGradient id="paint2_linear_430_1476" x1="-26" y1="121" x2="521.5" y2="121" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0059FF"></stop>
+<stop offset="1" stop-color="white"></stop>
+</linearGradient>
+</defs>
+</svg>
+              </div>
+            </div>
+          </div>
+          <div class="cn490" data-cid="n490"></div>
+          <div class="cn491" data-cid="n491">
+            <div class="cn492" data-cid="n492">
+              <div class="cn493" data-cid="n493">
+                <div class="cn494" data-cid="n494">
+                  <div class="cn495" data-cid="n495" aria-label="Because healthcare is already stressful enough.">
+                    <div class="cn496" data-cid="n496" aria-hidden="true">
+                      Because
+                    </div>
+                     
+                    <div class="cn497" data-cid="n497" aria-hidden="true">
+                      healthcare
+                    </div>
+                     
+                    <div class="cn498" data-cid="n498" aria-hidden="true">
+                      is
+                    </div>
+                     
+                    <div class="cn499" data-cid="n499" aria-hidden="true">
+                      already
+                    </div>
+                     
+                    <div class="cn500" data-cid="n500" aria-hidden="true">
+                      stressful
+                    </div>
+                     
+                    <div class="cn501" data-cid="n501" aria-hidden="true">
+                      enough.
+                    </div>
+                  </div>
+                  <p class="cn502" data-cid="n502">
+                    Create breathing room for your team, 
+                    <br class="cn503" data-cid="n503" />
+                    without hiring more people to do boring admin work.
+                  </p>
+                </div>
+                <a class="cn504" data-cid="n504" href="https://calendar.notion.so/meet/gauthierwillemse/mindoo" target="_blank">
+                  <div class="cn505" data-cid="n505">
+                    Book a demo
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="cn506" data-cid="n506"></div>
+        </section>
+      </main>
+      <section class="cn507" data-cid="n507">
+        <div class="cn508" data-cid="n508">
+          <div class="cn509" data-cid="n509">
+            <div class="cn510" data-cid="n510">
+              <a class="cn511" data-cid="n511" href="#">
+                <img class="cn512" data-cid="n512" alt="Mindoo logo" src="public/assets/cloned/svg/d16fd1605e4b.svg" />
+              </a>
+              <div class="cn513" data-cid="n513">
+                <div class="cn514" data-cid="n514">
+                  <div class="cn515" data-cid="n515">
+                    <div class="cn516" data-cid="n516">
+                      <div class="cn517" data-cid="n517">
+                        navigation
+                      </div>
+                      <a class="cn518" data-cid="n518" aria-current="page" href="https://mindoo.ai/">
+                        Home
+                      </a>
+                      <a class="cn519" data-cid="n519" href="https://mindoo.ai/#problem">
+                        Problem
+                      </a>
+                      <a class="cn520" data-cid="n520" href="https://mindoo.ai/#solution">
+                        Solution
+                      </a>
+                      <a class="cn521" data-cid="n521" href="https://mindoo.ai/#agents">
+                        Agents
+                      </a>
+                    </div>
+                  </div>
+                  <div class="cn522" data-cid="n522">
+                    <div class="cn523" data-cid="n523">
+                      <div class="cn524" data-cid="n524">
+                        legal
+                      </div>
+                      <a class="cn525" data-cid="n525" href="https://mindoo.ai/privacy-policy">
+                        Privacy Policy
+                      </a>
+                      <a class="cn526" data-cid="n526" href="https://mindoo.ai/terms-of-service">
+                        Terms of Service for patients
+                      </a>
+                      <a class="cn527" data-cid="n527" href="https://mindoo.ai/terms-of-service-for-healthcare-staff">
+                        Terms of Service for healthcare staff
+                      </a>
+                    </div>
+                  </div>
+                  <div class="cn528" data-cid="n528">
+                    <div class="cn529" data-cid="n529">
+                      <div class="cn530" data-cid="n530">
+                        social
+                      </div>
+                      <a class="cn531" data-cid="n531" href="https://www.linkedin.com/company/mindooai/" target="_blank">
+                        LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cn532" data-cid="n532">
+              <img class="cn533" data-cid="n533" alt="Mindoo character floating on a cloud" sizes="(max-width: 991px) 100vw, 1136px" src="public/assets/cloned/images/147dd2ede7ab.png" srcset="public/assets/cloned/images/17089e913204.png 500w, public/assets/cloned/images/2db28cadb50c.png 800w, public/assets/cloned/images/5a1256666e2f.png 1080w, public/assets/cloned/images/bf69dcc85dcf.png 1600w, public/assets/cloned/images/b441a0d387c6.png 2000w, public/assets/cloned/images/147dd2ede7ab.png 2088w" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="cn534" data-cid="n534"></div>
+    </div>
+     
+</body>
+</html>

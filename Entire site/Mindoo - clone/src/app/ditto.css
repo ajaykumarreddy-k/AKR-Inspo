@@ -1,0 +1,14 @@
+[data-cid="n211"]{background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(245, 245, 245))}
+@media (max-width: 571px) {
+[data-cid="n211"]{background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-cid="n211"]{background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+}
+[data-cid="n223"]{background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(245, 245, 245))}
+@media (max-width: 571px) {
+[data-cid="n223"]{background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+}
+@media (min-width: 572px) and (max-width: 1024px) {
+[data-cid="n223"]{background-image:linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))}
+}
