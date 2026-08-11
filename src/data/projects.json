@@ -203,6 +203,13 @@
     "thumbnail": "Components-maintiles/UI-Components/c7/c7.png"
   },
   {
+    "id": "entire-site-blue-oiester",
+    "name": "Cloned App",
+    "path": "/Entire site/Blue oiester/index.html",
+    "folder": "Entire site/Blue oiester",
+    "thumbnail": null
+  },
+  {
     "id": "entire-site-design-by-ajay",
     "name": "Design By Ajay",
     "path": "/Entire site/Design by Ajay/index.html",
@@ -215,6 +222,20 @@
     "path": "/Entire site/Figits and rabbtis/index.html",
     "folder": "Entire site/Figits and rabbtis",
     "thumbnail": "Entire site/Figits and rabbtis/screencapture-file-home-prince-ProjectsMain-akr-inspo-component-library-1-Entire-site-Figits-and-rabbtis-index-html-2026-07-18-00_05_24.png"
+  },
+  {
+    "id": "entire-site-mindoo---clone",
+    "name": "Cloned App",
+    "path": "/Entire site/Mindoo - clone/index.html",
+    "folder": "Entire site/Mindoo - clone",
+    "thumbnail": null
+  },
+  {
+    "id": "entire-site-mobbin-clone-mobbin-ui-ux-design-inspiration-for-mobile-web-apps-full-page-woblo-mobbin-ui-ux-design-inspiration-for-mobile-web-apps",
+    "name": "Mobbin Ui Ux Design Inspiration For Mobile Web Apps",
+    "path": "/Entire site/Mobbin-Clone/mobbin-ui-ux-design-inspiration-for-mobile-web-apps.full-page.Woblo/mobbin-ui-ux-design-inspiration-for-mobile-web-apps/index.html",
+    "folder": "Entire site/Mobbin-Clone/mobbin-ui-ux-design-inspiration-for-mobile-web-apps.full-page.Woblo/mobbin-ui-ux-design-inspiration-for-mobile-web-apps",
+    "thumbnail": null
   },
   {
     "id": "entire-site-new-genere---gradient-site",
@@ -441,6 +462,13 @@
     "thumbnail": null
   },
   {
+    "id": "frammer-21st-dev-components-morph-pill",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Morph pill/index.html",
+    "folder": "Frammer&21st dev Components/Morph pill",
+    "thumbnail": "Frammer&21st dev Components/Morph pill/image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-nav-bar-side",
     "name": "Bun React Template",
     "path": "/Frammer&21st dev Components/Nav Bar Side/index.html",
@@ -497,6 +525,13 @@
     "thumbnail": "Frammer&21st dev Components/Porttrait Flip/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-preloder-pure-html-",
+    "name": "Preloder Pure Html ",
+    "path": "/Frammer&21st dev Components/Preloder Pure html /index.html",
+    "folder": "Frammer&21st dev Components/Preloder Pure html ",
+    "thumbnail": null
+  },
+  {
     "id": "frammer-21st-dev-components-rainbowfooter-on-scrool",
     "name": "Rainbow Footer",
     "path": "/Frammer&21st dev Components/RainbowFooter on scrool/index.html",
@@ -523,6 +558,27 @@
     "path": "/Frammer&21st dev Components/Signature Animation/index.html",
     "folder": "Frammer&21st dev Components/Signature Animation",
     "thumbnail": "Frammer&21st dev Components/Signature Animation/Pasted image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-stepcards",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Stepcards/index.html",
+    "folder": "Frammer&21st dev Components/Stepcards",
+    "thumbnail": "Frammer&21st dev Components/Stepcards/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-testimonial",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Testimonial/index.html",
+    "folder": "Frammer&21st dev Components/Testimonial",
+    "thumbnail": "Frammer&21st dev Components/Testimonial/image.png"
+  },
+  {
+    "id": "frammer-21st-dev-components-testimonial-rotation-",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/Testimonial Rotation /index.html",
+    "folder": "Frammer&21st dev Components/Testimonial Rotation ",
+    "thumbnail": "Frammer&21st dev Components/Testimonial Rotation /image.png"
   },
   {
     "id": "frammer-21st-dev-components-text-mask-animation-in-framer",
@@ -581,11 +637,25 @@
     "thumbnail": "Frammer&21st dev Components/switchoverhiover/image.png"
   },
   {
+    "id": "frammer-21st-dev-components-video-card",
+    "name": "Bun React Template",
+    "path": "/Frammer&21st dev Components/video card/index.html",
+    "folder": "Frammer&21st dev Components/video card",
+    "thumbnail": "Frammer&21st dev Components/video card/image.png"
+  },
+  {
     "id": "frammer-21st-dev-components-web-preloder",
     "name": "Web Preloder",
     "path": "/Frammer&21st dev Components/web preloder/index.html",
     "folder": "Frammer&21st dev Components/web preloder",
     "thumbnail": "Frammer&21st dev Components/web preloder/image.png"
+  },
+  {
+    "id": "refero-styles-design-dna-scrape",
+    "name": "Refero Styles Design Dna Scrape",
+    "path": "/Refero-styles design dna scrape/index.html",
+    "folder": "Refero-styles design dna scrape",
+    "thumbnail": null
   },
   {
     "id": "scroll-animations",
