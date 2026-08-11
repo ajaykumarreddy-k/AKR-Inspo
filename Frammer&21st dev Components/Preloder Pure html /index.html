@@ -1,0 +1,201 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=PP+Mori:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+#preloader{position:relative;width:100%;height:520px;background:#0a0a0a;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#word-container{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.word{position:absolute;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(48px,8vw,88px);font-weight:700;color:#f0ede6;letter-spacing:-0.03em;clip-path:inset(0 100% 0 0);opacity:0;white-space:nowrap;text-transform:uppercase}
+#counter{position:absolute;bottom:36px;right:40px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;font-weight:400;color:rgba(240,237,230,0.35);letter-spacing:0.12em}
+#progress-line{position:absolute;bottom:0;left:0;height:1px;background:rgba(240,237,230,0.15);width:100%}
+#progress-fill{height:100%;background:#f0ede6;width:0%;transition:width 0.1s linear}
+#curve-overlay{position:absolute;inset:0;pointer-events:none}
+#reveal-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#f0ede6;clip-path:inset(100% 0 0 0);transition:none}
+#reveal-inner{text-align:center}
+#reveal-inner h2{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(28px,5vw,52px);font-weight:700;color:#0a0a0a;letter-spacing:-0.04em;text-transform:uppercase;margin-bottom:8px}
+#reveal-inner p{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;color:rgba(10,10,10,0.45);letter-spacing:0.15em;text-transform:uppercase}
+#replay-btn{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(10,10,10,0.4);background:none;border:none;cursor:pointer;padding:8px 16px;opacity:0;transition:opacity 0.4s,color 0.2s}
+#replay-btn:hover{color:rgba(10,10,10,0.7)}
+.dot{display:inline-block;width:6px;height:6px;background:#0a0a0a;border-radius:50%;margin:0 4px;opacity:0}
+</style>
+
+<h2 class="sr-only">Words preloader animation — click to replay</h2>
+
+<div id="preloader">
+  <div id="word-container"></div>
+  <div id="curve-overlay">
+    <svg id="curve-svg" width="100%" height="100%" viewBox="0 0 800 520" preserveAspectRatio="none"></svg>
+  </div>
+  <div id="reveal-content">
+    <div id="reveal-inner">
+      <h2>Your Portfolio</h2>
+      <p>Designed &amp; Built with care</p>
+      <div style="margin-top:24px">
+        <span class="dot" id="d1"></span>
+        <span class="dot" id="d2"></span>
+        <span class="dot" id="d3"></span>
+      </div>
+    </div>
+    <button id="replay-btn" onclick="startPreloader()">↺ Replay</button>
+  </div>
+  <div id="counter">000</div>
+  <div id="progress-line"><div id="progress-fill"></div></div>
+</div>
+
+<script>
+const words=[
+  {text:'Welcome',lang:'EN'},
+  {text:'Bonjour',lang:'FR'},
+  {text:'こんにちは',lang:'JP'},
+  {text:'Hola',lang:'ES'},
+  {text:'Ciao',lang:'IT'},
+  {text:'안녕하세요',lang:'KO'},
+  {text:'Привет',lang:'RU'},
+  {text:'مرحبا',lang:'AR'},
+  {text:'नमस्ते',lang:'HI'},
+];
+
+const wc=document.getElementById('word-container');
+const counter=document.getElementById('counter');
+const progressFill=document.getElementById('progress-fill');
+const revealContent=document.getElementById('reveal-content');
+const replayBtn=document.getElementById('replay-btn');
+
+let wordEls=[];
+let animating=false;
+
+function buildWords(){
+  wc.innerHTML='';
+  wordEls=[];
+  words.forEach((w,i)=>{
+    const el=document.createElement('div');
+    el.className='word';
+    el.textContent=w.text;
+    wc.appendChild(el);
+    wordEls.push(el);
+  });
+}
+
+function ease(t){return t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2}
+function easeOut(t){return 1-Math.pow(1-t,3)}
+
+function animateValue(from,to,duration,onUpdate,onDone){
+  const start=performance.now();
+  function step(now){
+    const t=Math.min((now-start)/duration,1);
+    onUpdate(from+(to-from)*ease(t),t);
+    if(t<1)requestAnimationFrame(step);
+    else if(onDone)onDone();
+  }
+  requestAnimationFrame(step);
+}
+
+function showWord(index){
+  return new Promise(resolve=>{
+    if(index>=wordEls.length){resolve();return;}
+    const el=wordEls[index];
+    el.style.opacity='1';
+    el.style.clipPath='inset(0 100% 0 0)';
+    const dur=320;
+    const holdDur=260;
+    animateValue(0,1,dur,t=>{
+      const pct=Math.round((1-easeOut(t))*100);
+      el.style.clipPath=`inset(0 ${pct}% 0 0)`;
+    },()=>{
+      setTimeout(()=>{
+        animateValue(0,1,dur,t=>{
+          const pct=Math.round(easeOut(t)*100);
+          el.style.clipPath=`inset(0 0 0 ${pct}%)`;
+        },()=>{
+          el.style.opacity='0';
+          resolve();
+        });
+      },holdDur);
+    });
+  });
+}
+
+function updateCounter(val){
+  counter.textContent=String(Math.round(val)).padStart(3,'0');
+}
+
+function doCurveWipe(){
+  return new Promise(resolve=>{
+    const svg=document.getElementById('curve-svg');
+    svg.innerHTML='';
+    const W=800,H=520;
+    let prog=0;
+    const totalDur=900;
+    const start=performance.now();
+    function step(now){
+      const t=Math.min((now-start)/totalDur,1);
+      const p=easeOut(t);
+      prog=p;
+      const fillH=H*p;
+      const bulge=80*Math.sin(Math.PI*p)*( p<0.5?1:-1);
+      const y=H-fillH;
+      const pathD=`M0,${y+bulge} Q${W/2},${y-bulge} ${W},${y+bulge} L${W},${H} L0,${H} Z`;
+      svg.innerHTML=`<path d="${pathD}" fill="#f0ede6" opacity="1"/>`;
+      if(t<1){requestAnimationFrame(step);}
+      else{
+        svg.innerHTML='';
+        revealContent.style.clipPath='inset(0 0 0 0)';
+        revealContent.style.transition='none';
+        resolve();
+      }
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+async function startPreloader(){
+  if(animating)return;
+  animating=true;
+  replayBtn.style.opacity='0';
+  revealContent.style.clipPath='inset(100% 0 0 0)';
+  revealContent.style.transition='none';
+  progressFill.style.width='0%';
+  counter.style.opacity='0.35';
+  buildWords();
+  document.querySelectorAll('.dot').forEach(d=>d.style.opacity='0');
+
+  const totalTime=words.length*600;
+  const startTime=performance.now();
+
+  let counterInterval=setInterval(()=>{
+    const elapsed=performance.now()-startTime;
+    const pct=Math.min(elapsed/totalTime*85,85);
+    updateCounter(pct);
+    progressFill.style.width=pct+'%';
+  },16);
+
+  for(let i=0;i<words.length;i++){
+    await showWord(i);
+  }
+
+  clearInterval(counterInterval);
+
+  animateValue(85,100,400,v=>{
+    updateCounter(v);
+    progressFill.style.width=v+'%';
+  },async()=>{
+    await new Promise(r=>setTimeout(r,200));
+    await doCurveWipe();
+    counter.style.opacity='0';
+    progressFill.style.width='100%';
+    setTimeout(()=>{
+      ['d1','d2','d3'].forEach((id,i)=>{
+        setTimeout(()=>{
+          const el=document.getElementById(id);
+          el.style.transition='opacity 0.4s';
+          el.style.opacity='1';
+        },i*120);
+      });
+      setTimeout(()=>{replayBtn.style.opacity='1';animating=false;},600);
+    },300);
+  });
+}
+
+window.startPreloader=startPreloader;
+startPreloader();
+</script>
+
