@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5 {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
-    background-image: url('/home/prince/.gemini/antigravity/brain/f194a952-f0a2-470b-908f-3ea6c92d5517/yellow_lines_1782564122704.png');
+    background-image: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
     background-size: cover;
     background-position: center;
     opacity: 0.6;
@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5 {
     transform: translateX(-50%);
     width: 70%;
     height: 120%;
-    background-image: url('/home/prince/.gemini/antigravity/brain/f194a952-f0a2-470b-908f-3ea6c92d5517/yellow_lines_1782564122704.png');
+    background-image: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
     background-size: cover;
     background-position: center;
     opacity: 0.4;
@@ -314,7 +314,7 @@ h1, h2, h3, h4, h5 {
     left: 30%;
     width: 50%;
     height: 150%;
-    background-image: url('/home/prince/.gemini/antigravity/brain/f194a952-f0a2-470b-908f-3ea6c92d5517/yellow_lines_1782564122704.png');
+    background-image: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(234, 179, 8, 0.05) 100%);
     background-size: cover;
     background-position: center;
     opacity: 0.4;
