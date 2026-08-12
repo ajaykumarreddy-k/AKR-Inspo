@@ -101,6 +101,12 @@ export function Hero({ onNavigate }: { onNavigate: (path: string) => void }) {
               >
                 Component Projects <ArrowUpRight className="w-4 h-4"/>
               </a>
+              <a 
+                href="/Refero-styles design dna scrape/index.html" 
+                className="border-t border-black/30 pt-3 pb-4 flex justify-between items-center hover:opacity-60 transition-opacity mix-blend-multiply font-bold"
+              >
+                Akr-refero <ArrowUpRight className="w-4 h-4"/>
+              </a>
             </div>
           </div>
         </div>

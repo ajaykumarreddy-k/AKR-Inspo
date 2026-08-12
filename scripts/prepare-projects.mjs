@@ -67,11 +67,13 @@ function findProjects(dir, depth = 0) {
 
     // 2. Determine a clean name for the project
     let name = dir.split('/').pop();
+    let isCustomName = false;
     if (entries.includes('package.json')) {
       try {
         const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf-8'));
         if (pkg.name && pkg.name !== 'react-example' && pkg.name !== 'vite-react-typescript-starter') {
             name = pkg.name;
+            isCustomName = true;
         }
       } catch(e){}
     }
@@ -116,7 +118,7 @@ function findProjects(dir, depth = 0) {
     
     projects.push({
       id: dir.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase(),
-      name: name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      name: isCustomName ? name : name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
       path: urlPath,
       folder: dir,
       thumbnail: thumbnail
