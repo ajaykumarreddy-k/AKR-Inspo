@@ -145,7 +145,12 @@ export default defineConfig(() => {
   return {
     build: {
       rollupOptions: {
-        input: inputs
+        input: inputs,
+        external: [
+          'react-image-magnifiers',
+          'react-image-effects',
+          /^https:\/\/framer\.com\//,
+        ]
       }
     },
     optimizeDeps: {
