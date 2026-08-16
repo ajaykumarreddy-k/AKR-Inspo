@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticky",
+  "type": "registry:ui",
+  "title": "StickyButton",
+  "description": "A magnetic button that follows cursor movement with spring physics.",
+  "files": [
+    {
+      "path": "components/evil-buttons/sticky.tsx",
+      "type": "registry:ui",
+      "target": "components/evil-buttons/sticky.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { motion } from \"motion/react\";\nimport { ReactNode, useRef, useState } from \"react\";\n\nfunction StickyButton({\n  children,\n  className,\n}: {\n  children: ReactNode;\n  className?: string;\n}) {\n  const ref = useRef<HTMLButtonElement | null>(null);\n  const [position, setPosition] = useState({ x: 0, y: 0 });\n\n  const mouseMove = (e: React.MouseEvent) => {\n    if (!ref.current) return;\n    const { clientX, clientY } = e;\n    const { height, width, left, top } = ref.current.getBoundingClientRect();\n\n    const centerX = (clientX - (left + width / 2)) * 0.4;\n    const centerY = (clientY - (top + height / 2)) * 0.4;\n    setPosition({ x: centerX, y: centerY });\n  };\n\n  const mouseLeave = () => {\n    setPosition({ x: 0, y: 0 });\n  };\n\n  const { x, y } = position;\n\n  return (\n    <motion.button\n      onMouseMove={mouseMove}\n      onMouseLeave={mouseLeave}\n      ref={ref}\n      animate={{ x, y }}\n      transition={{\n        type: \"spring\",\n        stiffness: 200,\n        damping: 20,\n        mass: 0.5,\n      }}\n      className={cn(\n        \"border-border border-dashed border-2 bg-background text-primary rounded px-4 py-2\",\n        className,\n      )}\n    >\n      {children}\n    </motion.button>\n  );\n}\n\nexport default StickyButton;\n"
+    }
+  ],
+  "dependencies": [
+    "motion",
+    "clsx",
+    "tailwind-merge"
+  ]
+}

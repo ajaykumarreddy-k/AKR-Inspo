@@ -224,6 +224,13 @@
     "thumbnail": "Entire site/Figits and rabbtis/screencapture-file-home-prince-ProjectsMain-akr-inspo-component-library-1-Entire-site-Figits-and-rabbtis-index-html-2026-07-18-00_05_24.png"
   },
   {
+    "id": "entire-site-mindmarket-out",
+    "name": "Out",
+    "path": "/Entire site/Mindmarket/out/index.html",
+    "folder": "Entire site/Mindmarket/out",
+    "thumbnail": null
+  },
+  {
     "id": "entire-site-mindoo---clone",
     "name": "cloned-app",
     "path": "/Entire site/Mindoo - clone/index.html",
@@ -649,6 +656,13 @@
     "path": "/Frammer&21st dev Components/web preloder/index.html",
     "folder": "Frammer&21st dev Components/web preloder",
     "thumbnail": "Frammer&21st dev Components/web preloder/image.png"
+  },
+  {
+    "id": "react-bits---all-findable-resources-react-bits-main",
+    "name": "react-bits",
+    "path": "/React bits - All Findable resources/react-bits-main/index.html",
+    "folder": "React bits - All Findable resources/react-bits-main",
+    "thumbnail": "React bits - All Findable resources/react-bits-main/public/android-chrome-192x192.png"
   },
   {
     "id": "refero-styles-design-dna-scrape",

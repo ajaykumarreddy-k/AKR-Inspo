@@ -1,0 +1,151 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "evil-buttons",
+  "homepage": "http://evilbuttons.radiumcoders.com/docs",
+  "items": [
+    {
+      "name": "click-powerup",
+      "type": "registry:ui",
+      "title": "ClickPowerUp",
+      "description": "An animated button wrapper with corner brackets, patterned fill, and tap feedback.",
+      "files": [
+        "components/evil-buttons/click-powerup.tsx"
+      ]
+    },
+    {
+      "name": "sticky",
+      "type": "registry:ui",
+      "title": "StickyButton",
+      "description": "A magnetic button that follows cursor movement with spring physics.",
+      "files": [
+        "components/evil-buttons/sticky.tsx"
+      ]
+    },
+    {
+      "name": "shiny-button",
+      "type": "registry:ui",
+      "title": "ShinyButton",
+      "description": "A glossy, gradient-styled button with a layered inner glow and press feedback.",
+      "files": [
+        "components/evil-buttons/shiny-button.tsx"
+      ]
+    },
+    {
+      "name": "movie-pass",
+      "type": "registry:ui",
+      "title": "MoviePassButton",
+      "description": "A ticket-style button with a tear-off animation, like a cinema stub.",
+      "files": [
+        "components/evil-buttons/movie-pass.tsx"
+      ]
+    },
+    {
+      "name": "minimal",
+      "type": "registry:ui",
+      "title": "MinimalButton",
+      "description": "A sleek, minimal button with a subtle repeating linear gradient pattern.",
+      "files": [
+        "components/evil-buttons/minimal.tsx"
+      ]
+    },
+    {
+      "name": "tanstack-logo",
+      "type": "registry:ui",
+      "title": "TanStackLogo",
+      "description": "An animated TanStack logo button with ripple effects and scale animation.",
+      "files": [
+        "components/evil-buttons/logo/tanstack.tsx"
+      ]
+    },
+    {
+      "name": "shadcn-logo",
+      "type": "registry:ui",
+      "title": "ShadcnLogo",
+      "description": "An animated shadcn/ui logo button with pixel reveal and glow effects.",
+      "files": [
+        "components/evil-buttons/logo/shadcn.tsx"
+      ]
+    },
+    {
+      "name": "vercel-logo",
+      "type": "registry:ui",
+      "title": "VercelLogo",
+      "description": "An animated Vercel logo button with a sleek triangle reveal animation.",
+      "files": [
+        "components/evil-buttons/logo/vercel.tsx"
+      ]
+    },
+    {
+      "name": "scroll-bars",
+      "type": "registry:ui",
+      "title": "ScrollBars",
+      "description": "Animated scroll progress bars with a vintage audio level meter aesthetic.",
+      "files": [
+        "components/evil-buttons/scroll-bars.tsx"
+      ]
+    },
+    {
+      "name": "grid-button",
+      "type": "registry:ui",
+      "title": "GridButton",
+      "description": "A retro-styled button with a pixelated grid icon and tactile press feedback.",
+      "files": [
+        "components/evil-buttons/grid-button.tsx"
+      ]
+    },
+    {
+      "name": "sun-dim",
+      "type": "registry:ui",
+      "title": "SunDimIcon",
+      "description": "A chunky low-res sun icon with square rays for theme toggles and retro UI.",
+      "files": [
+        "components/evil-buttons/icons/sun-dim.tsx"
+      ]
+    },
+    {
+      "name": "moon",
+      "type": "registry:ui",
+      "title": "MoonIcon",
+      "description": "A chunky moon icon with a bold block silhouette for theme toggles.",
+      "files": [
+        "components/evil-buttons/icons/moon.tsx"
+      ]
+    },
+    {
+      "name": "spark-burst",
+      "type": "registry:ui",
+      "title": "SparkBurstIcon",
+      "description": "A sharp chunky spark icon for badges, highlights, and decorative accents.",
+      "files": [
+        "components/evil-buttons/icons/spark-burst.tsx"
+      ]
+    },
+    {
+      "name": "cloud-blocks",
+      "type": "registry:ui",
+      "title": "CloudBlocksIcon",
+      "description": "A compact pixel-style cloud icon for weather UI and soft utility surfaces.",
+      "files": [
+        "components/evil-buttons/icons/cloud-blocks.tsx"
+      ]
+    },
+    {
+      "name": "dither-button",
+      "type": "registry:ui",
+      "title": "DitherButton",
+      "description": "A button with an animated 4x4 ordered-dither wave background and a knockout label.",
+      "files": [
+        "components/evil-buttons/dither-button.tsx"
+      ]
+    },
+    {
+      "name": "troll-button",
+      "type": "registry:ui",
+      "title": "TrollButton",
+      "description": "A button that flees from the user's cursor.",
+      "files": [
+        "components/evil-buttons/troll-button.tsx"
+      ]
+    }
+  ]
+}

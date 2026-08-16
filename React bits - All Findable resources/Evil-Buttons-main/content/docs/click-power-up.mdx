@@ -1,0 +1,42 @@
+---
+title: ClickPowerUp
+description: An animated button wrapper with bracket corners, patterned fill, and tap feedback.
+---
+
+ClickPowerUp is the first Evil Buttons registry item. It wraps button content with a hover panel, animated corner brackets, and a short tap state for punchy feedback.
+
+## Preview
+
+<PreviewCard title="ClickPowerUp" note="Interactive">
+  <ClickPowerUp>Deploy Doom</ClickPowerUp>
+</PreviewCard>
+
+## Install
+
+Add the item with the shadcn CLI.
+
+<Cmd>
+@evilbuttons/click-powerup
+</Cmd>
+
+## Usage
+
+```tsx
+import { ClickPowerUp } from "@/components/evil-buttons/click-powerup";
+
+export function ButtonDemo() {
+  return <ClickPowerUp>Launch</ClickPowerUp>;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `React.ReactNode` | - | The visible button label or content. |
+| `className` | `string` | - | Extra classes passed to the inner `button`. |
+| `tapDuration` | `number` | `500` | How long the tapped state remains active, in milliseconds. |
+
+## Registry
+
+The registry item includes `components/evil-buttons/click-powerup.tsx` and installs `motion`, `clsx`, and `tailwind-merge` as dependencies. The component imports `cn` from `@/lib/utils`, matching the project alias in `components.json`.

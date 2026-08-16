@@ -1,0 +1,53 @@
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+import "./globals.css";
+import { JsonLd } from "@/components/seo/json-ld";
+import { cn } from "@/lib/utils";
+import {
+  createOrganizationJsonLd,
+  createSoftwareApplicationJsonLd,
+  createWebSiteJsonLd,
+  rootMetadata,
+} from "@/lib/seo";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata = rootMetadata;
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={cn(
+        geistSans.variable,
+        geistMono.variable,
+        "h-full font-sans",
+        inter.variable,
+      )}
+    >
+      <body className="flex h-full flex-col overflow-hidden">
+        <JsonLd
+          data={[
+            createWebSiteJsonLd(),
+            createOrganizationJsonLd(),
+            createSoftwareApplicationJsonLd(),
+          ]}
+        />
+        {children}
+      </body>
+    </html>
+  );
+}

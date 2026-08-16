@@ -1,0 +1,223 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "./";
+
+/* Tailwind theme: color tokens (so bg-primary/text-foreground resolve to our vars) +
+   breakpoints. @theme inline keeps the var() reference (theme-swappable at runtime). */
+@theme inline {
+  --breakpoint-vp375: 375px;
+  --breakpoint-vp768: 768px;
+  --breakpoint-vp1280: 1280px;
+  --breakpoint-vp1920: 1920px;
+  --breakpoint-md: 572px;
+  --breakpoint-lg: 1025px;
+  --breakpoint-2xl: 1601px;
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-clr-0: var(--clr-0);
+  --color-clr-1: var(--clr-1);
+  --color-color-001: var(--color-001);
+  --color-color-004: var(--color-004);
+  --color-color-003: var(--color-003);
+  --color-accent: var(--accent);
+  --color-clr-2: var(--clr-2);
+  --color-clr-3: var(--clr-3);
+  --color-color-002: var(--color-002);
+  --color-clr-4: var(--clr-4);
+}
+
+/* Design tokens (values). */
+:root {
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(44, 46, 42);
+  --primary: rgb(142, 212, 98);
+  --accent: rgb(43, 160, 255);
+  --surface: rgb(245, 241, 228);
+  --color-001: rgb(0, 0, 0);
+  --color-002: oklab(0.29769 -0.00475343 0.00594504 / 0.6);
+  --color-003: rgb(255, 112, 93);
+  --color-004: rgb(245, 226, 17);
+}
+
+:root {
+  /* fonts */
+  --font-body: Inter, sans-serif;
+  /* fontSizes */
+  --font-size-001: 9px;
+  --font-size-002: 14.7932px;
+  --font-size-003: 17px;
+  --font-size-004: 18.0225px;
+  --font-size-005: 20.1668px;
+  --font-size-006: 29.5864px;
+  --font-size-007: 39.8847px;
+  --font-size-008: 52.4729px;
+  --font-size-009: 124.16px;
+  --font-size-010: 124.851px;
+  /* fontWeights */
+  --font-weight-001: 400;
+  --font-weight-002: 500;
+  /* lineHeights */
+  --line-height-001: 25.5px;
+  --line-height-002: 27.0337px;
+  --line-height-003: 25.2085px;
+  --line-height-004: 22.5281px;
+  --line-height-005: 18.4915px;
+  --line-height-006: 13.5px;
+  --line-height-007: 117.952px;
+  --line-height-008: 35.5037px;
+  --line-height-009: 47.8617px;
+  --line-height-010: 60.3438px;
+  --line-height-011: 118.609px;
+  --line-height-012: 36.0449px;
+  /* spacing */
+  --space-001: -1px;
+  --space-002: 4.25px;
+  --space-003: 6.375px;
+  --space-004: 8.5px;
+  --space-005: 10.5432px;
+  --space-006: 10.625px;
+  --space-007: 12.75px;
+  --space-008: 17px;
+  --space-009: 20px;
+  --space-010: 21.25px;
+  --space-011: 26.5625px;
+  --space-012: 33.6746px;
+  --space-013: 42.5px;
+  --space-014: 84.0225px;
+  --space-015: 85px;
+  --space-016: 168.695px;
+  --space-017: 192px;
+  /* radii */
+  --radius-001: 10px;
+  --radius-002: 20px;
+  --radius-003: 25.5px;
+  --radius-004: 50px;
+  --radius-005: 63.75px;
+  --radius-006: 100%;
+  /* zIndices */
+  --z-001: 1;
+  --z-002: 2;
+  --z-003: 3;
+  --z-004: 10;
+  /* breakpoints */
+  --bp-375: 375px;
+  --bp-768: 768px;
+  --bp-1280: 1280px;
+  --bp-1920: 1920px;
+}
+
+:root {
+  --clr-0: oklab(0.29769 -0.00475343 0.00594504 / 0.2);
+  --clr-1: rgba(0, 0, 0, 0);
+  --clr-2: rgb(235, 193, 255);
+  --clr-3: rgb(224, 219, 206);
+  --clr-4: rgb(16, 16, 16);
+}
+
+@layer base {
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid currentColor; }
+html { -webkit-text-size-adjust: 100%; line-height: normal; }
+body { margin: 0; }
+ul, ol, menu { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea, optgroup { font: inherit; color: inherit; background: transparent; border: 0; padding: 0; margin: 0; text-align: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+table { border-collapse: separate; border-spacing: 0; }
+img, picture, video, canvas, svg { display: inline-block; }
+/* Lottie runtime fit: the player re-mounts its svg/canvas into an absolute overlay that fills
+   the host's captured (per-viewport, definite) box. Force that runtime media to fit the box so
+   an aspect-mismatched viewBox (e.g. a portrait animation in a shorter, letterboxed source box)
+   can't inflate past the pinned height. Scoped to the runtime-marked host only. */
+[data-ditto-lottie] > div > svg, [data-ditto-lottie] > div > canvas { width: 100%; height: 100%; display: block; }
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd { margin: 0; }
+/* Neutralize UA text defaults to inherit so the generator's default-skipping is
+   correct: a property equal to its inherited value is simply not emitted. */
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+b, strong, th { font-weight: inherit; }
+em, i, cite, var, dfn, address, q { font-style: inherit; }
+small, big, sub, sup { font-size: inherit; }
+sub, sup { vertical-align: inherit; }
+code, kbd, samp, pre, tt, var { font-family: inherit; font-size: inherit; }
+mark { background-color: transparent; color: inherit; }
+abbr[title] { text-decoration: none; }
+fieldset, legend { min-width: 0; }
+
+/* fonts */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/cloned/fonts/665385c18c7b.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/cloned/fonts/7041f8cd23b9.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/cloned/fonts/e7b8144637fb.woff2") format("woff2");
+}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+html, body { overflow-x: clip; }
+
+/* Lenis smooth scrolling integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Nav links pill background expand on hover */
+[data-component="link"]::before,
+[data-component="button"]::before,
+[data-component="link"]::after,
+[data-component="button"]::after {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity, transform;
+}
+
+[data-component="link"]:hover::before,
+[data-component="button"]:hover::before,
+[data-component="link"]:hover::after,
+[data-component="button"]:hover::after {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* Featured articles cards hover transition */
+[data-cid="n409"] > li {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+[data-cid="n409"] > li img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+}
