@@ -7,3 +7,6 @@ coverage/
 !.env.example
 build-test.mjs
 test-build2.mjs
+node_modules/
+dist/
+build/
